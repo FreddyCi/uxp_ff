@@ -5,12 +5,13 @@
 
 /* Main Tabs Container */
 .react-aria-Tabs {
-  /* Default is Medium sizing - matching Spectrum CSS exactly */
-  --spectrum-tabs-item-height: 48px;
-  --spectrum-tabs-item-horizontal-spacing: 24px;
-  --spectrum-tabs-start-to-edge: 16px;
-  --spectrum-tabs-top-to-text: 14px;
-  --spectrum-tabs-bottom-to-text: 14px;
+  /* Official Spectrum CSS Tab Tokens - using exact same variables as Adobe */
+  --spectrum-tabs-item-height: var(--spectrum-tab-item-height-medium, 48px);
+  --spectrum-tabs-item-horizontal-spacing: var(--spectrum-tab-item-to-tab-item-horizontal-medium, 24px);
+  --spectrum-tabs-start-to-edge: var(--spectrum-tab-item-start-to-edge-medium, 16px);
+  --spectrum-tabs-top-to-text: var(--spectrum-tab-item-top-to-text-medium, 14px);
+  --spectrum-tabs-bottom-to-text: var(--spectrum-tab-item-bottom-to-text-medium, 14px);
+  --spectrum-tabs-focus-indicator-gap: var(--spectrum-tab-item-focus-indicator-gap-medium, 4px);
 
   --spectrum-tabs-color: var(--spectrum-neutral-subdued-content-color-default, #6B6B6B);
   --spectrum-tabs-color-selected: var(--spectrum-neutral-subdued-content-color-down, #2C2C2C);
@@ -25,7 +26,6 @@
   /* Focus Indicator */
   --spectrum-tabs-focus-indicator-width: var(--spectrum-focus-indicator-thickness, 2px);
   --spectrum-tabs-focus-indicator-border-radius: var(--spectrum-corner-radius-100, 4px);
-  --spectrum-tabs-focus-indicator-gap: 4px;
   --spectrum-tabs-focus-indicator-color: var(--spectrum-focus-indicator-color, #0F5FDC);
   --spectrum-tabs-selection-indicator-color: var(--spectrum-neutral-subdued-content-color-down, #0F5FDC);
 
@@ -66,9 +66,10 @@
   block-size: calc(var(--spectrum-tabs-item-height) - var(--spectrum-tabs-divider-size));
   z-index: 1;
   
-  /* Spacing */
+  /* Spacing - add padding for tab spacing */
   padding-inline-start: var(--spectrum-tabs-start-to-edge);
   padding-inline-end: var(--spectrum-tabs-start-to-edge);
+  margin-right: 24px; /* Direct spacing between tabs */
   
   /* Typography */
   font-family: var(--spectrum-tabs-font-family);
@@ -86,11 +87,6 @@
   
   /* Transitions */
   transition: color var(--spectrum-tabs-animation-duration) ease-out;
-  
-  /* Tab spacing */
-  & + .react-aria-Tab {
-    margin-inline-start: var(--spectrum-tabs-item-horizontal-spacing);
-  }
 }
 
 /* Focus indicator pseudo-element - exactly like Spectrum CSS */
@@ -172,31 +168,34 @@
   outline-offset: 2px;
 }
 
-/* Size Variants - matching Spectrum CSS exactly */
+/* Size Variants - using official Spectrum CSS tokens */
 .react-aria-Tabs[data-size="s"] {
-  --spectrum-tabs-item-height: 40px;
-  --spectrum-tabs-item-horizontal-spacing: 16px;
-  --spectrum-tabs-start-to-edge: 12px;
-  --spectrum-tabs-top-to-text: 10px;
-  --spectrum-tabs-bottom-to-text: 10px;
+  --spectrum-tabs-item-height: var(--spectrum-tab-item-height-small, 40px);
+  --spectrum-tabs-item-horizontal-spacing: var(--spectrum-tab-item-to-tab-item-horizontal-small, 16px);
+  --spectrum-tabs-start-to-edge: var(--spectrum-tab-item-start-to-edge-small, 12px);
+  --spectrum-tabs-top-to-text: var(--spectrum-tab-item-top-to-text-small, 10px);
+  --spectrum-tabs-bottom-to-text: var(--spectrum-tab-item-bottom-to-text-small, 10px);
+  --spectrum-tabs-focus-indicator-gap: var(--spectrum-tab-item-focus-indicator-gap-small, 3px);
   --spectrum-tabs-font-size: var(--spectrum-font-size-75, 12px);
 }
 
 .react-aria-Tabs[data-size="l"] {
-  --spectrum-tabs-item-height: 56px;
-  --spectrum-tabs-item-horizontal-spacing: 32px;
-  --spectrum-tabs-start-to-edge: 20px;
-  --spectrum-tabs-top-to-text: 18px;
-  --spectrum-tabs-bottom-to-text: 18px;
+  --spectrum-tabs-item-height: var(--spectrum-tab-item-height-large, 56px);
+  --spectrum-tabs-item-horizontal-spacing: var(--spectrum-tab-item-to-tab-item-horizontal-large, 32px);
+  --spectrum-tabs-start-to-edge: var(--spectrum-tab-item-start-to-edge-large, 20px);
+  --spectrum-tabs-top-to-text: var(--spectrum-tab-item-top-to-text-large, 18px);
+  --spectrum-tabs-bottom-to-text: var(--spectrum-tab-item-bottom-to-text-large, 18px);
+  --spectrum-tabs-focus-indicator-gap: var(--spectrum-tab-item-focus-indicator-gap-large, 5px);
   --spectrum-tabs-font-size: var(--spectrum-font-size-200, 16px);
 }
 
 .react-aria-Tabs[data-size="xl"] {
-  --spectrum-tabs-item-height: 64px;
-  --spectrum-tabs-item-horizontal-spacing: 40px;
-  --spectrum-tabs-start-to-edge: 24px;
-  --spectrum-tabs-top-to-text: 22px;
-  --spectrum-tabs-bottom-to-text: 22px;
+  --spectrum-tabs-item-height: var(--spectrum-tab-item-height-extra-large, 64px);
+  --spectrum-tabs-item-horizontal-spacing: var(--spectrum-tab-item-to-tab-item-horizontal-extra-large, 40px);
+  --spectrum-tabs-start-to-edge: var(--spectrum-tab-item-start-to-edge-extra-large, 24px);
+  --spectrum-tabs-top-to-text: var(--spectrum-tab-item-top-to-text-extra-large, 22px);
+  --spectrum-tabs-bottom-to-text: var(--spectrum-tab-item-bottom-to-text-extra-large, 22px);
+  --spectrum-tabs-focus-indicator-gap: var(--spectrum-tab-item-focus-indicator-gap-extra-large, 6px);
   --spectrum-tabs-font-size: var(--spectrum-font-size-300, 18px);
 }
 
