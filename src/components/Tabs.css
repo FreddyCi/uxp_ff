@@ -27,7 +27,7 @@
   --spectrum-tabs-focus-indicator-border-radius: var(--spectrum-corner-radius-100, 4px);
   --spectrum-tabs-focus-indicator-gap: 4px;
   --spectrum-tabs-focus-indicator-color: var(--spectrum-focus-indicator-color, #0F5FDC);
-  --spectrum-tabs-selection-indicator-color: var(--spectrum-neutral-subdued-content-color-down, #2C2C2C);
+  --spectrum-tabs-selection-indicator-color: var(--spectrum-neutral-subdued-content-color-down, #0F5FDC);
 
   --spectrum-tabs-divider-size: var(--spectrum-border-width-200, 2px);
   --spectrum-tabs-divider-background-color: var(--spectrum-gray-300, #E1E1E1);
@@ -129,6 +129,8 @@
 
 .react-aria-Tab[data-selected="true"] {
   color: var(--spectrum-tabs-color-selected);
+  border: none; /* Remove any conflicting borders */
+  box-shadow: none; /* Remove any conflicting shadows */
 }
 
 .react-aria-Tab[data-disabled="true"] {
@@ -144,18 +146,18 @@
   border-color: var(--spectrum-tabs-focus-indicator-color);
 }
 
-/* Selection Indicator - positioned absolutely like Spectrum CSS */
-.react-aria-Tab[data-selected="true"]::after {
+/* Selection Indicator - thin underline only */
+.react-aria-Tab[data-selected="true"]::after,
+.react-aria-Tab[aria-selected="true"]::after {
   content: "";
   position: absolute;
-  inset-inline-start: 0;
-  inset-inline-end: 0;
-  inset-block-end: 0;
-  block-size: var(--spectrum-tabs-divider-size);
-  background-color: var(--spectrum-tabs-selection-indicator-color);
-  border-radius: 1px;
-  z-index: 0;
-  transition: all var(--spectrum-tabs-animation-duration) ease-out;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px; /* Fixed height instead of variable */
+  background-color: #0F5FDC;
+  z-index: 1; /* Lower z-index so it doesn't overlay content */
+  pointer-events: none; /* Don't interfere with clicking */
 }
 
 /* Tab Panel */
