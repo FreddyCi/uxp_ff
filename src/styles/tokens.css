@@ -1,0 +1,168 @@
+/* Spectrum CSS compatible design tokens for UXP */
+
+/* =============================================================================
+   SPECTRUM CORE TOKENS (theme and scale independent)
+   ============================================================================= */
+:root {
+  /* Base geometry tokens */
+  --spectrum-corner-radius-100: 6px;
+  --spectrum-corner-radius-200: 12px;
+  
+  /* Animation tokens */
+  --spectrum-animation-duration-100: 200ms;
+  --spectrum-animation-ease-in-out: ease;
+  
+  /* Focus indicator */
+  --spectrum-focus-indicator-thickness: 2px;
+  --spectrum-focus-indicator-gap: 2px;
+  
+  /* UXP responsive thresholds */
+  --spectrum-breakpoint-narrow: 300px;
+  --spectrum-breakpoint-wide: 600px;
+}
+
+/* =============================================================================
+   SPECTRUM MEDIUM SCALE TOKENS (default for UXP desktop)
+   ============================================================================= */
+:root {
+  /* Typography scale */
+  --spectrum-font-size-75: 12px;
+  --spectrum-font-size-100: 14px;
+  --spectrum-font-size-200: 16px;
+  --spectrum-font-size-300: 18px;
+  
+  /* Font weight scale */
+  --spectrum-font-weight-regular: 400;
+  --spectrum-font-weight-medium: 500;
+  --spectrum-font-weight-bold: 700;
+  
+  /* Font family */
+  --spectrum-sans-font-family-stack: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  
+  /* Spacing scale */
+  --spectrum-spacing-75: 6px;
+  --spectrum-spacing-100: 8px;
+  --spectrum-spacing-200: 12px;
+  --spectrum-spacing-300: 16px;
+  --spectrum-spacing-400: 20px;
+  --spectrum-spacing-500: 24px;
+  
+  /* Component sizing */
+  --spectrum-component-height-75: 24px;
+  --spectrum-component-height-100: 32px;
+  --spectrum-component-height-200: 40px;
+}
+
+/* =============================================================================
+   SPECTRUM DARK THEME TOKENS
+   ============================================================================= */
+:root,
+[data-theme="dark"] {
+  /* Background colors */
+  --spectrum-background-layer-1-color: #1c1c1c;
+  --spectrum-background-layer-2-color: #242424;
+  --spectrum-background-layer-3-color: #374151;
+  
+  /* Content colors */
+  --spectrum-neutral-content-color-default: #e5e7eb;
+  --spectrum-neutral-content-color-hover: #f9fafb;
+  --spectrum-neutral-content-color-focus: #f9fafb;
+  --spectrum-neutral-subdued-content-color-default: #9ca3af;
+  --spectrum-neutral-subdued-content-color-hover: #d1d5db;
+  --spectrum-neutral-subdued-content-color-down: #9ca3af;
+  --spectrum-neutral-subdued-content-color-key-focus: #e5e7eb;
+  --spectrum-disabled-content-color: #6b7280;
+  
+  /* Accent colors */
+  --spectrum-accent-content-color-default: #10b981;
+  --spectrum-accent-content-color-hover: #059669;
+  --spectrum-accent-content-color-focus: #059669;
+  --spectrum-accent-content-color-down: #047857;
+  
+  /* Border colors */
+  --spectrum-border-color-default: #6b7280;
+  --spectrum-focus-indicator-color: #10b981;
+  
+  /* Shadow */
+  --spectrum-drop-shadow-color: rgba(0,0,0,.25);
+  
+  /* Simplified aliases for backward compatibility */
+  --bg: var(--spectrum-background-layer-1-color);
+  --bg-2: var(--spectrum-background-layer-2-color);
+  --bg-3: var(--spectrum-background-layer-3-color);
+  --text: var(--spectrum-neutral-content-color-default);
+  --text-muted: var(--spectrum-neutral-subdued-content-color-default);
+  --text-disabled: var(--spectrum-disabled-content-color);
+  --accent: var(--spectrum-accent-content-color-default);
+  --accent-hover: var(--spectrum-accent-content-color-hover);
+  --accent-pressed: var(--spectrum-accent-content-color-down);
+  --border: var(--spectrum-border-color-default);
+  --border-focus: var(--spectrum-focus-indicator-color);
+}
+
+/* =============================================================================
+   SPECTRUM LIGHT THEME TOKENS
+   ============================================================================= */
+[data-theme="light"] {
+  /* Background colors */
+  --spectrum-background-layer-1-color: #ffffff;
+  --spectrum-background-layer-2-color: #f9fafb;
+  --spectrum-background-layer-3-color: #f3f4f6;
+  
+  /* Content colors */
+  --spectrum-neutral-content-color-default: #111827;
+  --spectrum-neutral-content-color-hover: #000000;
+  --spectrum-neutral-content-color-focus: #000000;
+  --spectrum-neutral-subdued-content-color-default: #6b7280;
+  --spectrum-neutral-subdued-content-color-hover: #374151;
+  --spectrum-neutral-subdued-content-color-down: #6b7280;
+  --spectrum-neutral-subdued-content-color-key-focus: #111827;
+  --spectrum-disabled-content-color: #9ca3af;
+  
+  /* Accent colors */
+  --spectrum-accent-content-color-default: #059669;
+  --spectrum-accent-content-color-hover: #047857;
+  --spectrum-accent-content-color-focus: #047857;
+  --spectrum-accent-content-color-down: #065f46;
+  
+  /* Border colors */
+  --spectrum-border-color-default: #d1d5db;
+  --spectrum-focus-indicator-color: #059669;
+  
+  /* Shadow */
+  --spectrum-drop-shadow-color: rgba(0,0,0,.1);
+  
+  /* Simplified aliases for backward compatibility */
+  --bg: var(--spectrum-background-layer-1-color);
+  --bg-2: var(--spectrum-background-layer-2-color);
+  --bg-3: var(--spectrum-background-layer-3-color);
+  --text: var(--spectrum-neutral-content-color-default);
+  --text-muted: var(--spectrum-neutral-subdued-content-color-default);
+  --text-disabled: var(--spectrum-disabled-content-color);
+  --accent: var(--spectrum-accent-content-color-default);
+  --accent-hover: var(--spectrum-accent-content-color-hover);
+  --accent-pressed: var(--spectrum-accent-content-color-down);
+  --border: var(--spectrum-border-color-default);
+  --border-focus: var(--spectrum-focus-indicator-color);
+}
+
+/* =============================================================================
+   SPECTRUM LARGE SCALE TOKENS (for mobile/touch interfaces)
+   ============================================================================= */
+[data-scale="large"] {
+  /* Typography scale - larger for mobile */
+  --spectrum-font-size-75: 14px;
+  --spectrum-font-size-100: 16px;
+  --spectrum-font-size-200: 18px;
+  
+  /* Spacing scale - more generous for touch */
+  --spectrum-spacing-75: 8px;
+  --spectrum-spacing-100: 12px;
+  --spectrum-spacing-200: 16px;
+  --spectrum-spacing-300: 20px;
+  
+  /* Component sizing - larger touch targets */
+  --spectrum-component-height-75: 32px;
+  --spectrum-component-height-100: 40px;
+  --spectrum-component-height-200: 48px;
+}

@@ -1,0 +1,125 @@
+/* Clean UXP Button - Spectrum CSS + Composable Reset (using DIV to bypass UXP) */
+
+/* =============================================================================
+   SPECTRUM BUTTON BASE (uses div[role="button"] to avoid UXP conflicts)
+   ============================================================================= */
+.uxp-button {
+  /* Spectrum design tokens drive the visuals */
+  --btn-bg: var(--spectrum-accent-content-color-default);
+  --btn-fg: var(--spectrum-background-layer-1-color);
+  --btn-border: var(--spectrum-border-width-100);
+  --btn-radius: var(--spectrum-corner-radius-100);
+  --btn-padding-y: var(--spectrum-spacing-100);
+  --btn-padding-x: var(--spectrum-spacing-200);
+  --btn-font-size: var(--spectrum-font-size-100);
+  --btn-font-weight: var(--spectrum-font-weight-bold);
+  --btn-min-height: var(--spectrum-component-height-100);
+  
+  /* Layout and presentation */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spectrum-spacing-75);
+  
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  border: var(--btn-border) solid transparent;
+  border-radius: var(--btn-radius);
+  padding: var(--btn-padding-y) var(--btn-padding-x);
+  
+  font-size: var(--btn-font-size);
+  font-weight: var(--btn-font-weight);
+  font-family: var(--spectrum-sans-font-family-stack);
+  text-align: center;
+  text-decoration: none;
+  
+  min-height: var(--btn-min-height);
+  cursor: pointer;
+  transition: var(--spectrum-animation-duration-100) var(--spectrum-animation-ease-in-out);
+  
+  /* Clean div styling - no UXP conflicts */
+  vertical-align: middle;
+  box-sizing: border-box;
+  user-select: none;
+  
+  /* Ensure accessibility */
+  outline: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* =============================================================================
+   SPECTRUM BUTTON STATES (clean data-state driven, no UXP conflicts)
+   ============================================================================= */
+
+/* Hover state */
+.uxp-button[data-state="hover"] {
+  --btn-bg: var(--spectrum-accent-content-color-hover);
+}
+
+/* Pressed/Active state */
+.uxp-button[data-state="pressed"] {
+  --btn-bg: var(--spectrum-accent-content-color-down);
+}
+
+/* Focus state (accessibility) */
+.uxp-button[data-focus-visible] {
+  outline: var(--spectrum-focus-indicator-thickness) solid var(--spectrum-focus-indicator-color);
+  outline-offset: var(--spectrum-focus-indicator-gap);
+}
+
+/* Disabled state */
+.uxp-button[data-disabled],
+.uxp-button[aria-disabled="true"] {
+  --btn-bg: var(--spectrum-disabled-background-color);
+  --btn-fg: var(--spectrum-disabled-content-color);
+  cursor: not-allowed;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* =============================================================================
+   SPECTRUM BUTTON VARIANTS
+   ============================================================================= */
+
+/* Secondary button variant */
+.uxp-button--secondary {
+  --btn-bg: var(--spectrum-neutral-background-color-default);
+  --btn-fg: var(--spectrum-neutral-content-color-default);
+  --btn-border: var(--spectrum-border-width-100);
+  border-color: var(--spectrum-border-color-default);
+}
+
+.uxp-button--secondary[data-state="hover"] {
+  --btn-bg: var(--spectrum-neutral-background-color-hover);
+}
+
+.uxp-button--secondary[data-state="pressed"] {
+  --btn-bg: var(--spectrum-neutral-background-color-down);
+}
+
+/* Negative button variant */
+.uxp-button--negative {
+  --btn-bg: var(--spectrum-negative-content-color-default);
+  --btn-fg: var(--spectrum-background-layer-1-color);
+}
+
+.uxp-button--negative[data-state="hover"] {
+  --btn-bg: var(--spectrum-negative-content-color-hover);
+}
+
+.uxp-button--negative[data-state="pressed"] {
+  --btn-bg: var(--spectrum-negative-content-color-down);
+}
+
+/* =============================================================================
+   RESPONSIVE UXP ADJUSTMENTS
+   ============================================================================= */
+
+/* UXP density adjustments for small panels */
+@container (max-width: 250px) {
+  .uxp-button {
+    --btn-padding-x: var(--spectrum-spacing-100);
+    --btn-font-size: var(--spectrum-font-size-75);
+    gap: var(--spectrum-spacing-50);
+  }
+}

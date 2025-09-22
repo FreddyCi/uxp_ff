@@ -1,0 +1,120 @@
+/* UXP-compatible NumberField styles - AGGRESSIVE OVERRIDES */
+.react-aria-NumberField {
+  display: flex !important;
+  flex-direction: column !important;
+  width: fit-content !important;
+  color: #e5e7eb !important;
+  font-family: system-ui, sans-serif !important;
+}
+
+.react-aria-Group {
+  display: flex !important;
+  border: 1px solid #6b7280 !important;
+  border-radius: 6px !important;
+  background-color: #374151 !important;
+  overflow: hidden !important;
+  transition: border-color 200ms ease !important;
+}
+
+.react-aria-NumberField[data-focus-within] .react-aria-Group {
+  border-color: #4cc2ff !important;
+  box-shadow: 0 0 0 1px #4cc2ff !important;
+}
+
+.react-aria-NumberField .react-aria-Input {
+  /* Force UXP compatibility - NUCLEAR OPTION */
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  
+  /* Custom styling - OVERRIDE EVERYTHING */
+  padding: 8px 12px !important;
+  margin: 0 !important;
+  border: none !important;
+  background-color: transparent !important;
+  background: transparent !important;
+  background-image: none !important;
+  font-size: 14px !important;
+  color: #e5e7eb !important;
+  outline: none !important;
+  flex: 1 !important;
+  min-width: 60px !important;
+  font-family: system-ui, sans-serif !important;
+  
+  /* Remove ALL UXP defaults */
+  box-shadow: none !important;
+  text-shadow: none !important;
+  filter: none !important;
+  min-height: auto !important;
+  width: auto !important;
+  height: auto !important;
+}
+
+.react-aria-NumberField .react-aria-Input::placeholder {
+  color: #9ca3af !important;
+}
+
+.react-aria-NumberField .react-aria-Input:disabled {
+  background-color: transparent !important;
+  color: #9ca3af !important;
+  cursor: not-allowed !important;
+}
+
+.numberfield-buttons {
+  display: flex !important;
+  flex-direction: column !important;
+  border-left: 1px solid #6b7280 !important;
+}
+
+.react-aria-Button[slot="increment"],
+.react-aria-Button[slot="decrement"] {
+  /* Force UXP compatibility - NUCLEAR OPTION */
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  
+  /* Custom styling - OVERRIDE EVERYTHING */
+  padding: 4px 8px !important;
+  border: none !important;
+  background-color: #4b5563 !important;
+  background: #4b5563 !important;
+  background-image: none !important;
+  color: #e5e7eb !important;
+  cursor: pointer !important;
+  font-size: 12px !important;
+  outline: none !important;
+  transition: background-color 200ms ease !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  
+  /* Remove ALL UXP defaults */
+  box-shadow: none !important;
+  text-shadow: none !important;
+  filter: none !important;
+  min-width: auto !important;
+  min-height: auto !important;
+  width: auto !important;
+  height: auto !important;
+  margin: 0 !important;
+  font-family: system-ui, sans-serif !important;
+}
+
+.react-aria-Button[slot="increment"] {
+  border-bottom: 1px solid #6b7280 !important;
+}
+
+.react-aria-Button[slot="increment"]:hover,
+.react-aria-Button[slot="decrement"]:hover {
+  background-color: #6b7280 !important;
+}
+
+.react-aria-Button[slot="increment"]:active,
+.react-aria-Button[slot="decrement"]:active {
+  background-color: #374151 !important;
+}
+
+.react-aria-Button[slot="increment"][data-disabled],
+.react-aria-Button[slot="decrement"][data-disabled] {
+  background-color: #4b5563 !important;
+  color: #6b7280 !important;
+  cursor: not-allowed !important;
+}

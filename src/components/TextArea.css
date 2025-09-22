@@ -1,0 +1,99 @@
+/* UXP-compatible TextArea styles - AGGRESSIVE OVERRIDES */
+.react-aria-TextField {
+  display: flex !important;
+  flex-direction: column !important;
+  width: fit-content !important;
+  color: #e5e7eb !important;
+  font-family: system-ui, sans-serif !important;
+}
+
+.react-aria-TextArea, textarea {
+  /* Force UXP compatibility - NUCLEAR OPTION */
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  
+  /* Custom styling - OVERRIDE EVERYTHING */
+  padding: 8px 12px !important;
+  margin: 0 !important;
+  border: 1px solid #6b7280 !important;
+  border-radius: 6px !important;
+  background-color: #374151 !important;
+  background: #374151 !important;
+  background-image: none !important;
+  font-size: 14px !important;
+  color: #e5e7eb !important;
+  outline: none !important;
+  width: 100% !important;
+  resize: vertical !important;
+  font-family: system-ui, sans-serif !important;
+  transition: all 200ms ease !important;
+  
+  /* Remove ALL UXP defaults */
+  box-shadow: none !important;
+  text-shadow: none !important;
+  filter: none !important;
+  min-width: auto !important;
+  min-height: auto !important;
+  height: auto !important;
+}
+
+.react-aria-TextArea:hover,
+textarea:hover {
+  border-color: #9ca3af !important;
+}
+
+.react-aria-TextField[data-focus-within] .react-aria-TextArea,
+.react-aria-TextArea:focus,
+textarea:focus {
+  border-color: #4cc2ff !important;
+  box-shadow: 0 0 0 1px #4cc2ff !important;
+}
+
+.react-aria-TextField[data-invalid] .react-aria-TextArea,
+.react-aria-TextArea:invalid,
+textarea:invalid {
+  border-color: #ef4444 !important;
+}
+
+.react-aria-TextField[data-invalid] .react-aria-TextArea:focus,
+.react-aria-TextArea:invalid:focus,
+textarea:invalid:focus {
+  box-shadow: 0 0 0 1px #ef4444 !important;
+}
+
+.react-aria-TextArea:disabled,
+textarea:disabled {
+  background-color: #4b5563 !important;
+  border-color: #6b7280 !important;
+  color: #9ca3af !important;
+  cursor: not-allowed !important;
+  resize: none !important;
+}
+
+.react-aria-TextArea::placeholder,
+textarea::placeholder {
+  color: #9ca3af !important;
+}
+
+/* Ensure proper scrollbar styling in UXP */
+.react-aria-TextArea::-webkit-scrollbar,
+textarea::-webkit-scrollbar {
+  width: 8px !important;
+}
+
+.react-aria-TextArea::-webkit-scrollbar-track,
+textarea::-webkit-scrollbar-track {
+  background: #4b5563 !important;
+  border-radius: 4px !important;
+}
+
+.react-aria-TextArea::-webkit-scrollbar-thumb,
+textarea::-webkit-scrollbar-thumb {
+  background: #6b7280 !important;
+  border-radius: 4px !important;
+}
+
+.react-aria-TextArea::-webkit-scrollbar-thumb:hover,
+textarea::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af !important;
+}

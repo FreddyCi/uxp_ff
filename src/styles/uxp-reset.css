@@ -1,0 +1,263 @@
+/* UXP Reset System - Composable, Scoped, Spectrum-Compliant */
+
+/* =============================================================================
+   BASELINE UXP RESET (opt-in scope to avoid global collateral)
+   ============================================================================= */
+.uxp-reset {
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  background: transparent !important;
+  background-image: none !important;
+  border: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+  outline: 0 !important;
+}
+
+/* =============================================================================
+   GRANULAR RESET FLAGS (compose what you need via BEM-style classes)
+   ============================================================================= */
+
+/* Reset native appearance */
+.uxp-reset--appearance { 
+  -webkit-appearance: none !important; 
+  appearance: none !important; 
+}
+
+/* Reset background properties */
+.uxp-reset--background { 
+  background: transparent !important; 
+  background-image: none !important; 
+  background-color: transparent !important;
+}
+
+/* Reset border properties */
+.uxp-reset--border { 
+  border: 0 !important; 
+  border-radius: 0 !important; 
+  border-style: none !important;
+  border-width: 0 !important;
+  border-color: transparent !important;
+}
+
+/* Reset layout properties */
+.uxp-reset--layout { 
+  margin: 0 !important; 
+  padding: 0 !important; 
+  vertical-align: baseline !important;
+}
+
+/* Reset typography properties */
+.uxp-reset--type { 
+  font: inherit !important; 
+  color: inherit !important; 
+  text-decoration: none !important;
+  text-align: inherit !important;
+  font-weight: inherit !important;
+  font-size: inherit !important;
+  font-family: inherit !important;
+}
+
+/* Reset sizing properties */
+.uxp-reset--size { 
+  width: auto !important; 
+  height: auto !important; 
+  min-width: auto !important; 
+  min-height: auto !important;
+  max-width: none !important;
+  max-height: none !important;
+}
+
+/* Reset visual effects */
+.uxp-reset--effects { 
+  box-shadow: none !important; 
+  text-shadow: none !important; 
+  filter: none !important;
+  transform: none !important;
+  opacity: 1 !important;
+}
+
+/* Reset interactive states */
+.uxp-reset--interactive { 
+  outline: 0 !important; 
+  cursor: inherit !important;
+  user-select: auto !important;
+  pointer-events: auto !important;
+}
+
+/* =============================================================================
+   CONVENIENCE COMBINATORS
+   ============================================================================= */
+
+/* Complete reset for heavily styled elements */
+.uxp-reset--complete {
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  background: transparent !important;
+  background-image: none !important;
+  background-color: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+  outline: 0 !important;
+  width: auto !important;
+  height: auto !important;
+  min-width: auto !important;
+  min-height: auto !important;
+  font: inherit !important;
+  color: inherit !important;
+  text-decoration: none !important;
+}
+
+/* Form element specific reset */
+.uxp-reset--form {
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  background: transparent !important;
+  background-image: none !important;
+  border: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  outline: 0 !important;
+  font: inherit !important;
+  color: inherit !important;
+}
+
+/* =============================================================================
+   UXP HOST-SPECIFIC OVERRIDES (scoped to avoid cascade conflicts)
+   ============================================================================= */
+
+/* UXP-specific resets when needed */
+[data-host="uxp"] .uxp-reset--uxp-button {
+  /* UXP button-specific resets that don't apply to web */
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  background-image: none !important;
+  filter: none !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+}
+
+/* Strong UXP button reset to override native UXP button styling */
+[data-host="uxp"] .uxp-button {
+  /* Override UXP's native button hover/active states */
+  background-image: none !important;
+  filter: none !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  /* Force flat styling */
+  border-style: solid !important;
+  background-attachment: initial !important;
+  background-blend-mode: initial !important;
+  background-clip: initial !important;
+  background-origin: initial !important;
+  background-position: initial !important;
+  background-repeat: initial !important;
+  background-size: initial !important;
+}
+
+[data-host="uxp"] .uxp-button:hover {
+  /* Disable UXP's native hover - let our data-state handle it */
+  background-image: none !important;
+  filter: none !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  /* Force override all background properties */
+  background-attachment: initial !important;
+  background-blend-mode: initial !important;
+  background-clip: initial !important;
+  background-origin: initial !important;
+  background-position: initial !important;
+  background-repeat: initial !important;
+  background-size: initial !important;
+}
+
+[data-host="uxp"] .uxp-button:active {
+  /* Disable UXP's native active - let our data-state handle it */
+  background-image: none !important;
+  filter: none !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  /* Force override all background properties */
+  background-attachment: initial !important;
+  background-blend-mode: initial !important;
+  background-clip: initial !important;
+  background-origin: initial !important;
+  background-position: initial !important;
+  background-repeat: initial !important;
+  background-size: initial !important;
+}
+
+/* Maximum specificity UXP button override */
+[data-host="uxp"] button.uxp-button {
+  background-image: none !important;
+  filter: none !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  /* Nuclear option - override everything */
+  background: var(--btn-bg) !important;
+}
+
+[data-host="uxp"] button.uxp-button:hover {
+  background-image: none !important;
+  filter: none !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+  /* Force our background */
+  background: var(--btn-bg) !important;
+}
+
+[data-host="uxp"] button.uxp-button:active {
+  background-image: none !important;
+  filter: none !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+  /* Force our background */
+  background: var(--btn-bg) !important;
+}
+
+[data-host="uxp"] .uxp-reset--uxp-input {
+  /* UXP input-specific resets */
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  background-image: none !important;
+  border-style: solid !important; /* UXP needs explicit border style */
+}
+
+/* =============================================================================
+   SPECTRUM INTEGRATION HELPERS
+   ============================================================================= */
+
+/* Reset that preserves Spectrum CSS inheritance */
+.uxp-reset--spectrum-safe {
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  background-image: none !important;
+  border: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+  outline: 0 !important;
+  /* Preserve Spectrum token inheritance */
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  background-color: inherit;
+  /* Critical: preserve interactivity */
+  pointer-events: auto !important;
+  cursor: inherit;
+}

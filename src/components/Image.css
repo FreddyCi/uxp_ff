@@ -1,0 +1,25 @@
+/* Image component styles */
+.image {
+  /* Base image styles for UXP compatibility */
+  border-radius: 4px;
+  transition: opacity 0.2s ease;
+}
+
+.image:hover {
+  opacity: 0.9;
+}
+
+.image:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* Loading state */
+.image[aria-busy="true"] {
+  opacity: 0.6;
+}
+
+/* Error state */
+.image[aria-invalid="true"] {
+  border: 2px solid #ef4444;
+}

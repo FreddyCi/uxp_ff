@@ -1,0 +1,151 @@
+/* UXP-compatible GridList styles */
+.react-aria-GridList {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  max-height: inherit;
+  overflow: auto;
+  padding: 4px;
+  border: 1px solid #6b7280;
+  border-radius: 6px;
+  background: #1c1c1c;
+  outline: none;
+  width: 250px;
+  max-height: 300px;
+  min-height: 100px;
+  box-sizing: border-box;
+  font-family: system-ui, sans-serif;
+}
+
+.react-aria-GridList[data-focus-visible] {
+  outline: 2px solid #10b981;
+  outline-offset: -1px;
+}
+
+.react-aria-GridListItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 28px;
+  padding: 4px 4px 4px 8px;
+  border-radius: 6px;
+  outline: none;
+  cursor: default;
+  color: #e5e7eb;
+  font-size: 14px;
+  position: relative;
+  background: transparent;
+  transition: background-color 200ms;
+}
+
+.react-aria-GridListItem[data-focus-visible] {
+  outline: 2px solid #10b981;
+  outline-offset: -2px;
+}
+
+.react-aria-GridListItem[data-pressed] {
+  background: #4b5563;
+}
+
+.react-aria-GridListItem[data-selected] {
+  background: #10b981;
+  color: #ffffff;
+}
+
+.react-aria-GridListItem[data-selected][data-focus-visible] {
+  outline-color: #ffffff;
+  outline-offset: -4px;
+}
+
+.react-aria-GridListItem[data-selected] .react-aria-Button {
+  color: #ffffff;
+}
+
+.react-aria-GridListItem[data-disabled] {
+  color: #6b7280;
+  background: #1f2937;
+}
+
+.react-aria-GridListItem .react-aria-Button:not([slot]) {
+  margin-left: auto;
+}
+
+.react-aria-GridListItem .react-aria-Button {
+  background: transparent;
+  border: none;
+  font-size: 14px;
+  line-height: 1.2em;
+  padding: 4px 6px;
+  transition: background 200ms;
+  color: inherit;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.react-aria-GridListItem .react-aria-Button[data-hovered] {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.react-aria-GridListItem .react-aria-Button[data-pressed] {
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: none;
+}
+
+.react-aria-GridListItem .react-aria-Button[slot='drag'] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px;
+}
+
+.react-aria-GridListItem[data-href] {
+  cursor: pointer;
+}
+
+.react-aria-GridList[data-empty] {
+  align-items: center;
+  justify-content: center;
+  font-style: italic;
+  color: #9ca3af;
+}
+
+.react-aria-GridListItem[data-allows-dragging] {
+  padding-left: 4px;
+}
+
+.react-aria-GridListItem[data-dragging] {
+  opacity: 0.6;
+}
+
+.react-aria-GridListItem [slot=drag] {
+  all: unset;
+  width: 15px;
+  text-align: center;
+  color: #9ca3af;
+  cursor: grab;
+}
+
+.react-aria-GridListItem [slot=drag][data-focus-visible] {
+  border-radius: 4px;
+  outline: 2px solid #10b981;
+}
+
+.react-aria-DropIndicator[data-drop-target] {
+  outline: 1px solid #10b981;
+}
+
+.react-aria-GridList[data-drop-target] {
+  outline: 2px solid #10b981;
+  outline-offset: -1px;
+  background: rgba(16, 185, 129, 0.1);
+}
+
+.react-aria-GridListItem[data-drop-target] {
+  outline: 2px solid #10b981;
+  background: rgba(16, 185, 129, 0.1);
+}
+
+/* Checkbox styling for selection */
+.react-aria-GridListItem .react-aria-Checkbox {
+  margin-right: 8px;
+}

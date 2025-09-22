@@ -1,0 +1,98 @@
+/* UXP-compatible Form styles - AGGRESSIVE OVERRIDES */
+.react-aria-Form {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: start !important;
+  gap: 8px !important;
+  color: #e5e7eb !important;
+  font-family: system-ui, sans-serif !important;
+}
+
+.react-aria-Form [role=alert] {
+  border: 2px solid #ef4444 !important;
+  background: #374151 !important;
+  border-radius: 6px !important;
+  padding: 12px !important;
+  max-width: 250px !important;
+  outline: none !important;
+  color: #e5e7eb !important;
+}
+
+.react-aria-Form [role=alert]:focus-visible {
+  outline: 2px solid #4cc2ff !important;
+  outline-offset: 2px !important;
+}
+
+.react-aria-Form [role=alert] h3 {
+  margin-top: 0 !important;
+  color: #ef4444 !important;
+}
+
+.react-aria-Form [role=alert] p {
+  margin-bottom: 0 !important;
+  color: #e5e7eb !important;
+}
+
+.react-aria-Label {
+  color: #e5e7eb !important;
+  margin-bottom: 0.5em !important;
+  font-size: 16px !important;
+  font-weight: 500 !important;
+  font-family: system-ui, sans-serif !important;
+}
+
+.react-aria-FieldError {
+  font-size: 12px !important;
+  color: #ef4444 !important;
+  margin-top: 4px !important;
+  font-family: system-ui, sans-serif !important;
+}
+
+.field-Button {
+  /* Force UXP compatibility - NUCLEAR OPTION */
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  
+  /* Custom styling - OVERRIDE EVERYTHING */
+  background: #4cc2ff !important;
+  background-color: #4cc2ff !important;
+  background-image: none !important;
+  color: #111 !important;
+  border: none !important;
+  border-radius: 4px !important;
+  margin-left: -1.687875rem !important;
+  width: 1.250375rem !important;
+  height: 1.250375rem !important;
+  padding: 0 !important;
+  font-size: 0.749875rem !important;
+  box-sizing: content-box !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  
+  /* Remove ALL UXP defaults */
+  box-shadow: none !important;
+  text-shadow: none !important;
+  filter: none !important;
+  min-width: auto !important;
+  min-height: auto !important;
+  outline: none !important;
+  font-family: system-ui, sans-serif !important;
+}
+
+.field-Button[data-pressed] {
+  box-shadow: none !important;
+  background: #3a9fe0 !important;
+  background-color: #3a9fe0 !important;
+}
+
+.field-Button[data-focus-visible] {
+  outline: 2px solid #4cc2ff !important;
+  outline-offset: 2px !important;
+}
+
+.field-Button[data-hovered] {
+  background: #5cb3ff !important;
+  background-color: #5cb3ff !important;
+}

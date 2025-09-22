@@ -1,0 +1,604 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="uxp-host" content="PPRO">
+    <title>UXP + React Aria</title>
+    
+    <!-- UXP Polyfills - Must be loaded first -->
+    <script>
+      console.log("=== UXP POLYFILLS LOADING ===");
+      // UXP Polyfills - Inline to ensure they load before anything else
+      (function() {
+        'use strict';
+        
+        if (typeof globalThis.MutationObserver === 'undefined') {
+          globalThis.MutationObserver = class MockMutationObserver {
+            constructor(callback) {
+              this.callback = callback;
+            }
+            observe() {}
+            disconnect() {}
+            takeRecords() { return []; }
+          };
+        }
+
+        if (typeof globalThis.ResizeObserver === 'undefined') {
+          globalThis.ResizeObserver = class MockResizeObserver {
+            constructor(callback) {
+              this.callback = callback;
+            }
+            observe() {}
+            unobserve() {}
+            disconnect() {}
+          };
+        }
+
+        if (typeof globalThis.IntersectionObserver === 'undefined') {
+          globalThis.IntersectionObserver = class MockIntersectionObserver {
+            constructor(callback, options) {
+              this.callback = callback;
+              this.options = options;
+              this.root = null;
+              this.rootMargin = '0px';
+              this.thresholds = [0];
+            }
+            observe() {}
+            unobserve() {}
+            disconnect() {}
+            takeRecords() { return []; }
+          };
+        }
+
+        if (typeof globalThis.requestIdleCallback === 'undefined') {
+          globalThis.requestIdleCallback = function(callback, options) {
+            return setTimeout(() => {
+              callback({
+                didTimeout: false,
+                timeRemaining: () => 50
+              });
+            }, 1);
+          };
+        }
+
+        if (typeof globalThis.cancelIdleCallback === 'undefined') {
+          globalThis.cancelIdleCallback = function(id) {
+            clearTimeout(id);
+          };
+        }
+
+        // Override getBoundingClientRect to provide sensible defaults
+        if (typeof Element !== 'undefined') {
+          const originalGetBoundingClientRect = Element.prototype.getBoundingClientRect;
+          Element.prototype.getBoundingClientRect = function() {
+            try {
+              const rect = originalGetBoundingClientRect.call(this);
+              // UXP issue: elements initially have 0x0 dimensions until rendered
+              // React components expect non-zero dimensions for layout calculations
+              const width = rect.width || this.offsetWidth || this.clientWidth || 200;
+              const height = rect.height || this.offsetHeight || this.clientHeight || 30;
+              
+              return {
+                x: rect.x || rect.left || 0,
+                y: rect.y || rect.top || 0,
+                width: width,
+                height: height,
+                top: rect.top || 0,
+                right: (rect.left || 0) + width,
+                bottom: (rect.top || 0) + height,
+                left: rect.left || 0,
+                toJSON: () => ({
+                  x: rect.x || rect.left || 0,
+                  y: rect.y || rect.top || 0,
+                  width: width,
+                  height: height,
+                  top: rect.top || 0,
+                  right: (rect.left || 0) + width,
+                  bottom: (rect.top || 0) + height,
+                  left: rect.left || 0
+                })
+              };
+            } catch (e) {
+              // Fallback if UXP doesn't support getBoundingClientRect
+              const fallbackWidth = this.offsetWidth || this.clientWidth || 200;
+              const fallbackHeight = this.offsetHeight || this.clientHeight || 30;
+              
+              return {
+                x: 0,
+                y: 0,
+                width: fallbackWidth,
+                height: fallbackHeight,
+                top: 0,
+                right: fallbackWidth,
+                bottom: fallbackHeight,
+                left: 0
+              };
+            }
+          };
+
+          // Add missing element properties that React might access
+          const originalDefineProperty = Object.defineProperty;
+          
+          // Ensure offsetWidth, offsetHeight, clientWidth, clientHeight are always available
+          if (!('offsetWidth' in Element.prototype)) {
+            originalDefineProperty(Element.prototype, 'offsetWidth', {
+              get: function() {
+                const rect = this.getBoundingClientRect();
+                return rect.width || 200;
+              },
+              enumerable: true,
+              configurable: true
+            });
+          }
+
+          if (!('offsetHeight' in Element.prototype)) {
+            originalDefineProperty(Element.prototype, 'offsetHeight', {
+              get: function() {
+                const rect = this.getBoundingClientRect();
+                return rect.height || 30;
+              },
+              enumerable: true,
+              configurable: true
+            });
+          }
+
+          if (!('clientWidth' in Element.prototype)) {
+            originalDefineProperty(Element.prototype, 'clientWidth', {
+              get: function() {
+                const rect = this.getBoundingClientRect();
+                return rect.width || 200;
+              },
+              enumerable: true,
+              configurable: true
+            });
+          }
+
+          if (!('clientHeight' in Element.prototype)) {
+            originalDefineProperty(Element.prototype, 'clientHeight', {
+              get: function() {
+                const rect = this.getBoundingClientRect();
+                return rect.height || 30;
+              },
+              enumerable: true,
+              configurable: true
+            });
+          }
+        }
+
+        // Add setCustomValidity polyfill for React Aria Components
+        if (typeof HTMLInputElement !== 'undefined') {
+          if (!HTMLInputElement.prototype.setCustomValidity) {
+            HTMLInputElement.prototype.setCustomValidity = function(message) {
+              console.log('UXP polyfill: setCustomValidity called with:', message);
+              // Mock implementation - store the message
+              this._customValidityMessage = message || '';
+            };
+          }
+          
+          if (!HTMLInputElement.prototype.checkValidity) {
+            HTMLInputElement.prototype.checkValidity = function() {
+              console.log('UXP polyfill: checkValidity called');
+              // Always return true in UXP for simplicity
+              return true;
+            };
+          }
+          
+          if (!HTMLInputElement.prototype.reportValidity) {
+            HTMLInputElement.prototype.reportValidity = function() {
+              console.log('UXP polyfill: reportValidity called');
+              // Always return true in UXP for simplicity
+              return true;
+            };
+          }
+
+          // Add validity property polyfill - THIS IS CRITICAL FOR REACT ARIA
+          if (!('validity' in HTMLInputElement.prototype)) {
+            Object.defineProperty(HTMLInputElement.prototype, 'validity', {
+              get: function() {
+                return {
+                  valid: true,
+                  badInput: false,
+                  customError: false,
+                  patternMismatch: false,
+                  rangeOverflow: false,
+                  rangeUnderflow: false,
+                  stepMismatch: false,
+                  tooLong: false,
+                  tooShort: false,
+                  typeMismatch: false,
+                  valueMissing: false
+                };
+              },
+              enumerable: true,
+              configurable: true
+            });
+          }
+
+          // Add validationMessage property
+          if (!('validationMessage' in HTMLInputElement.prototype)) {
+            Object.defineProperty(HTMLInputElement.prototype, 'validationMessage', {
+              get: function() {
+                return this._customValidityMessage || '';
+              },
+              enumerable: true,
+              configurable: true
+            });
+          }
+
+          // Add willValidate property
+          if (!('willValidate' in HTMLInputElement.prototype)) {
+            Object.defineProperty(HTMLInputElement.prototype, 'willValidate', {
+              get: function() {
+                return !this.disabled && !this.readOnly;
+              },
+              enumerable: true,
+              configurable: true
+            });
+          }
+        }
+
+        // Add the same methods to other form elements that React Aria might use
+        if (typeof HTMLTextAreaElement !== 'undefined') {
+          if (!HTMLTextAreaElement.prototype.setCustomValidity) {
+            HTMLTextAreaElement.prototype.setCustomValidity = function(message) {
+              console.log('UXP polyfill: textarea setCustomValidity called with:', message);
+              this._customValidityMessage = message || '';
+            };
+          }
+          
+          if (!HTMLTextAreaElement.prototype.checkValidity) {
+            HTMLTextAreaElement.prototype.checkValidity = function() {
+              return true;
+            };
+          }
+          
+          if (!HTMLTextAreaElement.prototype.reportValidity) {
+            HTMLTextAreaElement.prototype.reportValidity = function() {
+              return true;
+            };
+          }
+
+          // Add validity property polyfill for textarea
+          if (!('validity' in HTMLTextAreaElement.prototype)) {
+            Object.defineProperty(HTMLTextAreaElement.prototype, 'validity', {
+              get: function() {
+                return {
+                  valid: true,
+                  badInput: false,
+                  customError: false,
+                  patternMismatch: false,
+                  rangeOverflow: false,
+                  rangeUnderflow: false,
+                  stepMismatch: false,
+                  tooLong: false,
+                  tooShort: false,
+                  typeMismatch: false,
+                  valueMissing: false
+                };
+              },
+              enumerable: true,
+              configurable: true
+            });
+          }
+
+          // Add validationMessage property for textarea
+          if (!('validationMessage' in HTMLTextAreaElement.prototype)) {
+            Object.defineProperty(HTMLTextAreaElement.prototype, 'validationMessage', {
+              get: function() {
+                return this._customValidityMessage || '';
+              },
+              enumerable: true,
+              configurable: true
+            });
+          }
+
+          // Add willValidate property for textarea
+          if (!('willValidate' in HTMLTextAreaElement.prototype)) {
+            Object.defineProperty(HTMLTextAreaElement.prototype, 'willValidate', {
+              get: function() {
+                return !this.disabled && !this.readOnly;
+              },
+              enumerable: true,
+              configurable: true
+            });
+          }
+        }
+
+        if (typeof HTMLSelectElement !== 'undefined') {
+          if (!HTMLSelectElement.prototype.setCustomValidity) {
+            HTMLSelectElement.prototype.setCustomValidity = function(message) {
+              console.log('UXP polyfill: select setCustomValidity called with:', message);
+              this._customValidityMessage = message || '';
+            };
+          }
+          
+          if (!HTMLSelectElement.prototype.checkValidity) {
+            HTMLSelectElement.prototype.checkValidity = function() {
+              return true;
+            };
+          }
+          
+          if (!HTMLSelectElement.prototype.reportValidity) {
+            HTMLSelectElement.prototype.reportValidity = function() {
+              return true;
+            };
+          }
+
+          // Add validity property polyfill for select
+          if (!('validity' in HTMLSelectElement.prototype)) {
+            Object.defineProperty(HTMLSelectElement.prototype, 'validity', {
+              get: function() {
+                return {
+                  valid: true,
+                  badInput: false,
+                  customError: false,
+                  patternMismatch: false,
+                  rangeOverflow: false,
+                  rangeUnderflow: false,
+                  stepMismatch: false,
+                  tooLong: false,
+                  tooShort: false,
+                  typeMismatch: false,
+                  valueMissing: false
+                };
+              },
+              enumerable: true,
+              configurable: true
+            });
+          }
+
+          // Add validationMessage property for select
+          if (!('validationMessage' in HTMLSelectElement.prototype)) {
+            Object.defineProperty(HTMLSelectElement.prototype, 'validationMessage', {
+              get: function() {
+                return this._customValidityMessage || '';
+              },
+              enumerable: true,
+              configurable: true
+            });
+          }
+
+          // Add willValidate property for select
+          if (!('willValidate' in HTMLSelectElement.prototype)) {
+            Object.defineProperty(HTMLSelectElement.prototype, 'willValidate', {
+              get: function() {
+                return !this.disabled;
+              },
+              enumerable: true,
+              configurable: true
+            });
+          }
+        }
+
+        // Add NodeFilter polyfill for React Aria Components (used by Tabs)
+        if (typeof globalThis.NodeFilter === 'undefined') {
+          globalThis.NodeFilter = {
+            SHOW_ALL: 0xFFFFFFFF,
+            SHOW_ELEMENT: 0x00000001,
+            SHOW_ATTRIBUTE: 0x00000002,
+            SHOW_TEXT: 0x00000004,
+            SHOW_CDATA_SECTION: 0x00000008,
+            SHOW_ENTITY_REFERENCE: 0x00000010,
+            SHOW_ENTITY: 0x00000020,
+            SHOW_PROCESSING_INSTRUCTION: 0x00000040,
+            SHOW_COMMENT: 0x00000080,
+            SHOW_DOCUMENT: 0x00000100,
+            SHOW_DOCUMENT_TYPE: 0x00000200,
+            SHOW_DOCUMENT_FRAGMENT: 0x00000400,
+            SHOW_NOTATION: 0x00000800,
+            FILTER_ACCEPT: 1,
+            FILTER_REJECT: 2,
+            FILTER_SKIP: 3
+          };
+        }
+
+        // Add missing DOM traversal APIs that React Aria might use
+        if (typeof document !== 'undefined') {
+          // TreeWalker polyfill (basic implementation)
+          if (!document.createTreeWalker) {
+            document.createTreeWalker = function(root, whatToShow = NodeFilter.SHOW_ALL, filter = null) {
+              return {
+                root: root,
+                whatToShow: whatToShow,
+                filter: filter,
+                currentNode: root,
+                nextNode: function() {
+                  // Basic implementation - just traverse through children
+                  let node = this.currentNode.firstChild;
+                  if (node) {
+                    this.currentNode = node;
+                    return node;
+                  }
+                  return null;
+                },
+                previousNode: function() {
+                  let node = this.currentNode.previousSibling;
+                  if (node) {
+                    this.currentNode = node;
+                    return node;
+                  }
+                  return null;
+                },
+                firstChild: function() {
+                  let node = this.currentNode.firstChild;
+                  if (node) {
+                    this.currentNode = node;
+                    return node;
+                  }
+                  return null;
+                },
+                lastChild: function() {
+                  let node = this.currentNode.lastChild;
+                  if (node) {
+                    this.currentNode = node;
+                    return node;
+                  }
+                  return null;
+                },
+                parentNode: function() {
+                  let node = this.currentNode.parentNode;
+                  if (node && node !== this.root) {
+                    this.currentNode = node;
+                    return node;
+                  }
+                  return null;
+                }
+              };
+            };
+          }
+
+          // NodeIterator polyfill (basic implementation)
+          if (!document.createNodeIterator) {
+            document.createNodeIterator = function(root, whatToShow = NodeFilter.SHOW_ALL, filter = null) {
+              return {
+                root: root,
+                whatToShow: whatToShow,
+                filter: filter,
+                referenceNode: root,
+                pointerBeforeReferenceNode: true,
+                nextNode: function() {
+                  // Simplified implementation
+                  return null;
+                },
+                previousNode: function() {
+                  // Simplified implementation
+                  return null;
+                },
+                detach: function() {
+                  // No-op in modern browsers, but included for compatibility
+                }
+              };
+            };
+          }
+        }
+
+        console.log('🔧 UXP polyfills loaded successfully');
+      })();
+      console.log("=== UXP POLYFILLS COMPLETE ===");
+    </script>
+    <style>
+      /* Aggressive UXP style overrides */
+      * {
+        box-sizing: border-box !important;
+      }
+      
+      /* Reset UXP default input styles */
+      input, textarea, select {
+        -webkit-appearance: none !important;
+        appearance: none !important;
+        background: none !important;
+        border: none !important;
+        outline: none !important;
+        box-shadow: none !important;
+        margin: 0 !important;
+        font-family: inherit !important;
+      }
+      
+      /* Reset UXP default button styles */
+      button {
+        -webkit-appearance: none !important;
+        appearance: none !important;
+        background: none !important;
+        border: none !important;
+        outline: none !important;
+        box-shadow: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        font-family: inherit !important;
+        color: inherit !important;
+      }
+      
+      /* Force our custom input styles */
+      .input, input[type="text"], input[type="email"], input[type="password"] {
+        padding: 8px 10px !important;
+        border-radius: 10px !important;
+        border: 1px solid #333 !important;
+        background: #242424 !important;
+        color: #e5e7eb !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+        display: block !important;
+        font-size: 14px !important;
+      }
+      
+      /* Remove UXP focus styling */
+      .input:focus, input:focus {
+        outline: 2px solid #4cc2ff !important;
+        outline-offset: 2px !important;
+        border-color: #4cc2ff !important;
+        box-shadow: none !important;
+      }
+      
+      /* Force our custom button styles */
+      .btn, .btn--primary, button {
+        background: #4cc2ff !important;
+        color: #111 !important;
+        border: none !important;
+        padding: 8px 12px !important;
+        border-radius: 12px !important;
+        font-weight: 600 !important;
+        cursor: pointer !important;
+        display: block !important;
+        font-size: 14px !important;
+        min-width: auto !important;
+        height: auto !important;
+      }
+      
+      /* Extra aggressive button overrides for UXP */
+      button, input[type="button"], input[type="submit"] {
+        background-color: #4cc2ff !important;
+        background-image: none !important;
+        color: #111111 !important;
+        border: none !important;
+        border-color: transparent !important;
+        border-style: none !important;
+        border-width: 0 !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+        background-clip: padding-box !important;
+        filter: none !important;
+      }
+      
+      /* Target React Aria button specifically */
+      [role="button"], button[data-rac] {
+        background: #4cc2ff !important;
+        color: #111 !important;
+        border: none !important;
+        border-radius: 12px !important;
+        padding: 8px 12px !important;
+        font-weight: 600 !important;
+      }
+      
+      /* Button hover and press states */
+      .btn:hover, button:hover, [role="button"]:hover {
+        background: #5cb3ff !important;
+        background-color: #5cb3ff !important;
+      }
+      
+      .btn[data-pressed], button[data-pressed], [role="button"][data-pressed] {
+        background: #3a9fe0 !important;
+        background-color: #3a9fe0 !important;
+        filter: brightness(0.9) !important;
+      }
+      
+      /* Reset any UXP focus indicators */
+      *:focus {
+        box-shadow: none !important;
+      }
+      
+      /* Force container styles */
+      .app-root, #root {
+        background: #1c1c1c !important;
+        color: #e5e7eb !important;
+        font-family: system-ui, sans-serif !important;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root" class="app-root">
+      <h1>Loading React App...</h1>
+    </div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

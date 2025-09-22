@@ -1,0 +1,50 @@
+{
+  "id": "com.example.uxp.aria.panel",
+  "name": { "default": "Aria Panel" },
+  "version": "0.0.1",
+  "main": "index.html",
+  "manifestVersion": 5,
+  "host": [
+    {
+      "app": "premierepro",
+      "minVersion": "25.4.1"
+    }
+  ],
+  "requiredRuntime": { "type": "UXP", "minVersion": "7.0" },
+  "entryPoints": [
+    {
+      "type": "panel",
+      "id": "aria-panel",
+      "label": { "default": "Aria Panel" },
+      "minimumSize": { "width": 260, "height": 200 },
+      "maximumSize": { "width": 2000, "height": 2000 },
+      "preferredDockedSize": { "width": 320, "height": 400 },
+      "icons": { "light": "", "dark": "" }
+    },
+    {
+      "type": "panel",
+      "id": "login-panel",
+      "label": { "default": "Login Panel" },
+      "minimumSize": { "width": 260, "height": 200 },
+      "maximumSize": { "width": 2000, "height": 2000 },
+      "preferredDockedSize": { "width": 320, "height": 400 },
+      "icons": { "light": "", "dark": "" }
+    },
+    {
+      "type": "panel",
+      "id": "gallery-panel",
+      "label": { "default": "Gallery Panel" },
+      "minimumSize": { "width": 260, "height": 200 },
+      "maximumSize": { "width": 2000, "height": 2000 },
+      "preferredDockedSize": { "width": 320, "height": 400 },
+      "icons": { "light": "", "dark": "" }
+    }
+  ],
+  "permissions": {
+    "ipc": {
+      "enablePluginCommunication": true
+    },
+    "localFileSystem": "request",
+    "allowCodeGenerationFromStrings": true
+  }
+}
