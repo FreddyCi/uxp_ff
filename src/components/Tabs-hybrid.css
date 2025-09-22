@@ -83,7 +83,7 @@ div[role="tab"].uxp-reset--complete.spectrum-Tabs-item.spectrum-Tabs-item:hover:
 
 /* Tab Selected State */
 div[role="tab"].uxp-reset--complete.spectrum-Tabs-item.spectrum-Tabs-item[aria-selected="true"] {
-  color: var(--spectrum-neutral-content-color-default) !important;
+  color: var(--spectrum-accent-content-color-default) !important;
 }
 
 /* Tab Focus State */
@@ -107,7 +107,7 @@ div[role="tab"].uxp-reset--complete.spectrum-Tabs-item.spectrum-Tabs-item[aria-s
   left: 0 !important;
   right: 0 !important;
   height: var(--spectrum-border-width-200) !important;
-  background-color: var(--spectrum-neutral-subdued-content-color-down) !important;
+  background-color: var(--spectrum-accent-background-color-default) !important;
   z-index: 1 !important;
   pointer-events: none !important;
 }
@@ -173,7 +173,7 @@ div[role="tablist"].uxp-reset--complete.spectrum-Tabs.spectrum-Tabs.spectrum-Tab
 }
 
 div[role="tablist"].uxp-reset--complete.spectrum-Tabs.spectrum-Tabs.spectrum-Tabs--emphasized div[role="tab"][aria-selected="true"]::after {
-  background-color: var(--spectrum-accent-content-color-default) !important;
+  background-color: var(--spectrum-accent-background-color-default) !important;
 }
 
 /* Quiet Variant - No border, inline display */

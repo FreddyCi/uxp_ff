@@ -176,14 +176,14 @@
   --spectrum-disabled-content-color: #6b7280;
   
   /* Accent colors */
-  --spectrum-accent-content-color-default: #10b981;
-  --spectrum-accent-content-color-hover: #059669;
-  --spectrum-accent-content-color-focus: #059669;
-  --spectrum-accent-content-color-down: #047857;
+  --spectrum-accent-content-color-default: #ffffff;
+  --spectrum-accent-content-color-hover: #ffffff;
+  --spectrum-accent-content-color-focus: #ffffff;
+  --spectrum-accent-content-color-down: #ffffff;
   
   /* Border colors */
   --spectrum-border-color-default: #6b7280;
-  --spectrum-focus-indicator-color: #10b981;
+  --spectrum-focus-indicator-color: #2563eb;
   
   /* Shadow */
   --spectrum-drop-shadow-color: rgba(0,0,0,.25);
@@ -203,9 +203,9 @@
   --text: var(--spectrum-neutral-content-color-default);
   --text-muted: var(--spectrum-neutral-subdued-content-color-default);
   --text-disabled: var(--spectrum-disabled-content-color);
-  --accent: var(--spectrum-accent-content-color-default);
-  --accent-hover: var(--spectrum-accent-content-color-hover);
-  --accent-pressed: var(--spectrum-accent-content-color-down);
+  --accent: var(--spectrum-accent-background-color-default);
+  --accent-hover: var(--spectrum-accent-background-color-hover);
+  --accent-pressed: var(--spectrum-accent-background-color-down);
   --border: var(--spectrum-border-color-default);
   --border-focus: var(--spectrum-focus-indicator-color);
 }
@@ -231,14 +231,14 @@
   --spectrum-disabled-content-color: #9ca3af;
   
   /* Accent colors */
-  --spectrum-accent-content-color-default: #059669;
-  --spectrum-accent-content-color-hover: #047857;
-  --spectrum-accent-content-color-focus: #047857;
-  --spectrum-accent-content-color-down: #065f46;
+  --spectrum-accent-content-color-default: #ffffff;
+  --spectrum-accent-content-color-hover: #ffffff;
+  --spectrum-accent-content-color-focus: #ffffff;
+  --spectrum-accent-content-color-down: #ffffff;
   
   /* Border colors */
   --spectrum-border-color-default: #d1d5db;
-  --spectrum-focus-indicator-color: #059669;
+  --spectrum-focus-indicator-color: #2563eb;
   
   /* Shadow */
   --spectrum-drop-shadow-color: rgba(0,0,0,.1);
