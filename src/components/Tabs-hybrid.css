@@ -1,0 +1,226 @@
+/*!
+ * Hybrid Tabs Component - Official Spectrum CSS + Nuclear Div Approach
+ * Combines official Adobe Spectrum tokens with UXP-compatible markup
+ */
+
+/* =============================================================================
+   NUCLEAR DIV + SPECTRUM CSS RESET OVERRIDE - TABS
+   ============================================================================= */
+
+/* Ultra-high specificity selector to override aggressive UXP inline styles */
+div[role="tablist"].uxp-reset--complete.spectrum-Tabs.spectrum-Tabs {
+  /* Nuclear reset */
+  all: unset !important;
+  
+  /* Re-establish basic foundation */
+  box-sizing: border-box !important;
+  display: flex !important;
+  align-items: flex-end !important;
+  
+  /* Official Spectrum foundation */
+  position: relative !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  vertical-align: top !important;
+  
+  /* Typography */
+  font-family: var(--spectrum-sans-font-family-stack) !important;
+  
+  /* Divider line at bottom using official tokens */
+  border-bottom: var(--spectrum-border-width-200) solid var(--spectrum-gray-300) !important;
+}
+
+/* Individual Tab Items with nuclear div approach */
+div[role="tab"].uxp-reset--complete.spectrum-Tabs-item.spectrum-Tabs-item {
+  /* Nuclear reset */
+  all: unset !important;
+  
+  /* Re-establish fundamentals */
+  box-sizing: border-box !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  
+  /* Official Spectrum foundation */
+  position: relative !important;
+  text-decoration: none !important;
+  white-space: nowrap !important;
+  
+  /* Typography using official tokens */
+  font-family: var(--spectrum-sans-font-family-stack) !important;
+  font-size: var(--spectrum-font-size-100) !important;
+  font-weight: var(--spectrum-font-weight-regular) !important;
+  line-height: var(--spectrum-line-height-100) !important;
+  
+  /* Size: Medium (default) */
+  min-height: var(--spectrum-component-height-200) !important;
+  padding: 0 var(--spectrum-spacing-300) !important;
+  margin-bottom: calc(-1 * var(--spectrum-border-width-200)) !important; /* Overlap border */
+  
+  /* Default tab colors using official tokens */
+  color: var(--spectrum-neutral-subdued-content-color-default) !important;
+  background-color: transparent !important;
+  border: none !important;
+  
+  /* Smooth transitions */
+  transition: 
+    color var(--spectrum-animation-duration-100) ease-out,
+    background-color var(--spectrum-animation-duration-100) ease-out !important;
+}
+
+/* Tab spacing - use margin instead of CSS gap (UXP compatibility) */
+div[role="tab"].uxp-reset--complete.spectrum-Tabs-item.spectrum-Tabs-item + div[role="tab"].uxp-reset--complete.spectrum-Tabs-item.spectrum-Tabs-item {
+  margin-left: var(--spectrum-spacing-300) !important;
+}
+
+/* Tab Hover State */
+div[role="tab"].uxp-reset--complete.spectrum-Tabs-item.spectrum-Tabs-item:hover:not([aria-disabled="true"]) {
+  color: var(--spectrum-neutral-subdued-content-color-hover) !important;
+}
+
+/* Tab Selected State */
+div[role="tab"].uxp-reset--complete.spectrum-Tabs-item.spectrum-Tabs-item[aria-selected="true"] {
+  color: var(--spectrum-neutral-content-color-default) !important;
+}
+
+/* Tab Focus State */
+div[role="tab"].uxp-reset--complete.spectrum-Tabs-item.spectrum-Tabs-item:focus-visible {
+  outline: var(--spectrum-focus-indicator-thickness) solid var(--spectrum-focus-indicator-color) !important;
+  outline-offset: var(--spectrum-focus-indicator-gap) !important;
+}
+
+/* Tab Disabled State */
+div[role="tab"].uxp-reset--complete.spectrum-Tabs-item.spectrum-Tabs-item[aria-disabled="true"] {
+  color: var(--spectrum-disabled-content-color) !important;
+  cursor: not-allowed !important;
+  pointer-events: none !important;
+}
+
+/* Selection Indicator - Blue underline for selected tab */
+div[role="tab"].uxp-reset--complete.spectrum-Tabs-item.spectrum-Tabs-item[aria-selected="true"]::after {
+  content: "" !important;
+  position: absolute !important;
+  bottom: calc(-1 * var(--spectrum-border-width-200)) !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: var(--spectrum-border-width-200) !important;
+  background-color: var(--spectrum-neutral-subdued-content-color-down) !important;
+  z-index: 1 !important;
+  pointer-events: none !important;
+}
+
+/* Tab Panel with nuclear div approach */
+div[role="tabpanel"].uxp-reset--complete.spectrum-Tabs-tabPanel.spectrum-Tabs-tabPanel {
+  /* Nuclear reset */
+  all: unset !important;
+  
+  /* Re-establish fundamentals */
+  box-sizing: border-box !important;
+  display: block !important;
+  
+  /* Official Spectrum foundation */
+  padding: var(--spectrum-spacing-400) 0 !important;
+  color: var(--spectrum-neutral-content-color-default) !important;
+  font-family: var(--spectrum-sans-font-family-stack) !important;
+}
+
+/* Tab Panel Focus State */
+div[role="tabpanel"].uxp-reset--complete.spectrum-Tabs-tabPanel.spectrum-Tabs-tabPanel:focus-visible {
+  outline: var(--spectrum-focus-indicator-thickness) solid var(--spectrum-focus-indicator-color) !important;
+  outline-offset: var(--spectrum-focus-indicator-gap) !important;
+}
+
+/* =============================================================================
+   SIZE VARIANTS - OFFICIAL SPECTRUM TOKENS
+   ============================================================================= */
+
+/* Small Size */
+div[role="tablist"].uxp-reset--complete.spectrum-Tabs.spectrum-Tabs.spectrum-Tabs--sizeS div[role="tab"] {
+  min-height: 32px !important;
+  font-size: var(--spectrum-font-size-75) !important;
+  padding: 0 var(--spectrum-spacing-200) !important;
+}
+
+div[role="tablist"].uxp-reset--complete.spectrum-Tabs.spectrum-Tabs.spectrum-Tabs--sizeS div[role="tab"] + div[role="tab"] {
+  margin-left: var(--spectrum-spacing-200) !important;
+}
+
+/* Large Size */
+div[role="tablist"].uxp-reset--complete.spectrum-Tabs.spectrum-Tabs.spectrum-Tabs--sizeL div[role="tab"] {
+  min-height: 48px !important;
+  font-size: var(--spectrum-font-size-200) !important;
+  padding: 0 var(--spectrum-spacing-400) !important;
+}
+
+div[role="tablist"].uxp-reset--complete.spectrum-Tabs.spectrum-Tabs.spectrum-Tabs--sizeL div[role="tab"] + div[role="tab"] {
+  margin-left: var(--spectrum-spacing-400) !important;
+}
+
+/* =============================================================================
+   VARIANT OVERRIDES - EMPHASIZED AND QUIET
+   ============================================================================= */
+
+/* Emphasized Variant - Blue accent colors */
+div[role="tablist"].uxp-reset--complete.spectrum-Tabs.spectrum-Tabs.spectrum-Tabs--emphasized div[role="tab"][aria-selected="true"] {
+  color: var(--spectrum-accent-content-color-default) !important;
+}
+
+div[role="tablist"].uxp-reset--complete.spectrum-Tabs.spectrum-Tabs.spectrum-Tabs--emphasized div[role="tab"]:hover:not([aria-disabled="true"]) {
+  color: var(--spectrum-accent-content-color-hover) !important;
+}
+
+div[role="tablist"].uxp-reset--complete.spectrum-Tabs.spectrum-Tabs.spectrum-Tabs--emphasized div[role="tab"][aria-selected="true"]::after {
+  background-color: var(--spectrum-accent-content-color-default) !important;
+}
+
+/* Quiet Variant - No border, inline display */
+div[role="tablist"].uxp-reset--complete.spectrum-Tabs.spectrum-Tabs.spectrum-Tabs--quiet {
+  display: inline-flex !important;
+  border-bottom: none !important;
+}
+
+div[role="tablist"].uxp-reset--complete.spectrum-Tabs.spectrum-Tabs.spectrum-Tabs--quiet div[role="tab"] {
+  margin-bottom: 0 !important;
+}
+
+div[role="tablist"].uxp-reset--complete.spectrum-Tabs.spectrum-Tabs.spectrum-Tabs--quiet div[role="tab"][aria-selected="true"]::after {
+  display: none !important;
+}
+
+/* =============================================================================
+   VERTICAL LAYOUT SUPPORT (for narrow panels)
+   ============================================================================= */
+
+/* Vertical orientation for responsive layouts */
+div[role="tablist"].uxp-reset--complete.spectrum-Tabs.spectrum-Tabs.spectrum-Tabs--vertical {
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  border-bottom: none !important;
+  border-right: var(--spectrum-border-width-200) solid var(--spectrum-gray-300) !important;
+}
+
+div[role="tablist"].uxp-reset--complete.spectrum-Tabs.spectrum-Tabs.spectrum-Tabs--vertical div[role="tab"] {
+  margin-left: 0 !important;
+  margin-bottom: 0 !important;
+  margin-right: calc(-1 * var(--spectrum-border-width-200)) !important;
+  width: 100% !important;
+  justify-content: flex-start !important;
+  text-align: left !important;
+}
+
+div[role="tablist"].uxp-reset--complete.spectrum-Tabs.spectrum-Tabs.spectrum-Tabs--vertical div[role="tab"] + div[role="tab"] {
+  margin-left: 0 !important;
+  margin-top: 4px !important;
+}
+
+div[role="tablist"].uxp-reset--complete.spectrum-Tabs.spectrum-Tabs.spectrum-Tabs--vertical div[role="tab"][aria-selected="true"]::after {
+  bottom: auto !important;
+  top: 0 !important;
+  right: calc(-1 * var(--spectrum-border-width-200)) !important;
+  left: auto !important;
+  width: var(--spectrum-border-width-200) !important;
+  height: 100% !important;
+}

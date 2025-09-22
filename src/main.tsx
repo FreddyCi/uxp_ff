@@ -7,9 +7,9 @@ import "./styles/uxp-reset.css";
 import "./styles/tokens.css";
 import "./styles/utilities.css";
 import { UxpProvider, useUxp } from "./uxp/UxpProvider";
-import { TextField, Label, Input, TabList, Tab, TabPanel } from "react-aria-components";
+import { TextField, Label, Input } from "react-aria-components";
 import { Button } from "./components/Button";
-import { Tabs } from "./components/Tabs";
+import { Tabs, TabList, Tab, TabPanel } from "./components/Tabs";
 import { usePluginStore } from "./store/usePluginStore";
 import { Form } from "./components/Form";
 
