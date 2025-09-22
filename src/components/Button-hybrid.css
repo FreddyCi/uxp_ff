@@ -1,0 +1,101 @@
+/*!
+ * Hybrid Button Component - Official Spectrum CSS + Nuclear Div Approach
+ * Combines official Adobe Spectrum tokens with UXP-compatible markup
+ */
+
+/* =============================================================================
+   NUCLEAR DIV + SPECTRUM CSS RESET OVERRIDE
+   ============================================================================= */
+
+/* Ultra-high specificity selector to override aggressive UXP inline styles */
+div[role="button"].uxp-reset--complete.spectrum-Button.spectrum-Button {
+  /* Override any UXP interference */
+  all: unset !important;
+  
+  /* Re-establish basic button foundation */
+  box-sizing: border-box !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  
+  /* Official Spectrum button foundation */
+  position: relative !important;
+  text-decoration: none !important;
+  border-style: solid !important;
+  font-family: var(--spectrum-sans-font-family-stack) !important;
+  font-weight: var(--spectrum-bold-font-weight) !important;
+  line-height: var(--spectrum-line-height-100) !important;
+  text-align: center !important;
+  transition: 
+    background-color var(--spectrum-animation-duration-100) ease-out,
+    border-color var(--spectrum-animation-duration-100) ease-out,
+    color var(--spectrum-animation-duration-100) ease-out !important;
+  
+  /* Size: Medium */
+  min-height: var(--spectrum-component-height-200) !important;
+  border-radius: 16px !important;
+  border-width: var(--spectrum-border-width-200) !important;
+  font-size: var(--spectrum-font-size-200) !important;
+  padding: 0 var(--spectrum-component-pill-edge-to-text-200) !important;
+  
+  /* Accent variant colors using official tokens */
+  background-color: var(--spectrum-accent-background-color-default) !important;
+  border-color: var(--spectrum-accent-background-color-default) !important;
+  color: var(--spectrum-accent-content-color-default) !important;
+}
+
+/* Hover state */
+div[role="button"].uxp-reset--complete.spectrum-Button.spectrum-Button:hover {
+  background-color: var(--spectrum-accent-background-color-hover) !important;
+  border-color: var(--spectrum-accent-background-color-hover) !important;
+  color: var(--spectrum-accent-content-color-hover) !important;
+}
+
+/* Pressed/Active state */
+div[role="button"].uxp-reset--complete.spectrum-Button.spectrum-Button:active {
+  background-color: var(--spectrum-accent-background-color-down) !important;
+  border-color: var(--spectrum-accent-background-color-down) !important;
+  color: var(--spectrum-accent-content-color-down) !important;
+}
+
+/* Focus state */
+div[role="button"].uxp-reset--complete.spectrum-Button.spectrum-Button:focus-visible {
+  outline: var(--spectrum-focus-indicator-thickness) solid var(--spectrum-focus-indicator-color) !important;
+  outline-offset: var(--spectrum-focus-indicator-gap) !important;
+}
+
+/* Disabled state */
+div[role="button"].uxp-reset--complete.spectrum-Button.spectrum-Button[aria-disabled="true"] {
+  background-color: var(--spectrum-disabled-background-color) !important;
+  border-color: var(--spectrum-disabled-border-color) !important;
+  color: var(--spectrum-disabled-content-color) !important;
+  cursor: not-allowed !important;
+  pointer-events: none !important;
+}
+
+/* Button label */
+.spectrum-Button-label {
+  display: block;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* =============================================================================
+   SPACING BETWEEN BUTTONS
+   ============================================================================= */
+
+/* Horizontal spacing between buttons */
+.uxp-reset--complete.spectrum-Button + .uxp-reset--complete.spectrum-Button {
+  margin-left: 8px;
+}
+
+/* Vertical spacing in stacked layouts */
+.button-group-vertical .uxp-reset--complete.spectrum-Button + .uxp-reset--complete.spectrum-Button {
+  margin-left: 0;
+  margin-top: 8px;
+}

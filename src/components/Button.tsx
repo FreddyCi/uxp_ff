@@ -2,18 +2,26 @@
 import { ButtonProps } from 'react-aria-components';
 import { useButton, useHover } from 'react-aria';
 import { useRef, ReactNode } from 'react';
-import './Button.css';
+import './Button-hybrid.css';
 
 interface CustomButtonProps extends Omit<ButtonProps, 'children'> {
   children: ReactNode;
-  variant?: 'primary' | 'secondary' | 'negative';
+  variant?: 'accent' | 'primary' | 'secondary' | 'negative';
+  treatment?: 'fill' | 'outline';
+  size?: 'small' | 'medium' | 'large';
+  iconOnly?: boolean;
+  isLoading?: boolean;
   className?: string;
 }
 
 export function Button({ 
   onPress, 
   children, 
-  variant = 'primary', 
+  variant = 'accent',
+  treatment = 'fill',
+  size = 'medium',
+  iconOnly = false,
+  isLoading = false,
   className = '',
   isDisabled,
   ...props 
@@ -37,22 +45,17 @@ export function Button({
     onHoverEnd: () => console.log('Button hover end')
   });
 
-  // Clean class composition - reset + component + variant
+  // HYBRID APPROACH: Nuclear div + Official Spectrum classes
   const resetClasses = 'uxp-reset--complete';
-  const baseClasses = 'uxp-button';
-  const variantClasses = variant !== 'primary' ? `uxp-button--${variant}` : '';
-  const combinedClasses = `${resetClasses} ${baseClasses} ${variantClasses} ${className}`.trim();
+  const baseClasses = 'spectrum-Button';
+  const variantClass = `spectrum-Button--${variant}`;
+  const treatmentClass = `spectrum-Button--${treatment}`;
+  const sizeClass = `spectrum-Button--size${size === 'small' ? 'S' : size === 'large' ? 'L' : 'M'}`;
+  
+  const spectrumClasses = `${baseClasses} ${variantClass} ${treatmentClass} ${sizeClass}`;
+  const combinedClasses = `${resetClasses} ${spectrumClasses} ${className}`.trim();
 
-  // Data-driven state management (priority: disabled > pressed > hovered > rest)
-  const getDataState = () => {
-    if (isDisabled) return 'disabled';
-    if (isPressed) return 'pressed';
-    if (isHovered) return 'hover';
-    return 'rest';
-  };
-
-  const dataState = getDataState();
-  console.log('Button render:', { variant, dataState, isDisabled, isPressed, isHovered });
+  console.log('Button render:', { variant, treatment, size, iconOnly, isLoading, isDisabled, isPressed, isHovered });
 
   // Use DIV instead of BUTTON to completely bypass UXP's native styling
   return (
@@ -61,17 +64,16 @@ export function Button({
       {...hoverProps}
       ref={ref}
       role="button"
-      tabIndex={isDisabled ? -1 : 0}
+      tabIndex={isDisabled || isLoading ? -1 : 0}
       className={combinedClasses}
-      data-state={dataState}
-      data-disabled={isDisabled || undefined}
-      aria-disabled={isDisabled}
+      aria-disabled={isDisabled || isLoading}
       onClick={(e) => {
+        if (isLoading) return; // Prevent clicks during loading
         console.log('Button onClick fired!', e);
         buttonProps.onClick?.(e);
       }}
     >
-      {children}
+      <span className="spectrum-Button-label">{children}</span>
     </div>
   );
 }

@@ -137,6 +137,40 @@ const App: React.FC = () => {
         UXP Object: {typeof (globalThis as any).uxp}
       </div>
       
+      <div style={{ marginBottom: "24px" }}>
+        <h2 style={{ fontSize: "18px", marginBottom: "12px", color: "var(--text)" }}>
+          🧪 Hybrid Button Test - Nuclear Div + Official Spectrum CSS
+        </h2>
+        <p style={{ fontSize: "14px", marginBottom: "16px", color: "var(--text-muted)" }}>
+          Testing: div[role="button"] + .spectrum-Button classes + official --spectrum-accent-* tokens
+        </p>
+        
+        <div style={{ marginBottom: "16px" }}>
+          <Button variant="accent" treatment="fill">
+            Hybrid Accent Button
+          </Button>
+          <Button variant="accent" treatment="fill" isDisabled={true}>
+            Disabled
+          </Button>
+        </div>
+        
+        <div style={{ 
+          padding: "12px", 
+          background: "var(--bg-surface)", 
+          borderRadius: "6px",
+          fontSize: "13px"
+        }}>
+          <strong>Expected Result:</strong>
+          <ul style={{ margin: "8px 0", paddingLeft: "20px" }}>
+            <li>✅ Accent button should be blue (#2563eb)</li>
+            <li>✅ Should have white text</li>
+            <li>✅ Should show hover effects (darker blue)</li>
+            <li>✅ Disabled button should be gray</li>
+            <li>✅ No UXP interference (using div[role="button"])</li>
+          </ul>
+        </div>
+      </div>
+
       <Tabs defaultSelectedKey="tab1" style={{ marginBottom: "12px" }} size="m" emphasized>
         <TabList>
           <Tab id="tab1">Settings</Tab>
@@ -153,13 +187,59 @@ const App: React.FC = () => {
             
             <div style={{ marginBottom: "16px" }}>
               <label style={{ display: "block", marginBottom: "8px", color: "var(--text)" }}>
+                Button Variants (Spectrum Design System):
+              </label>
+              
+              <div style={{ marginBottom: "16px" }}>
+                <p style={{ margin: "0 0 8px 0", fontSize: "12px", color: "var(--text-muted)" }}>Accent variant (default):</p>
+                <div style={{ display: "flex", gap: "8px", marginBottom: "16px", flexWrap: "wrap" }}>
+                  <Button variant="accent" treatment="fill" size="small">Action</Button>
+                  <Button variant="accent" treatment="outline" size="small">Action</Button>
+                </div>
+              </div>
+              
+              <div style={{ marginBottom: "16px" }}>
+                <p style={{ margin: "0 0 8px 0", fontSize: "12px", color: "var(--text-muted)" }}>Primary variant:</p>
+                <div style={{ display: "flex", gap: "8px", marginBottom: "16px", flexWrap: "wrap" }}>
+                  <Button variant="primary" treatment="fill">Action</Button>
+                  <Button variant="primary" treatment="outline">Action</Button>
+                </div>
+              </div>
+              
+              <div style={{ marginBottom: "16px" }}>
+                <p style={{ margin: "0 0 8px 0", fontSize: "12px", color: "var(--text-muted)" }}>Secondary variant:</p>
+                <div style={{ display: "flex", gap: "8px", marginBottom: "16px", flexWrap: "wrap" }}>
+                  <Button variant="secondary" treatment="fill">Action</Button>
+                  <Button variant="secondary" treatment="outline">Action</Button>
+                </div>
+              </div>
+              
+              <div style={{ marginBottom: "16px" }}>
+                <p style={{ margin: "0 0 8px 0", fontSize: "12px", color: "var(--text-muted)" }}>Negative variant:</p>
+                <div style={{ display: "flex", gap: "8px", marginBottom: "16px", flexWrap: "wrap" }}>
+                  <Button variant="negative" treatment="fill">Action</Button>
+                  <Button variant="negative" treatment="outline">Action</Button>
+                </div>
+              </div>
+              
+              <div style={{ marginBottom: "16px" }}>
+                <p style={{ margin: "0 0 8px 0", fontSize: "12px", color: "var(--text-muted)" }}>Disabled states:</p>
+                <div style={{ display: "flex", gap: "8px", marginBottom: "16px", flexWrap: "wrap" }}>
+                  <Button variant="accent" isDisabled>Disabled Fill</Button>
+                  <Button variant="accent" treatment="outline" isDisabled>Disabled Outline</Button>
+                </div>
+              </div>
+            </div>
+            
+            <div style={{ marginBottom: "16px" }}>
+              <label style={{ display: "block", marginBottom: "8px", color: "var(--text)" }}>
                 Theme:
               </label>
-              <div style={{ display: "flex", gap: "8px", marginBottom: "16px" }}>
-                <Button onPress={() => setTheme('light')}>
+              <div style={{ display: "flex", gap: "8px", marginBottom: "16px", flexWrap: "wrap" }}>
+                <Button variant="accent" onPress={() => setTheme('light')}>
                   Light Theme
                 </Button>
-                <Button onPress={() => setTheme('dark')}>
+                <Button variant="secondary" onPress={() => setTheme('dark')}>
                   Dark Theme
                 </Button>
               </div>
@@ -186,7 +266,7 @@ const App: React.FC = () => {
               </select>
             </div>
             
-            <Button onPress={toggleDarkMode}>
+            <Button variant="secondary" onPress={toggleDarkMode}>
               {isDarkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
             </Button>
           </div>
@@ -211,7 +291,7 @@ const App: React.FC = () => {
                   <p style={{ color: "var(--text)", margin: "0", fontSize: "14px", fontWeight: "500" }}>
                     Recent Files ({recentFiles.length}):
                   </p>
-                  <Button onPress={clearRecentFiles}>Clear</Button>
+                  <Button variant="secondary" size="small" onPress={clearRecentFiles}>Clear</Button>
                 </div>
                 <div style={{ maxHeight: "120px", overflowY: "auto" }}>
                   {recentFiles.map((file, index) => (
@@ -231,7 +311,7 @@ const App: React.FC = () => {
               </div>
             )}
             
-            <Button onPress={handleSaveFile}>
+            <Button variant="accent" onPress={handleSaveFile}>
               Save New File (.{fileFormat})
             </Button>
           </div>
@@ -330,6 +410,7 @@ const App: React.FC = () => {
 
               <div style={{ display: "flex", gap: "8px", justifyContent: "flex-end" }}>
                 <Button 
+                  variant="secondary"
                   onPress={() => {
                     console.log("Form cleared");
                     // Simple form clear - in a real app you'd use form state
@@ -343,6 +424,7 @@ const App: React.FC = () => {
                   Clear
                 </Button>
                 <Button 
+                  variant="accent"
                   onPress={() => {
                     console.log("Form submitted");
                     // Simple form submission - in a real app you'd collect the data

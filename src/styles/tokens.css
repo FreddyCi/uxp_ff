@@ -39,6 +39,15 @@
   /* Font family */
   --spectrum-sans-font-family-stack: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   
+  /* Line height */
+  --spectrum-line-height-100: 1.3;
+  
+  /* Font weight */
+  --spectrum-bold-font-weight: 700;
+  
+  /* Border width */
+  --spectrum-border-width-200: 2px;
+  
   /* Spacing scale */
   --spectrum-spacing-75: 6px;
   --spectrum-spacing-100: 8px;
@@ -51,6 +60,47 @@
   --spectrum-component-height-75: 24px;
   --spectrum-component-height-100: 32px;
   --spectrum-component-height-200: 40px;
+  --spectrum-component-height-300: 48px;
+  
+  /* Component pill edge to text */
+  --spectrum-component-pill-edge-to-text-75: 12px;
+  --spectrum-component-pill-edge-to-text-100: 16px;
+  --spectrum-component-pill-edge-to-text-200: 20px;
+  --spectrum-component-pill-edge-to-text-300: 24px;
+  --spectrum-component-height-100: 32px;
+  --spectrum-component-height-200: 40px;
+  
+  /* Border widths */
+  --spectrum-border-width-100: 1px;
+  --spectrum-border-width-200: 2px;
+  
+  /* Button-specific tokens */
+  --spectrum-button-primary-background-color-default: var(--spectrum-accent-content-color-default);
+  --spectrum-button-primary-background-color-hover: var(--spectrum-accent-content-color-hover);
+  --spectrum-button-primary-background-color-down: var(--spectrum-accent-content-color-down);
+  --spectrum-button-primary-content-color: var(--spectrum-background-layer-1-color);
+  
+  --spectrum-button-secondary-background-color-default: transparent;
+  --spectrum-button-secondary-background-color-hover: var(--spectrum-neutral-subdued-content-color-hover);
+  --spectrum-button-secondary-background-color-down: var(--spectrum-neutral-subdued-content-color-down);
+  --spectrum-button-secondary-content-color-default: var(--spectrum-neutral-content-color-default);
+  --spectrum-button-secondary-border-color-default: var(--spectrum-border-color-default);
+  
+  --spectrum-button-negative-background-color-default: #dc2626;
+  --spectrum-button-negative-background-color-hover: #b91c1c;
+  --spectrum-button-negative-background-color-down: #991b1b;
+  --spectrum-button-negative-content-color: var(--spectrum-background-layer-1-color);
+  
+  /* Button sizing tokens */
+  --spectrum-button-edge-to-text-100: 14px;
+  --spectrum-button-edge-to-text-200: 18px;
+  --spectrum-button-top-to-text-100: 5px;
+  --spectrum-button-top-to-text-200: 9px;
+  
+  /* Button spacing tokens - Official Spectrum CSS */
+  --spectrum-button-margin-right: var(--spectrum-spacing-200); /* 12px default spacing */
+  --spectrum-button-margin-block: 0;
+  --spectrum-button-margin-left: 0;
   
   /* Official Spectrum Tab Spacing Tokens */
   --spectrum-tab-item-height-small: 40px;
@@ -82,6 +132,26 @@
   --spectrum-tab-item-focus-indicator-gap-medium: 4px;
   --spectrum-tab-item-focus-indicator-gap-large: 5px;
   --spectrum-tab-item-focus-indicator-gap-extra-large: 6px;
+  
+  /* =============================================================================
+     OFFICIAL SPECTRUM ACCENT TOKENS
+     ============================================================================= */
+  
+  /* Accent colors (official Spectrum tokens) */
+  --spectrum-accent-background-color-default: #2563eb;
+  --spectrum-accent-background-color-hover: #1d4ed8;
+  --spectrum-accent-background-color-down: #1e40af;
+  --spectrum-accent-background-color-key-focus: #2563eb;
+  
+  --spectrum-accent-content-color-default: #ffffff;
+  --spectrum-accent-content-color-hover: #ffffff;
+  --spectrum-accent-content-color-down: #ffffff;
+  --spectrum-accent-content-color-key-focus: #ffffff;
+  
+  /* Disabled state colors (official Spectrum tokens) */
+  --spectrum-disabled-background-color: #f3f4f6;
+  --spectrum-disabled-border-color: #e5e7eb;
+  --spectrum-disabled-content-color: #9ca3af;
 }
 
 /* =============================================================================
@@ -98,6 +168,7 @@
   --spectrum-neutral-content-color-default: #e5e7eb;
   --spectrum-neutral-content-color-hover: #f9fafb;
   --spectrum-neutral-content-color-focus: #f9fafb;
+  --spectrum-neutral-content-color-down: #d1d5db;
   --spectrum-neutral-subdued-content-color-default: #9ca3af;
   --spectrum-neutral-subdued-content-color-hover: #d1d5db;
   --spectrum-neutral-subdued-content-color-down: #9ca3af;
@@ -116,6 +187,14 @@
   
   /* Shadow */
   --spectrum-drop-shadow-color: rgba(0,0,0,.25);
+  
+  /* Button state colors - dark theme */
+  --spectrum-button-secondary-background-color-hover: rgba(255,255,255,0.08);
+  --spectrum-button-secondary-background-color-down: rgba(255,255,255,0.12);
+  
+  /* Disabled button colors */
+  --spectrum-disabled-background-color: #374151;
+  --spectrum-disabled-border-color: #4b5563;
   
   /* Simplified aliases for backward compatibility */
   --bg: var(--spectrum-background-layer-1-color);
@@ -144,6 +223,7 @@
   --spectrum-neutral-content-color-default: #111827;
   --spectrum-neutral-content-color-hover: #000000;
   --spectrum-neutral-content-color-focus: #000000;
+  --spectrum-neutral-content-color-down: #374151;
   --spectrum-neutral-subdued-content-color-default: #6b7280;
   --spectrum-neutral-subdued-content-color-hover: #374151;
   --spectrum-neutral-subdued-content-color-down: #6b7280;
@@ -162,6 +242,14 @@
   
   /* Shadow */
   --spectrum-drop-shadow-color: rgba(0,0,0,.1);
+  
+  /* Button state colors - light theme */
+  --spectrum-button-secondary-background-color-hover: rgba(0,0,0,0.06);
+  --spectrum-button-secondary-background-color-down: rgba(0,0,0,0.10);
+  
+  /* Disabled button colors */
+  --spectrum-disabled-background-color: #f3f4f6;
+  --spectrum-disabled-border-color: #e5e7eb;
   
   /* Simplified aliases for backward compatibility */
   --bg: var(--spectrum-background-layer-1-color);

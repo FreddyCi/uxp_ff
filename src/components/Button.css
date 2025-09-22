@@ -1,125 +1,323 @@
-/* Clean UXP Button - Spectrum CSS + Composable Reset (using DIV to bypass UXP) */
-
 /* =============================================================================
-   SPECTRUM BUTTON BASE (uses div[role="button"] to avoid UXP conflicts)
+   ADOBE SPECTRUM BUTTON - Authentic Design System Implementation
+   Using div[role="button"] to bypass UXP native button conflicts
    ============================================================================= */
+
 .uxp-button {
-  /* Spectrum design tokens drive the visuals */
-  --btn-bg: var(--spectrum-accent-content-color-default);
-  --btn-fg: var(--spectrum-background-layer-1-color);
-  --btn-border: var(--spectrum-border-width-100);
-  --btn-radius: var(--spectrum-corner-radius-100);
-  --btn-padding-y: var(--spectrum-spacing-100);
-  --btn-padding-x: var(--spectrum-spacing-200);
-  --btn-font-size: var(--spectrum-font-size-100);
-  --btn-font-weight: var(--spectrum-font-weight-bold);
-  --btn-min-height: var(--spectrum-component-height-100);
-  
-  /* Layout and presentation */
+  /* === SPECTRUM DESIGN FOUNDATION === */
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: var(--spectrum-spacing-75);
-  
-  background: var(--btn-bg);
-  color: var(--btn-fg);
-  border: var(--btn-border) solid transparent;
-  border-radius: var(--btn-radius);
-  padding: var(--btn-padding-y) var(--btn-padding-x);
-  
-  font-size: var(--btn-font-size);
-  font-weight: var(--btn-font-weight);
-  font-family: var(--spectrum-sans-font-family-stack);
-  text-align: center;
-  text-decoration: none;
-  
-  min-height: var(--btn-min-height);
-  cursor: pointer;
-  transition: var(--spectrum-animation-duration-100) var(--spectrum-animation-ease-in-out);
-  
-  /* Clean div styling - no UXP conflicts */
-  vertical-align: middle;
   box-sizing: border-box;
-  user-select: none;
   
-  /* Ensure accessibility */
-  outline: 0;
+  /* === SPECTRUM TYPOGRAPHY === */
+  font-family: var(--spectrum-sans-font-family-stack);
+  font-size: var(--spectrum-font-size-100);
+  font-weight: var(--spectrum-font-weight-regular);
+  text-decoration: none;
+  text-align: center;
+  white-space: nowrap;
+  line-height: 1.3;
+  
+  /* === SPECTRUM SIZING & SPACING === */
+  min-height: var(--spectrum-component-height-100);
+  min-width: var(--spectrum-component-height-100);
+  padding: var(--spectrum-button-top-to-text-100) var(--spectrum-button-edge-to-text-100);
+  border-radius: var(--spectrum-corner-radius-100);
+  border: var(--spectrum-border-width-100) solid;
+  
+  /* === SPECTRUM DEFAULT SPACING === */
+  /* Override the uxp-reset--complete margin: 0 !important */
+  margin: 0 12px 0 0 !important; /* Force spacing for UXP compatibility */
+  
+  /* === SPECTRUM INTERACTIONS === */
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: top;
+  
+  /* === SPECTRUM ANIMATIONS === */
+  transition: 
+    background-color var(--spectrum-animation-duration-100) var(--spectrum-animation-ease-in-out),
+    border-color var(--spectrum-animation-duration-100) var(--spectrum-animation-ease-in-out),
+    color var(--spectrum-animation-duration-100) var(--spectrum-animation-ease-in-out),
+    box-shadow var(--spectrum-animation-duration-100) var(--spectrum-animation-ease-in-out);
+  
+  /* === UXP RESET === */
+  outline: none;
   -webkit-tap-highlight-color: transparent;
 }
 
+/* More specific selector to ensure button spacing overrides reset */
+.uxp-reset--complete.uxp-button {
+  margin: 0 12px 0 0 !important; /* Higher specificity than reset alone */
+}
+
 /* =============================================================================
-   SPECTRUM BUTTON STATES (clean data-state driven, no UXP conflicts)
+   ACCENT BUTTON (Default - Blue Filled)
+   ============================================================================= */
+.uxp-button {
+  background-color: var(--spectrum-button-primary-background-color-default) !important;
+  border-color: var(--spectrum-button-primary-background-color-default) !important;
+  color: var(--spectrum-button-primary-content-color) !important;
+}
+
+/* Accent Button States */
+.uxp-button[data-state="hover"] {
+  background-color: var(--spectrum-button-primary-background-color-hover) !important;
+  border-color: var(--spectrum-button-primary-background-color-hover) !important;
+}
+
+.uxp-button[data-state="pressed"] {
+  background-color: var(--spectrum-button-primary-background-color-down) !important;
+  border-color: var(--spectrum-button-primary-background-color-down) !important;
+}
+
+/* =============================================================================
+   PRIMARY BUTTON (Black/Dark Filled)
+   ============================================================================= */
+.uxp-button--primary {
+  background-color: var(--spectrum-neutral-content-color-default) !important;
+  border-color: var(--spectrum-neutral-content-color-default) !important;
+  color: var(--spectrum-background-layer-1-color) !important;
+}
+
+/* Primary Button States */
+.uxp-button--primary[data-state="hover"] {
+  background-color: var(--spectrum-neutral-content-color-hover) !important;
+  border-color: var(--spectrum-neutral-content-color-hover) !important;
+}
+
+.uxp-button--primary[data-state="pressed"] {
+  background-color: var(--spectrum-neutral-content-color-down) !important;
+  border-color: var(--spectrum-neutral-content-color-down) !important;
+}
+
+/* =============================================================================
+   SECONDARY BUTTON (Outline Style)
+   ============================================================================= */
+.uxp-button--secondary {
+  background-color: var(--spectrum-button-secondary-background-color-default) !important;
+  border-color: var(--spectrum-button-secondary-border-color-default) !important;
+  color: var(--spectrum-button-secondary-content-color-default) !important;
+}
+
+/* Secondary Button States */
+.uxp-button--secondary[data-state="hover"] {
+  background-color: var(--spectrum-button-secondary-background-color-hover) !important;
+  border-color: var(--spectrum-button-secondary-border-color-default) !important;
+  color: var(--spectrum-button-secondary-content-color-default) !important;
+}
+
+.uxp-button--secondary[data-state="pressed"] {
+  background-color: var(--spectrum-button-secondary-background-color-down) !important;
+  border-color: var(--spectrum-button-secondary-border-color-default) !important;
+  color: var(--spectrum-button-secondary-content-color-default) !important;
+}
+
+/* =============================================================================
+   NEGATIVE BUTTON (Destructive Actions)
+   ============================================================================= */
+.uxp-button--negative {
+  background-color: var(--spectrum-button-negative-background-color-default) !important;
+  border-color: var(--spectrum-button-negative-background-color-default) !important;
+  color: var(--spectrum-button-negative-content-color) !important;
+}
+
+/* Negative Button States */
+.uxp-button--negative[data-state="hover"] {
+  background-color: var(--spectrum-button-negative-background-color-hover) !important;
+  border-color: var(--spectrum-button-negative-background-color-hover) !important;
+}
+
+.uxp-button--negative[data-state="pressed"] {
+  background-color: var(--spectrum-button-negative-background-color-down) !important;
+  border-color: var(--spectrum-button-negative-background-color-down) !important;
+}
+
+/* =============================================================================
+   OUTLINE TREATMENT (Can be combined with any variant)
    ============================================================================= */
 
-/* Hover state */
-.uxp-button[data-state="hover"] {
-  --btn-bg: var(--spectrum-accent-content-color-hover);
+/* Accent Outline */
+.uxp-button.uxp-button--outline {
+  background-color: transparent !important;
+  border-color: var(--spectrum-button-primary-background-color-default) !important;
+  color: var(--spectrum-button-primary-background-color-default) !important;
 }
 
-/* Pressed/Active state */
-.uxp-button[data-state="pressed"] {
-  --btn-bg: var(--spectrum-accent-content-color-down);
+.uxp-button.uxp-button--outline[data-state="hover"] {
+  background-color: var(--spectrum-button-secondary-background-color-hover) !important;
+  border-color: var(--spectrum-button-primary-background-color-hover) !important;
+  color: var(--spectrum-button-primary-background-color-hover) !important;
 }
 
-/* Focus state (accessibility) */
+.uxp-button.uxp-button--outline[data-state="pressed"] {
+  background-color: var(--spectrum-button-secondary-background-color-down) !important;
+  border-color: var(--spectrum-button-primary-background-color-down) !important;
+  color: var(--spectrum-button-primary-background-color-down) !important;
+}
+
+/* Primary Outline */
+.uxp-button--primary.uxp-button--outline {
+  background-color: transparent !important;
+  border-color: var(--spectrum-neutral-content-color-default) !important;
+  color: var(--spectrum-neutral-content-color-default) !important;
+}
+
+.uxp-button--primary.uxp-button--outline[data-state="hover"] {
+  background-color: var(--spectrum-button-secondary-background-color-hover) !important;
+  border-color: var(--spectrum-neutral-content-color-hover) !important;
+  color: var(--spectrum-neutral-content-color-hover) !important;
+}
+
+.uxp-button--primary.uxp-button--outline[data-state="pressed"] {
+  background-color: var(--spectrum-button-secondary-background-color-down) !important;
+  border-color: var(--spectrum-neutral-content-color-down) !important;
+  color: var(--spectrum-neutral-content-color-down) !important;
+}
+
+/* Secondary Outline (already handled by base secondary) */
+/* .uxp-button--secondary.uxp-button--outline inherits from .uxp-button--secondary */
+
+/* Negative Outline */
+.uxp-button--negative.uxp-button--outline {
+  background-color: transparent !important;
+  border-color: var(--spectrum-button-negative-background-color-default) !important;
+  color: var(--spectrum-button-negative-background-color-default) !important;
+}
+
+.uxp-button--negative.uxp-button--outline[data-state="hover"] {
+  background-color: var(--spectrum-button-secondary-background-color-hover) !important;
+  border-color: var(--spectrum-button-negative-background-color-hover) !important;
+  color: var(--spectrum-button-negative-background-color-hover) !important;
+}
+
+.uxp-button--negative.uxp-button--outline[data-state="pressed"] {
+  background-color: var(--spectrum-button-secondary-background-color-down) !important;
+  border-color: var(--spectrum-button-negative-background-color-down) !important;
+  color: var(--spectrum-button-negative-background-color-down) !important;
+}
+
+/* =============================================================================
+   FOCUS STATE (Spectrum Focus Ring)
+   ============================================================================= */
 .uxp-button[data-focus-visible] {
   outline: var(--spectrum-focus-indicator-thickness) solid var(--spectrum-focus-indicator-color);
   outline-offset: var(--spectrum-focus-indicator-gap);
 }
 
-/* Disabled state */
+/* =============================================================================
+   DISABLED STATE
+   ============================================================================= */
 .uxp-button[data-disabled],
 .uxp-button[aria-disabled="true"] {
-  --btn-bg: var(--spectrum-disabled-background-color);
-  --btn-fg: var(--spectrum-disabled-content-color);
-  cursor: not-allowed;
-  opacity: 0.5;
-  pointer-events: none;
+  background-color: var(--spectrum-disabled-background-color) !important;
+  border-color: var(--spectrum-disabled-border-color) !important;
+  color: var(--spectrum-disabled-content-color) !important;
+  cursor: not-allowed !important;
+  pointer-events: none !important;
 }
 
 /* =============================================================================
-   SPECTRUM BUTTON VARIANTS
+   SIZE VARIANTS
    ============================================================================= */
 
-/* Secondary button variant */
-.uxp-button--secondary {
-  --btn-bg: var(--spectrum-neutral-background-color-default);
-  --btn-fg: var(--spectrum-neutral-content-color-default);
-  --btn-border: var(--spectrum-border-width-100);
-  border-color: var(--spectrum-border-color-default);
+/* Small buttons */
+.uxp-button--size-small {
+  min-height: var(--spectrum-component-height-75);
+  font-size: var(--spectrum-font-size-75);
+  padding: 4px 12px;
 }
 
-.uxp-button--secondary[data-state="hover"] {
-  --btn-bg: var(--spectrum-neutral-background-color-hover);
-}
-
-.uxp-button--secondary[data-state="pressed"] {
-  --btn-bg: var(--spectrum-neutral-background-color-down);
-}
-
-/* Negative button variant */
-.uxp-button--negative {
-  --btn-bg: var(--spectrum-negative-content-color-default);
-  --btn-fg: var(--spectrum-background-layer-1-color);
-}
-
-.uxp-button--negative[data-state="hover"] {
-  --btn-bg: var(--spectrum-negative-content-color-hover);
-}
-
-.uxp-button--negative[data-state="pressed"] {
-  --btn-bg: var(--spectrum-negative-content-color-down);
+/* Large buttons */
+.uxp-button--size-large {
+  min-height: var(--spectrum-component-height-200);
+  font-size: var(--spectrum-font-size-200);
+  padding: var(--spectrum-button-top-to-text-200) var(--spectrum-button-edge-to-text-200);
 }
 
 /* =============================================================================
-   RESPONSIVE UXP ADJUSTMENTS
+   BUTTON WITH ICONS
+   ============================================================================= */
+.uxp-button__icon {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+}
+
+/* Icon spacing */
+.uxp-button__icon + .uxp-button__text,
+.uxp-button__text + .uxp-button__icon {
+  margin-left: var(--spectrum-spacing-75);
+}
+
+/* Icon-only buttons */
+.uxp-button--icon-only {
+  min-width: var(--spectrum-component-height-100);
+  padding: var(--spectrum-button-top-to-text-100);
+}
+
+.uxp-button--icon-only.uxp-button--size-small {
+  min-width: var(--spectrum-component-height-75);
+  padding: 4px;
+}
+
+.uxp-button--icon-only.uxp-button--size-large {
+  min-width: var(--spectrum-component-height-200);
+  padding: var(--spectrum-button-top-to-text-200);
+}
+
+/* =============================================================================
+   UXP RESPONSIVE ADJUSTMENTS
    ============================================================================= */
 
-/* UXP density adjustments for small panels */
+/* Remove trailing margin from last button in a group */
+.uxp-reset--complete.uxp-button:last-child {
+  margin: 0 !important;
+}
+
 @container (max-width: 250px) {
   .uxp-button {
-    --btn-padding-x: var(--spectrum-spacing-100);
-    --btn-font-size: var(--spectrum-font-size-75);
-    gap: var(--spectrum-spacing-50);
+    font-size: var(--spectrum-font-size-75);
+    padding: 4px 10px;
+    min-height: 28px;
+  }
+  
+  .uxp-button__icon {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+/* =============================================================================
+   SPECTRUM BUTTON LOADING STATE (Optional Enhancement)
+   ============================================================================= */
+.uxp-button[data-loading="true"] {
+  color: transparent !important;
+  pointer-events: none !important;
+  position: relative;
+}
+
+.uxp-button[data-loading="true"]::after {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  top: 50%;
+  left: 50%;
+  margin-left: -8px;
+  margin-top: -8px;
+  border: 2px solid transparent;
+  border-top-color: currentColor;
+  border-radius: 50%;
+  animation: button-spin 1s linear infinite;
+}
+
+@keyframes button-spin {
+  to {
+    transform: rotate(360deg);
   }
 }

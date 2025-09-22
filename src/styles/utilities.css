@@ -17,7 +17,17 @@
    SPECTRUM COMPONENT CLASSES
    ============================================================================= */
 
-/* Spectrum Button */
+/* =============================================================================
+   SPECTRUM UTILITIES - DEPRECATED
+   These basic .spectrum-Button styles are superseded by the hybrid approach
+   in Button-hybrid.css which uses .uxp-reset--complete.spectrum-Button
+   ============================================================================= */
+
+/* 
+   DISABLED: These styles conflict with our hybrid button approach
+   The hybrid Button component uses higher-specificity selectors:
+   .uxp-reset--complete.spectrum-Button instead of .spectrum-Button
+   
 .spectrum-Button {
   border: 1px solid var(--spectrum-border-color-default);
   padding: var(--spectrum-spacing-100) var(--spectrum-spacing-200);
@@ -55,6 +65,7 @@
 .spectrum-Button--accent[data-pressed] {
   background: var(--spectrum-accent-content-color-down);
 }
+*/
 
 /* Spectrum Textfield */
 .spectrum-Textfield {
