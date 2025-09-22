@@ -68,6 +68,8 @@ We use a simplified token system that maps to Spectrum concepts:
 2. **Lightweight implementation**: 2KB vs 220KB+ official packages
 3. **Theme switching**: Manual light/dark mode detection via UXP bridge
 4. **Simplified hierarchy**: Direct token mapping vs complex layered system
+5. **CSS Layout Limitations**: CSS `gap` property doesn't work reliably - use traditional `margin` for spacing
+6. **Flexbox Compatibility**: Standard flexbox works, but newer CSS Grid and gap features need fallbacks
 
 ## Component Architecture Insights
 
@@ -131,6 +133,70 @@ We use a simplified token system that maps to Spectrum concepts:
 - Use official documentation for accurate visual patterns
 - Avoid heavy official packages that conflict with UXP environment
 
+## UXP CSS Compatibility Insights
+
+### CSS Feature Support Matrix
+
+| CSS Feature | UXP Support | Recommended Alternative | Notes |
+|------------|-------------|------------------------|-------|
+| `gap` property | ❌ Unreliable | `margin` spacing | Use `margin-right` for horizontal spacing |
+| `flexbox` | ✅ Full support | - | Works perfectly for layouts |
+| `grid` | ⚠️ Partial | `flexbox` | Basic grid works, complex features may fail |
+| `::before/::after` | ✅ Full support | - | Perfect for selection indicators |
+| `CSS custom properties` | ✅ Full support | - | Essential for theming system |
+| `clamp()` | ❌ Limited | `calc()` + media queries | Use traditional responsive approaches |
+| `container queries` | ❌ Not supported | Media queries | Use viewport-based responsive design |
+
+### Spacing Strategy for UXP
+
+#### ❌ What Doesn't Work
+```css
+/* CSS Gap - Unreliable in UXP */
+.tabs-container {
+  display: flex;
+  gap: 24px; /* This won't create visible spacing */
+}
+```
+
+#### ✅ What Works Reliably
+```css
+/* Direct margin spacing - Reliable */
+.tab-item {
+  margin-right: 24px; /* Creates consistent 24px spacing */
+}
+
+.tab-item:last-child {
+  margin-right: 0; /* Remove trailing margin */
+}
+```
+
+### Component-Specific UXP Learnings
+
+#### Buttons
+- **Challenge**: UXP's aggressive native button styling overrides
+- **Solution**: "Nuclear" div-based approach with `uxp-reset--complete`
+- **Key insight**: Sometimes bypassing native elements is more reliable than overriding
+
+#### Tabs
+- **Challenge**: Modern CSS spacing methods don't work
+- **Solution**: Traditional margin-based spacing
+- **Key insight**: React Aria default classes work perfectly with custom CSS
+
+### UXP Environment Characteristics
+
+1. **Chromium-based but limited**: Not all modern CSS features are available
+2. **Aggressive native styling**: Some HTML elements have strong default styles
+3. **Reset requirements**: Need comprehensive CSS resets for complex components
+4. **Layout engine differences**: Flexbox reliable, Grid and newer features inconsistent
+
+### Best Practices for UXP Development
+
+1. **Test CSS features early**: Don't assume modern CSS works without testing
+2. **Use fallbacks**: Always have traditional CSS alternatives ready
+3. **Leverage working features**: `flexbox`, `custom properties`, `pseudo-elements` work great
+4. **Document compatibility**: Keep notes on what works vs what doesn't
+5. **Progressive enhancement**: Start with basic CSS, enhance where UXP supports it
+
 ## Conclusion
 
 Our implementation successfully balances:
@@ -140,6 +206,8 @@ Our implementation successfully balances:
 - **Theme support**: Automatic light/dark mode switching
 
 The key insight is that we can achieve Spectrum design fidelity without the full complexity of the official implementation by mapping our simplified tokens to official patterns at the component level.
+
+**Critical UXP Learning**: CSS `gap` property is unreliable in UXP environments - always use traditional `margin` spacing for consistent results. This applies to other modern CSS features that may not have full UXP support.
 
 ## Responsive Layout Strategy
 
