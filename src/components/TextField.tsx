@@ -1,74 +1,166 @@
 'use client';
-import {
-  Input,
-  TextField as AriaTextField,
-  TextFieldProps as AriaTextFieldProps,
-  ValidationResult
-} from 'react-aria-components';
-import { Label, FieldError } from './Form';
-import './TextField.css';
+import { useRef, ReactNode, useState } from 'react';
+import './TextField-hybrid.css';
 
-export interface TextFieldProps extends AriaTextFieldProps {
+// Hybrid TextField - Nuclear div approach with official Spectrum CSS classes
+// EXACTLY the same pattern as our successful Button and Tabs components
+
+type SpectrumSize = 's' | 'm' | 'l';
+type InputType = 'text' | 'email' | 'password' | 'number' | 'tel' | 'url' | 'search';
+
+interface TextFieldProps {
   label?: string;
-  description?: string;
-  errorMessage?: string | ((validation: ValidationResult) => string);
+  value?: string;
+  defaultValue?: string;
   placeholder?: string;
+  description?: string;
+  errorMessage?: string;
+  isRequired?: boolean;
+  isDisabled?: boolean;
+  isInvalid?: boolean;
+  isReadOnly?: boolean;
+  multiline?: boolean;
+  size?: SpectrumSize;
+  type?: InputType;
+  rows?: number;
+  maxLength?: number;
+  pattern?: string;
+  name?: string;
+  id?: string;
+  autoComplete?: string;
+  autoFocus?: boolean;
+  onChange?: (value: string) => void;
+  onBlur?: () => void;
+  onFocus?: () => void;
+  className?: string;
+  style?: React.CSSProperties;
 }
 
-export function TextField(
-  { label, description, errorMessage, onChange, placeholder, ...props }: TextFieldProps
-) {
+export function TextField({
+  label,
+  value,
+  defaultValue,
+  placeholder,
+  description,
+  errorMessage,
+  isRequired = false,
+  isDisabled = false,
+  isInvalid = false,
+  isReadOnly = false,
+  multiline = false,
+  size = 'm',
+  type = 'text',
+  rows = 3,
+  maxLength,
+  pattern,
+  name,
+  id,
+  autoComplete,
+  autoFocus,
+  onChange,
+  onBlur,
+  onFocus,
+  className = '',
+  style,
+  ...props
+}: TextFieldProps) {
+  const [inputValue, setInputValue] = useState(value || defaultValue || '');
+  const [isFocused, setIsFocused] = useState(false);
+  const inputRef = useRef<HTMLInputElement | HTMLTextAreaElement>(null);
+
+  // Build official Spectrum classes with hybrid approach - same as Button/Tabs
+  const resetClasses = 'uxp-reset--complete';
+  const baseClasses = 'spectrum-Textfield spectrum-Textfield'; // Double class for ultra-high specificity
+  const sizeClass = `spectrum-Textfield--size${size.toUpperCase()}`;
+  const multilineClass = multiline ? 'spectrum-Textfield--multiline' : '';
+  
+  const textfieldClasses = [
+    resetClasses,
+    baseClasses,
+    sizeClass,
+    multilineClass,
+    className
+  ].filter(Boolean).join(' ');
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const newValue = e.target.value;
+    setInputValue(newValue);
+    onChange?.(newValue);
+  };
+
+  const handleFocus = () => {
+    setIsFocused(true);
+    onFocus?.();
+  };
+
+  const handleBlur = () => {
+    setIsFocused(false);
+    onBlur?.();
+  };
+
+  const inputProps = {
+    ref: inputRef as any,
+    value: value !== undefined ? value : inputValue,
+    placeholder,
+    disabled: isDisabled,
+    readOnly: isReadOnly,
+    required: isRequired,
+    maxLength,
+    pattern,
+    name,
+    id,
+    autoComplete,
+    autoFocus,
+    onChange: handleInputChange,
+    onFocus: handleFocus,
+    onBlur: handleBlur,
+  };
+
   return (
-    <AriaTextField 
-      onChange={onChange} 
-      {...props}
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        marginBottom: '16px',
-        ...props.style
-      }}
-    >
-      {label && <Label style={{
-        color: '#e5e7eb',
-        marginBottom: '6px',
-        fontSize: '14px',
-        fontWeight: '500',
-        fontFamily: 'system-ui, sans-serif'
-      }}>{label}</Label>}
-      <Input 
-        placeholder={placeholder}
-        style={{
-          // AGGRESSIVE UXP OVERRIDE - NUCLEAR STYLING
-          WebkitAppearance: 'none',
-          appearance: 'none',
-          background: '#374151',
-          backgroundColor: '#374151',
-          backgroundImage: 'none',
-          border: '1px solid #6b7280',
-          borderRadius: '6px',
-          padding: '8px 12px',
-          fontSize: '14px',
-          color: '#e5e7eb',
-          fontFamily: 'system-ui, sans-serif',
-          outline: 'none',
-          boxShadow: 'none',
-          textShadow: 'none',
-          filter: 'none',
-          margin: '0',
-          width: '100%',
-          minWidth: '0px', // Changed from 'auto' - UXP doesn't support auto
-          minHeight: '32px', // Changed from 'auto' - UXP doesn't support auto
-          height: '32px', // Explicit height instead of auto
-          boxSizing: 'border-box'
-        }}
-      />
+    <div className="spectrum-Field" style={style}>
+      {/* Label with official Spectrum classes */}
+      {label && (
+        <label className="spectrum-FieldLabel spectrum-FieldLabel--sizeM">
+          {label}
+          {isRequired && <span className="spectrum-FieldLabel-requiredIcon">*</span>}
+        </label>
+      )}
+      
+      {/* Nuclear div approach - EXACTLY like Button and Tabs */}
+      <div
+        role="textbox"
+        className={textfieldClasses}
+        aria-disabled={isDisabled}
+        aria-invalid={isInvalid || !!errorMessage}
+        aria-readonly={isReadOnly}
+        aria-required={isRequired}
+      >
+        {multiline ? (
+          <textarea
+            {...inputProps}
+            rows={rows}
+          />
+        ) : (
+          <input
+            {...inputProps}
+            type={type}
+          />
+        )}
+      </div>
+      
+      {/* Description text */}
       {description && (
-        <div style={{ fontSize: '12px', color: '#9ca3af', marginTop: '4px' }}>
+        <div className="spectrum-HelpText spectrum-HelpText--sizeM">
           {description}
         </div>
       )}
-      <FieldError>{errorMessage}</FieldError>
-    </AriaTextField>
+      
+      {/* Error message */}
+      {errorMessage && (
+        <div className="spectrum-HelpText spectrum-HelpText--sizeM spectrum-HelpText--negative">
+          {errorMessage}
+        </div>
+      )}
+    </div>
   );
 }

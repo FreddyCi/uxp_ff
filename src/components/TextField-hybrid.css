@@ -1,0 +1,350 @@
+/*!
+ * Hybrid TextField Component - Official Spectrum CSS + Nuclear Div Approach
+ * Combines official Adobe Spectrum tokens with UXP-compatible markup
+ */
+
+/* =============================================================================
+   NUCLEAR DIV + SPECTRUM CSS RESET OVERRIDE - TEXTFIELD
+   ============================================================================= */
+
+/* Container with nuclear div approach */
+div[role="textbox"].uxp-reset--complete.spectrum-Textfield.spectrum-Textfield {
+  /* Nuclear reset */
+  all: unset !important;
+  
+  /* Re-establish fundamentals */
+  box-sizing: border-box !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  position: relative !important;
+  
+  /* Official Spectrum foundation */
+  width: 100% !important;
+  min-width: 240px !important;
+  min-height: var(--spectrum-component-height-200) !important;
+  
+  /* Typography using official tokens */
+  font-family: var(--spectrum-sans-font-family-stack) !important;
+  font-size: var(--spectrum-font-size-100) !important;
+  font-weight: var(--spectrum-font-weight-regular) !important;
+  line-height: var(--spectrum-line-height-100) !important;
+  
+  /* Default styling using official tokens */
+  background-color: var(--spectrum-background-layer-1-color) !important;
+  border: var(--spectrum-border-width-100) solid var(--spectrum-border-color-default) !important;
+  border-radius: var(--spectrum-corner-radius-100) !important;
+  
+  /* Content colors */
+  color: var(--spectrum-neutral-content-color-default) !important;
+  
+  /* Padding using official tokens */
+  padding: 0 var(--spectrum-spacing-300) !important;
+  
+  /* Smooth transitions */
+  transition: 
+    border-color var(--spectrum-animation-duration-100) ease-out,
+    box-shadow var(--spectrum-animation-duration-100) ease-out !important;
+}
+
+/* Input element inside the container - NUCLEAR APPROACH */
+div[role="textbox"].uxp-reset--complete.spectrum-Textfield.spectrum-Textfield input {
+  /* Nuclear reset for the actual input */
+  all: unset !important;
+  
+  /* Re-establish basics */
+  box-sizing: border-box !important;
+  display: block !important;
+  width: 100% !important;
+  
+  /* Typography inheritance */
+  font-family: inherit !important;
+  font-size: inherit !important;
+  font-weight: inherit !important;
+  line-height: inherit !important;
+  color: inherit !important;
+  
+  /* Remove all native input styling - AGGRESSIVE UXP OVERRIDE */
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  border: none !important;
+  outline: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+  filter: none !important;
+  
+  /* UXP compatibility - NUCLEAR RESET */
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  -webkit-user-select: text !important;
+  user-select: text !important;
+  
+  /* Prevent UXP from adding its own styling */
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+  -webkit-border-radius: 0 !important;
+  -moz-border-radius: 0 !important;
+  border-radius: 0 !important;
+}
+
+/* Placeholder styling */
+div[role="textbox"].uxp-reset--complete.spectrum-Textfield.spectrum-Textfield input::placeholder {
+  color: var(--spectrum-neutral-subdued-content-color-default) !important;
+  opacity: 1 !important;
+}
+
+/* Hover State - Prevent UXP interference */
+div[role="textbox"].uxp-reset--complete.spectrum-Textfield.spectrum-Textfield:hover:not([aria-disabled="true"]) {
+  border-color: var(--spectrum-neutral-subdued-content-color-hover) !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+/* Focus State - Blue accent with AGGRESSIVE UXP override */
+div[role="textbox"].uxp-reset--complete.spectrum-Textfield.spectrum-Textfield:focus-within {
+  border-color: var(--spectrum-accent-background-color-default) !important;
+  box-shadow: 0 0 0 1px var(--spectrum-accent-background-color-default) !important;
+  outline: none !important;
+}
+
+/* ULTRA-AGGRESSIVE UXP override for input focus states */
+div[role="textbox"].uxp-reset--complete.spectrum-Textfield.spectrum-Textfield input:hover,
+div[role="textbox"].uxp-reset--complete.spectrum-Textfield.spectrum-Textfield textarea:hover {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+div[role="textbox"].uxp-reset--complete.spectrum-Textfield.spectrum-Textfield input:focus,
+div[role="textbox"].uxp-reset--complete.spectrum-Textfield.spectrum-Textfield textarea:focus {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Invalid State - Red border */
+div[role="textbox"].uxp-reset--complete.spectrum-Textfield.spectrum-Textfield[aria-invalid="true"] {
+  border-color: var(--spectrum-negative-background-color-default) !important;
+}
+
+div[role="textbox"].uxp-reset--complete.spectrum-Textfield.spectrum-Textfield[aria-invalid="true"]:focus-within {
+  box-shadow: 0 0 0 1px var(--spectrum-negative-background-color-default) !important;
+}
+
+/* Disabled State */
+div[role="textbox"].uxp-reset--complete.spectrum-Textfield.spectrum-Textfield[aria-disabled="true"] {
+  background-color: var(--spectrum-disabled-background-color) !important;
+  border-color: var(--spectrum-disabled-border-color) !important;
+  color: var(--spectrum-disabled-content-color) !important;
+  cursor: not-allowed !important;
+}
+
+div[role="textbox"].uxp-reset--complete.spectrum-Textfield.spectrum-Textfield[aria-disabled="true"] input {
+  cursor: not-allowed !important;
+  pointer-events: none !important;
+}
+
+div[role="textbox"].uxp-reset--complete.spectrum-Textfield.spectrum-Textfield[aria-disabled="true"] input::placeholder {
+  color: var(--spectrum-disabled-content-color) !important;
+}
+
+/* =============================================================================
+   LABEL STYLING - OFFICIAL SPECTRUM TOKENS
+   ============================================================================= */
+
+/* Label for TextField */
+.spectrum-FieldLabel.spectrum-FieldLabel--sizeM {
+  /* Nuclear reset */
+  all: unset !important;
+  
+  /* Re-establish fundamentals */
+  box-sizing: border-box !important;
+  display: block !important;
+  
+  /* Official Spectrum typography */
+  font-family: var(--spectrum-sans-font-family-stack) !important;
+  font-size: var(--spectrum-font-size-100) !important;
+  font-weight: var(--spectrum-font-weight-medium) !important;
+  line-height: var(--spectrum-line-height-100) !important;
+  
+  /* Colors using official tokens */
+  color: var(--spectrum-neutral-content-color-default) !important;
+  
+  /* Spacing */
+  margin-bottom: var(--spectrum-spacing-100) !important;
+}
+
+/* Required indicator */
+.spectrum-FieldLabel .spectrum-FieldLabel-requiredIcon {
+  color: var(--spectrum-negative-background-color-default) !important;
+  margin-left: var(--spectrum-spacing-75) !important;
+}
+
+/* =============================================================================
+   HELP TEXT AND ERROR MESSAGES
+   ============================================================================= */
+
+/* Help text styling */
+.spectrum-HelpText.spectrum-HelpText--sizeM {
+  /* Nuclear reset */
+  all: unset !important;
+  
+  /* Re-establish fundamentals */
+  box-sizing: border-box !important;
+  display: block !important;
+  
+  /* Typography */
+  font-family: var(--spectrum-sans-font-family-stack) !important;
+  font-size: var(--spectrum-font-size-75) !important;
+  line-height: var(--spectrum-line-height-100) !important;
+  
+  /* Colors */
+  color: var(--spectrum-neutral-subdued-content-color-default) !important;
+  
+  /* Spacing */
+  margin-top: var(--spectrum-spacing-100) !important;
+}
+
+/* Error message styling */
+.spectrum-HelpText.spectrum-HelpText--negative {
+  color: var(--spectrum-negative-background-color-default) !important;
+}
+
+/* =============================================================================
+   SIZE VARIANTS - OFFICIAL SPECTRUM TOKENS
+   ============================================================================= */
+
+/* Small Size */
+div[role="textbox"].uxp-reset--complete.spectrum-Textfield.spectrum-Textfield.spectrum-Textfield--sizeS {
+  min-height: var(--spectrum-component-height-100) !important;
+  font-size: var(--spectrum-font-size-75) !important;
+  padding: 0 var(--spectrum-spacing-200) !important;
+}
+
+/* Large Size */
+div[role="textbox"].uxp-reset--complete.spectrum-Textfield.spectrum-Textfield.spectrum-Textfield--sizeL {
+  min-height: var(--spectrum-component-height-300) !important;
+  font-size: var(--spectrum-font-size-200) !important;
+  padding: 0 var(--spectrum-spacing-400) !important;
+}
+
+/* =============================================================================
+   MULTILINE VARIANT (TEXTAREA)
+   ============================================================================= */
+
+/* Multiline textarea styling */
+div[role="textbox"].uxp-reset--complete.spectrum-Textfield.spectrum-Textfield.spectrum-Textfield--multiline {
+  align-items: flex-start !important;
+  min-height: 80px !important;
+  padding: var(--spectrum-spacing-200) var(--spectrum-spacing-300) !important;
+}
+
+div[role="textbox"].uxp-reset--complete.spectrum-Textfield.spectrum-Textfield.spectrum-Textfield--multiline textarea {
+  /* Nuclear reset for textarea */
+  all: unset !important;
+  
+  /* Re-establish basics */
+  box-sizing: border-box !important;
+  display: block !important;
+  width: 100% !important;
+  min-height: 100% !important;
+  resize: vertical !important;
+  
+  /* Typography inheritance */
+  font-family: inherit !important;
+  font-size: inherit !important;
+  font-weight: inherit !important;
+  line-height: inherit !important;
+  color: inherit !important;
+  
+  /* Remove all native styling - AGGRESSIVE UXP OVERRIDE */
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  border: none !important;
+  outline: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+  filter: none !important;
+  
+  /* UXP compatibility - NUCLEAR RESET */
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  -webkit-user-select: text !important;
+  user-select: text !important;
+  
+  /* Prevent UXP from adding its own styling */
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+  -webkit-border-radius: 0 !important;
+  -moz-border-radius: 0 !important;
+  border-radius: 0 !important;
+}
+
+div[role="textbox"].uxp-reset--complete.spectrum-Textfield.spectrum-Textfield.spectrum-Textfield--multiline textarea::placeholder {
+  color: var(--spectrum-neutral-subdued-content-color-default) !important;
+  opacity: 1 !important;
+}
+
+/* =============================================================================
+   UXP-SPECIFIC ANTI-FLICKER OVERRIDES
+   ============================================================================= */
+
+/* Prevent UXP from applying any global input styling */
+div[role="textbox"].uxp-reset--complete.spectrum-Textfield.spectrum-Textfield *,
+div[role="textbox"].uxp-reset--complete.spectrum-Textfield.spectrum-Textfield *:hover,
+div[role="textbox"].uxp-reset--complete.spectrum-Textfield.spectrum-Textfield *:focus,
+div[role="textbox"].uxp-reset--complete.spectrum-Textfield.spectrum-Textfield *:active {
+  transition: none !important;
+  animation: none !important;
+}
+
+/* Re-enable smooth transitions only on our container */
+div[role="textbox"].uxp-reset--complete.spectrum-Textfield.spectrum-Textfield {
+  transition: 
+    border-color var(--spectrum-animation-duration-100) ease-out,
+    box-shadow var(--spectrum-animation-duration-100) ease-out !important;
+}
+
+/* Aggressive override for any UXP-injected focus styles */
+div[role="textbox"].uxp-reset--complete.spectrum-Textfield.spectrum-Textfield input::-webkit-outer-spin-button,
+div[role="textbox"].uxp-reset--complete.spectrum-Textfield.spectrum-Textfield input::-webkit-inner-spin-button {
+  -webkit-appearance: none !important;
+  margin: 0 !important;
+}
+
+div[role="textbox"].uxp-reset--complete.spectrum-Textfield.spectrum-Textfield input[type="number"] {
+  -moz-appearance: textfield !important;
+  appearance: textfield !important;
+}
+
+/* Force remove any UXP focus rings */
+div[role="textbox"].uxp-reset--complete.spectrum-Textfield.spectrum-Textfield *:focus {
+  outline: none !important;
+  outline-offset: 0 !important;
+  outline-color: transparent !important;
+  outline-width: 0 !important;
+  outline-style: none !important;
+}
+
+/* =============================================================================
+   FIELD CONTAINER LAYOUT
+   ============================================================================= */
+
+/* Container for the entire field (label + input + help text) */
+.spectrum-Field {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  width: 100% !important;
+  margin-bottom: var(--spectrum-spacing-300) !important;
+}
+
+/* Ensure proper spacing between fields */
+.spectrum-Field + .spectrum-Field {
+  margin-top: var(--spectrum-spacing-200) !important;
+}

@@ -67,35 +67,6 @@
 }
 */
 
-/* Spectrum Textfield */
-.spectrum-Textfield {
-  display: inline-flex;
-  flex-direction: column;
-  width: 100%;
-}
-
-.spectrum-Textfield-input {
-  padding: var(--spectrum-spacing-100) var(--spectrum-spacing-200);
-  border-radius: var(--spectrum-corner-radius-100);
-  border: 1px solid var(--spectrum-border-color-default);
-  background: var(--spectrum-background-layer-3-color);
-  color: var(--spectrum-neutral-content-color-default);
-  font-size: var(--spectrum-font-size-100);
-  transition: var(--spectrum-animation-duration-100) var(--spectrum-animation-ease-in-out);
-  min-height: var(--spectrum-component-height-100);
-  box-sizing: border-box;
-}
-
-.spectrum-Textfield-input:focus-visible {
-  outline: var(--spectrum-focus-indicator-thickness) solid var(--spectrum-focus-indicator-color);
-  outline-offset: var(--spectrum-focus-indicator-gap);
-  border-color: var(--spectrum-focus-indicator-color);
-}
-
-.spectrum-Textfield-input::placeholder {
-  color: var(--spectrum-neutral-subdued-content-color-default);
-}
-
 /* Spectrum FieldLabel */
 .spectrum-FieldLabel {
   display: block;
