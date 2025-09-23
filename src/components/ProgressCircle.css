@@ -85,6 +85,7 @@ div[role="progressbar"].uxp-reset--complete.spectrum-ProgressCircle.spectrum-Pro
   height: 100% !important;
   overflow: hidden !important;
   transform-origin: 100% 50% !important;
+  transition: transform 0.3s ease-out !important;
 }
 
 /* Second mask starts from the right side */
@@ -115,6 +116,7 @@ div[role="progressbar"].uxp-reset--complete.spectrum-ProgressCircle.spectrum-Pro
   border-color: var(--spectrum-accent-color-800, #0a84ff) !important;
   box-sizing: border-box !important;
   transform-origin: 50% 50% !important;
+  transition: transform 0.3s ease-out !important;
 }
 
 /* Fill positioning for left and right halves */

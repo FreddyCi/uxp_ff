@@ -54,6 +54,37 @@ export const ProgressCircle: React.FC<ProgressCircleProps> = ({
     stateClass,
     className
   ].filter(Boolean).join(' ');
+
+  // Calculate transforms for circular progress
+  // The circular progress uses two masks to create a full 360° effect
+  // First mask handles 0-50% (0-180°), second mask handles 50-100% (180-360°)
+  const getProgressTransforms = (progress: number) => {
+    if (showIndeterminate) {
+      return { mask1: {}, mask2: {} };
+    }
+
+    const percentage = Math.max(0, Math.min(100, progress));
+    
+    // First half: 0% to 50% (0° to 180°)
+    const firstHalfProgress = Math.min(50, percentage);
+    const firstHalfDegrees = (firstHalfProgress / 50) * 180;
+    
+    // Second half: 50% to 100% (180° to 360°)
+    const secondHalfProgress = Math.max(0, percentage - 50);
+    const secondHalfDegrees = (secondHalfProgress / 50) * 180;
+    
+    return {
+      mask1: {
+        transform: firstHalfProgress > 0 ? `rotate(${firstHalfDegrees}deg)` : 'rotate(0deg)'
+      },
+      mask2: {
+        transform: secondHalfProgress > 0 ? `rotate(${secondHalfDegrees}deg)` : 'rotate(0deg)',
+        opacity: secondHalfProgress > 0 ? 1 : 0
+      }
+    };
+  };
+
+  const transforms = getProgressTransforms(progressValue);
   
   return (
     <div
@@ -73,19 +104,17 @@ export const ProgressCircle: React.FC<ProgressCircleProps> = ({
           <div className="spectrum-ProgressCircle-fillSubMask1">
             <div 
               className="spectrum-ProgressCircle-fill"
-              style={!showIndeterminate ? {
-                transform: `rotate(${(progressValue / 100) * 180}deg)`
-              } : undefined}
+              style={transforms.mask1}
             ></div>
           </div>
         </div>
-        <div className="spectrum-ProgressCircle-fillMask2">
+        <div 
+          className="spectrum-ProgressCircle-fillMask2"
+          style={transforms.mask2}
+        >
           <div className="spectrum-ProgressCircle-fillSubMask2">
             <div 
               className="spectrum-ProgressCircle-fill"
-              style={!showIndeterminate ? {
-                transform: `rotate(${Math.max(0, (progressValue - 50) / 50) * 180}deg)`
-              } : undefined}
             ></div>
           </div>
         </div>
