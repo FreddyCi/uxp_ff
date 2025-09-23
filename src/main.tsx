@@ -12,6 +12,7 @@ import { TextField } from "./components/TextField";
 import { TextArea } from "./components/TextArea";
 import { Select } from "./components/Select";
 import { Button } from "./components/Button";
+import { ActionBar } from "./components/ActionBar";
 import { Tabs, TabList, Tab, TabPanel } from "./components/Tabs";
 import { usePluginStore } from "./store/usePluginStore";
 
@@ -151,6 +152,7 @@ const App: React.FC = () => {
           <Tab id="tab4">About</Tab>
           <Tab id="tab5">Login</Tab>
           <Tab id="tab6">Gallery</Tab>
+          <Tab id="tab7">Actions</Tab>
         </TabList>
         
         <TabPanel id="tab1">
@@ -490,6 +492,118 @@ const App: React.FC = () => {
 
         <TabPanel id="tab6">
           <Gallery />
+        </TabPanel>
+
+        <TabPanel id="tab7">
+          <div style={{ padding: "12px" }}>
+            <h3 style={{ margin: "0 0 16px 0", color: "var(--text)" }}>ActionBar Component Demo</h3>
+            
+            <div style={{ marginBottom: "24px" }}>
+              <p style={{ margin: "0 0 16px 0", fontSize: "14px", color: "var(--text-muted)" }}>
+                ActionBars are floating bars that appear upon selection for bulk actions. Click buttons below to simulate selection states.
+              </p>
+              
+              {/* Standard ActionBar */}
+              <div style={{ marginBottom: "32px" }}>
+                <h4 style={{ margin: "0 0 12px 0", color: "var(--text)", fontSize: "14px" }}>Standard ActionBar</h4>
+                <div style={{ position: "relative", height: "80px", backgroundColor: "var(--spectrum-background-layer-2-color, #f9fafb)", borderRadius: "4px", padding: "16px" }}>
+                  <ActionBar
+                    isOpen={true}
+                    selectedCount={3}
+                    onClearSelection={() => console.log("Clear selection")}
+                  >
+                    <Button variant="secondary" size="small">Edit</Button>
+                    <Button variant="secondary" size="small">Share</Button>
+                    <Button variant="negative" size="small">Delete</Button>
+                  </ActionBar>
+                </div>
+              </div>
+              
+              {/* Emphasized ActionBar */}
+              <div style={{ marginBottom: "32px" }}>
+                <h4 style={{ margin: "0 0 12px 0", color: "var(--text)", fontSize: "14px" }}>Emphasized ActionBar</h4>
+                <p style={{ margin: "0 0 8px 0", fontSize: "12px", color: "var(--text-muted)" }}>Blue background for visual emphasis:</p>
+                <div style={{ position: "relative", height: "80px", backgroundColor: "var(--spectrum-background-layer-2-color, #f9fafb)", borderRadius: "4px", padding: "16px" }}>
+                  <ActionBar
+                    isOpen={true}
+                    isEmphasized={true}
+                    selectedCount={5}
+                    onClearSelection={() => console.log("Clear emphasized selection")}
+                  >
+                    <Button variant="accent" size="small">Move</Button>
+                    <Button variant="accent" size="small">Copy</Button>
+                    <Button variant="negative" size="small">Remove</Button>
+                  </ActionBar>
+                </div>
+              </div>
+              
+              {/* Flexible Width ActionBar */}
+              <div style={{ marginBottom: "32px" }}>
+                <h4 style={{ margin: "0 0 12px 0", color: "var(--text)", fontSize: "14px" }}>Flexible Width ActionBar</h4>
+                <p style={{ margin: "0 0 8px 0", fontSize: "12px", color: "var(--text-muted)" }}>Adapts to content size instead of full width:</p>
+                <div style={{ position: "relative", height: "80px", backgroundColor: "var(--spectrum-background-layer-2-color, #f9fafb)", borderRadius: "4px", padding: "16px" }}>
+                  <ActionBar
+                    isOpen={true}
+                    isFlexible={true}
+                    selectedCount={1}
+                    onClearSelection={() => console.log("Clear flexible selection")}
+                  >
+                    <Button variant="accent" size="small">Quick Action</Button>
+                  </ActionBar>
+                </div>
+              </div>
+              
+              {/* Interactive Demo */}
+              <div style={{ marginBottom: "32px" }}>
+                <h4 style={{ margin: "0 0 12px 0", color: "var(--text)", fontSize: "14px" }}>Interactive Demo</h4>
+                <p style={{ margin: "0 0 8px 0", fontSize: "12px", color: "var(--text-muted)" }}>Toggle ActionBar visibility:</p>
+                <div style={{ marginBottom: "16px" }}>
+                  <Button 
+                    variant="accent"
+                    onPress={() => {
+                      const actionBar = document.querySelector('.demo-actionbar');
+                      if (actionBar) {
+                        actionBar.classList.toggle('is-open');
+                      }
+                    }}
+                  >
+                    Toggle ActionBar
+                  </Button>
+                </div>
+                <div style={{ position: "relative", height: "80px", backgroundColor: "var(--spectrum-background-layer-2-color, #f9fafb)", borderRadius: "4px", padding: "16px" }}>
+                  <ActionBar
+                    className="demo-actionbar"
+                    isOpen={false}
+                    selectedCount={2}
+                    onClearSelection={() => {
+                      const actionBar = document.querySelector('.demo-actionbar');
+                      if (actionBar) {
+                        actionBar.classList.remove('is-open');
+                      }
+                    }}
+                  >
+                    <Button variant="secondary" size="small">Archive</Button>
+                    <Button variant="secondary" size="small">Export</Button>
+                    <Button variant="negative" size="small">Delete</Button>
+                  </ActionBar>
+                </div>
+              </div>
+            </div>
+            
+            <div style={{ fontSize: "12px", color: "var(--text-disabled)" }}>
+              <p><strong>ActionBar Features:</strong></p>
+              <ul style={{ margin: "8px 0", paddingLeft: "20px" }}>
+                <li>Floating appearance with shadow and animation</li>
+                <li>Standard and emphasized (blue) variants</li>
+                <li>Flexible width and positioning options</li>
+                <li>Selection counter and clear action</li>
+                <li>Integrates with Action Groups and buttons</li>
+                <li>Responsive design for narrow containers</li>
+                <li>Full accessibility with ARIA toolbar role</li>
+                <li>UXP-optimized with hybrid nuclear div approach</li>
+              </ul>
+            </div>
+          </div>
         </TabPanel>
       </Tabs>
       </div>

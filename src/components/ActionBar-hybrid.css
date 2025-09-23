@@ -1,0 +1,298 @@
+/*!
+ * Hybrid ActionBar Component - Official Spectrum CSS + Nuclear Div Approach
+ * Based on official ActionBar metadata and following our proven Button/Tabs pattern
+ */
+
+/* =============================================================================
+   NUCLEAR DIV + SPECTRUM CSS RESET OVERRIDE - ACTIONBAR
+   ============================================================================= */
+
+/* Ultra-high specificity selector to override aggressive UXP inline styles */
+div[role="toolbar"].uxp-reset--complete.spectrum-ActionBar.spectrum-ActionBar {
+  /* Override any UXP interference */
+  all: unset !important;
+  
+  /* Re-establish basic foundation */
+  box-sizing: border-box !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  position: relative !important;
+  width: 100% !important;
+  
+  /* Official Spectrum foundation */
+  font-family: var(--spectrum-sans-font-family-stack, "adobe-clean", "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif) !important;
+  height: var(--spectrum-actionbar-height, 48px) !important;
+  border-radius: var(--spectrum-actionbar-corner-radius, var(--spectrum-corner-radius-100, 4px)) !important;
+  
+  /* Hidden by default - only show when is-open */
+  opacity: 0 !important;
+  visibility: hidden !important;
+  transform: translateY(8px) !important;
+  transition: opacity var(--spectrum-animation-duration-100, 0.15s) ease-out,
+              visibility var(--spectrum-animation-duration-100, 0.15s) ease-out,
+              transform var(--spectrum-animation-duration-100, 0.15s) ease-out !important;
+}
+
+/* Open state - show the action bar */
+div[role="toolbar"].uxp-reset--complete.spectrum-ActionBar.spectrum-ActionBar.is-open {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translateY(0) !important;
+}
+
+/* =============================================================================
+   ACTIONBAR POPOVER CONTAINER
+   ============================================================================= */
+
+/* The popover is the main visual container */
+div[role="toolbar"].uxp-reset--complete.spectrum-ActionBar.spectrum-ActionBar .spectrum-ActionBar-popover {
+  /* Nuclear reset */
+  all: unset !important;
+  
+  /* Re-establish fundamentals */
+  box-sizing: border-box !important;
+  display: flex !important;
+  align-items: center !important;
+  width: 100% !important;
+  height: 100% !important;
+  
+  /* Background and styling */
+  background-color: var(--spectrum-actionbar-popover-background-color, var(--spectrum-background-layer-1-color, #ffffff)) !important;
+  border: 1px solid var(--spectrum-actionbar-popover-border-color, var(--spectrum-border-color-default, #d1d5db)) !important;
+  border-radius: inherit !important;
+  
+  /* Shadow for floating appearance */
+  box-shadow: 
+    var(--spectrum-actionbar-shadow-horizontal, 0)
+    var(--spectrum-actionbar-shadow-vertical, 4px)
+    var(--spectrum-actionbar-shadow-blur, 16px)
+    var(--spectrum-actionbar-shadow-color, rgba(0, 0, 0, 0.15)) !important;
+  
+  /* Spacing */
+  padding: 0 var(--spectrum-actionbar-spacing-outer-edge, var(--spectrum-spacing-300, 12px)) !important;
+  gap: var(--spectrum-spacing-100, 8px) !important;
+}
+
+/* =============================================================================
+   FIELD LABEL (ITEM COUNTER)
+   ============================================================================= */
+
+div[role="toolbar"].uxp-reset--complete.spectrum-ActionBar.spectrum-ActionBar .spectrum-FieldLabel {
+  /* Nuclear reset */
+  all: unset !important;
+  
+  /* Re-establish fundamentals */
+  box-sizing: border-box !important;
+  display: block !important;
+  
+  /* Typography */
+  font-family: var(--spectrum-sans-font-family-stack) !important;
+  font-size: var(--spectrum-actionbar-item-counter-font-size, var(--spectrum-font-size-100, 16px)) !important;
+  font-weight: 400 !important;
+  font-style: normal !important;
+  line-height: var(--spectrum-actionbar-item-counter-line-height, var(--spectrum-line-height-100, 1.3)) !important;
+  
+  /* Colors */
+  color: var(--spectrum-actionbar-item-counter-color, var(--spectrum-neutral-content-color-default, #1f2937)) !important;
+  
+  /* Spacing */
+  margin-right: var(--spectrum-spacing-200, 8px) !important;
+  flex-shrink: 0 !important;
+}
+
+/* =============================================================================
+   ACTION GROUP CONTAINER
+   ============================================================================= */
+
+div[role="toolbar"].uxp-reset--complete.spectrum-ActionBar.spectrum-ActionBar .spectrum-ActionGroup {
+  /* Nuclear reset */
+  all: unset !important;
+  
+  /* Re-establish fundamentals */
+  box-sizing: border-box !important;
+  display: flex !important;
+  align-items: center !important;
+  flex: 1 !important;
+  
+  /* Spacing between actions */
+  gap: var(--spectrum-spacing-75, 6px) !important;
+  
+  /* Positioning */
+  margin-right: var(--spectrum-actionbar-spacing-action-group-end, var(--spectrum-spacing-100, 8px)) !important;
+}
+
+/* =============================================================================
+   CLOSE BUTTON
+   ============================================================================= */
+
+div[role="toolbar"].uxp-reset--complete.spectrum-ActionBar.spectrum-ActionBar .spectrum-CloseButton {
+  /* Nuclear reset */
+  all: unset !important;
+  
+  /* Re-establish fundamentals */
+  box-sizing: border-box !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  
+  /* Size */
+  width: 32px !important;
+  height: 32px !important;
+  border-radius: var(--spectrum-corner-radius-100, 4px) !important;
+  
+  /* Background */
+  background-color: transparent !important;
+  border: none !important;
+  
+  /* Colors */
+  color: var(--spectrum-neutral-content-color-default, #1f2937) !important;
+  
+  /* Positioning */
+  flex-shrink: 0 !important;
+  margin-left: auto !important;
+  
+  /* Transitions */
+  transition: background-color var(--spectrum-animation-duration-100, 0.15s) ease-out !important;
+}
+
+div[role="toolbar"].uxp-reset--complete.spectrum-ActionBar.spectrum-ActionBar .spectrum-CloseButton:hover {
+  background-color: var(--spectrum-background-layer-2-color, #f9fafb) !important;
+}
+
+div[role="toolbar"].uxp-reset--complete.spectrum-ActionBar.spectrum-ActionBar .spectrum-CloseButton:active {
+  background-color: var(--spectrum-background-layer-3-color, #f3f4f6) !important;
+}
+
+/* Close button icon */
+div[role="toolbar"].uxp-reset--complete.spectrum-ActionBar.spectrum-ActionBar .spectrum-CloseButton .spectrum-Icon {
+  /* Nuclear reset */
+  all: unset !important;
+  
+  /* Re-establish fundamentals */
+  display: block !important;
+  width: 16px !important;
+  height: 16px !important;
+  fill: currentColor !important;
+}
+
+/* =============================================================================
+   EMPHASIZED VARIANT
+   ============================================================================= */
+
+div[role="toolbar"].uxp-reset--complete.spectrum-ActionBar.spectrum-ActionBar.spectrum-ActionBar--emphasized .spectrum-ActionBar-popover {
+  background-color: var(--spectrum-actionbar-emphasized-background-color, var(--spectrum-informative-background-color-default, #2563eb)) !important;
+}
+
+div[role="toolbar"].uxp-reset--complete.spectrum-ActionBar.spectrum-ActionBar.spectrum-ActionBar--emphasized .spectrum-FieldLabel {
+  color: var(--spectrum-actionbar-emphasized-item-counter-color, var(--spectrum-white, #ffffff)) !important;
+}
+
+div[role="toolbar"].uxp-reset--complete.spectrum-ActionBar.spectrum-ActionBar.spectrum-ActionBar--emphasized .spectrum-CloseButton {
+  color: var(--spectrum-white, #ffffff) !important;
+}
+
+div[role="toolbar"].uxp-reset--complete.spectrum-ActionBar.spectrum-ActionBar.spectrum-ActionBar--emphasized .spectrum-CloseButton:hover {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+div[role="toolbar"].uxp-reset--complete.spectrum-ActionBar.spectrum-ActionBar.spectrum-ActionBar--emphasized .spectrum-CloseButton:active {
+  background-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+/* =============================================================================
+   POSITIONING VARIANTS
+   ============================================================================= */
+
+/* Sticky variant - sticks to bottom of container */
+div[role="toolbar"].uxp-reset--complete.spectrum-ActionBar.spectrum-ActionBar.spectrum-ActionBar--sticky {
+  position: sticky !important;
+  bottom: 0 !important;
+  z-index: 100 !important;
+}
+
+/* Fixed variant - fixed position */
+div[role="toolbar"].uxp-reset--complete.spectrum-ActionBar.spectrum-ActionBar.spectrum-ActionBar--fixed {
+  position: fixed !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 1000 !important;
+}
+
+/* Flexible variant - flexible width popover */
+div[role="toolbar"].uxp-reset--complete.spectrum-ActionBar.spectrum-ActionBar.spectrum-ActionBar--flexible .spectrum-ActionBar-popover {
+  width: auto !important;
+  max-width: 100% !important;
+  margin: 0 auto !important;
+}
+
+/* =============================================================================
+   SPACING BETWEEN ACTIONBARS - MARGIN APPROACH FOR UXP
+   ============================================================================= */
+
+/* Horizontal spacing between action bars */
+div[role="toolbar"].uxp-reset--complete.spectrum-ActionBar + div[role="toolbar"].uxp-reset--complete.spectrum-ActionBar {
+  margin-left: 8px !important;
+}
+
+/* Vertical spacing in stacked layouts */
+.actionbar-group-vertical div[role="toolbar"].uxp-reset--complete.spectrum-ActionBar + div[role="toolbar"].uxp-reset--complete.spectrum-ActionBar {
+  margin-left: 0 !important;
+  margin-top: 8px !important;
+}
+
+/* =============================================================================
+   ACTIONBAR CONTAINER LAYOUT
+   ============================================================================= */
+
+/* Container for the entire action bar group */
+.actionbar-container {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+  width: 100% !important;
+}
+
+/* Ensure proper spacing between action bars */
+.actionbar-container + .actionbar-container {
+  margin-top: var(--spectrum-spacing-200, 8px) !important;
+}
+
+/* =============================================================================
+   RESPONSIVE BEHAVIOR
+   ============================================================================= */
+
+/* Compact layout for narrow containers */
+@container (max-width: 400px) {
+  div[role="toolbar"].uxp-reset--complete.spectrum-ActionBar.spectrum-ActionBar .spectrum-ActionBar-popover {
+    padding: 0 var(--spectrum-spacing-200, 8px) !important;
+    gap: var(--spectrum-spacing-75, 6px) !important;
+  }
+  
+  div[role="toolbar"].uxp-reset--complete.spectrum-ActionBar.spectrum-ActionBar .spectrum-FieldLabel {
+    font-size: var(--spectrum-font-size-75, 14px) !important;
+  }
+}
+
+/* =============================================================================
+   DARK THEME SUPPORT
+   ============================================================================= */
+
+[data-theme="dark"] div[role="toolbar"].uxp-reset--complete.spectrum-ActionBar.spectrum-ActionBar .spectrum-ActionBar-popover {
+  background-color: var(--spectrum-actionbar-popover-background-color, #242424) !important;
+  border-color: var(--spectrum-actionbar-popover-border-color, #374151) !important;
+}
+
+[data-theme="dark"] div[role="toolbar"].uxp-reset--complete.spectrum-ActionBar.spectrum-ActionBar .spectrum-FieldLabel {
+  color: var(--spectrum-actionbar-item-counter-color, #e5e7eb) !important;
+}
+
+[data-theme="dark"] div[role="toolbar"].uxp-reset--complete.spectrum-ActionBar.spectrum-ActionBar .spectrum-CloseButton {
+  color: var(--spectrum-neutral-content-color-default, #e5e7eb) !important;
+}
+
+[data-theme="dark"] div[role="toolbar"].uxp-reset--complete.spectrum-ActionBar.spectrum-ActionBar .spectrum-CloseButton:hover {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+}
