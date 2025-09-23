@@ -1,0 +1,194 @@
+/*
+ * Copyright 2024 Adobe. All rights reserved.
+ * This file is licensed to you under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License. You may obtain a copy
+ * of the License at http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under
+ * the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR REPRESENTATIONS
+ * OF ANY KIND, either express or implied. See the License for the specific language
+ * governing permissions and limitations under the License.
+ */
+
+/* ProgressCircle - Hybrid Nuclear Div CSS */
+/* Nuclear div approach for ultra-high specificity in UXP environments */
+/* Based on official Spectrum ProgressCircle structure */
+
+/* Base ProgressCircle Container */
+div[role="progressbar"].uxp-reset--complete.spectrum-ProgressCircle.spectrum-ProgressCircle {
+  /* Nuclear reset */
+  all: unset !important;
+  
+  /* Re-establish fundamentals */
+  position: relative !important;
+  display: inline-block !important;
+  box-sizing: border-box !important;
+  direction: ltr !important;
+}
+
+/* Size variants */
+div[role="progressbar"].uxp-reset--complete.spectrum-ProgressCircle.spectrum-ProgressCircle--small {
+  width: 16px !important;
+  height: 16px !important;
+}
+
+div[role="progressbar"].uxp-reset--complete.spectrum-ProgressCircle.spectrum-ProgressCircle--medium {
+  width: 32px !important;
+  height: 32px !important;
+}
+
+div[role="progressbar"].uxp-reset--complete.spectrum-ProgressCircle.spectrum-ProgressCircle--large {
+  width: 48px !important;
+  height: 48px !important;
+}
+
+/* Track (background circle) */
+div[role="progressbar"].uxp-reset--complete.spectrum-ProgressCircle.spectrum-ProgressCircle .spectrum-ProgressCircle-track {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  border-radius: 50% !important;
+  border: 2px solid !important;
+  border-color: var(--spectrum-gray-300, #d3d3d3) !important;
+  box-sizing: border-box !important;
+}
+
+/* Track size adjustments */
+div[role="progressbar"].uxp-reset--complete.spectrum-ProgressCircle.spectrum-ProgressCircle--small .spectrum-ProgressCircle-track {
+  border-width: 1px !important;
+}
+
+div[role="progressbar"].uxp-reset--complete.spectrum-ProgressCircle.spectrum-ProgressCircle--large .spectrum-ProgressCircle-track {
+  border-width: 3px !important;
+}
+
+/* Fills container */
+div[role="progressbar"].uxp-reset--complete.spectrum-ProgressCircle.spectrum-ProgressCircle .spectrum-ProgressCircle-fills {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  overflow: hidden !important;
+  border-radius: 50% !important;
+}
+
+/* Fill masks - creates the circular progress effect */
+div[role="progressbar"].uxp-reset--complete.spectrum-ProgressCircle.spectrum-ProgressCircle .spectrum-ProgressCircle-fillMask1,
+div[role="progressbar"].uxp-reset--complete.spectrum-ProgressCircle.spectrum-ProgressCircle .spectrum-ProgressCircle-fillMask2 {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 50% !important;
+  height: 100% !important;
+  overflow: hidden !important;
+  transform-origin: 100% 50% !important;
+}
+
+/* Second mask starts from the right side */
+div[role="progressbar"].uxp-reset--complete.spectrum-ProgressCircle.spectrum-ProgressCircle .spectrum-ProgressCircle-fillMask2 {
+  left: 50% !important;
+  transform-origin: 0% 50% !important;
+}
+
+/* Sub masks for better control */
+div[role="progressbar"].uxp-reset--complete.spectrum-ProgressCircle.spectrum-ProgressCircle .spectrum-ProgressCircle-fillSubMask1,
+div[role="progressbar"].uxp-reset--complete.spectrum-ProgressCircle.spectrum-ProgressCircle .spectrum-ProgressCircle-fillSubMask2 {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  overflow: hidden !important;
+}
+
+/* The actual fill elements */
+div[role="progressbar"].uxp-reset--complete.spectrum-ProgressCircle.spectrum-ProgressCircle .spectrum-ProgressCircle-fill {
+  position: absolute !important;
+  top: 0 !important;
+  width: 200% !important;
+  height: 100% !important;
+  border-radius: 50% !important;
+  border: 2px solid !important;
+  border-color: var(--spectrum-accent-color-800, #0a84ff) !important;
+  box-sizing: border-box !important;
+  transform-origin: 50% 50% !important;
+}
+
+/* Fill positioning for left and right halves */
+div[role="progressbar"].uxp-reset--complete.spectrum-ProgressCircle.spectrum-ProgressCircle .spectrum-ProgressCircle-fillMask1 .spectrum-ProgressCircle-fill {
+  left: 0 !important;
+}
+
+div[role="progressbar"].uxp-reset--complete.spectrum-ProgressCircle.spectrum-ProgressCircle .spectrum-ProgressCircle-fillMask2 .spectrum-ProgressCircle-fill {
+  left: -100% !important;
+}
+
+/* Fill size adjustments */
+div[role="progressbar"].uxp-reset--complete.spectrum-ProgressCircle.spectrum-ProgressCircle--small .spectrum-ProgressCircle-fill {
+  border-width: 1px !important;
+}
+
+div[role="progressbar"].uxp-reset--complete.spectrum-ProgressCircle.spectrum-ProgressCircle--large .spectrum-ProgressCircle-fill {
+  border-width: 3px !important;
+}
+
+/* Indeterminate animation */
+@keyframes spectrum-progress-circle-rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Indeterminate state */
+div[role="progressbar"].uxp-reset--complete.spectrum-ProgressCircle.spectrum-ProgressCircle--indeterminate {
+  animation: spectrum-progress-circle-rotation 1s infinite linear !important;
+}
+
+/* Hide second mask in indeterminate state to create the moving arc effect */
+div[role="progressbar"].uxp-reset--complete.spectrum-ProgressCircle.spectrum-ProgressCircle--indeterminate .spectrum-ProgressCircle-fillMask2 {
+  display: none !important;
+}
+
+/* Create partial arc for indeterminate */
+div[role="progressbar"].uxp-reset--complete.spectrum-ProgressCircle.spectrum-ProgressCircle--indeterminate .spectrum-ProgressCircle-fillMask1 {
+  transform: rotate(45deg) !important;
+}
+
+div[role="progressbar"].uxp-reset--complete.spectrum-ProgressCircle.spectrum-ProgressCircle--indeterminate .spectrum-ProgressCircle-fillSubMask1 {
+  transform: rotate(-135deg) !important;
+}
+
+/* Dark theme support */
+@media (prefers-color-scheme: dark) {
+  div[role="progressbar"].uxp-reset--complete.spectrum-ProgressCircle.spectrum-ProgressCircle .spectrum-ProgressCircle-track {
+    border-color: var(--spectrum-gray-600, #6b6b6b) !important;
+  }
+
+  div[role="progressbar"].uxp-reset--complete.spectrum-ProgressCircle.spectrum-ProgressCircle .spectrum-ProgressCircle-fill {
+    border-color: var(--spectrum-accent-color-900, #4fbcff) !important;
+  }
+}
+
+/* High contrast support */
+@media (prefers-contrast: high) {
+  div[role="progressbar"].uxp-reset--complete.spectrum-ProgressCircle.spectrum-ProgressCircle .spectrum-ProgressCircle-track {
+    border-color: ButtonFace !important;
+  }
+
+  div[role="progressbar"].uxp-reset--complete.spectrum-ProgressCircle.spectrum-ProgressCircle .spectrum-ProgressCircle-fill {
+    border-color: Highlight !important;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  div[role="progressbar"].uxp-reset--complete.spectrum-ProgressCircle.spectrum-ProgressCircle--indeterminate {
+    animation: none !important;
+  }
+}

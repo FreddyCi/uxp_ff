@@ -20,6 +20,7 @@ import { MenuItem } from "./components/MenuItem";
 import { Card } from "./components/Card";
 import { Checkbox } from "./components/Checkbox";
 import { Typography, Heading, Body, Emphasized, Code, Detail, Strong } from "./components/Typography";
+import { ProgressCircle } from "./components/ProgressCircle";
 import { Tabs, TabList, Tab, TabPanel } from "./components/Tabs";
 import { usePluginStore } from "./store/usePluginStore";
 
@@ -163,6 +164,7 @@ const App: React.FC = () => {
           <Tab id="tab8">Cards</Tab>
           <Tab id="tab9">Checkboxes</Tab>
           <Tab id="tab10">Typography</Tab>
+          <Tab id="tab11">Progress Circles</Tab>
         </TabList>
         
         <TabPanel id="tab1">
@@ -1517,6 +1519,217 @@ console.log(greet('World'));`}
                 <li><strong>Accessibility:</strong> Proper semantic structure and ARIA support</li>
                 <li><strong>Font Families:</strong> Sans-serif default, serif variant, monospace for code</li>
                 <li><strong>Responsive:</strong> Container queries for mobile-friendly scaling</li>
+              </ul>
+            </div>
+          </div>
+        </TabPanel>
+
+        <TabPanel id="tab11">
+          <div style={{ padding: "12px" }}>
+            <h3 style={{ margin: "0 0 16px 0", color: "var(--text)" }}>ProgressCircle</h3>
+            <p style={{ marginBottom: "24px", color: "var(--text)" }}>
+              Official Spectrum ProgressCircle component with size variants, determinate and indeterminate states.
+            </p>
+
+            {/* Size Variants Indeterminate */}
+            <div style={{ marginBottom: "32px" }}>
+              <h4 style={{ margin: "0 0 16px 0", color: "var(--text)" }}>Size Variants (Indeterminate)</h4>
+              <div style={{ display: "flex", alignItems: "center", gap: "40px", flexWrap: "wrap" }}>
+                <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "12px" }}>
+                  <span style={{ fontSize: "11px", color: "var(--text-muted)", textTransform: "uppercase", letterSpacing: "0.06em" }}>Small</span>
+                  <ProgressCircle size="small" isIndeterminate aria-label="Small loading indicator" />
+                </div>
+                <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "12px" }}>
+                  <span style={{ fontSize: "11px", color: "var(--text-muted)", textTransform: "uppercase", letterSpacing: "0.06em" }}>Medium</span>
+                  <ProgressCircle size="medium" isIndeterminate aria-label="Medium loading indicator" />
+                </div>
+                <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "12px" }}>
+                  <span style={{ fontSize: "11px", color: "var(--text-muted)", textTransform: "uppercase", letterSpacing: "0.06em" }}>Large</span>
+                  <ProgressCircle size="large" isIndeterminate aria-label="Large loading indicator" />
+                </div>
+              </div>
+            </div>
+
+            {/* Determinate Progress */}
+            <div style={{ marginBottom: "32px" }}>
+              <h4 style={{ margin: "0 0 16px 0", color: "var(--text)" }}>Determinate Progress</h4>
+              <div style={{ display: "flex", alignItems: "center", gap: "40px", flexWrap: "wrap" }}>
+                <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "12px" }}>
+                  <span style={{ fontSize: "11px", color: "var(--text-muted)", textTransform: "uppercase", letterSpacing: "0.06em" }}>25%</span>
+                  <ProgressCircle size="medium" value={25} aria-label="25% complete" />
+                </div>
+                <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "12px" }}>
+                  <span style={{ fontSize: "11px", color: "var(--text-muted)", textTransform: "uppercase", letterSpacing: "0.06em" }}>50%</span>
+                  <ProgressCircle size="medium" value={50} aria-label="50% complete" />
+                </div>
+                <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "12px" }}>
+                  <span style={{ fontSize: "11px", color: "var(--text-muted)", textTransform: "uppercase", letterSpacing: "0.06em" }}>75%</span>
+                  <ProgressCircle size="medium" value={75} aria-label="75% complete" />
+                </div>
+                <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "12px" }}>
+                  <span style={{ fontSize: "11px", color: "var(--text-muted)", textTransform: "uppercase", letterSpacing: "0.06em" }}>100%</span>
+                  <ProgressCircle size="medium" value={100} aria-label="Complete" />
+                </div>
+              </div>
+            </div>
+
+            {/* All Sizes with Different Progress Values */}
+            <div style={{ marginBottom: "32px" }}>
+              <h4 style={{ margin: "0 0 16px 0", color: "var(--text)" }}>Size + Progress Matrix</h4>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(120px, 1fr))", gap: "24px" }}>
+                <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "8px" }}>
+                  <span style={{ fontSize: "12px", color: "var(--text)", fontWeight: "500" }}>Small</span>
+                  <ProgressCircle size="small" value={30} />
+                  <span style={{ fontSize: "10px", color: "var(--text-muted)" }}>30%</span>
+                </div>
+                <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "8px" }}>
+                  <span style={{ fontSize: "12px", color: "var(--text)", fontWeight: "500" }}>Medium</span>
+                  <ProgressCircle size="medium" value={60} />
+                  <span style={{ fontSize: "10px", color: "var(--text-muted)" }}>60%</span>
+                </div>
+                <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "8px" }}>
+                  <span style={{ fontSize: "12px", color: "var(--text)", fontWeight: "500" }}>Large</span>
+                  <ProgressCircle size="large" value={90} />
+                  <span style={{ fontSize: "10px", color: "var(--text-muted)" }}>90%</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Real-world Usage Examples */}
+            <div style={{ marginBottom: "32px" }}>
+              <h4 style={{ margin: "0 0 16px 0", color: "var(--text)" }}>Real-world Usage</h4>
+              
+              {/* File Upload Example */}
+              <div style={{ marginBottom: "24px", padding: "16px", backgroundColor: "var(--spectrum-background-layer-2-color, #f9fafb)", borderRadius: "8px" }}>
+                <h5 style={{ margin: "0 0 12px 0", color: "var(--text)", fontSize: "14px" }}>File Upload</h5>
+                <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+                  <ProgressCircle size="small" value={67} aria-label="Upload progress" />
+                  <div>
+                    <p style={{ margin: "0", fontSize: "14px", color: "var(--text)" }}>Uploading design-file.psd</p>
+                    <p style={{ margin: "0", fontSize: "12px", color: "var(--text-muted)" }}>67% complete (2.3 MB of 3.4 MB)</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Loading States */}
+              <div style={{ marginBottom: "24px", padding: "16px", backgroundColor: "var(--spectrum-background-layer-2-color, #f9fafb)", borderRadius: "8px" }}>
+                <h5 style={{ margin: "0 0 12px 0", color: "var(--text)", fontSize: "14px" }}>Loading States</h5>
+                <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+                    <ProgressCircle size="small" isIndeterminate />
+                    <span style={{ fontSize: "14px", color: "var(--text)" }}>Connecting to server...</span>
+                  </div>
+                  <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+                    <ProgressCircle size="small" isIndeterminate />
+                    <span style={{ fontSize: "14px", color: "var(--text)" }}>Processing image...</span>
+                  </div>
+                  <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+                    <ProgressCircle size="small" value={100} />
+                    <span style={{ fontSize: "14px", color: "var(--text)" }}>✓ Export complete</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Task Progress */}
+              <div style={{ marginBottom: "24px", padding: "16px", backgroundColor: "var(--spectrum-background-layer-2-color, #f9fafb)", borderRadius: "8px" }}>
+                <h5 style={{ margin: "0 0 12px 0", color: "var(--text)", fontSize: "14px" }}>Task Progress</h5>
+                <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+                  <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+                      <ProgressCircle size="small" value={100} />
+                      <span style={{ fontSize: "14px", color: "var(--text)" }}>Design review</span>
+                    </div>
+                    <span style={{ fontSize: "12px", color: "var(--text-muted)" }}>Complete</span>
+                  </div>
+                  <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+                      <ProgressCircle size="small" value={75} />
+                      <span style={{ fontSize: "14px", color: "var(--text)" }}>Development</span>
+                    </div>
+                    <span style={{ fontSize: "12px", color: "var(--text-muted)" }}>75%</span>
+                  </div>
+                  <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+                      <ProgressCircle size="small" value={25} />
+                      <span style={{ fontSize: "14px", color: "var(--text)" }}>Testing</span>
+                    </div>
+                    <span style={{ fontSize: "12px", color: "var(--text-muted)" }}>25%</span>
+                  </div>
+                  <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+                      <ProgressCircle size="small" value={0} />
+                      <span style={{ fontSize: "14px", color: "var(--text-muted)" }}>Deployment</span>
+                    </div>
+                    <span style={{ fontSize: "12px", color: "var(--text-muted)" }}>Pending</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Interactive Demo */}
+            <div style={{ marginBottom: "32px" }}>
+              <h4 style={{ margin: "0 0 16px 0", color: "var(--text)" }}>Interactive Demo</h4>
+              <div style={{ padding: "16px", backgroundColor: "var(--spectrum-background-layer-2-color, #f9fafb)", borderRadius: "8px" }}>
+                <p style={{ margin: "0 0 16px 0", fontSize: "14px", color: "var(--text)" }}>
+                  Click to toggle between indeterminate and determinate states:
+                </p>
+                <div style={{ display: "flex", alignItems: "center", gap: "24px", flexWrap: "wrap" }}>
+                  <div 
+                    style={{ cursor: "pointer", display: "flex", flexDirection: "column", alignItems: "center", gap: "8px" }}
+                    onClick={(e) => {
+                      const circle = e.currentTarget.querySelector('[role="progressbar"]') as HTMLElement;
+                      const label = e.currentTarget.querySelector('span') as HTMLElement;
+                      const isIndeterminate = circle?.classList.contains('spectrum-ProgressCircle--indeterminate');
+                      
+                      if (isIndeterminate) {
+                        circle?.classList.remove('spectrum-ProgressCircle--indeterminate');
+                        label.textContent = '45%';
+                      } else {
+                        circle?.classList.add('spectrum-ProgressCircle--indeterminate');
+                        label.textContent = 'Loading...';
+                      }
+                    }}
+                  >
+                    <ProgressCircle size="medium" isIndeterminate />
+                    <span style={{ fontSize: "12px", color: "var(--text-muted)" }}>Loading...</span>
+                  </div>
+                  
+                  <div 
+                    style={{ cursor: "pointer", display: "flex", flexDirection: "column", alignItems: "center", gap: "8px" }}
+                    onClick={(e) => {
+                      const circle = e.currentTarget.querySelector('[role="progressbar"]') as HTMLElement;
+                      const label = e.currentTarget.querySelector('span') as HTMLElement;
+                      const currentValue = parseInt(label.textContent?.replace('%', '') || '0');
+                      const newValue = currentValue >= 100 ? 0 : currentValue + 25;
+                      
+                      // Update visual progress (simplified for demo)
+                      label.textContent = `${newValue}%`;
+                    }}
+                  >
+                    <ProgressCircle size="medium" value={45} />
+                    <span style={{ fontSize: "12px", color: "var(--text-muted)" }}>45%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Implementation Notes */}
+            <div style={{ 
+              padding: "16px", 
+              backgroundColor: "var(--spectrum-global-color-gray-100)", 
+              borderRadius: "4px",
+              marginTop: "24px"
+            }}>
+              <h4 style={{ margin: "0 0 12px 0", color: "var(--text)" }}>Implementation Notes</h4>
+              <ul style={{ margin: "0", paddingLeft: "20px", color: "var(--text)", fontSize: "14px" }}>
+                <li><strong>States:</strong> Supports both determinate (0-100%) and indeterminate (spinning) states</li>
+                <li><strong>Sizes:</strong> Small (16px), Medium (32px), Large (48px) variants</li>
+                <li><strong>Nuclear CSS:</strong> Ultra-high specificity overrides for UXP compatibility</li>
+                <li><strong>Accessibility:</strong> Full ARIA progressbar support with value announcements</li>
+                <li><strong>Animation:</strong> Smooth CSS rotations with reduced motion support</li>
+                <li><strong>Masking System:</strong> CSS-based circular progress using sophisticated mask technique</li>
+                <li><strong>Dark Theme:</strong> Automatic color adaptation for light and dark themes</li>
+                <li><strong>Performance:</strong> CSS-only animations, no JavaScript timers required</li>
               </ul>
             </div>
           </div>
