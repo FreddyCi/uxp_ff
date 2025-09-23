@@ -1,5 +1,5 @@
 'use client';
-import { ReactNode, useRef, useId, createContext, useContext } from 'react';
+import { ReactNode, useRef, useId, createContext, useContext, useState, useEffect } from 'react';
 import { useFocusRing } from 'react-aria';
 import './Radio-hybrid.css';
 
@@ -51,6 +51,24 @@ export function RadioGroup({
   label,
 }: RadioGroupProps) {
   
+  // State management for the radio group - match Select component pattern
+  const [selectedValue, setSelectedValue] = useState<string | undefined>(value || defaultValue);
+  
+  // Update selectedValue when controlled value changes (like Select component)
+  useEffect(() => {
+    if (value !== undefined) {
+      setSelectedValue(value);
+    }
+  }, [value]);
+
+  // Handle value changes
+  const handleChange = (newValue: string) => {
+    if (!isDisabled) {
+      setSelectedValue(newValue);
+      onChange?.(newValue);
+    }
+  };
+  
   // Build Spectrum CSS classes
   const resetClasses = 'uxp-reset--complete';
   const baseClasses = 'spectrum-RadioGroup';
@@ -65,8 +83,8 @@ export function RadioGroup({
 
   const contextValue: RadioGroupContextValue = {
     name,
-    value: value || defaultValue,
-    onChange,
+    value: selectedValue,
+    onChange: handleChange,
     isDisabled,
     size
   };
@@ -113,8 +131,8 @@ export function Radio({
   const isChecked = groupValue === value;
 
   // Handle change events
-  const handleChange = () => {
-    if (!groupIsDisabled && groupOnChange) {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (!groupIsDisabled && groupOnChange && event.target.checked) {
       groupOnChange(value);
     }
   };
@@ -154,7 +172,7 @@ export function Radio({
   const buttonSize = getButtonSize();
 
   return (
-    <div className={radioClasses}>
+    <label className={radioClasses} htmlFor={inputId}>
       <input
         {...focusProps}
         ref={ref}
@@ -171,14 +189,11 @@ export function Radio({
       <span className={`spectrum-Radio-button spectrum-Radio-button--size${buttonSize}`}></span>
       
       {children && (
-        <label 
-          className={`spectrum-Radio-label spectrum-Radio-label--size${buttonSize}`} 
-          htmlFor={inputId}
-        >
+        <span className={`spectrum-Radio-label spectrum-Radio-label--size${buttonSize}`}>
           {children}
-        </label>
+        </span>
       )}
-    </div>
+    </label>
   );
 }
 

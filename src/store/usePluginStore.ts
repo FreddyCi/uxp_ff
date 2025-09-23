@@ -13,6 +13,16 @@ interface PluginState {
   autoSave: boolean;
   fileFormat: 'txt' | 'json' | 'md';
   
+  // Radio component state (for Features tab demos)
+  radioPreferences: {
+    basicOption: string;
+    sizeSmall: string;
+    sizeMedium: string;
+    sizeLarge: string;
+    horizontalAlignment: string;
+    disabledExample: string;
+  };
+  
   // Actions
   setLastSavedFile: (path: string) => void;
   addRecentFile: (path: string) => void;
@@ -21,6 +31,9 @@ interface PluginState {
   toggleAutoSave: () => void;
   setFileFormat: (format: 'txt' | 'json' | 'md') => void;
   clearRecentFiles: () => void;
+  
+  // Radio actions
+  setRadioPreference: (key: keyof PluginState['radioPreferences'], value: string) => void;
 }
 
 export const usePluginStore = create<PluginState>((set, get) => ({
@@ -31,6 +44,16 @@ export const usePluginStore = create<PluginState>((set, get) => ({
   isDarkMode: true,
   autoSave: false,
   fileFormat: 'txt',
+  
+  // Radio preferences initial state
+  radioPreferences: {
+    basicOption: 'option2',
+    sizeSmall: 'small1',
+    sizeMedium: 'medium1',
+    sizeLarge: 'large1',
+    horizontalAlignment: 'center',
+    disabledExample: 'disabled2',
+  },
   
   // Actions
   setLastSavedFile: (path: string) => {
@@ -54,5 +77,15 @@ export const usePluginStore = create<PluginState>((set, get) => ({
   
   setFileFormat: (format: 'txt' | 'json' | 'md') => set({ fileFormat: format }),
   
-  clearRecentFiles: () => set({ recentFiles: [] })
+  clearRecentFiles: () => set({ recentFiles: [] }),
+  
+  // Radio actions
+  setRadioPreference: (key: keyof PluginState['radioPreferences'], value: string) => {
+    set((state) => ({
+      radioPreferences: {
+        ...state.radioPreferences,
+        [key]: value
+      }
+    }));
+  }
 }));

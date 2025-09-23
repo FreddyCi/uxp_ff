@@ -34,11 +34,13 @@ const App: React.FC = () => {
     recentFiles, 
     isDarkMode, 
     fileFormat,
+    radioPreferences,
     setLastSavedFile,
     addRecentFile,
     toggleDarkMode,
     setFileFormat,
-    clearRecentFiles
+    clearRecentFiles,
+    setRadioPreference
   } = usePluginStore();
   
   console.log("App is rendering! Host:", host.name, host.version);
@@ -831,7 +833,8 @@ const App: React.FC = () => {
                   <RadioGroup 
                     name="example-basic" 
                     label="Choose your preferred option:"
-                    defaultValue="option2"
+                    value={radioPreferences.basicOption}
+                    onChange={(value) => setRadioPreference('basicOption', value)}
                   >
                     <Radio value="option1">First option</Radio>
                     <Radio value="option2">Second option (selected)</Radio>
@@ -845,21 +848,36 @@ const App: React.FC = () => {
                   <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
                     <div>
                       <div style={{ fontSize: "12px", color: "var(--text-muted)", marginBottom: "8px" }}>Small</div>
-                      <RadioGroup name="size-small" size="s">
+                      <RadioGroup 
+                        name="size-small" 
+                        size="s"
+                        value={radioPreferences.sizeSmall}
+                        onChange={(value) => setRadioPreference('sizeSmall', value)}
+                      >
                         <Radio value="small1">Small radio option</Radio>
                         <Radio value="small2">Another small option</Radio>
                       </RadioGroup>
                     </div>
                     <div>
                       <div style={{ fontSize: "12px", color: "var(--text-muted)", marginBottom: "8px" }}>Medium</div>
-                      <RadioGroup name="size-medium" size="m">
+                      <RadioGroup 
+                        name="size-medium" 
+                        size="m"
+                        value={radioPreferences.sizeMedium}
+                        onChange={(value) => setRadioPreference('sizeMedium', value)}
+                      >
                         <Radio value="medium1">Medium radio option</Radio>
                         <Radio value="medium2">Another medium option</Radio>
                       </RadioGroup>
                     </div>
                     <div>
                       <div style={{ fontSize: "12px", color: "var(--text-muted)", marginBottom: "8px" }}>Large</div>
-                      <RadioGroup name="size-large" size="l">
+                      <RadioGroup 
+                        name="size-large" 
+                        size="l"
+                        value={radioPreferences.sizeLarge}
+                        onChange={(value) => setRadioPreference('sizeLarge', value)}
+                      >
                         <Radio value="large1">Large radio option</Radio>
                         <Radio value="large2">Another large option</Radio>
                       </RadioGroup>
@@ -874,7 +892,8 @@ const App: React.FC = () => {
                     name="horizontal-example" 
                     orientation="horizontal"
                     label="Select alignment:"
-                    defaultValue="center"
+                    value={radioPreferences.horizontalAlignment}
+                    onChange={(value) => setRadioPreference('horizontalAlignment', value)}
                   >
                     <Radio value="left">Left</Radio>
                     <Radio value="center">Center</Radio>
@@ -889,7 +908,8 @@ const App: React.FC = () => {
                     name="disabled-example" 
                     label="Disabled radio group:"
                     isDisabled={true}
-                    defaultValue="disabled2"
+                    value={radioPreferences.disabledExample}
+                    onChange={(value) => setRadioPreference('disabledExample', value)}
                   >
                     <Radio value="disabled1">Disabled option</Radio>
                     <Radio value="disabled2">Disabled selected option</Radio>

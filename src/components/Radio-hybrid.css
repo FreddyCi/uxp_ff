@@ -45,7 +45,8 @@ div[role="radiogroup"].uxp-reset--complete.spectrum-RadioGroup.spectrum-RadioGro
    ============================================================================= */
 
 /* Ultra-high specificity selector for individual radios */
-.uxp-reset--complete.spectrum-Radio.spectrum-Radio {
+.uxp-reset--complete.spectrum-Radio.spectrum-Radio,
+label.uxp-reset--complete.spectrum-Radio.spectrum-Radio {
   /* Override any UXP interference */
   all: unset !important;
   
