@@ -13,6 +13,7 @@ import { TextArea } from "./components/TextArea";
 import { Select } from "./components/Select";
 import { Button } from "./components/Button";
 import { ActionBar } from "./components/ActionBar";
+import { ActionButton } from "./components/ActionButton";
 import { Tabs, TabList, Tab, TabPanel } from "./components/Tabs";
 import { usePluginStore } from "./store/usePluginStore";
 
@@ -496,33 +497,111 @@ const App: React.FC = () => {
 
         <TabPanel id="tab7">
           <div style={{ padding: "12px" }}>
-            <h3 style={{ margin: "0 0 16px 0", color: "var(--text)" }}>ActionBar Component Demo</h3>
+            <h3 style={{ margin: "0 0 16px 0", color: "var(--text)" }}>Actions Component Ecosystem</h3>
             
-            <div style={{ marginBottom: "24px" }}>
+            {/* ActionButton Showcase */}
+            <div style={{ marginBottom: "32px" }}>
+              <h4 style={{ margin: "0 0 12px 0", color: "var(--text)", fontSize: "16px" }}>ActionButton Component</h4>
               <p style={{ margin: "0 0 16px 0", fontSize: "14px", color: "var(--text-muted)" }}>
-                ActionBars are floating bars that appear upon selection for bulk actions. Click buttons below to simulate selection states.
+                Official Spectrum ActionButton with all size variants, states, and modifiers based on Adobe Spectrum metadata.
               </p>
               
-              {/* Standard ActionBar */}
-              <div style={{ marginBottom: "32px" }}>
-                <h4 style={{ margin: "0 0 12px 0", color: "var(--text)", fontSize: "14px" }}>Standard ActionBar</h4>
+              {/* Size Variants */}
+              <div style={{ marginBottom: "24px" }}>
+                <h5 style={{ margin: "0 0 8px 0", color: "var(--text)", fontSize: "14px" }}>Size Variants</h5>
+                <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "8px", flexWrap: "wrap" }}>
+                  <ActionButton size="xs" iconName="⚡">Extra Small</ActionButton>
+                  <ActionButton size="s" iconName="🔍">Small</ActionButton>
+                  <ActionButton size="m" iconName="⭐">Medium</ActionButton>
+                  <ActionButton size="l" iconName="🎯">Large</ActionButton>
+                  <ActionButton size="xl" iconName="🚀">Extra Large</ActionButton>
+                </div>
+              </div>
+              
+              {/* Icon Only Buttons */}
+              <div style={{ marginBottom: "24px" }}>
+                <h5 style={{ margin: "0 0 8px 0", color: "var(--text)", fontSize: "14px" }}>Icon-Only Buttons</h5>
+                <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "8px", flexWrap: "wrap" }}>
+                  <ActionButton size="xs" iconName="✏️" hideLabel aria-label="Edit" />
+                  <ActionButton size="s" iconName="📋" hideLabel aria-label="Copy" />
+                  <ActionButton size="m" iconName="🗑️" hideLabel aria-label="Delete" />
+                  <ActionButton size="l" iconName="⚙️" hideLabel aria-label="Settings" />
+                  <ActionButton size="xl" iconName="🔄" hideLabel aria-label="Refresh" />
+                </div>
+              </div>
+              
+              {/* State Variants */}
+              <div style={{ marginBottom: "24px" }}>
+                <h5 style={{ margin: "0 0 8px 0", color: "var(--text)", fontSize: "14px" }}>State Variants</h5>
+                <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "8px", flexWrap: "wrap" }}>
+                  <ActionButton iconName="📁">Default</ActionButton>
+                  <ActionButton iconName="📁" isSelected>Selected</ActionButton>
+                  <ActionButton iconName="📁" isEmphasized isSelected>Emphasized Selected</ActionButton>
+                  <ActionButton iconName="📁" isQuiet>Quiet</ActionButton>
+                  <ActionButton iconName="📁" isDisabled>Disabled</ActionButton>
+                </div>
+              </div>
+              
+              {/* Hold Icon Feature */}
+              <div style={{ marginBottom: "24px" }}>
+                <h5 style={{ margin: "0 0 8px 0", color: "var(--text)", fontSize: "14px" }}>Hold Icon Feature</h5>
+                <p style={{ margin: "0 0 8px 0", fontSize: "12px", color: "var(--text-muted)" }}>
+                  Hold icons indicate buttons that trigger dropdowns or additional actions.
+                </p>
+                <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "8px", flexWrap: "wrap" }}>
+                  <ActionButton iconName="📂" hasHold>Open Menu</ActionButton>
+                  <ActionButton iconName="💾" hasHold>Save Options</ActionButton>
+                  <ActionButton iconName="🔗" hasHold>Share Menu</ActionButton>
+                </div>
+              </div>
+              
+              {/* Static Color Variants */}
+              <div style={{ marginBottom: "24px", padding: "16px", background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)", borderRadius: "8px" }}>
+                <h5 style={{ margin: "0 0 8px 0", color: "white", fontSize: "14px" }}>Static Color Variants (On Colored Backgrounds)</h5>
+                <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "8px", flexWrap: "wrap" }}>
+                  <ActionButton iconName="⚡" staticColor="white">Static White</ActionButton>
+                  <ActionButton iconName="⚡" staticColor="white" isSelected>White Selected</ActionButton>
+                  <ActionButton iconName="⚡" staticColor="white" isQuiet>White Quiet</ActionButton>
+                </div>
+              </div>
+              
+              <div style={{ marginBottom: "24px", padding: "16px", backgroundColor: "#f0f0f0", borderRadius: "8px" }}>
+                <h5 style={{ margin: "0 0 8px 0", color: "black", fontSize: "14px" }}>Static Black Variants</h5>
+                <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "8px", flexWrap: "wrap" }}>
+                  <ActionButton iconName="⚡" staticColor="black">Static Black</ActionButton>
+                  <ActionButton iconName="⚡" staticColor="black" isSelected>Black Selected</ActionButton>
+                  <ActionButton iconName="⚡" staticColor="black" isQuiet>Black Quiet</ActionButton>
+                </div>
+              </div>
+            </div>
+            
+            {/* ActionBar Showcase */}
+            <div style={{ marginBottom: "32px" }}>
+              <h4 style={{ margin: "0 0 12px 0", color: "var(--text)", fontSize: "16px" }}>ActionBar Component</h4>
+              <p style={{ margin: "0 0 16px 0", fontSize: "14px", color: "var(--text-muted)" }}>
+                ActionBars are floating bars that appear upon selection for bulk actions.
+              </p>
+              
+              {/* Standard ActionBar with ActionButtons */}
+              <div style={{ marginBottom: "24px" }}>
+                <h5 style={{ margin: "0 0 8px 0", color: "var(--text)", fontSize: "14px" }}>Standard ActionBar with ActionButtons</h5>
                 <div style={{ position: "relative", height: "80px", backgroundColor: "var(--spectrum-background-layer-2-color, #f9fafb)", borderRadius: "4px", padding: "16px" }}>
                   <ActionBar
                     isOpen={true}
                     selectedCount={3}
                     onClearSelection={() => console.log("Clear selection")}
                   >
-                    <Button variant="secondary" size="small">Edit</Button>
-                    <Button variant="secondary" size="small">Share</Button>
-                    <Button variant="negative" size="small">Delete</Button>
+                    <ActionButton iconName="✏️" size="s">Edit</ActionButton>
+                    <ActionButton iconName="🔗" size="s">Share</ActionButton>
+                    <ActionButton iconName="📁" size="s">Move</ActionButton>
+                    <ActionButton iconName="🗑️" size="s">Delete</ActionButton>
                   </ActionBar>
                 </div>
               </div>
               
               {/* Emphasized ActionBar */}
-              <div style={{ marginBottom: "32px" }}>
-                <h4 style={{ margin: "0 0 12px 0", color: "var(--text)", fontSize: "14px" }}>Emphasized ActionBar</h4>
-                <p style={{ margin: "0 0 8px 0", fontSize: "12px", color: "var(--text-muted)" }}>Blue background for visual emphasis:</p>
+              <div style={{ marginBottom: "24px" }}>
+                <h5 style={{ margin: "0 0 8px 0", color: "var(--text)", fontSize: "14px" }}>Emphasized ActionBar</h5>
                 <div style={{ position: "relative", height: "80px", backgroundColor: "var(--spectrum-background-layer-2-color, #f9fafb)", borderRadius: "4px", padding: "16px" }}>
                   <ActionBar
                     isOpen={true}
@@ -530,77 +609,105 @@ const App: React.FC = () => {
                     selectedCount={5}
                     onClearSelection={() => console.log("Clear emphasized selection")}
                   >
-                    <Button variant="accent" size="small">Move</Button>
-                    <Button variant="accent" size="small">Copy</Button>
-                    <Button variant="negative" size="small">Remove</Button>
+                    <ActionButton iconName="📁" size="s" staticColor="white">Move</ActionButton>
+                    <ActionButton iconName="📋" size="s" staticColor="white">Copy</ActionButton>
+                    <ActionButton iconName="🗑️" size="s" staticColor="white">Remove</ActionButton>
                   </ActionBar>
                 </div>
               </div>
               
-              {/* Flexible Width ActionBar */}
-              <div style={{ marginBottom: "32px" }}>
-                <h4 style={{ margin: "0 0 12px 0", color: "var(--text)", fontSize: "14px" }}>Flexible Width ActionBar</h4>
-                <p style={{ margin: "0 0 8px 0", fontSize: "12px", color: "var(--text-muted)" }}>Adapts to content size instead of full width:</p>
+              {/* Icon-Only ActionBar */}
+              <div style={{ marginBottom: "24px" }}>
+                <h5 style={{ margin: "0 0 8px 0", color: "var(--text)", fontSize: "14px" }}>Compact Icon-Only ActionBar</h5>
                 <div style={{ position: "relative", height: "80px", backgroundColor: "var(--spectrum-background-layer-2-color, #f9fafb)", borderRadius: "4px", padding: "16px" }}>
                   <ActionBar
                     isOpen={true}
-                    isFlexible={true}
-                    selectedCount={1}
-                    onClearSelection={() => console.log("Clear flexible selection")}
+                    selectedCount={7}
+                    onClearSelection={() => console.log("Clear icon selection")}
                   >
-                    <Button variant="accent" size="small">Quick Action</Button>
-                  </ActionBar>
-                </div>
-              </div>
-              
-              {/* Interactive Demo */}
-              <div style={{ marginBottom: "32px" }}>
-                <h4 style={{ margin: "0 0 12px 0", color: "var(--text)", fontSize: "14px" }}>Interactive Demo</h4>
-                <p style={{ margin: "0 0 8px 0", fontSize: "12px", color: "var(--text-muted)" }}>Toggle ActionBar visibility:</p>
-                <div style={{ marginBottom: "16px" }}>
-                  <Button 
-                    variant="accent"
-                    onPress={() => {
-                      const actionBar = document.querySelector('.demo-actionbar');
-                      if (actionBar) {
-                        actionBar.classList.toggle('is-open');
-                      }
-                    }}
-                  >
-                    Toggle ActionBar
-                  </Button>
-                </div>
-                <div style={{ position: "relative", height: "80px", backgroundColor: "var(--spectrum-background-layer-2-color, #f9fafb)", borderRadius: "4px", padding: "16px" }}>
-                  <ActionBar
-                    className="demo-actionbar"
-                    isOpen={false}
-                    selectedCount={2}
-                    onClearSelection={() => {
-                      const actionBar = document.querySelector('.demo-actionbar');
-                      if (actionBar) {
-                        actionBar.classList.remove('is-open');
-                      }
-                    }}
-                  >
-                    <Button variant="secondary" size="small">Archive</Button>
-                    <Button variant="secondary" size="small">Export</Button>
-                    <Button variant="negative" size="small">Delete</Button>
+                    <ActionButton iconName="✏️" size="s" hideLabel aria-label="Edit" />
+                    <ActionButton iconName="📋" size="s" hideLabel aria-label="Copy" />
+                    <ActionButton iconName="📁" size="s" hideLabel aria-label="Move" />
+                    <ActionButton iconName="🔗" size="s" hideLabel aria-label="Share" />
+                    <ActionButton iconName="🗑️" size="s" hideLabel aria-label="Delete" />
                   </ActionBar>
                 </div>
               </div>
             </div>
             
+            {/* Interactive Demo */}
+            <div style={{ marginBottom: "32px" }}>
+              <h4 style={{ margin: "0 0 12px 0", color: "var(--text)", fontSize: "16px" }}>Interactive Demo</h4>
+              <p style={{ margin: "0 0 16px 0", fontSize: "14px", color: "var(--text-muted)" }}>
+                Click ActionButtons to see their interactive states:
+              </p>
+              
+              <div style={{ display: "flex", gap: "12px", padding: "16px", backgroundColor: "var(--spectrum-background-layer-2-color, #f9fafb)", borderRadius: "8px", flexWrap: "wrap" }}>
+                <ActionButton 
+                  iconName="❤️" 
+                  onPress={(e) => {
+                    const button = e.target as HTMLElement;
+                    const parent = button.closest('[role="button"]') as HTMLElement;
+                    if (parent) {
+                      parent.classList.toggle('is-selected');
+                      console.log('Like toggled!');
+                    }
+                  }}
+                >
+                  Like
+                </ActionButton>
+                
+                <ActionButton 
+                  iconName="⭐" 
+                  onPress={(e) => {
+                    const button = e.target as HTMLElement;
+                    const parent = button.closest('[role="button"]') as HTMLElement;
+                    if (parent) {
+                      parent.classList.toggle('is-selected');
+                      console.log('Favorite toggled!');
+                    }
+                  }}
+                >
+                  Favorite
+                </ActionButton>
+                
+                <ActionButton 
+                  iconName="🔖" 
+                  onPress={(e) => {
+                    const button = e.target as HTMLElement;
+                    const parent = button.closest('[role="button"]') as HTMLElement;
+                    if (parent) {
+                      parent.classList.toggle('is-selected');
+                      console.log('Bookmark toggled!');
+                    }
+                  }}
+                >
+                  Bookmark
+                </ActionButton>
+                
+                <ActionButton 
+                  iconName="🔔" 
+                  hasHold 
+                  onPress={() => {
+                    alert('Notification settings menu would open here!');
+                  }}
+                >
+                  Notifications
+                </ActionButton>
+              </div>
+            </div>
+            
             <div style={{ fontSize: "12px", color: "var(--text-disabled)" }}>
-              <p><strong>ActionBar Features:</strong></p>
+              <p><strong>Actions Ecosystem Features:</strong></p>
               <ul style={{ margin: "8px 0", paddingLeft: "20px" }}>
-                <li>Floating appearance with shadow and animation</li>
-                <li>Standard and emphasized (blue) variants</li>
-                <li>Flexible width and positioning options</li>
-                <li>Selection counter and clear action</li>
-                <li>Integrates with Action Groups and buttons</li>
-                <li>Responsive design for narrow containers</li>
-                <li>Full accessibility with ARIA toolbar role</li>
-                <li>UXP-optimized with hybrid nuclear div approach</li>
+                <li><strong>ActionButton:</strong> Official Spectrum implementation with all size variants (xs, s, m, l, xl)</li>
+                <li><strong>State Management:</strong> Default, selected, emphasized, quiet, and disabled states</li>
+                <li><strong>Icon Support:</strong> Full workflow icon integration with optional hold indicators</li>
+                <li><strong>Static Colors:</strong> White and black variants for colored backgrounds</li>
+                <li><strong>Accessibility:</strong> Full ARIA support with role="button" and proper labeling</li>
+                <li><strong>ActionBar Integration:</strong> Floating toolbars for bulk selection workflows</li>
+                <li><strong>UXP Optimized:</strong> Nuclear div approach with ultra-high specificity</li>
+                <li><strong>Performance:</strong> Lightweight implementation based on official Spectrum metadata</li>
               </ul>
             </div>
           </div>
