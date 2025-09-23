@@ -14,7 +14,7 @@ import { Select } from "./components/Select";
 import { Button } from "./components/Button";
 import { Tabs, TabList, Tab, TabPanel } from "./components/Tabs";
 import { usePluginStore } from "./store/usePluginStore";
-import { Form } from "./components/Form";
+
 
 const App: React.FC = () => {
   const { host, fs, panelId, theme, setTheme } = useUxp();
