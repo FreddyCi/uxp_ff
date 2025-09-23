@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { ActionButton } from "./ActionButton";
+import { MenuItem } from "./MenuItem";
 import "./ActionMenu-hybrid.css";
 
 // ActionMenu Size type
@@ -7,7 +8,7 @@ export type ActionMenuSize = "xs" | "s" | "m" | "l" | "xl";
 
 // ActionMenu Props
 export interface ActionMenuProps {
-  /** ActionButton components to display in the menu */
+  /** MenuItem components to display in the menu */
   children: React.ReactNode;
   /** Label for the trigger button */
   label?: string;
@@ -19,7 +20,7 @@ export interface ActionMenuProps {
   iconName?: string;
   /** Whether to hide the label */
   hideLabel?: boolean;
-  /** Size of the ActionMenu and contained ActionButtons */
+  /** Size of the ActionMenu and contained MenuItems */
   size?: ActionMenuSize;
   /** Whether the menu is open (controlled) */
   isOpen?: boolean;
@@ -129,7 +130,6 @@ export const ActionMenu: React.FC<ActionMenuProps> = ({
       const childProps = child.props as any;
       return React.cloneElement(child, {
         ...childProps,
-        className: `${childProps.className || ""} spectrum-ActionMenu-item`.trim(),
         size: childProps.size || size, // Inherit size from ActionMenu if not set
         onPress: (e: any) => {
           // Call original onPress if it exists
@@ -137,8 +137,8 @@ export const ActionMenu: React.FC<ActionMenuProps> = ({
           // Close menu after action
           handleOpenChange(false);
         },
-        // Ensure ActionButtons in menu are properly styled
-        role: "menuitem",
+        // Add description class if description exists for CSS :has() fallback
+        className: `${childProps.className || ""} ${childProps.description ? 'has-description' : ''}`.trim(),
       });
     }
     return child;
@@ -156,11 +156,11 @@ export const ActionMenu: React.FC<ActionMenuProps> = ({
     .filter(Boolean)
     .join(" ");
 
-  // Generate CSS classes for menu container
+  // Generate CSS classes for menu container (now using ul element)
   const menuClasses = [
     "uxp-reset--complete",
-    "spectrum-ActionMenu-menu",
-    `spectrum-ActionMenu--size${size.toUpperCase()}`,
+    "spectrum-Menu",
+    `spectrum-Menu--size${size.toUpperCase()}`,
     isOpen && "is-open",
   ]
     .filter(Boolean)
@@ -222,13 +222,14 @@ export const ActionMenu: React.FC<ActionMenuProps> = ({
           id={popoverId}
           style={popoverPositionStyles}
         >
-          <div
+          <ul
             className={menuClasses}
-            role="menu"
+            role="listbox"
             aria-labelledby={triggerId}
+            aria-disabled={isDisabled}
           >
             {enhancedChildren}
-          </div>
+          </ul>
         </div>
       )}
     </div>

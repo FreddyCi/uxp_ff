@@ -16,6 +16,7 @@ import { ActionBar } from "./components/ActionBar";
 import { ActionButton } from "./components/ActionButton";
 import { ActionGroup } from "./components/ActionGroup";
 import { ActionMenu } from "./components/ActionMenu";
+import { MenuItem } from "./components/MenuItem";
 import { Tabs, TabList, Tab, TabPanel } from "./components/Tabs";
 import { usePluginStore } from "./store/usePluginStore";
 
@@ -745,17 +746,17 @@ const App: React.FC = () => {
                 <h5 style={{ margin: "0 0 8px 0", color: "var(--text)", fontSize: "14px" }}>Basic ActionMenu</h5>
                 <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
                   <ActionMenu triggerLabel="File Actions" iconName="📁">
-                    <ActionButton iconName="📄" onPress={() => console.log('New document')}>New Document</ActionButton>
-                    <ActionButton iconName="📂" onPress={() => console.log('Open folder')}>Open Folder</ActionButton>
-                    <ActionButton iconName="💾" onPress={() => console.log('Save as')}>Save As...</ActionButton>
-                    <ActionButton iconName="📤" onPress={() => console.log('Export')}>Export</ActionButton>
+                    <MenuItem iconName="📄" onPress={() => console.log('New document')}>New Document</MenuItem>
+                    <MenuItem iconName="📂" onPress={() => console.log('Open folder')}>Open Folder</MenuItem>
+                    <MenuItem iconName="💾" onPress={() => console.log('Save as')}>Save As...</MenuItem>
+                    <MenuItem iconName="📤" onPress={() => console.log('Export')}>Export</MenuItem>
                   </ActionMenu>
                   
                   <ActionMenu triggerLabel="Edit" iconName="✏️">
-                    <ActionButton iconName="📋" onPress={() => console.log('Copy')}>Copy</ActionButton>
-                    <ActionButton iconName="✂️" onPress={() => console.log('Cut')}>Cut</ActionButton>
-                    <ActionButton iconName="📄" onPress={() => console.log('Paste')}>Paste</ActionButton>
-                    <ActionButton iconName="🔄" onPress={() => console.log('Undo')}>Undo</ActionButton>
+                    <MenuItem iconName="📋" onPress={() => console.log('Copy')}>Copy</MenuItem>
+                    <MenuItem iconName="✂️" onPress={() => console.log('Cut')}>Cut</MenuItem>
+                    <MenuItem iconName="📄" onPress={() => console.log('Paste')}>Paste</MenuItem>
+                    <MenuItem iconName="🔄" onPress={() => console.log('Undo')}>Undo</MenuItem>
                   </ActionMenu>
                 </div>
               </div>
@@ -765,26 +766,26 @@ const App: React.FC = () => {
                 <h5 style={{ margin: "0 0 8px 0", color: "var(--text)", fontSize: "14px" }}>Size Variants</h5>
                 <div style={{ display: "flex", gap: "12px", flexWrap: "wrap", alignItems: "flex-start" }}>
                   <ActionMenu triggerLabel="XS Menu" size="xs">
-                    <ActionButton onPress={() => console.log('XS Action 1')}>Action 1</ActionButton>
-                    <ActionButton onPress={() => console.log('XS Action 2')}>Action 2</ActionButton>
+                    <MenuItem onPress={() => console.log('XS Action 1')}>Action 1</MenuItem>
+                    <MenuItem onPress={() => console.log('XS Action 2')}>Action 2</MenuItem>
                   </ActionMenu>
                   
                   <ActionMenu triggerLabel="Small Menu" size="s" iconName="⚙️">
-                    <ActionButton iconName="👁️" onPress={() => console.log('View')}>View</ActionButton>
-                    <ActionButton iconName="✏️" onPress={() => console.log('Edit')}>Edit</ActionButton>
-                    <ActionButton iconName="🗑️" onPress={() => console.log('Delete')}>Delete</ActionButton>
+                    <MenuItem iconName="👁️" onPress={() => console.log('View')}>View</MenuItem>
+                    <MenuItem iconName="✏️" onPress={() => console.log('Edit')}>Edit</MenuItem>
+                    <MenuItem iconName="🗑️" onPress={() => console.log('Delete')}>Delete</MenuItem>
                   </ActionMenu>
                   
                   <ActionMenu triggerLabel="Medium Menu" size="m" iconName="🎯">
-                    <ActionButton iconName="📊" onPress={() => console.log('Analytics')}>Analytics</ActionButton>
-                    <ActionButton iconName="📈" onPress={() => console.log('Reports')}>Reports</ActionButton>
-                    <ActionButton iconName="🔗" onPress={() => console.log('Share')}>Share</ActionButton>
+                    <MenuItem iconName="📊" onPress={() => console.log('Analytics')}>Analytics</MenuItem>
+                    <MenuItem iconName="📈" onPress={() => console.log('Reports')}>Reports</MenuItem>
+                    <MenuItem iconName="🔗" onPress={() => console.log('Share')}>Share</MenuItem>
                   </ActionMenu>
                   
                   <ActionMenu triggerLabel="Large Menu" size="l" iconName="🚀">
-                    <ActionButton iconName="🎨" onPress={() => console.log('Customize')}>Customize</ActionButton>
-                    <ActionButton iconName="⚙️" onPress={() => console.log('Settings')}>Settings</ActionButton>
-                    <ActionButton iconName="📧" onPress={() => console.log('Contact')}>Contact</ActionButton>
+                    <MenuItem iconName="🎨" onPress={() => console.log('Customize')}>Customize</MenuItem>
+                    <MenuItem iconName="⚙️" onPress={() => console.log('Settings')}>Settings</MenuItem>
+                    <MenuItem iconName="📧" onPress={() => console.log('Contact')}>Contact</MenuItem>
                   </ActionMenu>
                 </div>
               </div>
@@ -794,19 +795,19 @@ const App: React.FC = () => {
                 <h5 style={{ margin: "0 0 8px 0", color: "var(--text)", fontSize: "14px" }}>Direction Variants</h5>
                 <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
                   <ActionMenu triggerLabel="Down" iconName="⬇️" direction="bottom">
-                    <ActionButton onPress={() => console.log('Option 1')}>Option 1</ActionButton>
-                    <ActionButton onPress={() => console.log('Option 2')}>Option 2</ActionButton>
-                    <ActionButton onPress={() => console.log('Option 3')}>Option 3</ActionButton>
+                    <MenuItem onPress={() => console.log('Option 1')}>Option 1</MenuItem>
+                    <MenuItem onPress={() => console.log('Option 2')}>Option 2</MenuItem>
+                    <MenuItem onPress={() => console.log('Option 3')}>Option 3</MenuItem>
                   </ActionMenu>
                   
                   <ActionMenu triggerLabel="Up" iconName="⬆️" direction="top">
-                    <ActionButton onPress={() => console.log('Up 1')}>Up 1</ActionButton>
-                    <ActionButton onPress={() => console.log('Up 2')}>Up 2</ActionButton>
+                    <MenuItem onPress={() => console.log('Up 1')}>Up 1</MenuItem>
+                    <MenuItem onPress={() => console.log('Up 2')}>Up 2</MenuItem>
                   </ActionMenu>
                   
                   <ActionMenu triggerLabel="Right" iconName="➡️" direction="right">
-                    <ActionButton onPress={() => console.log('Right 1')}>Right 1</ActionButton>
-                    <ActionButton onPress={() => console.log('Right 2')}>Right 2</ActionButton>
+                    <MenuItem onPress={() => console.log('Right 1')}>Right 1</MenuItem>
+                    <MenuItem onPress={() => console.log('Right 2')}>Right 2</MenuItem>
                   </ActionMenu>
                 </div>
               </div>
@@ -815,10 +816,10 @@ const App: React.FC = () => {
               <div style={{ marginBottom: "24px" }}>
                 <h5 style={{ margin: "0 0 8px 0", color: "var(--text)", fontSize: "14px" }}>Icon-Only ActionMenu</h5>
                 <ActionMenu iconName="⋯" hideLabel aria-label="More options">
-                  <ActionButton iconName="📋" onPress={() => console.log('Copy item')}>Copy</ActionButton>
-                  <ActionButton iconName="🔗" onPress={() => console.log('Share item')}>Share</ActionButton>
-                  <ActionButton iconName="✏️" onPress={() => console.log('Edit item')}>Edit</ActionButton>
-                  <ActionButton iconName="🗑️" onPress={() => console.log('Delete item')}>Delete</ActionButton>
+                  <MenuItem iconName="📋" onPress={() => console.log('Copy item')}>Copy</MenuItem>
+                  <MenuItem iconName="🔗" onPress={() => console.log('Share item')}>Share</MenuItem>
+                  <MenuItem iconName="✏️" onPress={() => console.log('Edit item')}>Edit</MenuItem>
+                  <MenuItem iconName="🗑️" onPress={() => console.log('Delete item')}>Delete</MenuItem>
                 </ActionMenu>
               </div>
               
@@ -826,9 +827,30 @@ const App: React.FC = () => {
               <div style={{ marginBottom: "24px" }}>
                 <h5 style={{ margin: "0 0 8px 0", color: "var(--text)", fontSize: "14px" }}>Quiet ActionMenu</h5>
                 <ActionMenu triggerLabel="Quiet Menu" iconName="🔧" isQuiet>
-                  <ActionButton iconName="🔧" onPress={() => console.log('Tool 1')}>Tool 1</ActionButton>
-                  <ActionButton iconName="⚙️" onPress={() => console.log('Tool 2')}>Tool 2</ActionButton>
-                  <ActionButton iconName="🎯" onPress={() => console.log('Tool 3')}>Tool 3</ActionButton>
+                  <MenuItem iconName="🔧" onPress={() => console.log('Tool 1')}>Tool 1</MenuItem>
+                  <MenuItem iconName="⚙️" onPress={() => console.log('Tool 2')}>Tool 2</MenuItem>
+                  <MenuItem iconName="🎯" onPress={() => console.log('Tool 3')}>Tool 3</MenuItem>
+                </ActionMenu>
+              </div>
+              
+              {/* Menu with Descriptions */}
+              <div style={{ marginBottom: "24px" }}>
+                <h5 style={{ margin: "0 0 8px 0", color: "var(--text)", fontSize: "14px" }}>Menu with Descriptions</h5>
+                <ActionMenu triggerLabel="Export Options" iconName="📤">
+                  <MenuItem iconName="⚡" description="Share a snapshot" onPress={() => console.log('Quick export')}>Quick export</MenuItem>
+                  <MenuItem iconName="📱" description="Illustrator for iPad" onPress={() => console.log('Open a copy')}>Open a copy</MenuItem>
+                  <MenuItem iconName="🔗" description="Enable comments and download" isDisabled onPress={() => console.log('Share link')}>Share link</MenuItem>
+                </ActionMenu>
+              </div>
+              
+              {/* Menu with States */}
+              <div style={{ marginBottom: "24px" }}>
+                <h5 style={{ margin: "0 0 8px 0", color: "var(--text)", fontSize: "14px" }}>Menu with States</h5>
+                <ActionMenu triggerLabel="Document Actions" iconName="📄">
+                  <MenuItem iconName="✂️" onPress={() => console.log('Cut')}>Cut</MenuItem>
+                  <MenuItem iconName="📋" isSelected onPress={() => console.log('Copy')}>Copy</MenuItem>
+                  <MenuItem iconName="📄" isDisabled onPress={() => console.log('Paste')}>Paste</MenuItem>
+                  <MenuItem iconName="🔄" onPress={() => console.log('Undo')}>Undo</MenuItem>
                 </ActionMenu>
               </div>
             </div>
@@ -900,7 +922,8 @@ const App: React.FC = () => {
               <ul style={{ margin: "8px 0", paddingLeft: "20px" }}>
                 <li><strong>ActionButton:</strong> Official Spectrum implementation with all size variants (xs, s, m, l, xl)</li>
                 <li><strong>ActionGroup:</strong> Cohesive grouping of ActionButtons with shared borders and size inheritance</li>
-                <li><strong>ActionMenu:</strong> Dropdown menus using ActionButton components for perfect ecosystem integration</li>
+                <li><strong>ActionMenu:</strong> Dropdown menus using MenuItem components for proper semantic structure</li>
+                <li><strong>MenuItem:</strong> Official Spectrum menu items with li elements, icons, descriptions, and states</li>
                 <li><strong>State Management:</strong> Default, selected, emphasized, quiet, and disabled states</li>
                 <li><strong>Icon Support:</strong> Full workflow icon integration with optional hold indicators</li>
                 <li><strong>Static Colors:</strong> White and black variants for colored backgrounds</li>
