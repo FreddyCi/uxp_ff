@@ -14,6 +14,7 @@ import { Select } from "./components/Select";
 import { Button } from "./components/Button";
 import { ActionBar } from "./components/ActionBar";
 import { ActionButton } from "./components/ActionButton";
+import { ActionGroup } from "./components/ActionGroup";
 import { Tabs, TabList, Tab, TabPanel } from "./components/Tabs";
 import { usePluginStore } from "./store/usePluginStore";
 
@@ -635,6 +636,102 @@ const App: React.FC = () => {
               </div>
             </div>
             
+            {/* ActionGroup Showcase */}
+            <div style={{ marginBottom: "32px" }}>
+              <h4 style={{ margin: "0 0 12px 0", color: "var(--text)", fontSize: "16px" }}>ActionGroup Component</h4>
+              <p style={{ margin: "0 0 16px 0", fontSize: "14px", color: "var(--text-muted)" }}>
+                ActionGroups combine related ActionButtons with shared borders and visual cohesion.
+              </p>
+              
+              {/* Basic ActionGroup */}
+              <div style={{ marginBottom: "24px" }}>
+                <h5 style={{ margin: "0 0 8px 0", color: "var(--text)", fontSize: "14px" }}>Basic ActionGroup</h5>
+                <ActionGroup>
+                  <ActionButton iconName="📋">Copy</ActionButton>
+                  <ActionButton iconName="✂️">Cut</ActionButton>
+                  <ActionButton iconName="📄">Paste</ActionButton>
+                </ActionGroup>
+              </div>
+              
+              {/* Size Variants */}
+              <div style={{ marginBottom: "24px" }}>
+                <h5 style={{ margin: "0 0 8px 0", color: "var(--text)", fontSize: "14px" }}>Size Variants</h5>
+                <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+                  <ActionGroup size="xs">
+                    <ActionButton>XS</ActionButton>
+                    <ActionButton>Edit</ActionButton>
+                    <ActionButton>Delete</ActionButton>
+                  </ActionGroup>
+                  
+                  <ActionGroup size="s">
+                    <ActionButton iconName="✏️">Small</ActionButton>
+                    <ActionButton iconName="👁️">View</ActionButton>
+                    <ActionButton iconName="🗑️">Delete</ActionButton>
+                  </ActionGroup>
+                  
+                  <ActionGroup size="m">
+                    <ActionButton iconName="📁">Medium</ActionButton>
+                    <ActionButton iconName="🔄">Refresh</ActionButton>
+                    <ActionButton iconName="⚙️">Settings</ActionButton>
+                  </ActionGroup>
+                  
+                  <ActionGroup size="l">
+                    <ActionButton iconName="🎯">Large</ActionButton>
+                    <ActionButton iconName="📊">Analytics</ActionButton>
+                    <ActionButton iconName="🔗">Share</ActionButton>
+                  </ActionGroup>
+                  
+                  <ActionGroup size="xl">
+                    <ActionButton iconName="🚀">Extra Large</ActionButton>
+                    <ActionButton iconName="💎">Premium</ActionButton>
+                    <ActionButton iconName="🎨">Customize</ActionButton>
+                  </ActionGroup>
+                </div>
+              </div>
+              
+              {/* Quiet ActionGroup */}
+              <div style={{ marginBottom: "24px" }}>
+                <h5 style={{ margin: "0 0 8px 0", color: "var(--text)", fontSize: "14px" }}>Quiet ActionGroup</h5>
+                <ActionGroup isQuiet>
+                  <ActionButton iconName="🔤">Bold</ActionButton>
+                  <ActionButton iconName="🗇">Italic</ActionButton>
+                  <ActionButton iconName="🗕">Underline</ActionButton>
+                </ActionGroup>
+              </div>
+              
+              {/* Selection States */}
+              <div style={{ marginBottom: "24px" }}>
+                <h5 style={{ margin: "0 0 8px 0", color: "var(--text)", fontSize: "14px" }}>Selection States</h5>
+                <ActionGroup>
+                  <ActionButton iconName="↤">Left</ActionButton>
+                  <ActionButton iconName="↿" isSelected>Center</ActionButton>
+                  <ActionButton iconName="↦">Right</ActionButton>
+                </ActionGroup>
+              </div>
+              
+              {/* Icon-Only ActionGroup */}
+              <div style={{ marginBottom: "24px" }}>
+                <h5 style={{ margin: "0 0 8px 0", color: "var(--text)", fontSize: "14px" }}>Icon-Only ActionGroup</h5>
+                <ActionGroup>
+                  <ActionButton iconName="🔤" hideLabel aria-label="Bold" />
+                  <ActionButton iconName="🗇" hideLabel aria-label="Italic" />
+                  <ActionButton iconName="🗕" hideLabel aria-label="Underline" />
+                  <ActionButton iconName="🔗" hideLabel aria-label="Link" />
+                </ActionGroup>
+              </div>
+              
+              {/* Mixed ActionGroup */}
+              <div style={{ marginBottom: "24px" }}>
+                <h5 style={{ margin: "0 0 8px 0", color: "var(--text)", fontSize: "14px" }}>Mixed Content ActionGroup</h5>
+                <ActionGroup>
+                  <ActionButton iconName="📂">Open</ActionButton>
+                  <ActionButton iconName="💾" hasHold>Save</ActionButton>
+                  <ActionButton iconName="📤" hideLabel aria-label="Export" />
+                  <ActionButton iconName="🔄">Refresh</ActionButton>
+                </ActionGroup>
+              </div>
+            </div>
+
             {/* Interactive Demo */}
             <div style={{ marginBottom: "32px" }}>
               <h4 style={{ margin: "0 0 12px 0", color: "var(--text)", fontSize: "16px" }}>Interactive Demo</h4>
@@ -701,6 +798,7 @@ const App: React.FC = () => {
               <p><strong>Actions Ecosystem Features:</strong></p>
               <ul style={{ margin: "8px 0", paddingLeft: "20px" }}>
                 <li><strong>ActionButton:</strong> Official Spectrum implementation with all size variants (xs, s, m, l, xl)</li>
+                <li><strong>ActionGroup:</strong> Cohesive grouping of ActionButtons with shared borders and size inheritance</li>
                 <li><strong>State Management:</strong> Default, selected, emphasized, quiet, and disabled states</li>
                 <li><strong>Icon Support:</strong> Full workflow icon integration with optional hold indicators</li>
                 <li><strong>Static Colors:</strong> White and black variants for colored backgrounds</li>
