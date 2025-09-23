@@ -8,7 +8,8 @@
    ============================================================================= */
 
 /* Typography container */
-div.uxp-reset--complete.spectrum-Typography.spectrum-Typography {
+div.uxp-reset--complete.spectrum-Typography.spectrum-Typography,
+div[role="document"].uxp-reset--complete.spectrum-Typography.spectrum-Typography {
   /* Nuclear reset */
   all: unset !important;
   
@@ -32,7 +33,8 @@ h2.uxp-reset--complete.spectrum-Heading.spectrum-Heading,
 h3.uxp-reset--complete.spectrum-Heading.spectrum-Heading,
 h4.uxp-reset--complete.spectrum-Heading.spectrum-Heading,
 h5.uxp-reset--complete.spectrum-Heading.spectrum-Heading,
-h6.uxp-reset--complete.spectrum-Heading.spectrum-Heading {
+h6.uxp-reset--complete.spectrum-Heading.spectrum-Heading,
+div[role="heading"].uxp-reset--complete.spectrum-Heading.spectrum-Heading {
   /* Nuclear reset */
   all: unset !important;
   
@@ -60,7 +62,8 @@ h2.uxp-reset--complete.spectrum-Heading.spectrum-Heading.spectrum-Heading--sizeX
 h3.uxp-reset--complete.spectrum-Heading.spectrum-Heading.spectrum-Heading--sizeXS,
 h4.uxp-reset--complete.spectrum-Heading.spectrum-Heading.spectrum-Heading--sizeXS,
 h5.uxp-reset--complete.spectrum-Heading.spectrum-Heading.spectrum-Heading--sizeXS,
-h6.uxp-reset--complete.spectrum-Heading.spectrum-Heading.spectrum-Heading--sizeXS {
+h6.uxp-reset--complete.spectrum-Heading.spectrum-Heading.spectrum-Heading--size,
+div[role="heading"].uxp-reset--complete.spectrum-Heading.spectrum-Heading.spectrum-Heading--sizeXS {
   font-size: var(--spectrum-heading-size-xs, var(--spectrum-font-size-75, 12px)) !important;
   line-height: var(--spectrum-heading-line-height-xs, 1.4) !important;
 }
@@ -71,7 +74,8 @@ h2.uxp-reset--complete.spectrum-Heading.spectrum-Heading.spectrum-Heading--sizeS
 h3.uxp-reset--complete.spectrum-Heading.spectrum-Heading.spectrum-Heading--sizeS,
 h4.uxp-reset--complete.spectrum-Heading.spectrum-Heading.spectrum-Heading--sizeS,
 h5.uxp-reset--complete.spectrum-Heading.spectrum-Heading.spectrum-Heading--sizeS,
-h6.uxp-reset--complete.spectrum-Heading.spectrum-Heading.spectrum-Heading--sizeS {
+h6.uxp-reset--complete.spectrum-Heading.spectrum-Heading.spectrum-Heading--size,
+div[role="heading"].uxp-reset--complete.spectrum-Heading.spectrum-Heading.spectrum-Heading--sizeS {
   font-size: var(--spectrum-heading-size-s, var(--spectrum-font-size-100, 14px)) !important;
   line-height: var(--spectrum-heading-line-height-s, 1.3) !important;
 }
@@ -82,7 +86,8 @@ h2.uxp-reset--complete.spectrum-Heading.spectrum-Heading.spectrum-Heading--sizeM
 h3.uxp-reset--complete.spectrum-Heading.spectrum-Heading.spectrum-Heading--sizeM,
 h4.uxp-reset--complete.spectrum-Heading.spectrum-Heading.spectrum-Heading--sizeM,
 h5.uxp-reset--complete.spectrum-Heading.spectrum-Heading.spectrum-Heading--sizeM,
-h6.uxp-reset--complete.spectrum-Heading.spectrum-Heading.spectrum-Heading--sizeM {
+h6.uxp-reset--complete.spectrum-Heading.spectrum-Heading.spectrum-Heading--size,
+div[role="heading"].uxp-reset--complete.spectrum-Heading.spectrum-Heading.spectrum-Heading--sizeM {
   font-size: var(--spectrum-heading-size-m, var(--spectrum-font-size-200, 16px)) !important;
   line-height: var(--spectrum-heading-line-height-m, 1.3) !important;
 }
@@ -93,7 +98,8 @@ h2.uxp-reset--complete.spectrum-Heading.spectrum-Heading.spectrum-Heading--sizeL
 h3.uxp-reset--complete.spectrum-Heading.spectrum-Heading.spectrum-Heading--sizeL,
 h4.uxp-reset--complete.spectrum-Heading.spectrum-Heading.spectrum-Heading--sizeL,
 h5.uxp-reset--complete.spectrum-Heading.spectrum-Heading.spectrum-Heading--sizeL,
-h6.uxp-reset--complete.spectrum-Heading.spectrum-Heading.spectrum-Heading--sizeL {
+h6.uxp-reset--complete.spectrum-Heading.spectrum-Heading.spectrum-Heading--size,
+div[role="heading"].uxp-reset--complete.spectrum-Heading.spectrum-Heading.spectrum-Heading--sizeL {
   font-size: var(--spectrum-heading-size-l, var(--spectrum-font-size-300, 18px)) !important;
   line-height: var(--spectrum-heading-line-height-l, 1.25) !important;
 }
@@ -104,7 +110,8 @@ h2.uxp-reset--complete.spectrum-Heading.spectrum-Heading.spectrum-Heading--sizeX
 h3.uxp-reset--complete.spectrum-Heading.spectrum-Heading.spectrum-Heading--sizeXL,
 h4.uxp-reset--complete.spectrum-Heading.spectrum-Heading.spectrum-Heading--sizeXL,
 h5.uxp-reset--complete.spectrum-Heading.spectrum-Heading.spectrum-Heading--sizeXL,
-h6.uxp-reset--complete.spectrum-Heading.spectrum-Heading.spectrum-Heading--sizeXL {
+h6.uxp-reset--complete.spectrum-Heading.spectrum-Heading.spectrum-Heading--size,
+div[role="heading"].uxp-reset--complete.spectrum-Heading.spectrum-Heading.spectrum-Heading--sizeXL {
   font-size: var(--spectrum-heading-size-xl, var(--spectrum-font-size-400, 20px)) !important;
   line-height: var(--spectrum-heading-line-height-xl, 1.25) !important;
 }
@@ -115,7 +122,8 @@ h2.uxp-reset--complete.spectrum-Heading.spectrum-Heading.spectrum-Heading--sizeX
 h3.uxp-reset--complete.spectrum-Heading.spectrum-Heading.spectrum-Heading--sizeXXL,
 h4.uxp-reset--complete.spectrum-Heading.spectrum-Heading.spectrum-Heading--sizeXXL,
 h5.uxp-reset--complete.spectrum-Heading.spectrum-Heading.spectrum-Heading--sizeXXL,
-h6.uxp-reset--complete.spectrum-Heading.spectrum-Heading.spectrum-Heading--sizeXXL {
+h6.uxp-reset--complete.spectrum-Heading.spectrum-Heading.spectrum-Heading--size,
+div[role="heading"].uxp-reset--complete.spectrum-Heading.spectrum-Heading.spectrum-Heading--sizeXXL {
   font-size: var(--spectrum-heading-size-xxl, var(--spectrum-font-size-500, 24px)) !important;
   line-height: var(--spectrum-heading-line-height-xxl, 1.2) !important;
 }
@@ -127,7 +135,8 @@ h6.uxp-reset--complete.spectrum-Heading.spectrum-Heading.spectrum-Heading--sizeX
 /* Base body text styling */
 p.uxp-reset--complete.spectrum-Body.spectrum-Body,
 div.uxp-reset--complete.spectrum-Body.spectrum-Body,
-span.uxp-reset--complete.spectrum-Body.spectrum-Body {
+span.uxp-reset--complete.spectrum-Body.spectrum-Body,
+div[role="paragraph"].uxp-reset--complete.spectrum-Body.spectrum-Body {
   /* Nuclear reset */
   all: unset !important;
   
@@ -148,7 +157,8 @@ span.uxp-reset--complete.spectrum-Body.spectrum-Body {
 }
 
 /* Span elements should be inline */
-span.uxp-reset--complete.spectrum-Body.spectrum-Body {
+span.uxp-reset--complete.spectrum-Body.spectrum-Body,
+div[role="paragraph"].uxp-reset--complete.spectrum-Body.spectrum-Body {
   display: inline !important;
 }
 
@@ -157,7 +167,8 @@ span.uxp-reset--complete.spectrum-Body.spectrum-Body {
 /* Extra Small (xs) */
 p.uxp-reset--complete.spectrum-Body.spectrum-Body.spectrum-Body--sizeXS,
 div.uxp-reset--complete.spectrum-Body.spectrum-Body.spectrum-Body--sizeXS,
-span.uxp-reset--complete.spectrum-Body.spectrum-Body.spectrum-Body--sizeXS {
+span.uxp-reset--complete.spectrum-Body.spectrum-Body.spectrum-Body--size,
+div[role="paragraph"].uxp-reset--complete.spectrum-Body.spectrum-Body.spectrum-Body--sizeXS {
   font-size: var(--spectrum-body-size-xs, var(--spectrum-font-size-75, 12px)) !important;
   line-height: var(--spectrum-body-line-height-xs, 1.5) !important;
 }
@@ -165,7 +176,8 @@ span.uxp-reset--complete.spectrum-Body.spectrum-Body.spectrum-Body--sizeXS {
 /* Small (s) */
 p.uxp-reset--complete.spectrum-Body.spectrum-Body.spectrum-Body--sizeS,
 div.uxp-reset--complete.spectrum-Body.spectrum-Body.spectrum-Body--sizeS,
-span.uxp-reset--complete.spectrum-Body.spectrum-Body.spectrum-Body--sizeS {
+span.uxp-reset--complete.spectrum-Body.spectrum-Body.spectrum-Body--size,
+div[role="paragraph"].uxp-reset--complete.spectrum-Body.spectrum-Body.spectrum-Body--sizeS {
   font-size: var(--spectrum-body-size-s, var(--spectrum-font-size-100, 14px)) !important;
   line-height: var(--spectrum-body-line-height-s, 1.5) !important;
 }
@@ -173,7 +185,8 @@ span.uxp-reset--complete.spectrum-Body.spectrum-Body.spectrum-Body--sizeS {
 /* Medium (m) - Default */
 p.uxp-reset--complete.spectrum-Body.spectrum-Body.spectrum-Body--sizeM,
 div.uxp-reset--complete.spectrum-Body.spectrum-Body.spectrum-Body--sizeM,
-span.uxp-reset--complete.spectrum-Body.spectrum-Body.spectrum-Body--sizeM {
+span.uxp-reset--complete.spectrum-Body.spectrum-Body.spectrum-Body--size,
+div[role="paragraph"].uxp-reset--complete.spectrum-Body.spectrum-Body.spectrum-Body--sizeM {
   font-size: var(--spectrum-body-size-m, var(--spectrum-font-size-200, 16px)) !important;
   line-height: var(--spectrum-body-line-height-m, 1.5) !important;
 }
@@ -181,7 +194,8 @@ span.uxp-reset--complete.spectrum-Body.spectrum-Body.spectrum-Body--sizeM {
 /* Large (l) */
 p.uxp-reset--complete.spectrum-Body.spectrum-Body.spectrum-Body--sizeL,
 div.uxp-reset--complete.spectrum-Body.spectrum-Body.spectrum-Body--sizeL,
-span.uxp-reset--complete.spectrum-Body.spectrum-Body.spectrum-Body--sizeL {
+span.uxp-reset--complete.spectrum-Body.spectrum-Body.spectrum-Body--size,
+div[role="paragraph"].uxp-reset--complete.spectrum-Body.spectrum-Body.spectrum-Body--sizeL {
   font-size: var(--spectrum-body-size-l, var(--spectrum-font-size-300, 18px)) !important;
   line-height: var(--spectrum-body-line-height-l, 1.5) !important;
 }
@@ -189,7 +203,8 @@ span.uxp-reset--complete.spectrum-Body.spectrum-Body.spectrum-Body--sizeL {
 /* Extra Large (xl) */
 p.uxp-reset--complete.spectrum-Body.spectrum-Body.spectrum-Body--sizeXL,
 div.uxp-reset--complete.spectrum-Body.spectrum-Body.spectrum-Body--sizeXL,
-span.uxp-reset--complete.spectrum-Body.spectrum-Body.spectrum-Body--sizeXL {
+span.uxp-reset--complete.spectrum-Body.spectrum-Body.spectrum-Body--size,
+div[role="paragraph"].uxp-reset--complete.spectrum-Body.spectrum-Body.spectrum-Body--sizeXL {
   font-size: var(--spectrum-body-size-xl, var(--spectrum-font-size-400, 20px)) !important;
   line-height: var(--spectrum-body-line-height-xl, 1.5) !important;
 }
@@ -197,7 +212,8 @@ span.uxp-reset--complete.spectrum-Body.spectrum-Body.spectrum-Body--sizeXL {
 /* Serif variant */
 p.uxp-reset--complete.spectrum-Body.spectrum-Body.spectrum-Body--serif,
 div.uxp-reset--complete.spectrum-Body.spectrum-Body.spectrum-Body--serif,
-span.uxp-reset--complete.spectrum-Body.spectrum-Body.spectrum-Body--serif {
+span.uxp-reset--complete.spectrum-Body.spectrum-Body.spectrum-Body--serif,
+div[role="paragraph"].uxp-reset--complete.spectrum-Body.spectrum-Body.spectrum-Body--serif {
   font-family: var(--spectrum-body-serif-font-family, var(--spectrum-serif-font-family-stack, 'Adobe Clean Serif', 'Source Serif Pro', Georgia, serif)) !important;
 }
 
@@ -266,7 +282,8 @@ strong.uxp-reset--complete.spectrum-Body-strong.spectrum-Body-strong.spectrum-Bo
 
 /* Base code styling */
 code.uxp-reset--complete.spectrum-Code.spectrum-Code,
-pre.uxp-reset--complete.spectrum-Code.spectrum-Code {
+pre.uxp-reset--complete.spectrum-Code.spectrum-Code,
+div[role="code"].uxp-reset--complete.spectrum-Code.spectrum-Code {
   /* Nuclear reset */
   all: unset !important;
   
@@ -290,7 +307,8 @@ pre.uxp-reset--complete.spectrum-Code.spectrum-Code {
 }
 
 /* Pre elements should be block */
-pre.uxp-reset--complete.spectrum-Code.spectrum-Code {
+pre.uxp-reset--complete.spectrum-Code.spectrum-Code,
+div[role="code"].uxp-reset--complete.spectrum-Code.spectrum-Code {
   display: block !important;
   white-space: pre !important;
   overflow-x: auto !important;
@@ -309,35 +327,40 @@ pre.uxp-reset--complete.spectrum-Code.spectrum-Code code {
 
 /* Extra Small (xs) */
 code.uxp-reset--complete.spectrum-Code.spectrum-Code.spectrum-Code--sizeXS,
-pre.uxp-reset--complete.spectrum-Code.spectrum-Code.spectrum-Code--sizeXS {
+pre.uxp-reset--complete.spectrum-Code.spectrum-Code.spectrum-Code--size,
+div[role="code"].uxp-reset--complete.spectrum-Code.spectrum-Code.spectrum-Code--sizeXS {
   font-size: var(--spectrum-code-size-xs, var(--spectrum-font-size-75, 12px)) !important;
   line-height: var(--spectrum-code-line-height-xs, 1.4) !important;
 }
 
 /* Small (s) */
 code.uxp-reset--complete.spectrum-Code.spectrum-Code.spectrum-Code--sizeS,
-pre.uxp-reset--complete.spectrum-Code.spectrum-Code.spectrum-Code--sizeS {
+pre.uxp-reset--complete.spectrum-Code.spectrum-Code.spectrum-Code--size,
+div[role="code"].uxp-reset--complete.spectrum-Code.spectrum-Code.spectrum-Code--sizeS {
   font-size: var(--spectrum-code-size-s, var(--spectrum-font-size-100, 14px)) !important;
   line-height: var(--spectrum-code-line-height-s, 1.4) !important;
 }
 
 /* Medium (m) - Default */
 code.uxp-reset--complete.spectrum-Code.spectrum-Code.spectrum-Code--sizeM,
-pre.uxp-reset--complete.spectrum-Code.spectrum-Code.spectrum-Code--sizeM {
+pre.uxp-reset--complete.spectrum-Code.spectrum-Code.spectrum-Code--size,
+div[role="code"].uxp-reset--complete.spectrum-Code.spectrum-Code.spectrum-Code--sizeM {
   font-size: var(--spectrum-code-size-m, var(--spectrum-font-size-200, 16px)) !important;
   line-height: var(--spectrum-code-line-height-m, 1.4) !important;
 }
 
 /* Large (l) */
 code.uxp-reset--complete.spectrum-Code.spectrum-Code.spectrum-Code--sizeL,
-pre.uxp-reset--complete.spectrum-Code.spectrum-Code.spectrum-Code--sizeL {
+pre.uxp-reset--complete.spectrum-Code.spectrum-Code.spectrum-Code--size,
+div[role="code"].uxp-reset--complete.spectrum-Code.spectrum-Code.spectrum-Code--sizeL {
   font-size: var(--spectrum-code-size-l, var(--spectrum-font-size-300, 18px)) !important;
   line-height: var(--spectrum-code-line-height-l, 1.4) !important;
 }
 
 /* Extra Large (xl) */
 code.uxp-reset--complete.spectrum-Code.spectrum-Code.spectrum-Code--sizeXL,
-pre.uxp-reset--complete.spectrum-Code.spectrum-Code.spectrum-Code--sizeXL {
+pre.uxp-reset--complete.spectrum-Code.spectrum-Code.spectrum-Code--size,
+div[role="code"].uxp-reset--complete.spectrum-Code.spectrum-Code.spectrum-Code--sizeXL {
   font-size: var(--spectrum-code-size-xl, var(--spectrum-font-size-400, 20px)) !important;
   line-height: var(--spectrum-code-line-height-xl, 1.4) !important;
 }
@@ -349,7 +372,8 @@ pre.uxp-reset--complete.spectrum-Code.spectrum-Code.spectrum-Code--sizeXL {
 /* Base detail text styling */
 span.uxp-reset--complete.spectrum-Detail.spectrum-Detail,
 div.uxp-reset--complete.spectrum-Detail.spectrum-Detail,
-p.uxp-reset--complete.spectrum-Detail.spectrum-Detail {
+p.uxp-reset--complete.spectrum-Detail.spectrum-Detail,
+div[role="note"].uxp-reset--complete.spectrum-Detail.spectrum-Detail {
   /* Nuclear reset */
   all: unset !important;
   
@@ -372,7 +396,8 @@ p.uxp-reset--complete.spectrum-Detail.spectrum-Detail {
 
 /* Block detail elements */
 div.uxp-reset--complete.spectrum-Detail.spectrum-Detail,
-p.uxp-reset--complete.spectrum-Detail.spectrum-Detail {
+p.uxp-reset--complete.spectrum-Detail.spectrum-Detail,
+div[role="note"].uxp-reset--complete.spectrum-Detail.spectrum-Detail {
   display: block !important;
 }
 
@@ -381,7 +406,8 @@ p.uxp-reset--complete.spectrum-Detail.spectrum-Detail {
 /* Extra Small (xs) */
 span.uxp-reset--complete.spectrum-Detail.spectrum-Detail.spectrum-Detail--sizeXS,
 div.uxp-reset--complete.spectrum-Detail.spectrum-Detail.spectrum-Detail--sizeXS,
-p.uxp-reset--complete.spectrum-Detail.spectrum-Detail.spectrum-Detail--sizeXS {
+p.uxp-reset--complete.spectrum-Detail.spectrum-Detail.spectrum-Detail--size,
+div[role="note"].uxp-reset--complete.spectrum-Detail.spectrum-Detail.spectrum-Detail--sizeXS {
   font-size: var(--spectrum-detail-size-xs, var(--spectrum-font-size-75, 12px)) !important;
   line-height: var(--spectrum-detail-line-height-xs, 1.4) !important;
 }
@@ -389,7 +415,8 @@ p.uxp-reset--complete.spectrum-Detail.spectrum-Detail.spectrum-Detail--sizeXS {
 /* Small (s) */
 span.uxp-reset--complete.spectrum-Detail.spectrum-Detail.spectrum-Detail--sizeS,
 div.uxp-reset--complete.spectrum-Detail.spectrum-Detail.spectrum-Detail--sizeS,
-p.uxp-reset--complete.spectrum-Detail.spectrum-Detail.spectrum-Detail--sizeS {
+p.uxp-reset--complete.spectrum-Detail.spectrum-Detail.spectrum-Detail--size,
+div[role="note"].uxp-reset--complete.spectrum-Detail.spectrum-Detail.spectrum-Detail--sizeS {
   font-size: var(--spectrum-detail-size-s, var(--spectrum-font-size-100, 14px)) !important;
   line-height: var(--spectrum-detail-line-height-s, 1.4) !important;
 }
@@ -397,7 +424,8 @@ p.uxp-reset--complete.spectrum-Detail.spectrum-Detail.spectrum-Detail--sizeS {
 /* Medium (m) - Default */
 span.uxp-reset--complete.spectrum-Detail.spectrum-Detail.spectrum-Detail--sizeM,
 div.uxp-reset--complete.spectrum-Detail.spectrum-Detail.spectrum-Detail--sizeM,
-p.uxp-reset--complete.spectrum-Detail.spectrum-Detail.spectrum-Detail--sizeM {
+p.uxp-reset--complete.spectrum-Detail.spectrum-Detail.spectrum-Detail--size,
+div[role="note"].uxp-reset--complete.spectrum-Detail.spectrum-Detail.spectrum-Detail--sizeM {
   font-size: var(--spectrum-detail-size-m, var(--spectrum-font-size-200, 16px)) !important;
   line-height: var(--spectrum-detail-line-height-m, 1.4) !important;
 }
@@ -405,7 +433,8 @@ p.uxp-reset--complete.spectrum-Detail.spectrum-Detail.spectrum-Detail--sizeM {
 /* Large (l) */
 span.uxp-reset--complete.spectrum-Detail.spectrum-Detail.spectrum-Detail--sizeL,
 div.uxp-reset--complete.spectrum-Detail.spectrum-Detail.spectrum-Detail--sizeL,
-p.uxp-reset--complete.spectrum-Detail.spectrum-Detail.spectrum-Detail--sizeL {
+p.uxp-reset--complete.spectrum-Detail.spectrum-Detail.spectrum-Detail--size,
+div[role="note"].uxp-reset--complete.spectrum-Detail.spectrum-Detail.spectrum-Detail--sizeL {
   font-size: var(--spectrum-detail-size-l, var(--spectrum-font-size-300, 18px)) !important;
   line-height: var(--spectrum-detail-line-height-l, 1.4) !important;
 }
@@ -413,7 +442,8 @@ p.uxp-reset--complete.spectrum-Detail.spectrum-Detail.spectrum-Detail--sizeL {
 /* Extra Large (xl) */
 span.uxp-reset--complete.spectrum-Detail.spectrum-Detail.spectrum-Detail--sizeXL,
 div.uxp-reset--complete.spectrum-Detail.spectrum-Detail.spectrum-Detail--sizeXL,
-p.uxp-reset--complete.spectrum-Detail.spectrum-Detail.spectrum-Detail--sizeXL {
+p.uxp-reset--complete.spectrum-Detail.spectrum-Detail.spectrum-Detail--size,
+div[role="note"].uxp-reset--complete.spectrum-Detail.spectrum-Detail.spectrum-Detail--sizeXL {
   font-size: var(--spectrum-detail-size-xl, var(--spectrum-font-size-400, 20px)) !important;
   line-height: var(--spectrum-detail-line-height-xl, 1.4) !important;
 }

@@ -3,7 +3,7 @@
 /* Based on official Spectrum Menu item structure */
 
 /* Base Menu Item */
-.uxp-reset--complete.spectrum-Menu-item {
+div[role="menuitem"].uxp-reset--complete.spectrum-Menu-item.spectrum-Menu-item {
   display: flex;
   align-items: center;
   box-sizing: border-box;
@@ -23,13 +23,13 @@
 }
 
 /* Menu item hover */
-.uxp-reset--complete.spectrum-Menu-item:hover:not(.is-disabled) {
+div[role="menuitem"].uxp-reset--complete.spectrum-Menu-item.spectrum-Menu-item:hover:not(.is-disabled) {
   background-color: var(--spectrum-menu-item-background-color-hover, var(--spectrum-gray-100, #f5f5f5));
   color: var(--spectrum-menu-item-text-color-hover, var(--spectrum-gray-900, #1a1a1a));
 }
 
 /* Menu item focus */
-.uxp-reset--complete.spectrum-Menu-item:focus:not(.is-disabled) {
+div[role="menuitem"].uxp-reset--complete.spectrum-Menu-item.spectrum-Menu-item:focus:not(.is-disabled) {
   background-color: var(--spectrum-menu-item-background-color-focus, var(--spectrum-blue-100, #e6f3ff));
   color: var(--spectrum-menu-item-text-color-focus, var(--spectrum-blue-900, #0d4f8a));
   outline: 2px solid var(--spectrum-focus-ring-color, var(--spectrum-blue-600, #0066cc));
@@ -37,13 +37,13 @@
 }
 
 /* Menu item selected */
-.uxp-reset--complete.spectrum-Menu-item.is-selected:not(.is-disabled) {
+div[role="menuitem"].uxp-reset--complete.spectrum-Menu-item.spectrum-Menu-item.is-selected:not(.is-disabled) {
   background-color: var(--spectrum-menu-item-background-color-selected, var(--spectrum-blue-600, #0066cc));
   color: var(--spectrum-menu-item-text-color-selected, white);
 }
 
 /* Menu item disabled */
-.uxp-reset--complete.spectrum-Menu-item.is-disabled {
+div[role="menuitem"].uxp-reset--complete.spectrum-Menu-item.spectrum-Menu-item.is-disabled {
   cursor: not-allowed;
   opacity: var(--spectrum-menu-item-disabled-opacity, 0.4);
   pointer-events: none;
@@ -51,7 +51,7 @@
 }
 
 /* Menu item icon */
-.uxp-reset--complete.spectrum-Menu-item .spectrum-Menu-itemIcon {
+div[role="menuitem"].uxp-reset--complete.spectrum-Menu-item.spectrum-Menu-item .spectrum-Menu-itemIcon {
   margin-right: var(--spectrum-menu-item-icon-margin-end, 8px);
   flex-shrink: 0;
   display: flex;
@@ -64,7 +64,7 @@
 }
 
 /* Menu item label */
-.uxp-reset--complete.spectrum-Menu-item .spectrum-Menu-itemLabel {
+div[role="menuitem"].uxp-reset--complete.spectrum-Menu-item.spectrum-Menu-item .spectrum-Menu-itemLabel {
   flex: 1;
   text-align: left;
   overflow: hidden;
@@ -74,7 +74,7 @@
 }
 
 /* Menu item description */
-.uxp-reset--complete.spectrum-Menu-item .spectrum-Menu-itemDescription {
+div[role="menuitem"].uxp-reset--complete.spectrum-Menu-item.spectrum-Menu-item .spectrum-Menu-itemDescription {
   display: block;
   margin-top: var(--spectrum-menu-item-description-margin-top, 2px);
   font-size: var(--spectrum-menu-item-description-font-size, 12px);
@@ -86,103 +86,103 @@
 }
 
 /* Menu item with description - adjust layout */
-.uxp-reset--complete.spectrum-Menu-item:has(.spectrum-Menu-itemDescription) {
+div[role="menuitem"].uxp-reset--complete.spectrum-Menu-item.spectrum-Menu-item:has(.spectrum-Menu-itemDescription) {
   flex-direction: column;
   align-items: stretch;
   min-height: var(--spectrum-menu-item-height-with-description, 48px);
 }
 
-.uxp-reset--complete.spectrum-Menu-item:has(.spectrum-Menu-itemDescription) .spectrum-Menu-itemIcon {
+div[role="menuitem"].uxp-reset--complete.spectrum-Menu-item.spectrum-Menu-item:has(.spectrum-Menu-itemDescription) .spectrum-Menu-itemIcon {
   position: absolute;
   left: var(--spectrum-menu-item-icon-margin-start, 12px);
   top: var(--spectrum-menu-item-icon-margin-top, 12px);
   margin-right: 0;
 }
 
-.uxp-reset--complete.spectrum-Menu-item:has(.spectrum-Menu-itemDescription) .spectrum-Menu-itemLabel,
-.uxp-reset--complete.spectrum-Menu-item:has(.spectrum-Menu-itemDescription) .spectrum-Menu-itemDescription {
+div[role="menuitem"].uxp-reset--complete.spectrum-Menu-item.spectrum-Menu-item:has(.spectrum-Menu-itemDescription) .spectrum-Menu-itemLabel,
+div[role="menuitem"].uxp-reset--complete.spectrum-Menu-item.spectrum-Menu-item:has(.spectrum-Menu-itemDescription) .spectrum-Menu-itemDescription {
   margin-left: var(--spectrum-menu-item-content-margin-left, 32px);
 }
 
 /* Fallback for browsers that don't support :has() */
-.uxp-reset--complete.spectrum-Menu-item.has-description {
+div[role="menuitem"].uxp-reset--complete.spectrum-Menu-item.spectrum-Menu-item.has-description {
   flex-direction: column;
   align-items: stretch;
   min-height: var(--spectrum-menu-item-height-with-description, 48px);
 }
 
-.uxp-reset--complete.spectrum-Menu-item.has-description .spectrum-Menu-itemIcon {
+div[role="menuitem"].uxp-reset--complete.spectrum-Menu-item.spectrum-Menu-item.has-description .spectrum-Menu-itemIcon {
   position: absolute;
   left: var(--spectrum-menu-item-icon-margin-start, 12px);
   top: var(--spectrum-menu-item-icon-margin-top, 12px);
   margin-right: 0;
 }
 
-.uxp-reset--complete.spectrum-Menu-item.has-description .spectrum-Menu-itemLabel,
-.uxp-reset--complete.spectrum-Menu-item.has-description .spectrum-Menu-itemDescription {
+div[role="menuitem"].uxp-reset--complete.spectrum-Menu-item.spectrum-Menu-item.has-description .spectrum-Menu-itemLabel,
+div[role="menuitem"].uxp-reset--complete.spectrum-Menu-item.spectrum-Menu-item.has-description .spectrum-Menu-itemDescription {
   margin-left: var(--spectrum-menu-item-content-margin-left, 32px);
 }
 
 /* Size variants */
-.uxp-reset--complete.spectrum-Menu-item.spectrum-Menu-item--sizeXS {
+div[role="menuitem"].uxp-reset--complete.spectrum-Menu-item.spectrum-Menu-item.spectrum-Menu-item--sizeXS {
   min-height: var(--spectrum-menu-item-height-xs, 24px);
   padding: var(--spectrum-menu-item-padding-xs, 4px 8px);
   font-size: var(--spectrum-menu-item-font-size-xs, 12px);
 }
 
-.uxp-reset--complete.spectrum-Menu-item.spectrum-Menu-item--sizeXS .spectrum-Menu-itemIcon {
+div[role="menuitem"].uxp-reset--complete.spectrum-Menu-item.spectrum-Menu-item.spectrum-Menu-item--sizeXS .spectrum-Menu-itemIcon {
   font-size: var(--spectrum-menu-item-icon-size-xs, 14px);
   min-width: var(--spectrum-menu-item-icon-width-xs, 14px);
   min-height: var(--spectrum-menu-item-icon-height-xs, 14px);
   margin-right: var(--spectrum-menu-item-icon-margin-end-xs, 6px);
 }
 
-.uxp-reset--complete.spectrum-Menu-item.spectrum-Menu-item--sizeS {
+div[role="menuitem"].uxp-reset--complete.spectrum-Menu-item.spectrum-Menu-item.spectrum-Menu-item--sizeS {
   min-height: var(--spectrum-menu-item-height-s, 28px);
   padding: var(--spectrum-menu-item-padding-s, 6px 10px);
   font-size: var(--spectrum-menu-item-font-size-s, 13px);
 }
 
-.uxp-reset--complete.spectrum-Menu-item.spectrum-Menu-item--sizeS .spectrum-Menu-itemIcon {
+div[role="menuitem"].uxp-reset--complete.spectrum-Menu-item.spectrum-Menu-item.spectrum-Menu-item--sizeS .spectrum-Menu-itemIcon {
   font-size: var(--spectrum-menu-item-icon-size-s, 15px);
   min-width: var(--spectrum-menu-item-icon-width-s, 15px);
   min-height: var(--spectrum-menu-item-icon-height-s, 15px);
   margin-right: var(--spectrum-menu-item-icon-margin-end-s, 7px);
 }
 
-.uxp-reset--complete.spectrum-Menu-item.spectrum-Menu-item--sizeM {
+div[role="menuitem"].uxp-reset--complete.spectrum-Menu-item.spectrum-Menu-item.spectrum-Menu-item--sizeM {
   min-height: var(--spectrum-menu-item-height-m, 32px);
   padding: var(--spectrum-menu-item-padding-m, 8px 12px);
   font-size: var(--spectrum-menu-item-font-size-m, 14px);
 }
 
-.uxp-reset--complete.spectrum-Menu-item.spectrum-Menu-item--sizeM .spectrum-Menu-itemIcon {
+div[role="menuitem"].uxp-reset--complete.spectrum-Menu-item.spectrum-Menu-item.spectrum-Menu-item--sizeM .spectrum-Menu-itemIcon {
   font-size: var(--spectrum-menu-item-icon-size-m, 16px);
   min-width: var(--spectrum-menu-item-icon-width-m, 16px);
   min-height: var(--spectrum-menu-item-icon-height-m, 16px);
   margin-right: var(--spectrum-menu-item-icon-margin-end-m, 8px);
 }
 
-.uxp-reset--complete.spectrum-Menu-item.spectrum-Menu-item--sizeL {
+div[role="menuitem"].uxp-reset--complete.spectrum-Menu-item.spectrum-Menu-item.spectrum-Menu-item--sizeL {
   min-height: var(--spectrum-menu-item-height-l, 36px);
   padding: var(--spectrum-menu-item-padding-l, 10px 14px);
   font-size: var(--spectrum-menu-item-font-size-l, 15px);
 }
 
-.uxp-reset--complete.spectrum-Menu-item.spectrum-Menu-item--sizeL .spectrum-Menu-itemIcon {
+div[role="menuitem"].uxp-reset--complete.spectrum-Menu-item.spectrum-Menu-item.spectrum-Menu-item--sizeL .spectrum-Menu-itemIcon {
   font-size: var(--spectrum-menu-item-icon-size-l, 18px);
   min-width: var(--spectrum-menu-item-icon-width-l, 18px);
   min-height: var(--spectrum-menu-item-icon-height-l, 18px);
   margin-right: var(--spectrum-menu-item-icon-margin-end-l, 9px);
 }
 
-.uxp-reset--complete.spectrum-Menu-item.spectrum-Menu-item--sizeXL {
+div[role="menuitem"].uxp-reset--complete.spectrum-Menu-item.spectrum-Menu-item.spectrum-Menu-item--sizeXL {
   min-height: var(--spectrum-menu-item-height-xl, 40px);
   padding: var(--spectrum-menu-item-padding-xl, 12px 16px);
   font-size: var(--spectrum-menu-item-font-size-xl, 16px);
 }
 
-.uxp-reset--complete.spectrum-Menu-item.spectrum-Menu-item--sizeXL .spectrum-Menu-itemIcon {
+div[role="menuitem"].uxp-reset--complete.spectrum-Menu-item.spectrum-Menu-item.spectrum-Menu-item--sizeXL .spectrum-Menu-itemIcon {
   font-size: var(--spectrum-menu-item-icon-size-xl, 20px);
   min-width: var(--spectrum-menu-item-icon-width-xl, 20px);
   min-height: var(--spectrum-menu-item-icon-height-xl, 20px);
@@ -191,63 +191,63 @@
 
 /* Dark theme support */
 @media (prefers-color-scheme: dark) {
-  .uxp-reset--complete.spectrum-Menu-item {
+  div[role="menuitem"].uxp-reset--complete.spectrum-Menu-item.spectrum-Menu-item {
     color: var(--spectrum-menu-item-text-color-dark, #cccccc);
   }
 
-  .uxp-reset--complete.spectrum-Menu-item:hover:not(.is-disabled) {
+  div[role="menuitem"].uxp-reset--complete.spectrum-Menu-item.spectrum-Menu-item:hover:not(.is-disabled) {
     background-color: var(--spectrum-menu-item-background-color-hover-dark, #404040);
     color: var(--spectrum-menu-item-text-color-hover-dark, #ffffff);
   }
 
-  .uxp-reset--complete.spectrum-Menu-item:focus:not(.is-disabled) {
+  div[role="menuitem"].uxp-reset--complete.spectrum-Menu-item.spectrum-Menu-item:focus:not(.is-disabled) {
     background-color: var(--spectrum-menu-item-background-color-focus-dark, #2a4a6b);
     color: var(--spectrum-menu-item-text-color-focus-dark, #ffffff);
   }
 
-  .uxp-reset--complete.spectrum-Menu-item .spectrum-Menu-itemDescription {
+  div[role="menuitem"].uxp-reset--complete.spectrum-Menu-item.spectrum-Menu-item .spectrum-Menu-itemDescription {
     color: var(--spectrum-menu-item-description-text-color-dark, #999999);
   }
 
-  .uxp-reset--complete.spectrum-Menu-item.is-disabled {
+  div[role="menuitem"].uxp-reset--complete.spectrum-Menu-item.spectrum-Menu-item.is-disabled {
     color: var(--spectrum-menu-item-text-color-disabled-dark, #5a5a5a);
   }
 }
 
 /* Fallback styles for environments without CSS custom properties */
-.uxp-reset--complete.spectrum-Menu-item {
+div[role="menuitem"].uxp-reset--complete.spectrum-Menu-item.spectrum-Menu-item {
   background: transparent !important;
   color: #323232 !important;
   border: none !important;
 }
 
-.uxp-reset--complete.spectrum-Menu-item:hover:not(.is-disabled) {
+div[role="menuitem"].uxp-reset--complete.spectrum-Menu-item.spectrum-Menu-item:hover:not(.is-disabled) {
   background: #f5f5f5 !important;
   color: #1a1a1a !important;
 }
 
-.uxp-reset--complete.spectrum-Menu-item.is-selected:not(.is-disabled) {
+div[role="menuitem"].uxp-reset--complete.spectrum-Menu-item.spectrum-Menu-item.is-selected:not(.is-disabled) {
   background: #0066cc !important;
   color: white !important;
 }
 
-.uxp-reset--complete.spectrum-Menu-item.is-disabled {
+div[role="menuitem"].uxp-reset--complete.spectrum-Menu-item.spectrum-Menu-item.is-disabled {
   background: transparent !important;
   color: #8e8e8e !important;
 }
 
 @media (prefers-color-scheme: dark) {
-  .uxp-reset--complete.spectrum-Menu-item {
+  div[role="menuitem"].uxp-reset--complete.spectrum-Menu-item.spectrum-Menu-item {
     background: transparent !important;
     color: #cccccc !important;
   }
 
-  .uxp-reset--complete.spectrum-Menu-item:hover:not(.is-disabled) {
+  div[role="menuitem"].uxp-reset--complete.spectrum-Menu-item.spectrum-Menu-item:hover:not(.is-disabled) {
     background: #404040 !important;
     color: #ffffff !important;
   }
 
-  .uxp-reset--complete.spectrum-Menu-item .spectrum-Menu-itemDescription {
+  div[role="menuitem"].uxp-reset--complete.spectrum-Menu-item.spectrum-Menu-item .spectrum-Menu-itemDescription {
     color: #999999 !important;
   }
 }

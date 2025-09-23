@@ -8,7 +8,7 @@
    ============================================================================= */
 
 /* Ultra-high specificity selector for main checkbox label */
-label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox {
+div[role="checkbox"].uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox {
   /* Nuclear reset */
   all: unset !important;
   
@@ -34,23 +34,23 @@ label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox {
 }
 
 /* Disabled state */
-label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox:has(.spectrum-Checkbox-input:disabled) {
+div[role="checkbox"].uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox:has(.spectrum-Checkbox-input:disabled) {
   cursor: not-allowed !important;
   opacity: 0.5 !important;
 }
 
 /* Hover state */
-label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox:hover {
+div[role="checkbox"].uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox:hover {
   color: var(--spectrum-checkbox-content-color-hover, var(--spectrum-neutral-content-color-hover, #111827)) !important;
 }
 
 /* Active/pressed state */
-label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox:active {
+div[role="checkbox"].uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox:active {
   color: var(--spectrum-checkbox-content-color-down, var(--spectrum-neutral-content-color-down, #000000)) !important;
 }
 
 /* Focus state */
-label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox:focus-within {
+div[role="checkbox"].uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox:focus-within {
   color: var(--spectrum-checkbox-content-color-focus, var(--spectrum-neutral-content-color-focus, #1f2937)) !important;
 }
 
@@ -59,7 +59,7 @@ label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox:focus-within {
    ============================================================================= */
 
 /* Hide the native input but keep it accessible */
-label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox .spectrum-Checkbox-input {
+div[role="checkbox"].uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox .spectrum-Checkbox-input {
   position: absolute !important;
   opacity: 0 !important;
   width: 1px !important;
@@ -77,7 +77,7 @@ label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox .spectrum-Checkbox
    ============================================================================= */
 
 /* Main checkbox box */
-label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox .spectrum-Checkbox-box {
+div[role="checkbox"].uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox .spectrum-Checkbox-box {
   /* Nuclear reset */
   all: unset !important;
   
@@ -99,7 +99,7 @@ label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox .spectrum-Checkbox
 }
 
 /* Box before pseudo-element for background */
-label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox .spectrum-Checkbox-box:before {
+div[role="checkbox"].uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox .spectrum-Checkbox-box:before {
   content: '' !important;
   position: absolute !important;
   top: 0 !important;
@@ -112,25 +112,25 @@ label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox .spectrum-Checkbox
 }
 
 /* Hover state for box */
-label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox:hover .spectrum-Checkbox-box {
+div[role="checkbox"].uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox:hover .spectrum-Checkbox-box {
   border-color: var(--spectrum-checkbox-control-color-hover, #4b5563) !important;
 }
 
-label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox:hover .spectrum-Checkbox-box:before {
+div[role="checkbox"].uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox:hover .spectrum-Checkbox-box:before {
   background-color: var(--spectrum-checkbox-control-color-hover, rgba(107, 114, 128, 0.1)) !important;
 }
 
 /* Active state for box */
-label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox:active .spectrum-Checkbox-box {
+div[role="checkbox"].uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox:active .spectrum-Checkbox-box {
   border-color: var(--spectrum-checkbox-control-color-down, #374151) !important;
 }
 
-label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox:active .spectrum-Checkbox-box:before {
+div[role="checkbox"].uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox:active .spectrum-Checkbox-box:before {
   background-color: var(--spectrum-checkbox-control-color-down, rgba(55, 65, 81, 0.2)) !important;
 }
 
 /* Focus indicator */
-label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox:focus-within .spectrum-Checkbox-box:after {
+div[role="checkbox"].uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox:focus-within .spectrum-Checkbox-box:after {
   content: '' !important;
   position: absolute !important;
   top: calc(-1 * var(--spectrum-checkbox-focus-indicator-gap, 2px)) !important;
@@ -147,38 +147,38 @@ label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox:focus-within .spec
    ============================================================================= */
 
 /* Checked box styling */
-label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox .spectrum-Checkbox-input:checked + .spectrum-Checkbox-box {
+div[role="checkbox"].uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox .spectrum-Checkbox-input:checked + .spectrum-Checkbox-box {
   border-color: var(--spectrum-checkbox-control-selected-color-default, #2563eb) !important;
 }
 
-label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox .spectrum-Checkbox-input:checked + .spectrum-Checkbox-box:before {
+div[role="checkbox"].uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox .spectrum-Checkbox-input:checked + .spectrum-Checkbox-box:before {
   background-color: var(--spectrum-checkbox-control-selected-color-default, #2563eb) !important;
 }
 
 /* Checked + hover */
-label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox:hover .spectrum-Checkbox-input:checked + .spectrum-Checkbox-box {
+div[role="checkbox"].uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox:hover .spectrum-Checkbox-input:checked + .spectrum-Checkbox-box {
   border-color: var(--spectrum-checkbox-control-selected-color-hover, #1d4ed8) !important;
 }
 
-label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox:hover .spectrum-Checkbox-input:checked + .spectrum-Checkbox-box:before {
+div[role="checkbox"].uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox:hover .spectrum-Checkbox-input:checked + .spectrum-Checkbox-box:before {
   background-color: var(--spectrum-checkbox-control-selected-color-hover, #1d4ed8) !important;
 }
 
 /* Checked + active */
-label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox:active .spectrum-Checkbox-input:checked + .spectrum-Checkbox-box {
+div[role="checkbox"].uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox:active .spectrum-Checkbox-input:checked + .spectrum-Checkbox-box {
   border-color: var(--spectrum-checkbox-control-selected-color-down, #1e40af) !important;
 }
 
-label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox:active .spectrum-Checkbox-input:checked + .spectrum-Checkbox-box:before {
+div[role="checkbox"].uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox:active .spectrum-Checkbox-input:checked + .spectrum-Checkbox-box:before {
   background-color: var(--spectrum-checkbox-control-selected-color-down, #1e40af) !important;
 }
 
 /* Checked + focus */
-label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox .spectrum-Checkbox-input:focus-visible:checked + .spectrum-Checkbox-box {
+div[role="checkbox"].uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox .spectrum-Checkbox-input:focus-visible:checked + .spectrum-Checkbox-box {
   border-color: var(--spectrum-checkbox-control-selected-color-focus, #2563eb) !important;
 }
 
-label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox .spectrum-Checkbox-input:focus-visible:checked + .spectrum-Checkbox-box:before {
+div[role="checkbox"].uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox .spectrum-Checkbox-input:focus-visible:checked + .spectrum-Checkbox-box:before {
   background-color: var(--spectrum-checkbox-control-selected-color-focus, #2563eb) !important;
 }
 
@@ -187,8 +187,8 @@ label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox .spectrum-Checkbox
    ============================================================================= */
 
 /* Hide both icons by default */
-label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox .spectrum-Checkbox-checkmark,
-label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox .spectrum-Checkbox-partialCheckmark {
+div[role="checkbox"].uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox .spectrum-Checkbox-checkmark,
+div[role="checkbox"].uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox .spectrum-Checkbox-partialCheckmark {
   position: absolute !important;
   top: 50% !important;
   left: 50% !important;
@@ -201,21 +201,21 @@ label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox .spectrum-Checkbox
 }
 
 /* Show checkmark when checked and not indeterminate */
-label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox .spectrum-Checkbox-input:checked + .spectrum-Checkbox-box .spectrum-Checkbox-checkmark {
+div[role="checkbox"].uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox .spectrum-Checkbox-input:checked + .spectrum-Checkbox-box .spectrum-Checkbox-checkmark {
   opacity: 1 !important;
 }
 
 /* Hide checkmark when indeterminate */
-label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox.is-indeterminate .spectrum-Checkbox-input:checked + .spectrum-Checkbox-box .spectrum-Checkbox-checkmark {
+div[role="checkbox"].uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox.is-indeterminate .spectrum-Checkbox-input:checked + .spectrum-Checkbox-box .spectrum-Checkbox-checkmark {
   opacity: 0 !important;
 }
 
 /* Show partial checkmark when indeterminate */
-label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox.is-indeterminate .spectrum-Checkbox-box .spectrum-Checkbox-partialCheckmark {
+div[role="checkbox"].uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox.is-indeterminate .spectrum-Checkbox-box .spectrum-Checkbox-partialCheckmark {
   opacity: 1 !important;
 }
 
-label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox.is-indeterminate .spectrum-Checkbox-input:checked + .spectrum-Checkbox-box .spectrum-Checkbox-partialCheckmark {
+div[role="checkbox"].uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox.is-indeterminate .spectrum-Checkbox-input:checked + .spectrum-Checkbox-box .spectrum-Checkbox-partialCheckmark {
   opacity: 1 !important;
 }
 
@@ -224,20 +224,20 @@ label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox.is-indeterminate .
    ============================================================================= */
 
 /* Indeterminate box styling */
-label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox.is-indeterminate .spectrum-Checkbox-box {
+div[role="checkbox"].uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox.is-indeterminate .spectrum-Checkbox-box {
   border-color: var(--spectrum-checkbox-control-selected-color-default, #2563eb) !important;
 }
 
-label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox.is-indeterminate .spectrum-Checkbox-box:before {
+div[role="checkbox"].uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox.is-indeterminate .spectrum-Checkbox-box:before {
   background-color: var(--spectrum-checkbox-control-selected-color-default, #2563eb) !important;
 }
 
 /* Indeterminate + hover */
-label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox.is-indeterminate:hover .spectrum-Checkbox-box {
+div[role="checkbox"].uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox.is-indeterminate:hover .spectrum-Checkbox-box {
   border-color: var(--spectrum-checkbox-control-selected-color-hover, #1d4ed8) !important;
 }
 
-label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox.is-indeterminate:hover .spectrum-Checkbox-box:before {
+div[role="checkbox"].uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox.is-indeterminate:hover .spectrum-Checkbox-box:before {
   background-color: var(--spectrum-checkbox-control-selected-color-hover, #1d4ed8) !important;
 }
 
@@ -246,7 +246,7 @@ label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox.is-indeterminate:h
    ============================================================================= */
 
 /* Label text styling */
-label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox .spectrum-Checkbox-label {
+div[role="checkbox"].uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox .spectrum-Checkbox-label {
   /* Nuclear reset */
   all: unset !important;
   
@@ -266,17 +266,17 @@ label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox .spectrum-Checkbox
 }
 
 /* Label hover state */
-label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox:hover .spectrum-Checkbox-label {
+div[role="checkbox"].uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox:hover .spectrum-Checkbox-label {
   color: inherit !important;
 }
 
 /* Label focus state */
-label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox .spectrum-Checkbox-input:focus-visible + * + .spectrum-Checkbox-label {
+div[role="checkbox"].uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox .spectrum-Checkbox-input:focus-visible + * + .spectrum-Checkbox-label {
   color: inherit !important;
 }
 
 /* Label active state */
-label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox:active .spectrum-Checkbox-label {
+div[role="checkbox"].uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox:active .spectrum-Checkbox-label {
   color: inherit !important;
 }
 
@@ -285,45 +285,45 @@ label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox:active .spectrum-C
    ============================================================================= */
 
 /* Small (S) */
-label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox.spectrum-Checkbox--sizeS {
+div[role="checkbox"].uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox.spectrum-Checkbox--sizeS {
   font-size: var(--spectrum-font-size-75, 12px) !important;
   min-height: var(--spectrum-component-height-75, 24px) !important;
 }
 
-label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox.spectrum-Checkbox--sizeS .spectrum-Checkbox-box {
+div[role="checkbox"].uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox.spectrum-Checkbox--sizeS .spectrum-Checkbox-box {
   width: var(--spectrum-checkbox-control-size-small, 12px) !important;
   height: var(--spectrum-checkbox-control-size-small, 12px) !important;
 }
 
 /* Medium (M) - Default */
-label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox.spectrum-Checkbox--sizeM {
+div[role="checkbox"].uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox.spectrum-Checkbox--sizeM {
   font-size: var(--spectrum-font-size-100, 14px) !important;
   min-height: var(--spectrum-component-height-100, 32px) !important;
 }
 
-label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox.spectrum-Checkbox--sizeM .spectrum-Checkbox-box {
+div[role="checkbox"].uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox.spectrum-Checkbox--sizeM .spectrum-Checkbox-box {
   width: var(--spectrum-checkbox-control-size-medium, 16px) !important;
   height: var(--spectrum-checkbox-control-size-medium, 16px) !important;
 }
 
 /* Large (L) */
-label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox.spectrum-Checkbox--sizeL {
+div[role="checkbox"].uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox.spectrum-Checkbox--sizeL {
   font-size: var(--spectrum-font-size-200, 16px) !important;
   min-height: var(--spectrum-component-height-200, 40px) !important;
 }
 
-label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox.spectrum-Checkbox--sizeL .spectrum-Checkbox-box {
+div[role="checkbox"].uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox.spectrum-Checkbox--sizeL .spectrum-Checkbox-box {
   width: var(--spectrum-checkbox-control-size-large, 20px) !important;
   height: var(--spectrum-checkbox-control-size-large, 20px) !important;
 }
 
 /* Extra Large (XL) */
-label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox.spectrum-Checkbox--sizeXL {
+div[role="checkbox"].uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox.spectrum-Checkbox--sizeXL {
   font-size: var(--spectrum-font-size-300, 18px) !important;
   min-height: var(--spectrum-component-height-300, 48px) !important;
 }
 
-label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox.spectrum-Checkbox--sizeXL .spectrum-Checkbox-box {
+div[role="checkbox"].uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox.spectrum-Checkbox--sizeXL .spectrum-Checkbox-box {
   width: var(--spectrum-checkbox-control-size-extra-large, 24px) !important;
   height: var(--spectrum-checkbox-control-size-extra-large, 24px) !important;
 }
@@ -333,32 +333,32 @@ label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox.spectrum-Checkbox-
    ============================================================================= */
 
 /* Invalid checkbox styling */
-label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox.is-invalid .spectrum-Checkbox-box {
+div[role="checkbox"].uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox.is-invalid .spectrum-Checkbox-box {
   border-color: var(--spectrum-checkbox-invalid-color-default, var(--spectrum-negative-color-900, #dc2626)) !important;
 }
 
-label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox.is-invalid:hover .spectrum-Checkbox-box {
+div[role="checkbox"].uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox.is-invalid:hover .spectrum-Checkbox-box {
   border-color: var(--spectrum-checkbox-invalid-color-hover, var(--spectrum-negative-color-1000, #b91c1c)) !important;
 }
 
-label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox.is-invalid .spectrum-Checkbox-input:checked + .spectrum-Checkbox-box {
+div[role="checkbox"].uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox.is-invalid .spectrum-Checkbox-input:checked + .spectrum-Checkbox-box {
   border-color: var(--spectrum-checkbox-invalid-color-default, var(--spectrum-negative-color-900, #dc2626)) !important;
 }
 
-label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox.is-invalid .spectrum-Checkbox-input:checked + .spectrum-Checkbox-box:before {
+div[role="checkbox"].uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox.is-invalid .spectrum-Checkbox-input:checked + .spectrum-Checkbox-box:before {
   background-color: var(--spectrum-checkbox-invalid-color-default, var(--spectrum-negative-color-900, #dc2626)) !important;
 }
 
-label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox.is-invalid:hover .spectrum-Checkbox-input:checked + .spectrum-Checkbox-box:before {
+div[role="checkbox"].uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox.is-invalid:hover .spectrum-Checkbox-input:checked + .spectrum-Checkbox-box:before {
   background-color: var(--spectrum-checkbox-invalid-color-hover, var(--spectrum-negative-color-1000, #b91c1c)) !important;
 }
 
 /* Invalid + indeterminate */
-label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox.is-invalid.is-indeterminate .spectrum-Checkbox-box {
+div[role="checkbox"].uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox.is-invalid.is-indeterminate .spectrum-Checkbox-box {
   border-color: var(--spectrum-checkbox-invalid-color-default, var(--spectrum-negative-color-900, #dc2626)) !important;
 }
 
-label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox.is-invalid.is-indeterminate .spectrum-Checkbox-box:before {
+div[role="checkbox"].uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox.is-invalid.is-indeterminate .spectrum-Checkbox-box:before {
   background-color: var(--spectrum-checkbox-invalid-color-default, var(--spectrum-negative-color-900, #dc2626)) !important;
 }
 
@@ -367,27 +367,27 @@ label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox.is-invalid.is-inde
    ============================================================================= */
 
 /* Emphasized checkbox uses accent colors */
-label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox.spectrum-Checkbox--emphasized .spectrum-Checkbox-input:checked + .spectrum-Checkbox-box {
+div[role="checkbox"].uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox.spectrum-Checkbox--emphasized .spectrum-Checkbox-input:checked + .spectrum-Checkbox-box {
   border-color: var(--spectrum-checkbox-emphasized-color-default, var(--spectrum-accent-color-900, #2563eb)) !important;
 }
 
-label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox.spectrum-Checkbox--emphasized .spectrum-Checkbox-input:checked + .spectrum-Checkbox-box:before {
+div[role="checkbox"].uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox.spectrum-Checkbox--emphasized .spectrum-Checkbox-input:checked + .spectrum-Checkbox-box:before {
   background-color: var(--spectrum-checkbox-emphasized-color-default, var(--spectrum-accent-color-900, #2563eb)) !important;
 }
 
-label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox.spectrum-Checkbox--emphasized:hover .spectrum-Checkbox-input:checked + .spectrum-Checkbox-box {
+div[role="checkbox"].uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox.spectrum-Checkbox--emphasized:hover .spectrum-Checkbox-input:checked + .spectrum-Checkbox-box {
   border-color: var(--spectrum-checkbox-emphasized-color-hover, var(--spectrum-accent-color-1000, #1d4ed8)) !important;
 }
 
-label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox.spectrum-Checkbox--emphasized:hover .spectrum-Checkbox-input:checked + .spectrum-Checkbox-box:before {
+div[role="checkbox"].uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox.spectrum-Checkbox--emphasized:hover .spectrum-Checkbox-input:checked + .spectrum-Checkbox-box:before {
   background-color: var(--spectrum-checkbox-emphasized-color-hover, var(--spectrum-accent-color-1000, #1d4ed8)) !important;
 }
 
-label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox.spectrum-Checkbox--emphasized:active .spectrum-Checkbox-input:checked + .spectrum-Checkbox-box {
+div[role="checkbox"].uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox.spectrum-Checkbox--emphasized:active .spectrum-Checkbox-input:checked + .spectrum-Checkbox-box {
   border-color: var(--spectrum-checkbox-emphasized-color-down, var(--spectrum-accent-color-1100, #1e40af)) !important;
 }
 
-label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox.spectrum-Checkbox--emphasized:active .spectrum-Checkbox-input:checked + .spectrum-Checkbox-box:before {
+div[role="checkbox"].uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox.spectrum-Checkbox--emphasized:active .spectrum-Checkbox-input:checked + .spectrum-Checkbox-box:before {
   background-color: var(--spectrum-checkbox-emphasized-color-down, var(--spectrum-accent-color-1100, #1e40af)) !important;
 }
 
@@ -396,29 +396,29 @@ label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox.spectrum-Checkbox-
    ============================================================================= */
 
 /* Disabled checkbox styling */
-label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox .spectrum-Checkbox-input:disabled + .spectrum-Checkbox-box {
+div[role="checkbox"].uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox .spectrum-Checkbox-input:disabled + .spectrum-Checkbox-box {
   border-color: var(--spectrum-checkbox-control-color-disabled, var(--spectrum-disabled-content-color, #9ca3af)) !important;
   background-color: transparent !important;
 }
 
-label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox .spectrum-Checkbox-input:disabled + .spectrum-Checkbox-box:before {
+div[role="checkbox"].uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox .spectrum-Checkbox-input:disabled + .spectrum-Checkbox-box:before {
   background-color: transparent !important;
 }
 
-label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox .spectrum-Checkbox-input:disabled + * + .spectrum-Checkbox-label {
+div[role="checkbox"].uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox .spectrum-Checkbox-input:disabled + * + .spectrum-Checkbox-label {
   color: var(--spectrum-checkbox-content-color-disabled, var(--spectrum-disabled-content-color, #9ca3af)) !important;
 }
 
 /* Disabled + checked */
-label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox .spectrum-Checkbox-input:checked:disabled + .spectrum-Checkbox-box {
+div[role="checkbox"].uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox .spectrum-Checkbox-input:checked:disabled + .spectrum-Checkbox-box {
   border-color: var(--spectrum-checkbox-control-color-disabled, var(--spectrum-disabled-content-color, #9ca3af)) !important;
 }
 
-label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox .spectrum-Checkbox-input:checked:disabled + .spectrum-Checkbox-box:before {
+div[role="checkbox"].uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox .spectrum-Checkbox-input:checked:disabled + .spectrum-Checkbox-box:before {
   background-color: var(--spectrum-checkbox-control-color-disabled, var(--spectrum-disabled-content-color, #9ca3af)) !important;
 }
 
-label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox .spectrum-Checkbox-input:checked:disabled + * + .spectrum-Checkbox-label {
+div[role="checkbox"].uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox .spectrum-Checkbox-input:checked:disabled + * + .spectrum-Checkbox-label {
   color: var(--spectrum-checkbox-content-color-disabled, var(--spectrum-disabled-content-color, #9ca3af)) !important;
 }
 
@@ -427,12 +427,12 @@ label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox .spectrum-Checkbox
    ============================================================================= */
 
 /* Read-only checkboxes have reduced opacity and no cursor */
-label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox.is-readOnly {
+div[role="checkbox"].uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox.is-readOnly {
   cursor: default !important;
   opacity: 0.7 !important;
 }
 
-label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox.is-readOnly .spectrum-Checkbox-input {
+div[role="checkbox"].uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox.is-readOnly .spectrum-Checkbox-input {
   cursor: default !important;
 }
 
@@ -441,21 +441,21 @@ label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox.is-readOnly .spect
    ============================================================================= */
 
 /* Dark theme styles */
-.spectrum--darkest label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox,
-.spectrum--dark label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox,
-[data-color-scheme="dark"] label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox {
+.spectrum--darkest div[role="checkbox"].uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox,
+.spectrum--dark div[role="checkbox"].uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox,
+[data-color-scheme="dark"] div[role="checkbox"].uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox {
   color: var(--spectrum-checkbox-content-color-default, #f9fafb) !important;
 }
 
-.spectrum--darkest label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox .spectrum-Checkbox-box,
-.spectrum--dark label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox .spectrum-Checkbox-box,
-[data-color-scheme="dark"] label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox .spectrum-Checkbox-box {
+.spectrum--darkest div[role="checkbox"].uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox .spectrum-Checkbox-box,
+.spectrum--dark div[role="checkbox"].uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox .spectrum-Checkbox-box,
+[data-color-scheme="dark"] div[role="checkbox"].uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox .spectrum-Checkbox-box {
   border-color: var(--spectrum-checkbox-control-color-default, #9ca3af) !important;
 }
 
-.spectrum--darkest label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox:hover .spectrum-Checkbox-box,
-.spectrum--dark label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox:hover .spectrum-Checkbox-box,
-[data-color-scheme="dark"] label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox:hover .spectrum-Checkbox-box {
+.spectrum--darkest div[role="checkbox"].uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox:hover .spectrum-Checkbox-box,
+.spectrum--dark div[role="checkbox"].uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox:hover .spectrum-Checkbox-box,
+[data-color-scheme="dark"] div[role="checkbox"].uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox:hover .spectrum-Checkbox-box {
   border-color: var(--spectrum-checkbox-control-color-hover, #d1d5db) !important;
 }
 
@@ -465,20 +465,20 @@ label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox.is-readOnly .spect
 
 /* Container queries for responsive behavior */
 @container (max-width: 300px) {
-  label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox {
+  div[role="checkbox"].uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox {
     font-size: var(--spectrum-font-size-75, 12px) !important;
   }
   
-  label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox .spectrum-Checkbox-box {
+  div[role="checkbox"].uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox .spectrum-Checkbox-box {
     width: var(--spectrum-checkbox-control-size-small, 12px) !important;
     height: var(--spectrum-checkbox-control-size-small, 12px) !important;
   }
 }
 
 /* CJK language support */
-label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox .spectrum-Checkbox-label:lang(ja),
-label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox .spectrum-Checkbox-label:lang(ko),
-label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox .spectrum-Checkbox-label:lang(zh) {
+div[role="checkbox"].uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox .spectrum-Checkbox-label:lang(ja),
+div[role="checkbox"].uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox .spectrum-Checkbox-label:lang(ko),
+div[role="checkbox"].uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox .spectrum-Checkbox-label:lang(zh) {
   line-height: var(--spectrum-checkbox-line-height-cjk, var(--spectrum-cjk-line-height-100, 1.5)) !important;
 }
 
@@ -487,7 +487,7 @@ label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox .spectrum-Checkbox
    ============================================================================= */
 
 /* Fallback checkmark using CSS */
-label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox .spectrum-Checkbox-input:checked + .spectrum-Checkbox-box::after {
+div[role="checkbox"].uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox .spectrum-Checkbox-input:checked + .spectrum-Checkbox-box::after {
   content: '✓' !important;
   position: absolute !important;
   top: 50% !important;
@@ -500,12 +500,12 @@ label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox .spectrum-Checkbox
 }
 
 /* Hide CSS fallback when SVG is available */
-label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox .spectrum-Checkbox-checkmark:not(:empty) + * + * + .spectrum-Checkbox-box::after {
+div[role="checkbox"].uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox .spectrum-Checkbox-checkmark:not(:empty) + * + * + .spectrum-Checkbox-box::after {
   display: none !important;
 }
 
 /* Fallback dash for indeterminate using CSS */
-label.uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox.is-indeterminate .spectrum-Checkbox-box::after {
+div[role="checkbox"].uxp-reset--complete.spectrum-Checkbox.spectrum-Checkbox.is-indeterminate .spectrum-Checkbox-box::after {
   content: '−' !important;
   position: absolute !important;
   top: 50% !important;

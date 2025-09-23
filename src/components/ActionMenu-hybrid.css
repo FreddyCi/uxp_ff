@@ -3,7 +3,8 @@
 /* This ActionMenu uses ActionButton components for menu items */
 
 /* Base ActionMenu container */
-.uxp-reset--complete.spectrum-ActionMenu {
+.uxp-reset--complete.spectrum-ActionMenu,
+div[role="menubar"].uxp-reset--complete.spectrum-ActionMenu.spectrum-ActionMenu {
   position: relative;
   display: inline-flex;
   align-items: center;
@@ -11,7 +12,8 @@
 }
 
 /* ActionButton trigger container */
-.uxp-reset--complete.spectrum-ActionMenu > div:first-child {
+.uxp-reset--complete.spectrum-ActionMenu > div:first-child,
+div[role="menubar"].uxp-reset--complete.spectrum-ActionMenu.spectrum-ActionMenu > div:first-child {
   position: relative;
 }
 
@@ -81,7 +83,7 @@
 }
 
 /* Menu container - now using ul element for proper semantic structure */
-.uxp-reset--complete.spectrum-Menu {
+div[role="menu"].uxp-reset--complete.spectrum-Menu.spectrum-Menu {
   list-style: none;
   margin: 0;
   padding: var(--spectrum-menu-padding, 4px 0);
@@ -95,34 +97,35 @@
 }
 
 /* Menu open state */
-.uxp-reset--complete.spectrum-Menu.is-open {
+div[role="menu"].uxp-reset--complete.spectrum-Menu.spectrum-Menu.is-open {
   opacity: 1;
   visibility: visible;
 }
 
 /* Menu size variants - adjust padding */
-.uxp-reset--complete.spectrum-Menu.spectrum-Menu--sizeXS {
+div[role="menu"].uxp-reset--complete.spectrum-Menu.spectrum-Menu.spectrum-Menu--sizeXS {
   padding: var(--spectrum-menu-padding-xs, 2px 0);
 }
 
-.uxp-reset--complete.spectrum-Menu.spectrum-Menu--sizeS {
+div[role="menu"].uxp-reset--complete.spectrum-Menu.spectrum-Menu.spectrum-Menu--sizeS {
   padding: var(--spectrum-menu-padding-s, 3px 0);
 }
 
-.uxp-reset--complete.spectrum-Menu.spectrum-Menu--sizeM {
+div[role="menu"].uxp-reset--complete.spectrum-Menu.spectrum-Menu.spectrum-Menu--sizeM {
   padding: var(--spectrum-menu-padding-m, 4px 0);
 }
 
-.uxp-reset--complete.spectrum-Menu.spectrum-Menu--sizeL {
+div[role="menu"].uxp-reset--complete.spectrum-Menu.spectrum-Menu.spectrum-Menu--sizeL {
   padding: var(--spectrum-menu-padding-l, 5px 0);
 }
 
-.uxp-reset--complete.spectrum-Menu.spectrum-Menu--sizeXL {
+div[role="menu"].uxp-reset--complete.spectrum-Menu.spectrum-Menu.spectrum-Menu--sizeXL {
   padding: var(--spectrum-menu-padding-xl, 6px 0);
 }
 
 /* Ensure proper layering when ActionMenu is used with other components */
-.uxp-reset--complete.spectrum-ActionMenu .spectrum-ActionMenu-popover {
+.uxp-reset--complete.spectrum-ActionMenu .spectrum-ActionMenu-popover,
+div[role="menubar"].uxp-reset--complete.spectrum-ActionMenu.spectrum-ActionMenu .spectrum-ActionMenu-popover {
   z-index: 1001;
 }
 

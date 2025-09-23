@@ -2,7 +2,7 @@
 /* Nuclear div approach for ultra-high specificity in UXP environments */
 
 /* Base ActionGroup styles */
-.uxp-reset--complete.spectrum-ActionGroup.spectrum-ActionGroup {
+div[role="group"].uxp-reset--complete.spectrum-ActionGroup.spectrum-ActionGroup {
   display: inline-flex;
   align-items: stretch;
   vertical-align: top;
@@ -10,46 +10,46 @@
 }
 
 /* Individual ActionGroup items */
-.uxp-reset--complete.spectrum-ActionGroup.spectrum-ActionGroup .spectrum-ActionGroup-item:not(:first-child) {
+div[role="group"].uxp-reset--complete.spectrum-ActionGroup.spectrum-ActionGroup .spectrum-ActionGroup-item:not(:first-child) {
   margin-inline-start: -1px;
 }
 
-.uxp-reset--complete.spectrum-ActionGroup.spectrum-ActionGroup .spectrum-ActionGroup-item {
+div[role="group"].uxp-reset--complete.spectrum-ActionGroup.spectrum-ActionGroup .spectrum-ActionGroup-item {
   position: relative;
   border-radius: 0;
   z-index: 0;
 }
 
 /* First item gets left border radius */
-.uxp-reset--complete.spectrum-ActionGroup.spectrum-ActionGroup .spectrum-ActionGroup-item:first-child {
+div[role="group"].uxp-reset--complete.spectrum-ActionGroup.spectrum-ActionGroup .spectrum-ActionGroup-item:first-child {
   border-start-start-radius: var(--spectrum-corner-radius-100);
   border-end-start-radius: var(--spectrum-corner-radius-100);
 }
 
 /* Last item gets right border radius */
-.uxp-reset--complete.spectrum-ActionGroup.spectrum-ActionGroup .spectrum-ActionGroup-item:last-child {
+div[role="group"].uxp-reset--complete.spectrum-ActionGroup.spectrum-ActionGroup .spectrum-ActionGroup-item:last-child {
   border-start-end-radius: var(--spectrum-corner-radius-100);
   border-end-end-radius: var(--spectrum-corner-radius-100);
 }
 
 /* Only child gets full border radius */
-.uxp-reset--complete.spectrum-ActionGroup.spectrum-ActionGroup .spectrum-ActionGroup-item:only-child {
+div[role="group"].uxp-reset--complete.spectrum-ActionGroup.spectrum-ActionGroup .spectrum-ActionGroup-item:only-child {
   border-radius: var(--spectrum-corner-radius-100);
 }
 
 /* Hover/focus state elevation */
-.uxp-reset--complete.spectrum-ActionGroup.spectrum-ActionGroup .spectrum-ActionGroup-item:hover,
-.uxp-reset--complete.spectrum-ActionGroup.spectrum-ActionGroup .spectrum-ActionGroup-item:focus-within {
+div[role="group"].uxp-reset--complete.spectrum-ActionGroup.spectrum-ActionGroup .spectrum-ActionGroup-item:hover,
+div[role="group"].uxp-reset--complete.spectrum-ActionGroup.spectrum-ActionGroup .spectrum-ActionGroup-item:focus-within {
   z-index: 1;
 }
 
 /* Selected/active state elevation */
-.uxp-reset--complete.spectrum-ActionGroup.spectrum-ActionGroup .spectrum-ActionGroup-item.is-selected {
+div[role="group"].uxp-reset--complete.spectrum-ActionGroup.spectrum-ActionGroup .spectrum-ActionGroup-item.is-selected {
   z-index: 2;
 }
 
 /* Ensure ActionButtons in ActionGroup have proper styling */
-.uxp-reset--complete.spectrum-ActionGroup.spectrum-ActionGroup .spectrum-ActionGroup-item .spectrum-ActionButton {
+div[role="group"].uxp-reset--complete.spectrum-ActionGroup.spectrum-ActionGroup .spectrum-ActionGroup-item .spectrum-ActionButton {
   border-radius: inherit;
   width: 100%;
 }
