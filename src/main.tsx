@@ -23,6 +23,7 @@ import { Tabs, TabList, Tab, TabPanel } from "./components/Tabs";
 import { Divider } from "./components/Divider";
 import { Radio, RadioGroup } from "./components/Radio";
 import { Asset } from "./components/Asset";
+import { AssetCard } from "./components/AssetCard";
 import { usePluginStore } from "./store/usePluginStore";
 
 
@@ -1094,6 +1095,164 @@ const App: React.FC = () => {
                     <li>Proper semantic HTML with img elements and alt text</li>
                     <li>Focus ring and keyboard navigation support</li>
                     <li>Container queries for responsive behavior</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            {/* AssetCard Component Showcase */}
+            <div style={{ marginBottom: "32px" }}>
+              <h4 style={{ margin: "0 0 16px 0", color: "var(--text)" }}>🃏 AssetCard Component</h4>
+              <div style={{ 
+                padding: "16px", 
+                backgroundColor: "var(--spectrum-background-layer-2-color, #f9fafb)", 
+                borderRadius: "8px" 
+              }}>
+                <p style={{ margin: "0 0 16px 0", fontSize: "14px", color: "var(--text)" }}>
+                  AssetCard components for displaying assets in card format with selection states and metadata based on Adobe Spectrum specifications.
+                </p>
+                
+                {/* Selection Style Variants */}
+                <div style={{ marginBottom: "24px" }}>
+                  <h5 style={{ margin: "0 0 12px 0", color: "var(--text)", fontSize: "14px" }}>Selection Style Variants</h5>
+                  <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "16px" }}>
+                    <div style={{ textAlign: "center" }}>
+                      <div style={{ fontSize: "12px", color: "var(--text-muted)", marginBottom: "8px" }}>Checkbox Selection</div>
+                      <AssetCard
+                        src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjI0IiBoZWlnaHQ9IjIyNCIgdmlld0JveD0iMCAwIDIyNCAyMjQiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIyMjQiIGhlaWdodD0iMjI0IiBmaWxsPSIjRjVGNUY1Ii8+CjxjaXJjbGUgY3g9IjExMiIgY3k9IjExMiIgcj0iNDAiIGZpbGw9IiMyNTYzRUIiLz4KPHRleHQgeD0iMTEyIiB5PSIxNDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IndoaXRlIiBmb250LXNpemU9IjE4IiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjYwMCI+Q0hFQ0tCT1g8L3RleHQ+Cjwvc3ZnPg=="
+                        alt="Checkbox selection card"
+                        title="Design File"
+                        headerContent={<span style={{ fontSize: "12px", color: "#666" }}>Modified 2 hours ago</span>}
+                        content="High-resolution design asset with multiple layers and effects."
+                        selectionStyle="checkbox"
+                        isSelected={true}
+                      />
+                    </div>
+                    <div style={{ textAlign: "center" }}>
+                      <div style={{ fontSize: "12px", color: "var(--text-muted)", marginBottom: "8px" }}>Highlight Selection</div>
+                      <AssetCard
+                        src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjI0IiBoZWlnaHQ9IjIyNCIgdmlld0JveD0iMCAwIDIyNCAyMjQiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIyMjQiIGhlaWdodD0iMjI0IiBmaWxsPSIjRkY2QjZCIi8+CjxjaXJjbGUgY3g9IjExMiIgY3k9IjExMiIgcj0iNDAiIGZpbGw9IiNGNDlBMjAiLz4KPHRleHQgeD0iMTEyIiB5PSIxNDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IndoaXRlIiBmb250LXNpemU9IjE4IiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjYwMCI+SElHSExJR0hUPXRoZXg+Cjwvc3ZnPg=="
+                        alt="Highlight selection card"
+                        title="Product Photo"
+                        headerContent={<span style={{ fontSize: "12px", color: "#666" }}>JPG • 2.4 MB</span>}
+                        content="Professional product photography for marketing materials."
+                        selectionStyle="highlight"
+                        isSelected={true}
+                      />
+                    </div>
+                    <div style={{ textAlign: "center" }}>
+                      <div style={{ fontSize: "12px", color: "var(--text-muted)", marginBottom: "8px" }}>Ordered Selection</div>
+                      <AssetCard
+                        src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjI0IiBoZWlnaHQ9IjIyNCIgdmlld0JveD0iMCAwIDIyNCAyMjQiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIyMjQiIGhlaWdodD0iMjI0IiBmaWxsPSIjMTBCOTgxIi8+CjxjaXJjbGUgY3g9IjExMiIgY3k9IjExMiIgcj0iNDAiIGZpbGw9IiMwMEJGNDUiLz4KPHRleHQgeD0iMTEyIiB5PSIxNDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IndoaXRlIiBmb250LXNpemU9IjE4IiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjYwMCI+T1JERVJFRCk8L3RleHQ+Cjwvc3ZnPg=="
+                        alt="Ordered selection card"
+                        title="Video Asset"
+                        headerContent={<span style={{ fontSize: "12px", color: "#666" }}>MP4 • 45.2 MB</span>}
+                        content="High-quality video content for multimedia presentations."
+                        selectionStyle="ordered"
+                        isSelected={true}
+                        data-order="1"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                {/* State Variants */}
+                <div style={{ marginBottom: "24px" }}>
+                  <h5 style={{ margin: "0 0 12px 0", color: "var(--text)", fontSize: "14px" }}>State Variants</h5>
+                  <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))", gap: "16px" }}>
+                    <div style={{ textAlign: "center" }}>
+                      <div style={{ fontSize: "12px", color: "var(--text-muted)", marginBottom: "8px" }}>Default State</div>
+                      <AssetCard
+                        src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjI0IiBoZWlnaHQ9IjIyNCIgdmlld0JveD0iMCAwIDIyNCAyMjQiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIyMjQiIGhlaWdodD0iMjI0IiBmaWxsPSIjRjVGNUY1Ii8+CjxjaXJjbGUgY3g9IjExMiIgY3k9IjExMiIgcj0iNDAiIGZpbGw9IiM2MzY2RjEiLz4KPHRleHQgeD0iMTEyIiB5PSIxNDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IndoaXRlIiBmb250LXNpemU9IjE4IiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjYwMCI+REVGRUFVTFQ8L3RleHQ+Cjwvc3ZnPg=="
+                        alt="Default state card"
+                        title="Default Asset"
+                        content="Standard asset card in default state."
+                      />
+                    </div>
+                    <div style={{ textAlign: "center" }}>
+                      <div style={{ fontSize: "12px", color: "var(--text-muted)", marginBottom: "8px" }}>Selected State</div>
+                      <AssetCard
+                        src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjI0IiBoZWlnaHQ9IjIyNCIgdmlld0JveD0iMCAwIDIyNCAyMjQiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIyMjQiIGhlaWdodD0iMjI0IiBmaWxsPSIjRjVGNUY1Ii8+CjxjaXJjbGUgY3g9IjExMiIgY3k9IjExMiIgcj0iNDAiIGZpbGw9IiMyNTYzRUIiLz4KPHRleHQgeD0iMTEyIiB5PSIxNDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IndoaXRlIiBmb250LXNpemU9IjE4IiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjYwMCI+U0VMRUNURUQ8L3RleHQ+Cjwvc3ZnPg=="
+                        alt="Selected state card"
+                        title="Selected Asset"
+                        content="Asset card in selected state with visual indicators."
+                        selectionStyle="checkbox"
+                        isSelected={true}
+                      />
+                    </div>
+                    <div style={{ textAlign: "center" }}>
+                      <div style={{ fontSize: "12px", color: "var(--text-muted)", marginBottom: "8px" }}>Drop Target</div>
+                      <AssetCard
+                        src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjI0IiBoZWlnaHQ9IjIyNCIgdmlld0JveD0iMCAwIDIyNCAyMjQiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIyMjQiIGhlaWdodD0iMjI0IiBmaWxsPSIjRjVGNUY1Ii8+CjxjaXJjbGUgY3g9IjExMiIgY3k9IjExMiIgcj0iNDAiIGZpbGw9IiNGNDlBMjAiLz4KPHRleHQgeD0iMTEyIiB5PSIxNDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IndoaXRlIiBmb250LXNpemU9IjE4IiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjYwMCI+RFJPUCBUSEVSRTwvdGV4dD4KPC9zdmc+"
+                        alt="Drop target card"
+                        title="Drop Target"
+                        content="Asset card showing drop target state for drag operations."
+                        isDropTarget={true}
+                      />
+                    </div>
+                    <div style={{ textAlign: "center" }}>
+                      <div style={{ fontSize: "12px", color: "var(--text-muted)", marginBottom: "8px" }}>Focused State</div>
+                      <AssetCard
+                        src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjI0IiBoZWlnaHQ9IjIyNCIgdmlld0JveD0iMCAwIDIyNCAyMjQiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIyMjQiIGhlaWdodD0iMjI0IiBmaWxsPSIjRjVGNUY1Ii8+CjxjaXJjbGUgY3g9IjExMiIgY3k9IjExMiIgcj0iNDAiIGZpbGw9IiMxMEI5ODEiLz4KPHRleHQgeD0iMTEyIiB5PSIxNDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IndoaXRlIiBmb250LXNpemU9IjE4IiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjYwMCI+Rk9DVVNFRDwvdGV4dD4KPC9zdmc+"
+                        alt="Focused state card"
+                        title="Focused Asset"
+                        content="Asset card in focused state with focus ring."
+                        isFocused={true}
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Asset Size Variants */}
+                <div style={{ marginBottom: "24px" }}>
+                  <h5 style={{ margin: "0 0 12px 0", color: "var(--text)", fontSize: "14px" }}>Asset Size Variants</h5>
+                  <div style={{ display: "flex", alignItems: "center", gap: "16px", flexWrap: "wrap" }}>
+                    <div style={{ textAlign: "center" }}>
+                      <div style={{ fontSize: "12px", color: "var(--text-muted)", marginBottom: "8px" }}>Small (150px)</div>
+                      <AssetCard
+                        src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUwIiBoZWlnaHQ9IjE1MCIgdmlld0JveD0iMCAwIDE1MCAxNTAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxNTAiIGhlaWdodD0iMTUwIiBmaWxsPSIjRjVGNUY1Ii8+CjxjaXJjbGUgY3g9Ijc1IiBjeT0iNzUiIHI9IjMwIiBmaWxsPSIjMjU2M0VCIi8+Cjx0ZXh0IHg9Ijc1IiB5PSI5NSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0id2hpdGUiIGZvbnQtc2l6ZT0iMTIiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iNjAwIj5TTUFMTDwvdGV4dD4KPC9zdmc+"
+                        alt="Small asset card"
+                        title="Small Asset"
+                        assetSize={150}
+                      />
+                    </div>
+                    <div style={{ textAlign: "center" }}>
+                      <div style={{ fontSize: "12px", color: "var(--text-muted)", marginBottom: "8px" }}>Default (224px)</div>
+                      <AssetCard
+                        src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjI0IiBoZWlnaHQ9IjIyNCIgdmlld0JveD0iMCAwIDIyNCAyMjQiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIyMjQiIGhlaWdodD0iMjI0IiBmaWxsPSIjRjVGNUY1Ii8+CjxjaXJjbGUgY3g9IjExMiIgY3k9IjExMiIgcj0iNDAiIGZpbGw9IiMyNTYzRUIiLz4KPHRleHQgeD0iMTEyIiB5PSIxNDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IndoaXRlIiBmb250LXNpemU9IjE4IiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjYwMCI+REVGRUFVTFQ8L3RleHQ+Cjwvc3ZnPg=="
+                        alt="Default asset card"
+                        title="Default Asset"
+                      />
+                    </div>
+                    <div style={{ textAlign: "center" }}>
+                      <div style={{ fontSize: "12px", color: "var(--text-muted)", marginBottom: "8px" }}>Large (300px)</div>
+                      <AssetCard
+                        src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgdmlld0JveD0iMCAwIDMwMCAzMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIiBmaWxsPSIjRjVGNUY1Ii8+CjxjaXJjbGUgY3g9IjE1MCIgY3k9IjE1MCIgcj0iNTAiIGZpbGw9IiNGNDlBMjAiLz4KPHRleHQgeD0iMTUwIiB5PSIxODAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IndoaXRlIiBmb250LXNpemU9IjI0IiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjYwMCI+TEFWR0U8L3RleHQ+Cjwvc3ZnPg=="
+                        alt="Large asset card"
+                        title="Large Asset"
+                        assetSize={300}
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Implementation Details */}
+                <div style={{ 
+                  padding: "12px", 
+                  backgroundColor: "var(--spectrum-background-layer-1-color, #fff)", 
+                  borderRadius: "4px",
+                  border: "1px solid var(--spectrum-border-color-default)"
+                }}>
+                  <h6 style={{ margin: "0 0 8px 0", fontSize: "12px", color: "var(--text)" }}>Implementation Features:</h6>
+                  <ul style={{ margin: "0", paddingLeft: "16px", fontSize: "11px", color: "var(--text-muted)" }}>
+                    <li>Nuclear div CSS approach for UXP compatibility with ultra-high specificity</li>
+                    <li>Selection styles: checkbox, highlight, and ordered variants</li>
+                    <li>State management for selected, drop target, and focused states</li>
+                    <li>Custom asset size control via --spectrum-assetcard-asset-size property</li>
+                    <li>Flexible content areas: title, header content, and main content</li>
+                    <li>Proper semantic HTML structure with accessibility support</li>
+                    <li>Focus ring and keyboard navigation for interactive elements</li>
+                    <li>Container queries for responsive grid layouts</li>
                   </ul>
                 </div>
               </div>

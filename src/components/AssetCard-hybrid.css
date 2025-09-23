@@ -1,0 +1,146 @@
+/* AssetCard Hybrid CSS - Nuclear Div Approach for UXP Compatibility */
+
+.uxp-reset--complete.spectrum-AssetCard {
+  position: relative !important;
+  display: flex !important;
+  flex-direction: column !important;
+  width: 100% !important;
+  max-width: var(--spectrum-assetcard-asset-size, 224px) !important;
+  border-radius: var(--spectrum-corner-radius-100, 4px) !important;
+  border: 1px solid var(--spectrum-gray-300, #d1d1d1) !important;
+  background-color: var(--spectrum-gray-50, #ffffff) !important;
+  overflow: hidden !important;
+  transition: border-color var(--spectrum-animation-duration-100, 130ms) ease-in-out !important;
+  box-sizing: border-box !important;
+}
+
+.uxp-reset--complete.spectrum-AssetCard:hover {
+  border-color: var(--spectrum-gray-400, #b8b8b8) !important;
+}
+
+.uxp-reset--complete.spectrum-AssetCard.is-selected {
+  border-color: var(--spectrum-blue-500, #1473e6) !important;
+  background-color: var(--spectrum-blue-100, #e6f2ff) !important;
+}
+
+.uxp-reset--complete.spectrum-AssetCard.is-drop-target {
+  border-color: var(--spectrum-blue-500, #1473e6) !important;
+  border-style: dashed !important;
+  background-color: var(--spectrum-blue-50, #f5f9ff) !important;
+}
+
+.uxp-reset--complete.spectrum-AssetCard.is-focused {
+  outline: 2px solid var(--spectrum-blue-500, #1473e6) !important;
+  outline-offset: 2px !important;
+}
+
+.uxp-reset--complete.spectrum-AssetCard-assetContainer {
+  position: relative !important;
+  width: 100% !important;
+  height: var(--spectrum-assetcard-asset-size, 224px) !important;
+  overflow: hidden !important;
+  background-color: var(--spectrum-gray-100, #f2f2f2) !important;
+}
+
+.uxp-reset--complete.spectrum-AssetCard-asset {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  display: block !important;
+}
+
+.uxp-reset--complete.spectrum-AssetCard-header {
+  padding: var(--spectrum-spacing-200, 12px) !important;
+  border-bottom: 1px solid var(--spectrum-gray-200, #e6e6e6) !important;
+}
+
+.uxp-reset--complete.spectrum-AssetCard-title {
+  font-size: var(--spectrum-font-size-100, 14px) !important;
+  font-weight: var(--spectrum-font-weight-600, 600) !important;
+  line-height: var(--spectrum-line-height-100, 1.3) !important;
+  color: var(--spectrum-gray-900, #2c2c2c) !important;
+  margin: 0 !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+}
+
+.uxp-reset--complete.spectrum-AssetCard-headerContent {
+  font-size: var(--spectrum-font-size-75, 12px) !important;
+  line-height: var(--spectrum-line-height-100, 1.3) !important;
+  color: var(--spectrum-gray-700, #5c5c5c) !important;
+  margin-top: var(--spectrum-spacing-75, 6px) !important;
+}
+
+.uxp-reset--complete.spectrum-AssetCard-content {
+  padding: var(--spectrum-spacing-200, 12px) !important;
+  flex: 1 !important;
+  font-size: var(--spectrum-font-size-100, 14px) !important;
+  line-height: var(--spectrum-line-height-100, 1.5) !important;
+  color: var(--spectrum-gray-800, #3c3c3c) !important;
+}
+
+/* Selection Variants */
+.uxp-reset--complete.spectrum-AssetCard--checkboxSelection {
+  cursor: pointer !important;
+}
+
+.uxp-reset--complete.spectrum-AssetCard--checkboxSelection .spectrum-AssetCard-selectionOverlay {
+  position: absolute !important;
+  top: var(--spectrum-spacing-100, 8px) !important;
+  right: var(--spectrum-spacing-100, 8px) !important;
+  width: 20px !important;
+  height: 20px !important;
+  background-color: var(--spectrum-gray-50, #ffffff) !important;
+  border: 1px solid var(--spectrum-gray-400, #b8b8b8) !important;
+  border-radius: var(--spectrum-corner-radius-100, 4px) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  opacity: 0.8 !important;
+  transition: opacity var(--spectrum-animation-duration-100, 130ms) ease-in-out !important;
+}
+
+.uxp-reset--complete.spectrum-AssetCard--checkboxSelection:hover .spectrum-AssetCard-selectionOverlay {
+  opacity: 1 !important;
+}
+
+.uxp-reset--complete.spectrum-AssetCard--checkboxSelection.is-selected .spectrum-AssetCard-selectionOverlay {
+  background-color: var(--spectrum-blue-500, #1473e6) !important;
+  border-color: var(--spectrum-blue-500, #1473e6) !important;
+}
+
+.uxp-reset--complete.spectrum-AssetCard--checkboxSelection.is-selected .spectrum-AssetCard-selectionOverlay::after {
+  content: '' !important;
+  width: 6px !important;
+  height: 10px !important;
+  border: solid var(--spectrum-white, #ffffff) !important;
+  border-width: 0 2px 2px 0 !important;
+  transform: rotate(45deg) !important;
+}
+
+.uxp-reset--complete.spectrum-AssetCard--highlightSelection.is-selected {
+  box-shadow: 0 0 0 2px var(--spectrum-blue-500, #1473e6) !important;
+}
+
+.uxp-reset--complete.spectrum-AssetCard--orderedSelection {
+  position: relative !important;
+}
+
+.uxp-reset--complete.spectrum-AssetCard--orderedSelection::before {
+  content: attr(data-order) !important;
+  position: absolute !important;
+  top: var(--spectrum-spacing-100, 8px) !important;
+  left: var(--spectrum-spacing-100, 8px) !important;
+  width: 20px !important;
+  height: 20px !important;
+  background-color: var(--spectrum-blue-500, #1473e6) !important;
+  color: var(--spectrum-white, #ffffff) !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: var(--spectrum-font-size-75, 12px) !important;
+  font-weight: var(--spectrum-font-weight-600, 600) !important;
+  z-index: 1 !important;
+}

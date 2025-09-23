@@ -36,13 +36,15 @@ export default defineConfig(({ mode }) => {
       target: "es2019",
       sourcemap: true,
       outDir: isUxp ? "dist-uxp" : "dist",
+      // Increase chunk size warning limit for UXP builds (large bundles are expected and acceptable)
+      chunkSizeWarningLimit: isUxp ? 1000 : 500,
       rollupOptions: isUxp
         ? { 
             output: { 
               format: "iife", 
               name: "PluginApp", 
               entryFileNames: "index.js",
-              // Disable code splitting for cleaner UXP bundle
+              // Disable code splitting for cleaner UXP bundle - UXP requires single file
               manualChunks: undefined,
               inlineDynamicImports: true
             } 
