@@ -1,0 +1,386 @@
+/*!
+ * Hybrid Switch Component - Official Spectrum CSS + Nuclear Div Approach
+ * Combines official Adobe Spectrum tokens with UXP-compatible markup
+ */
+
+/* =============================================================================
+   NUCLEAR DIV + SPECTRUM CSS RESET OVERRIDE
+   ============================================================================= */
+
+/* Ultra-high specificity selector for main switch label */
+div[role="switch"].uxp-reset--complete.spectrum-Switch.spectrum-Switch {
+  /* Nuclear reset */
+  all: unset !important;
+  
+  /* Re-establish switch foundation */
+  box-sizing: border-box !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  position: relative !important;
+  cursor: pointer !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  
+  /* Official Spectrum Switch foundation */
+  font-family: var(--spectrum-sans-font-family-stack, 'Adobe Clean', 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif) !important;
+  font-size: var(--spectrum-switch-font-size, var(--spectrum-font-size-100, 14px)) !important;
+  line-height: var(--spectrum-switch-line-height, var(--spectrum-line-height-100, 1.3)) !important;
+  color: var(--spectrum-switch-content-color-default, var(--spectrum-neutral-content-color-default, #1f2937)) !important;
+  gap: var(--spectrum-switch-text-to-control, var(--spectrum-spacing-75, 6px)) !important;
+  
+  /* Standard sizing */
+  min-height: var(--spectrum-switch-height, var(--spectrum-component-height-100, 32px)) !important;
+}
+
+/* Disabled state */
+div[role="switch"].uxp-reset--complete.spectrum-Switch.spectrum-Switch:has(.spectrum-Switch-input:disabled) {
+  cursor: not-allowed !important;
+  opacity: 0.5 !important;
+}
+
+/* Hover state */
+div[role="switch"].uxp-reset--complete.spectrum-Switch.spectrum-Switch:hover {
+  color: var(--spectrum-switch-content-color-hover, var(--spectrum-neutral-content-color-hover, #111827)) !important;
+}
+
+/* Active/pressed state */
+div[role="switch"].uxp-reset--complete.spectrum-Switch.spectrum-Switch:active {
+  color: var(--spectrum-switch-content-color-down, var(--spectrum-neutral-content-color-down, #000000)) !important;
+}
+
+/* Focus state */
+div[role="switch"].uxp-reset--complete.spectrum-Switch.spectrum-Switch:focus-within {
+  color: var(--spectrum-switch-content-color-focus, var(--spectrum-neutral-content-color-focus, #1f2937)) !important;
+}
+
+/* =============================================================================
+   HIDDEN INPUT ELEMENT
+   ============================================================================= */
+
+/* Hide the native input but keep it accessible */
+div[role="switch"].uxp-reset--complete.spectrum-Switch.spectrum-Switch .spectrum-Switch-input {
+  position: absolute !important;
+  opacity: 0 !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  clip: rect(0, 0, 0, 0) !important;
+  overflow: hidden !important;
+  white-space: nowrap !important;
+}
+
+/* =============================================================================
+   SWITCH TRACK (VISUAL CONTROL)
+   ============================================================================= */
+
+/* Main switch track */
+div[role="switch"].uxp-reset--complete.spectrum-Switch.spectrum-Switch .spectrum-Switch-switch {
+  /* Nuclear reset */
+  all: unset !important;
+  
+  /* Re-establish track fundamentals */
+  box-sizing: border-box !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  position: relative !important;
+  flex-shrink: 0 !important;
+  
+  /* Official Spectrum track styling - Simplified */
+  width: 26px !important;
+  height: 14px !important;
+  border: 1px solid #6b7280 !important;
+  border-radius: 14px !important;
+  background-color: #6b7280 !important;
+  transition: all 200ms ease-out !important;
+}
+
+/* Switch handle (thumb) */
+div[role="switch"].uxp-reset--complete.spectrum-Switch.spectrum-Switch .spectrum-Switch-switch::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 1px !important;
+  left: 1px !important;
+  width: 12px !important;
+  height: 12px !important;
+  background-color: #ffffff !important;
+  border-radius: 50% !important;
+  transition: all 200ms ease-out !important;
+  transform: translateX(0) !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Hover state for track */
+div[role="switch"].uxp-reset--complete.spectrum-Switch.spectrum-Switch:hover .spectrum-Switch-switch {
+  border-color: var(--spectrum-switch-track-color-hover, #4b5563) !important;
+  background-color: var(--spectrum-switch-track-color-hover, #4b5563) !important;
+}
+
+/* Active state for track */
+div[role="switch"].uxp-reset--complete.spectrum-Switch.spectrum-Switch:active .spectrum-Switch-switch {
+  border-color: var(--spectrum-switch-track-color-down, #374151) !important;
+  background-color: var(--spectrum-switch-track-color-down, #374151) !important;
+}
+
+/* Focus indicator */
+div[role="switch"].uxp-reset--complete.spectrum-Switch.spectrum-Switch:focus-within .spectrum-Switch-switch::after {
+  content: '' !important;
+  position: absolute !important;
+  top: calc(-1 * var(--spectrum-switch-focus-indicator-gap, 2px)) !important;
+  left: calc(-1 * var(--spectrum-switch-focus-indicator-gap, 2px)) !important;
+  right: calc(-1 * var(--spectrum-switch-focus-indicator-gap, 2px)) !important;
+  bottom: calc(-1 * var(--spectrum-switch-focus-indicator-gap, 2px)) !important;
+  border: var(--spectrum-switch-focus-indicator-thickness, var(--spectrum-focus-indicator-thickness, 2px)) solid var(--spectrum-switch-focus-indicator-color, var(--spectrum-focus-indicator-color, #2563eb)) !important;
+  border-radius: calc(var(--spectrum-switch-track-height, 14px) + var(--spectrum-switch-focus-indicator-gap, 2px)) !important;
+  pointer-events: none !important;
+}
+
+/* =============================================================================
+   CHECKED/SELECTED STATE
+   ============================================================================= */
+
+/* Checked track styling */
+div[role="switch"].uxp-reset--complete.spectrum-Switch.spectrum-Switch .spectrum-Switch-input:checked + .spectrum-Switch-switch {
+  border-color: #2563eb !important;
+  background-color: #2563eb !important;
+}
+
+/* Checked handle position */
+div[role="switch"].uxp-reset--complete.spectrum-Switch.spectrum-Switch .spectrum-Switch-input:checked + .spectrum-Switch-switch::before {
+  transform: translateX(12px) !important;
+  background-color: #ffffff !important;
+}
+
+/* Checked + hover */
+div[role="switch"].uxp-reset--complete.spectrum-Switch.spectrum-Switch:hover .spectrum-Switch-input:checked + .spectrum-Switch-switch {
+  border-color: var(--spectrum-switch-track-selected-color-hover, #1d4ed8) !important;
+  background-color: var(--spectrum-switch-track-selected-color-hover, #1d4ed8) !important;
+}
+
+/* Checked + active */
+div[role="switch"].uxp-reset--complete.spectrum-Switch.spectrum-Switch:active .spectrum-Switch-input:checked + .spectrum-Switch-switch {
+  border-color: var(--spectrum-switch-track-selected-color-down, #1e40af) !important;
+  background-color: var(--spectrum-switch-track-selected-color-down, #1e40af) !important;
+}
+
+/* Checked + focus */
+div[role="switch"].uxp-reset--complete.spectrum-Switch.spectrum-Switch .spectrum-Switch-input:focus-visible:checked + .spectrum-Switch-switch {
+  border-color: var(--spectrum-switch-track-selected-color-focus, #2563eb) !important;
+  background-color: var(--spectrum-switch-track-selected-color-focus, #2563eb) !important;
+}
+
+/* =============================================================================
+   SWITCH LABEL
+   ============================================================================= */
+
+/* Label text styling */
+div[role="switch"].uxp-reset--complete.spectrum-Switch.spectrum-Switch .spectrum-Switch-label {
+  /* Nuclear reset */
+  all: unset !important;
+  
+  /* Re-establish label fundamentals */
+  box-sizing: border-box !important;
+  display: block !important;
+  
+  /* Spectrum label styling */
+  font-family: inherit !important;
+  font-size: inherit !important;
+  line-height: inherit !important;
+  color: inherit !important;
+  flex: 1 !important;
+  margin-top: var(--spectrum-switch-top-to-text, 0) !important;
+  word-wrap: break-word !important;
+  hyphens: auto !important;
+  cursor: pointer !important;
+}
+
+/* Label hover state */
+div[role="switch"].uxp-reset--complete.spectrum-Switch.spectrum-Switch:hover .spectrum-Switch-label {
+  color: inherit !important;
+}
+
+/* Label focus state */
+div[role="switch"].uxp-reset--complete.spectrum-Switch.spectrum-Switch .spectrum-Switch-input:focus-visible + * + .spectrum-Switch-label {
+  color: inherit !important;
+}
+
+/* Label active state */
+div[role="switch"].uxp-reset--complete.spectrum-Switch.spectrum-Switch:active .spectrum-Switch-label {
+  color: inherit !important;
+}
+
+/* =============================================================================
+   SIZE VARIANTS
+   ============================================================================= */
+
+/* Small (S) */
+div[role="switch"].uxp-reset--complete.spectrum-Switch.spectrum-Switch.spectrum-Switch--sizeS {
+  font-size: var(--spectrum-font-size-75, 12px) !important;
+  min-height: var(--spectrum-component-height-75, 24px) !important;
+}
+
+div[role="switch"].uxp-reset--complete.spectrum-Switch.spectrum-Switch.spectrum-Switch--sizeS .spectrum-Switch-switch {
+  width: var(--spectrum-switch-track-width-small, 22px) !important;
+  height: var(--spectrum-switch-track-height-small, 12px) !important;
+}
+
+div[role="switch"].uxp-reset--complete.spectrum-Switch.spectrum-Switch.spectrum-Switch--sizeS .spectrum-Switch-switch::before {
+  width: var(--spectrum-switch-handle-size-small, 10px) !important;
+  height: var(--spectrum-switch-handle-size-small, 10px) !important;
+}
+
+div[role="switch"].uxp-reset--complete.spectrum-Switch.spectrum-Switch.spectrum-Switch--sizeS .spectrum-Switch-input:checked + .spectrum-Switch-switch::before {
+  transform: translateX(10px) !important;
+}
+
+/* Medium (M) - Default */
+div[role="switch"].uxp-reset--complete.spectrum-Switch.spectrum-Switch.spectrum-Switch--sizeM {
+  font-size: var(--spectrum-font-size-100, 14px) !important;
+  min-height: var(--spectrum-component-height-100, 32px) !important;
+}
+
+div[role="switch"].uxp-reset--complete.spectrum-Switch.spectrum-Switch.spectrum-Switch--sizeM .spectrum-Switch-switch {
+  width: var(--spectrum-switch-track-width-medium, 26px) !important;
+  height: var(--spectrum-switch-track-height-medium, 14px) !important;
+}
+
+div[role="switch"].uxp-reset--complete.spectrum-Switch.spectrum-Switch.spectrum-Switch--sizeM .spectrum-Switch-switch::before {
+  width: var(--spectrum-switch-handle-size-medium, 12px) !important;
+  height: var(--spectrum-switch-handle-size-medium, 12px) !important;
+}
+
+div[role="switch"].uxp-reset--complete.spectrum-Switch.spectrum-Switch.spectrum-Switch--sizeM .spectrum-Switch-input:checked + .spectrum-Switch-switch::before {
+  transform: translateX(12px) !important;
+}
+
+/* Large (L) */
+div[role="switch"].uxp-reset--complete.spectrum-Switch.spectrum-Switch.spectrum-Switch--sizeL {
+  font-size: var(--spectrum-font-size-200, 16px) !important;
+  min-height: var(--spectrum-component-height-200, 40px) !important;
+}
+
+div[role="switch"].uxp-reset--complete.spectrum-Switch.spectrum-Switch.spectrum-Switch--sizeL .spectrum-Switch-switch {
+  width: var(--spectrum-switch-track-width-large, 32px) !important;
+  height: var(--spectrum-switch-track-height-large, 18px) !important;
+}
+
+div[role="switch"].uxp-reset--complete.spectrum-Switch.spectrum-Switch.spectrum-Switch--sizeL .spectrum-Switch-switch::before {
+  width: var(--spectrum-switch-handle-size-large, 16px) !important;
+  height: var(--spectrum-switch-handle-size-large, 16px) !important;
+}
+
+div[role="switch"].uxp-reset--complete.spectrum-Switch.spectrum-Switch.spectrum-Switch--sizeL .spectrum-Switch-input:checked + .spectrum-Switch-switch::before {
+  transform: translateX(14px) !important;
+}
+
+/* Extra Large (XL) */
+div[role="switch"].uxp-reset--complete.spectrum-Switch.spectrum-Switch.spectrum-Switch--sizeXL {
+  font-size: var(--spectrum-font-size-300, 18px) !important;
+  min-height: var(--spectrum-component-height-300, 48px) !important;
+}
+
+div[role="switch"].uxp-reset--complete.spectrum-Switch.spectrum-Switch.spectrum-Switch--sizeXL .spectrum-Switch-switch {
+  width: var(--spectrum-switch-track-width-extra-large, 38px) !important;
+  height: var(--spectrum-switch-track-height-extra-large, 22px) !important;
+}
+
+div[role="switch"].uxp-reset--complete.spectrum-Switch.spectrum-Switch.spectrum-Switch--sizeXL .spectrum-Switch-switch::before {
+  width: var(--spectrum-switch-handle-size-extra-large, 20px) !important;
+  height: var(--spectrum-switch-handle-size-extra-large, 20px) !important;
+}
+
+div[role="switch"].uxp-reset--complete.spectrum-Switch.spectrum-Switch.spectrum-Switch--sizeXL .spectrum-Switch-input:checked + .spectrum-Switch-switch::before {
+  transform: translateX(16px) !important;
+}
+
+/* =============================================================================
+   DISABLED STATE
+   ============================================================================= */
+
+/* Disabled switch styling */
+div[role="switch"].uxp-reset--complete.spectrum-Switch.spectrum-Switch .spectrum-Switch-input:disabled + .spectrum-Switch-switch {
+  border-color: var(--spectrum-switch-track-color-disabled, var(--spectrum-disabled-content-color, #9ca3af)) !important;
+  background-color: var(--spectrum-switch-track-color-disabled, var(--spectrum-disabled-content-color, #9ca3af)) !important;
+}
+
+div[role="switch"].uxp-reset--complete.spectrum-Switch.spectrum-Switch .spectrum-Switch-input:disabled + .spectrum-Switch-switch::before {
+  background-color: var(--spectrum-gray-25, #ffffff) !important;
+}
+
+div[role="switch"].uxp-reset--complete.spectrum-Switch.spectrum-Switch .spectrum-Switch-input:disabled + * + .spectrum-Switch-label {
+  color: var(--spectrum-switch-content-color-disabled, var(--spectrum-disabled-content-color, #9ca3af)) !important;
+}
+
+/* Disabled + checked */
+div[role="switch"].uxp-reset--complete.spectrum-Switch.spectrum-Switch .spectrum-Switch-input:checked:disabled + .spectrum-Switch-switch {
+  border-color: var(--spectrum-switch-track-color-disabled, var(--spectrum-disabled-content-color, #9ca3af)) !important;
+  background-color: var(--spectrum-switch-track-color-disabled, var(--spectrum-disabled-content-color, #9ca3af)) !important;
+}
+
+div[role="switch"].uxp-reset--complete.spectrum-Switch.spectrum-Switch .spectrum-Switch-input:checked:disabled + * + .spectrum-Switch-label {
+  color: var(--spectrum-switch-content-color-disabled, var(--spectrum-disabled-content-color, #9ca3af)) !important;
+}
+
+/* =============================================================================
+   READONLY STATE
+   ============================================================================= */
+
+/* Read-only switches have reduced opacity and no cursor */
+div[role="switch"].uxp-reset--complete.spectrum-Switch.spectrum-Switch[aria-readonly="true"] {
+  cursor: default !important;
+  opacity: 0.7 !important;
+}
+
+div[role="switch"].uxp-reset--complete.spectrum-Switch.spectrum-Switch[aria-readonly="true"] .spectrum-Switch-input {
+  cursor: default !important;
+}
+
+/* =============================================================================
+   DARK THEME
+   ============================================================================= */
+
+/* Dark theme styles */
+.spectrum--darkest div[role="switch"].uxp-reset--complete.spectrum-Switch.spectrum-Switch,
+.spectrum--dark div[role="switch"].uxp-reset--complete.spectrum-Switch.spectrum-Switch,
+[data-color-scheme="dark"] div[role="switch"].uxp-reset--complete.spectrum-Switch.spectrum-Switch {
+  color: var(--spectrum-switch-content-color-default, #f9fafb) !important;
+}
+
+.spectrum--darkest div[role="switch"].uxp-reset--complete.spectrum-Switch.spectrum-Switch .spectrum-Switch-switch,
+.spectrum--dark div[role="switch"].uxp-reset--complete.spectrum-Switch.spectrum-Switch .spectrum-Switch-switch,
+[data-color-scheme="dark"] div[role="switch"].uxp-reset--complete.spectrum-Switch.spectrum-Switch .spectrum-Switch-switch {
+  border-color: var(--spectrum-switch-track-color-default, #9ca3af) !important;
+  background-color: var(--spectrum-switch-track-color-default, #9ca3af) !important;
+}
+
+.spectrum--darkest div[role="switch"].uxp-reset--complete.spectrum-Switch.spectrum-Switch:hover .spectrum-Switch-switch,
+.spectrum--dark div[role="switch"].uxp-reset--complete.spectrum-Switch.spectrum-Switch:hover .spectrum-Switch-switch,
+[data-color-scheme="dark"] div[role="switch"].uxp-reset--complete.spectrum-Switch.spectrum-Switch:hover .spectrum-Switch-switch {
+  border-color: var(--spectrum-switch-track-color-hover, #d1d5db) !important;
+  background-color: var(--spectrum-switch-track-color-hover, #d1d5db) !important;
+}
+
+/* =============================================================================
+   RESPONSIVE DESIGN
+   ============================================================================= */
+
+/* Container queries for responsive behavior */
+@container (max-width: 300px) {
+  div[role="switch"].uxp-reset--complete.spectrum-Switch.spectrum-Switch {
+    font-size: var(--spectrum-font-size-75, 12px) !important;
+  }
+  
+  div[role="switch"].uxp-reset--complete.spectrum-Switch.spectrum-Switch .spectrum-Switch-switch {
+    width: var(--spectrum-switch-track-width-small, 22px) !important;
+    height: var(--spectrum-switch-track-height-small, 12px) !important;
+  }
+}
+
+/* CJK language support */
+div[role="switch"].uxp-reset--complete.spectrum-Switch.spectrum-Switch .spectrum-Switch-label:lang(ja),
+div[role="switch"].uxp-reset--complete.spectrum-Switch.spectrum-Switch .spectrum-Switch-label:lang(ko),
+div[role="switch"].uxp-reset--complete.spectrum-Switch.spectrum-Switch .spectrum-Switch-label:lang(zh) {
+  line-height: var(--spectrum-switch-line-height-cjk, var(--spectrum-cjk-line-height-100, 1.5)) !important;
+}

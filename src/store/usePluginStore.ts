@@ -23,6 +23,19 @@ interface PluginState {
     disabledExample: string;
   };
   
+  // Switch component state (for Features tab demos)
+  switchPreferences: {
+    basicSwitch: boolean;
+    autoSave: boolean;
+    notifications: boolean;
+    sizeSmall: boolean;
+    sizeMedium: boolean;
+    sizeLarge: boolean;
+    sizeXL: boolean;
+    darkMode: boolean;
+    accessibility: boolean;
+  };
+  
   // Actions
   setLastSavedFile: (path: string) => void;
   addRecentFile: (path: string) => void;
@@ -34,6 +47,10 @@ interface PluginState {
   
   // Radio actions
   setRadioPreference: (key: keyof PluginState['radioPreferences'], value: string) => void;
+  
+  // Switch actions
+  setSwitchPreference: (key: keyof PluginState['switchPreferences'], value: boolean) => void;
+  toggleSwitch: (key: keyof PluginState['switchPreferences']) => void;
 }
 
 export const usePluginStore = create<PluginState>((set, get) => ({
@@ -53,6 +70,19 @@ export const usePluginStore = create<PluginState>((set, get) => ({
     sizeLarge: 'large1',
     horizontalAlignment: 'center',
     disabledExample: 'disabled2',
+  },
+  
+  // Switch preferences initial state
+  switchPreferences: {
+    basicSwitch: false,
+    autoSave: false,
+    notifications: true,
+    sizeSmall: false,
+    sizeMedium: true,
+    sizeLarge: false,
+    sizeXL: false,
+    darkMode: true,
+    accessibility: true,
   },
   
   // Actions
@@ -85,6 +115,25 @@ export const usePluginStore = create<PluginState>((set, get) => ({
       radioPreferences: {
         ...state.radioPreferences,
         [key]: value
+      }
+    }));
+  },
+  
+  // Switch actions
+  setSwitchPreference: (key: keyof PluginState['switchPreferences'], value: boolean) => {
+    set((state) => ({
+      switchPreferences: {
+        ...state.switchPreferences,
+        [key]: value
+      }
+    }));
+  },
+  
+  toggleSwitch: (key: keyof PluginState['switchPreferences']) => {
+    set((state) => ({
+      switchPreferences: {
+        ...state.switchPreferences,
+        [key]: !state.switchPreferences[key]
       }
     }));
   }

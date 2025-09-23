@@ -2,10 +2,15 @@ import React from 'react';
 import { Button } from '../components/Button';
 import { Image } from '../components/Image';
 import { Table } from '../components/Table';
+import { Switch } from '../components/Switch';
+import { usePluginStore } from '../store/usePluginStore';
 import { GridIcon } from 'hugeicons-react';
 
 export const Gallery: React.FC = () => {
   console.log('Gallery component rendering...');
+
+  // Zustand state management for switches
+  const { switchPreferences, setSwitchPreference, toggleSwitch } = usePluginStore();
 
   // UXP Detection and debugging
   const isInUxp = typeof (globalThis as any).uxp !== 'undefined';
@@ -102,6 +107,166 @@ export const Gallery: React.FC = () => {
         </div>
       </div>
       
+      {/* Switch Controls Section */}
+      <div style={{ 
+        marginBottom: '24px',
+        padding: '16px',
+        backgroundColor: '#2d2d2d',
+        borderRadius: '8px',
+        border: '1px solid #444'
+      }}>
+        <h3 style={{ 
+          margin: '0 0 16px 0', 
+          color: '#ffffff',
+          fontSize: '14px',
+          fontWeight: '600'
+        }}>
+          Switch Controls
+        </h3>
+        
+        <div style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '12px'
+        }}>
+          {/* Basic switches row */}
+          <div style={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            gap: '16px',
+            padding: '12px',
+            backgroundColor: '#383838',
+            borderRadius: '6px'
+          }}>
+            <Switch
+              size="m"
+              isSelected={switchPreferences.basicSwitch}
+              onChange={(checked) => setSwitchPreference('basicSwitch', checked)}
+            >
+              Basic Switch
+            </Switch>
+            
+            <Switch
+              size="m"
+              isSelected={switchPreferences.autoSave}
+              onChange={(checked) => setSwitchPreference('autoSave', checked)}
+            >
+              Auto Save
+            </Switch>
+            
+            <Switch
+              size="m"
+              isSelected={switchPreferences.notifications}
+              onChange={(checked) => setSwitchPreference('notifications', checked)}
+            >
+              Notifications
+            </Switch>
+            
+            <Switch
+              size="m"
+              isSelected={switchPreferences.darkMode}
+              onChange={(checked) => setSwitchPreference('darkMode', checked)}
+            >
+              Dark Mode
+            </Switch>
+          </div>
+          
+          {/* Size variants row */}
+          <div style={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            gap: '16px',
+            padding: '12px',
+            backgroundColor: '#383838',
+            borderRadius: '6px'
+          }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+              <span style={{ fontSize: '12px', color: '#999', fontWeight: '600' }}>SIZE VARIANTS</span>
+              <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
+                <Switch
+                  size="s"
+                  isSelected={switchPreferences.sizeSmall}
+                  onChange={(checked) => setSwitchPreference('sizeSmall', checked)}
+                >
+                  Small
+                </Switch>
+                
+                <Switch
+                  size="m"
+                  isSelected={switchPreferences.sizeMedium}
+                  onChange={(checked) => setSwitchPreference('sizeMedium', checked)}
+                >
+                  Medium
+                </Switch>
+                
+                <Switch
+                  size="l"
+                  isSelected={switchPreferences.sizeLarge}
+                  onChange={(checked) => setSwitchPreference('sizeLarge', checked)}
+                >
+                  Large
+                </Switch>
+                
+                <Switch
+                  size="xl"
+                  isSelected={switchPreferences.sizeXL}
+                  onChange={(checked) => setSwitchPreference('sizeXL', checked)}
+                >
+                  Extra Large
+                </Switch>
+              </div>
+            </div>
+          </div>
+          
+          {/* State demonstrations */}
+          <div style={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            gap: '16px',
+            padding: '12px',
+            backgroundColor: '#383838',
+            borderRadius: '6px'
+          }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+              <span style={{ fontSize: '12px', color: '#999', fontWeight: '600' }}>STATES</span>
+              <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
+                <Switch
+                  size="m"
+                  isSelected={switchPreferences.accessibility}
+                  onChange={(checked) => setSwitchPreference('accessibility', checked)}
+                >
+                  Accessibility
+                </Switch>
+                
+                <Switch
+                  size="m"
+                  isSelected={false}
+                  isDisabled={true}
+                >
+                  Disabled Switch
+                </Switch>
+                
+                <Switch
+                  size="m"
+                  isSelected={true}
+                  isDisabled={true}
+                >
+                  Disabled Selected
+                </Switch>
+                
+                <Switch
+                  size="m"
+                  isSelected={true}
+                  isReadOnly={true}
+                >
+                  Read Only
+                </Switch>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Table View Section */}
       <div style={{ 
         marginBottom: '24px',
