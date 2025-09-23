@@ -166,7 +166,7 @@ const App: React.FC = () => {
           <Tab id="tab5">Features</Tab>
           <Tab id="tab6">Gallery</Tab>
           <Tab id="tab7">Actions</Tab>
-          <Tab id="tab8">Cards</Tab>
+          <Tab id="tab8">Grid Layouts</Tab>
           <Tab id="tab9">Checkboxes</Tab>
           <Tab id="tab10">Typography</Tab>
           <Tab id="tab11">Progress Circles</Tab>
@@ -1705,7 +1705,25 @@ const App: React.FC = () => {
         </TabPanel>
 
         <TabPanel id="tab8">
-          <div style={{ padding: "12px" }}>
+          <div style={{ padding: "12px" }} id="spectrum-grid-showcase">
+            <div
+              style={{
+                background: "var(--bg-2)",
+                border: "1px solid var(--border)",
+                borderRadius: "8px",
+                padding: "12px 16px",
+                marginBottom: "20px",
+                color: "var(--text)"
+              }}
+            >
+              <strong style={{ display: "block", marginBottom: "6px", fontSize: "14px" }}>
+                Hybrid Spectrum Grid Preview
+              </strong>
+              <span style={{ fontSize: "12px", color: "var(--text-muted)", lineHeight: 1.4 }}>
+                This tab replaces the previous cards gallery with fixed, fluid, and nested Spectrum grid examples.
+                If you’re not seeing the tiles, reload the plugin panel after running <code>pnpm run build:uxp</code> to pull in the latest assets.
+              </span>
+            </div>
             <h3 style={{ margin: "0 0 16px 0", color: "var(--text)" }}>Spectrum Grid Showcase</h3>
             <p style={{ marginBottom: "24px", color: "var(--text-muted)", fontSize: "14px" }}>
               Testing the hybrid Spectrum grid implementation inspired by Spectrum CSS Grid.
@@ -1716,20 +1734,36 @@ const App: React.FC = () => {
               <h4 style={{ margin: "0 0 12px 0", color: "var(--text)", fontSize: "16px" }}>Fixed Grid (12 columns)</h4>
               <Grid columns={12} variant={["frame", "fixed"]} gap="16px" style={{ marginBottom: "8px" }}>
                 <GridItem columnSpan={3} outline="muted">
-                  <strong style={{ display: "block", marginBottom: "4px" }}>Sidebar</strong>
-                  <span style={{ color: "var(--text-muted)", fontSize: "12px" }}>Span 3 columns</span>
+                  <Card
+                    title="Sidebar"
+                    subtitle="Span 3 columns"
+                    description="Tuck secondary navigation or metadata here."
+                    variant="quiet"
+                  />
                 </GridItem>
                 <GridItem columnSpan={6} emphasis="accent">
-                  <strong style={{ display: "block", marginBottom: "4px" }}>Main Content</strong>
-                  <span style={{ color: "var(--text-muted)", fontSize: "12px" }}>Span 6 columns</span>
+                  <Card
+                    title="Main Content"
+                    subtitle="Span 6 columns"
+                    description="Primary canvas area showcasing the bulk of the layout."
+                    variant="gallery"
+                  />
                 </GridItem>
                 <GridItem columnSpan={3} outline="muted">
-                  <strong style={{ display: "block", marginBottom: "4px" }}>Inspector</strong>
-                  <span style={{ color: "var(--text-muted)", fontSize: "12px" }}>Span 3 columns</span>
+                  <Card
+                    title="Inspector"
+                    subtitle="Span 3 columns"
+                    description="Detail and adjustment controls live here."
+                    variant="quiet"
+                  />
                 </GridItem>
                 <GridItem columnSpan={12} outline="muted">
-                  <strong style={{ display: "block", marginBottom: "4px" }}>Footer</strong>
-                  <span style={{ color: "var(--text-muted)", fontSize: "12px" }}>Span full width</span>
+                  <Card
+                    title="Footer"
+                    subtitle="Span 12 columns"
+                    description="Collapsible summaries, pagination, or status widgets."
+                    variant="horizontal"
+                  />
                 </GridItem>
               </Grid>
               <p style={{ margin: 0, color: "var(--text-muted)", fontSize: "12px" }}>
@@ -1747,10 +1781,12 @@ const App: React.FC = () => {
               >
                 {["Alpha", "Bravo", "Charlie", "Delta", "Echo", "Foxtrot"].map((label, index) => (
                   <GridItem key={label} emphasis={index % 2 === 0 ? "accent" : undefined}>
-                    <strong style={{ display: "block", marginBottom: "6px" }}>{label}</strong>
-                    <span style={{ color: "var(--text-muted)", fontSize: "12px" }}>
-                      Fluid tile adjusts with min width 220px.
-                    </span>
+                    <Card
+                      title={label}
+                      subtitle="Fluid tile"
+                      description="Auto-fit minmax(220px, 1fr) determines the width."
+                      variant={index % 2 === 0 ? "gallery" : "quiet"}
+                    />
                   </GridItem>
                 ))}
               </Grid>
@@ -1762,32 +1798,57 @@ const App: React.FC = () => {
             <div style={{ marginBottom: "32px" }}>
               <h4 style={{ margin: "0 0 12px 0", color: "var(--text)", fontSize: "16px" }}>Nested Grid with Alignment</h4>
               <Grid columns={12} variant={["frame"]} gap="16px">
-                <GridItem columnSpan="1 / span 12" outline="muted" align="center">
-                  <strong style={{ display: "block", marginBottom: "4px" }}>Hero Banner</strong>
-                  <span style={{ color: "var(--text-muted)", fontSize: "12px" }}>Occupies columns 1 – 12</span>
+                <GridItem columnSpan={12} outline="muted" align="center">
+                  <Card
+                    title="Hero Banner"
+                    subtitle="Columns 1 – 12"
+                    description="Spans the entire row for striking visual treatments."
+                    variant="gallery"
+                  />
                 </GridItem>
-                <GridItem columnSpan="span 8">
+                <GridItem columnSpan={8}>
                   <Grid columns={8} variant={["nested", "compact"]} gap="12px">
                     <GridItem columnSpan={4} outline="muted">
-                      <strong style={{ display: "block", marginBottom: "4px" }}>Article</strong>
-                      <span style={{ color: "var(--text-muted)", fontSize: "12px" }}>Nested span 4</span>
+                      <Card
+                        title="Article"
+                        subtitle="Nested span 4"
+                        description="Editorial content block wrapped in nested grid."
+                        variant="quiet"
+                      />
                     </GridItem>
                     <GridItem columnSpan={4} outline="muted">
-                      <strong style={{ display: "block", marginBottom: "4px" }}>Tutorial</strong>
-                      <span style={{ color: "var(--text-muted)", fontSize: "12px" }}>Nested span 4</span>
+                      <Card
+                        title="Tutorial"
+                        subtitle="Nested span 4"
+                        description="Step-by-step walkthrough area with quick actions."
+                        variant="quiet"
+                      />
                     </GridItem>
                     <GridItem columnSpan={8} outline="muted">
-                      <strong style={{ display: "block", marginBottom: "4px" }}>Nested Footer</strong>
-                      <span style={{ color: "var(--text-muted)", fontSize: "12px" }}>Span 8 (full nested width)</span>
+                      <Card
+                        title="Nested Footer"
+                        subtitle="Span 8"
+                        description="Use for supplemental navigation within nested layouts."
+                        variant="horizontal"
+                      />
                     </GridItem>
                   </Grid>
                 </GridItem>
-                <GridItem columnSpan="9 / span 3" align="end" outline="muted">
-                  <strong style={{ display: "block", marginBottom: "4px" }}>Offset CTA</strong>
-                  <span style={{ color: "var(--text-muted)", fontSize: "12px" }}>Starts on column 9</span>
+                <GridItem columnSpan={3} align="end" outline="muted" style={{ marginLeft: "auto" }}>
+                  <Card
+                    title="Offset CTA"
+                    subtitle="Starts at column 9"
+                    description="Demonstrates offset alignment inside the parent grid."
+                    variant="gallery"
+                  />
                 </GridItem>
                 <GridItem columnSpan={3} emphasis="strong" align="center" justify="center">
-                  <span style={{ fontWeight: 600 }}>Align Center</span>
+                  <Card
+                    title="Align Center"
+                    subtitle="Callout"
+                    description="Centered content using alignment helpers."
+                    variant="quiet"
+                  />
                 </GridItem>
               </Grid>
               <p style={{ margin: "12px 0 0 0", color: "var(--text-muted)", fontSize: "12px" }}>

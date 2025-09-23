@@ -1,8 +1,15 @@
-import React, { forwardRef } from "react";
+import React, { forwardRef, useEffect, useMemo, useContext } from "react";
 import "./Grid-hybrid.css";
 
 type GridVariant = "frame" | "compact" | "fixed" | "fluid" | "nested" | "debug";
 type CSSPropertiesWithVars = React.CSSProperties & Record<string, string | number>;
+
+interface GridContextValue {
+  columns?: number;
+  supportsGrid: boolean;
+}
+
+const GridContext = React.createContext<GridContextValue | null>(null);
 
 export interface GridProps extends React.HTMLAttributes<HTMLDivElement> {
   /** Number of columns for fixed grids (defaults to Spectrum 12-column grid). */
@@ -46,48 +53,81 @@ export const Grid = forwardRef<HTMLDivElement, GridProps>(function Grid(
   },
   ref
 ) {
+  const isUxpHost = typeof document !== "undefined" && document.body?.dataset?.host === "uxp";
+  const supportsGrid = false;
+  const columnsCount = columns ?? 12;
+
   const variants = resolveVariants(variant);
   const nextStyle: CSSPropertiesWithVars = { ...(style as CSSPropertiesWithVars) };
 
-  if (columns) {
-    nextStyle["--columns"] = String(columns);
-  }
+  nextStyle["--columns"] = String(columnsCount);
+  nextStyle["--spectrum-grid-item-flex-basis-default"] = `calc(100% / ${columnsCount})`;
 
   if (gap) {
     nextStyle["--spectrum-grid-gap"] = gap;
+    nextStyle.gap = gap;
   }
 
   if (rowGap) {
     nextStyle["--spectrum-grid-row-gap"] = rowGap;
+    nextStyle.rowGap = rowGap;
   }
 
   if (columnGap) {
     nextStyle["--spectrum-grid-column-gap"] = columnGap;
+    nextStyle.columnGap = columnGap;
   }
 
   if (autoRows) {
-    nextStyle["--spectrum-grid-auto-rows"] = autoRows;
+    nextStyle["--spectrum-grid-item-min-height"] = autoRows;
   }
 
   if (minColumnWidth || maxColumnWidth) {
     const min = minColumnWidth ?? "0px";
     const max = maxColumnWidth ?? "1fr";
-    nextStyle["--spectrum-grid-template-columns"] = `repeat(auto-fit, minmax(${min}, ${max}))`;
     nextStyle["--spectrum-grid-fluid-min"] = min;
+    nextStyle["--spectrum-grid-fluid-max"] = max;
+    nextStyle["--spectrum-grid-item-flex-basis"] = `min(${min}, 100%)`;
   }
+
+  nextStyle.display = "flex";
+  nextStyle.flexWrap = "wrap";
+  nextStyle.alignContent = "flex-start";
+  nextStyle.alignItems = "stretch";
 
   const classes = [
     "uxp-reset--complete",
     "spectrum-grid",
-    "spectrum-grid",
     ...variants.map((v) => `spectrum-grid--${v}`),
+    "spectrum-grid--flex",
     className
   ].filter(Boolean).join(" ");
 
+  useEffect(() => {
+    if (!isUxpHost) return;
+    console.log("[SpectrumGrid] host=UXP", {
+      supportsGrid,
+      columns,
+      gap,
+      rowGap,
+      columnGap,
+      minColumnWidth,
+      maxColumnWidth,
+      autoRows
+    });
+  }, [isUxpHost, supportsGrid, columns, gap, rowGap, columnGap, minColumnWidth, maxColumnWidth, autoRows]);
+
+  const contextValue = useMemo<GridContextValue>(
+    () => ({ columns: columnsCount, supportsGrid }),
+    [columnsCount, supportsGrid]
+  );
+
   return (
-    <div ref={ref} role={role} className={classes} style={nextStyle} {...props}>
-      {children}
-    </div>
+    <GridContext.Provider value={contextValue}>
+      <div ref={ref} role={role} className={classes} style={nextStyle} {...props}>
+        {children}
+      </div>
+    </GridContext.Provider>
   );
 });
 
@@ -111,21 +151,65 @@ export const GridItem = forwardRef<HTMLDivElement, GridItemProps>(function GridI
   ref
 ) {
   const nextStyle: CSSPropertiesWithVars = { ...(style as CSSPropertiesWithVars) };
+  const context = useContext(GridContext);
+
+  const resolvedColumnSpan = columnSpan ? (typeof columnSpan === "number" ? `span ${columnSpan}` : columnSpan) : undefined;
+  const resolvedRowSpan = rowSpan ? (typeof rowSpan === "number" ? `span ${rowSpan}` : rowSpan) : undefined;
 
   if (columnSpan) {
-    nextStyle["--spectrum-grid-item-column"] = typeof columnSpan === "number" ? `span ${columnSpan}` : columnSpan;
+    nextStyle["--spectrum-grid-item-column"] = resolvedColumnSpan!;
   }
 
   if (rowSpan) {
-    nextStyle["--spectrum-grid-item-row"] = typeof rowSpan === "number" ? `span ${rowSpan}` : rowSpan;
+    nextStyle["--spectrum-grid-item-row"] = resolvedRowSpan!;
   }
 
   if (align) {
     nextStyle["--spectrum-grid-item-align"] = align;
+    nextStyle.alignSelf = align;
   }
 
   if (justify) {
     nextStyle["--spectrum-grid-item-justify"] = justify;
+    nextStyle.justifySelf = justify;
+  }
+
+  if (context && !context.supportsGrid) {
+    nextStyle.flexGrow = 1;
+    nextStyle.flexShrink = 1;
+    nextStyle["--spectrum-grid-item-flex-grow"] = 1;
+    nextStyle["--spectrum-grid-item-flex-shrink"] = 1;
+
+    const { columns = 12 } = context;
+    const computeBasisFromSpan = (span: number) => {
+      if (columns <= 0) {
+        return "100%";
+      }
+      const clamped = Math.min(Math.max(span, 1), columns);
+      const percentage = (clamped / columns) * 100;
+      return `${percentage}%`;
+    };
+
+    if (typeof columnSpan === "number") {
+      const basis = computeBasisFromSpan(columnSpan);
+      nextStyle.flexBasis = basis;
+      nextStyle.maxWidth = basis;
+      nextStyle["--spectrum-grid-item-flex-basis"] = basis;
+      nextStyle["--spectrum-grid-item-flex-grow"] = 0;
+    } else {
+      nextStyle.flexBasis = "calc(100% / var(--columns, 12))";
+      nextStyle.maxWidth = "calc(100% / var(--columns, 12))";
+      nextStyle["--spectrum-grid-item-flex-basis"] = "calc(100% / var(--columns, 12))";
+    }
+
+    if (rowSpan) {
+      const spanValue =
+        typeof rowSpan === "number"
+          ? rowSpan
+          : parseInt(String(rowSpan).replace(/[^0-9]/g, ""), 10) || 1;
+      const baseHeight = 48;
+      nextStyle.minHeight = `calc(${spanValue} * var(--spectrum-grid-item-min-height, ${baseHeight}px))`;
+    }
   }
 
   const classes = [
