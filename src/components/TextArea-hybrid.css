@@ -73,7 +73,9 @@ div[role="textbox"].uxp-reset--complete.spectrum-Textfield.spectrum-Textfield te
 
 /* Placeholder styling */
 div[role="textbox"].uxp-reset--complete.spectrum-Textfield.spectrum-Textfield textarea::placeholder {
-  color: var(--spectrum-neutral-subdued-content-color-default) !important;
+  color: var(--spectrum-neutral-subdued-content-color-default, #6b7280) !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
   opacity: 1 !important;
 }
 

@@ -125,12 +125,36 @@ div[role="tabpanel"].uxp-reset--complete.spectrum-Tabs-tabPanel.spectrum-Tabs-ta
   padding: var(--spectrum-spacing-400) 0 !important;
   color: var(--spectrum-neutral-content-color-default) !important;
   font-family: var(--spectrum-sans-font-family-stack) !important;
+  
+  /* Scrollable content area */
+  max-height: 400px !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
 }
 
 /* Tab Panel Focus State */
 div[role="tabpanel"].uxp-reset--complete.spectrum-Tabs-tabPanel.spectrum-Tabs-tabPanel:focus-visible {
   outline: var(--spectrum-focus-indicator-thickness) solid var(--spectrum-focus-indicator-color) !important;
   outline-offset: var(--spectrum-focus-indicator-gap) !important;
+}
+
+/* Scrollbar styling for tab panels */
+div[role="tabpanel"].uxp-reset--complete.spectrum-Tabs-tabPanel.spectrum-Tabs-tabPanel::-webkit-scrollbar {
+  width: 8px !important;
+}
+
+div[role="tabpanel"].uxp-reset--complete.spectrum-Tabs-tabPanel.spectrum-Tabs-tabPanel::-webkit-scrollbar-track {
+  background: var(--spectrum-gray-100, #f3f4f6) !important;
+  border-radius: 4px !important;
+}
+
+div[role="tabpanel"].uxp-reset--complete.spectrum-Tabs-tabPanel.spectrum-Tabs-tabPanel::-webkit-scrollbar-thumb {
+  background: var(--spectrum-gray-400, #9ca3af) !important;
+  border-radius: 4px !important;
+}
+
+div[role="tabpanel"].uxp-reset--complete.spectrum-Tabs-tabPanel.spectrum-Tabs-tabPanel::-webkit-scrollbar-thumb:hover {
+  background: var(--spectrum-gray-500, #6b7280) !important;
 }
 
 /* =============================================================================
@@ -223,4 +247,17 @@ div[role="tablist"].uxp-reset--complete.spectrum-Tabs.spectrum-Tabs.spectrum-Tab
   left: auto !important;
   width: var(--spectrum-border-width-200) !important;
   height: 100% !important;
+}
+
+/* Dark theme support for scrollbars */
+[data-theme="dark"] div[role="tabpanel"].uxp-reset--complete.spectrum-Tabs-tabPanel.spectrum-Tabs-tabPanel::-webkit-scrollbar-track {
+  background: var(--spectrum-gray-700, #374151) !important;
+}
+
+[data-theme="dark"] div[role="tabpanel"].uxp-reset--complete.spectrum-Tabs-tabPanel.spectrum-Tabs-tabPanel::-webkit-scrollbar-thumb {
+  background: var(--spectrum-gray-500, #6b7280) !important;
+}
+
+[data-theme="dark"] div[role="tabpanel"].uxp-reset--complete.spectrum-Tabs-tabPanel.spectrum-Tabs-tabPanel::-webkit-scrollbar-thumb:hover {
+  background: var(--spectrum-gray-400, #9ca3af) !important;
 }
