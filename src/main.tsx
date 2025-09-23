@@ -24,6 +24,7 @@ import { Divider } from "./components/Divider";
 import { Radio, RadioGroup } from "./components/Radio";
 import { Asset } from "./components/Asset";
 import { AssetCard } from "./components/AssetCard";
+import { AssetList } from "./components/AssetList";
 import { usePluginStore } from "./store/usePluginStore";
 
 
@@ -2284,10 +2285,184 @@ console.log(greet('World'));`}
 
         <TabPanel id="tab11">
           <div style={{ padding: "12px" }}>
-            <h3 style={{ margin: "0 0 16px 0", color: "var(--text)" }}>Progress Circles</h3>
+            <h3 style={{ margin: "0 0 16px 0", color: "var(--text)" }}>AssetList Component</h3>
             <p style={{ marginBottom: "24px", color: "var(--text)" }}>
-              Progress circle components have been removed.
+              Spectrum AssetList component following the hybrid approach with nuclear div pattern and ultra-high specificity CSS for UXP compatibility.
             </p>
+
+            {/* Basic AssetList Examples */}
+            <div style={{ marginBottom: "32px" }}>
+              <h4 style={{ margin: "0 0 16px 0", color: "var(--text)" }}>Basic AssetList</h4>
+              <div style={{ marginBottom: "16px" }}>
+                <AssetList
+                  items={[
+                    {
+                      id: '1',
+                      label: 'Document.pdf',
+                      thumbnail: '📄'
+                    },
+                    {
+                      id: '2', 
+                      label: 'Presentation.pptx',
+                      thumbnail: '📊'
+                    },
+                    {
+                      id: '3',
+                      label: 'Spreadsheet.xlsx', 
+                      thumbnail: '📈'
+                    }
+                  ]}
+                  selectionMode="multiple"
+                />
+              </div>
+            </div>
+
+            {/* AssetList with Folders */}
+            <div style={{ marginBottom: "32px" }}>
+              <h4 style={{ margin: "0 0 16px 0", color: "var(--text)" }}>AssetList with Folders</h4>
+              <div style={{ marginBottom: "16px" }}>
+                <AssetList
+                  items={[
+                    {
+                      id: 'folder1',
+                      label: 'Documents Folder',
+                      thumbnail: '📁',
+                      isBranch: true
+                    },
+                    {
+                      id: 'folder2',
+                      label: 'Images Folder',
+                      thumbnail: '📁',
+                      isBranch: true,
+                      isNavigated: true
+                    },
+                    {
+                      id: 'file1',
+                      label: 'README.md',
+                      thumbnail: '📝'
+                    }
+                  ]}
+                  selectionMode="multiple"
+                />
+              </div>
+            </div>
+
+            {/* AssetList with Images */}
+            <div style={{ marginBottom: "32px" }}>
+              <h4 style={{ margin: "0 0 16px 0", color: "var(--text)" }}>AssetList with Image Thumbnails</h4>
+              <div style={{ marginBottom: "16px" }}>
+                <AssetList
+                  items={[
+                    {
+                      id: 'img1',
+                      label: 'Header-design.png',
+                      thumbnail: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiBmaWxsPSIjMjU2M0VCIi8+CjxwYXRoIGQ9Ik04IDEySDI0VjIwSDhWMTJaIiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4K',
+                      isSelected: true
+                    },
+                    {
+                      id: 'img2',
+                      label: 'Banner-mockup.jpg',
+                      thumbnail: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiBmaWxsPSIjRkY2QjZCIi8+CjxjaXJjbGUgY3g9IjE2IiBjeT0iMTYiIHI9IjYiIGZpbGw9IndoaXRlIi8+Cjwvc3ZnPgo='
+                    },
+                    {
+                      id: 'img3',
+                      label: 'Logo-variations.svg',
+                      thumbnail: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiBmaWxsPSIjMTBCOTgxIi8+Cjxwb2x5Z29uIHBvaW50cz0iMTYsOCAyNCwxNiAxNiwyNCA4LDE2IiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4K'
+                    }
+                  ]}
+                  selectionMode="multiple"
+                />
+              </div>
+            </div>
+
+            {/* AssetList Single Selection */}
+            <div style={{ marginBottom: "32px" }}>
+              <h4 style={{ margin: "0 0 16px 0", color: "var(--text)" }}>Single Selection Mode</h4>
+              <div style={{ marginBottom: "16px" }}>
+                <AssetList
+                  items={[
+                    {
+                      id: 'template1',
+                      label: 'Business Card Template',
+                      thumbnail: '💼'
+                    },
+                    {
+                      id: 'template2',
+                      label: 'Letterhead Template',
+                      thumbnail: '📋',
+                      isSelected: true
+                    },
+                    {
+                      id: 'template3',
+                      label: 'Brochure Template',
+                      thumbnail: '📰'
+                    }
+                  ]}
+                  selectionMode="single"
+                />
+              </div>
+            </div>
+
+            {/* AssetList States Demo */}
+            <div style={{ marginBottom: "32px" }}>
+              <h4 style={{ margin: "0 0 16px 0", color: "var(--text)" }}>Various States</h4>
+              <div style={{ marginBottom: "16px" }}>
+                <AssetList
+                  items={[
+                    {
+                      id: 'normal',
+                      label: 'Normal Item',
+                      thumbnail: '📄'
+                    },
+                    {
+                      id: 'selected',
+                      label: 'Selected Item',
+                      thumbnail: '✅',
+                      isSelected: true
+                    },
+                    {
+                      id: 'branch-closed',
+                      label: 'Closed Folder',
+                      thumbnail: '📁',
+                      isBranch: true
+                    },
+                    {
+                      id: 'branch-open',
+                      label: 'Open Folder',
+                      thumbnail: '📂',
+                      isBranch: true,
+                      isNavigated: true
+                    },
+                    {
+                      id: 'long-name',
+                      label: 'This is a very long filename that will demonstrate text truncation in the AssetList component',
+                      thumbnail: '📄'
+                    }
+                  ]}
+                  selectionMode="multiple"
+                />
+              </div>
+            </div>
+
+            {/* Implementation Notes */}
+            <div style={{ 
+              padding: "16px", 
+              backgroundColor: "var(--spectrum-global-color-gray-100)", 
+              borderRadius: "4px",
+              marginTop: "24px"
+            }}>
+              <h4 style={{ margin: "0 0 12px 0", color: "var(--text)" }}>Implementation Notes</h4>
+              <ul style={{ margin: "0", paddingLeft: "20px", color: "var(--text)", fontSize: "14px" }}>
+                <li><strong>Nuclear Div Approach:</strong> Uses `ul` and `li` elements with ultra-high specificity CSS</li>
+                <li><strong>Selection Modes:</strong> Supports both single and multiple selection patterns</li>
+                <li><strong>State Management:</strong> Selected, navigated, and branch states with proper visual feedback</li>
+                <li><strong>Accessibility:</strong> Full ARIA support with proper roles and keyboard navigation</li>
+                <li><strong>Thumbnails:</strong> Supports emoji icons, SVG data URLs, and image thumbnails</li>
+                <li><strong>Text Truncation:</strong> Long filenames are properly truncated with ellipsis</li>
+                <li><strong>UXP Optimized:</strong> Ultra-high specificity selectors overcome UXP styling interference</li>
+                <li><strong>Responsive:</strong> Container queries adapt layout for narrow panels</li>
+              </ul>
+            </div>
           </div>
         </TabPanel>
       </Tabs>

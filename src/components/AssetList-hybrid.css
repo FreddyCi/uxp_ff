@@ -1,0 +1,285 @@
+/* =============================================================================
+   SPECTRUM ASSETLIST COMPONENT - HYBRID CSS
+   Nuclear Div Approach for UXP Compatibility
+   
+   Based on Adobe Spectrum AssetList component
+   Ultra-high specificity selectors to override UXP interference
+   ============================================================================= */
+
+/* ASSETLIST CONTAINER */
+/* Ultra-high specificity selector for AssetList wrapper */
+ul[role="list"].uxp-reset--complete.spectrum-AssetList.spectrum-AssetList,
+.uxp-reset--complete.spectrum-AssetList.spectrum-AssetList,
+ul.uxp-reset--complete.spectrum-AssetList.spectrum-AssetList {
+  /* Override any UXP interference */
+  all: unset !important;
+  
+  /* Re-establish list foundation */
+  box-sizing: border-box !important;
+  display: block !important;
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  
+  /* Spectrum AssetList base styling */
+  width: 100% !important;
+  background-color: var(--spectrum-global-color-gray-50, #ffffff) !important;
+  border: var(--spectrum-border-width-200, 1px) solid var(--spectrum-global-color-gray-300, #d1d5db) !important;
+  border-radius: var(--spectrum-border-radius-100, 4px) !important;
+}
+
+/* ASSETLIST ITEM */
+/* Ultra-high specificity selector for AssetList items */
+li[role="option"].uxp-reset--complete.spectrum-AssetList-item.spectrum-AssetList-item,
+.uxp-reset--complete.spectrum-AssetList .spectrum-AssetList-item,
+.uxp-reset--complete.spectrum-AssetList-item.spectrum-AssetList-item,
+li.uxp-reset--complete.spectrum-AssetList-item.spectrum-AssetList-item {
+  /* Override any UXP interference */
+  all: unset !important;
+  
+  /* Re-establish list item foundation */
+  box-sizing: border-box !important;
+  display: flex !important;
+  align-items: center !important;
+  position: relative !important;
+  
+  /* Spectrum AssetList item base styling */
+  padding: var(--spectrum-global-dimension-size-150, 11px) var(--spectrum-global-dimension-size-200, 16px) !important;
+  border-bottom: var(--spectrum-border-width-100, 1px) solid var(--spectrum-global-color-gray-200, #e5e7eb) !important;
+  cursor: pointer !important;
+  transition: background-color 0.13s ease-in-out !important;
+  
+  /* Focus and interaction styles */
+  outline: none !important;
+}
+
+/* Remove bottom border from last item */
+li[role="option"].uxp-reset--complete.spectrum-AssetList-item.spectrum-AssetList-item:last-child,
+.uxp-reset--complete.spectrum-AssetList .spectrum-AssetList-item:last-child,
+.uxp-reset--complete.spectrum-AssetList-item.spectrum-AssetList-item:last-child,
+li.uxp-reset--complete.spectrum-AssetList-item.spectrum-AssetList-item:last-child {
+  border-bottom: none !important;
+}
+
+/* SELECTED STATE */
+li[role="option"].uxp-reset--complete.spectrum-AssetList-item.is-selected.spectrum-AssetList-item,
+.uxp-reset--complete.spectrum-AssetList .spectrum-AssetList-item.is-selected,
+.uxp-reset--complete.spectrum-AssetList-item.is-selected.spectrum-AssetList-item,
+li.uxp-reset--complete.spectrum-AssetList-item.is-selected.spectrum-AssetList-item {
+  background-color: var(--spectrum-global-color-blue-100, #e6f4ff) !important;
+}
+
+/* NAVIGATED STATE */
+li[role="option"].uxp-reset--complete.spectrum-AssetList-item.is-navigated.spectrum-AssetList-item,
+.uxp-reset--complete.spectrum-AssetList .spectrum-AssetList-item.is-navigated,
+.uxp-reset--complete.spectrum-AssetList-item.is-navigated.spectrum-AssetList-item,
+li.uxp-reset--complete.spectrum-AssetList-item.is-navigated.spectrum-AssetList-item {
+  background-color: var(--spectrum-global-color-gray-100, #f3f4f6) !important;
+}
+
+/* HOVER STATE */
+li[role="option"].uxp-reset--complete.spectrum-AssetList-item.spectrum-AssetList-item:hover,
+.uxp-reset--complete.spectrum-AssetList .spectrum-AssetList-item:hover,
+.uxp-reset--complete.spectrum-AssetList-item.spectrum-AssetList-item:hover,
+li.uxp-reset--complete.spectrum-AssetList-item.spectrum-AssetList-item:hover {
+  background-color: var(--spectrum-global-color-gray-75, #fafafa) !important;
+}
+
+/* FOCUS STATE */
+li[role="option"].uxp-reset--complete.spectrum-AssetList-item.spectrum-AssetList-item:focus,
+.uxp-reset--complete.spectrum-AssetList .spectrum-AssetList-item:focus,
+.uxp-reset--complete.spectrum-AssetList-item.spectrum-AssetList-item:focus,
+li.uxp-reset--complete.spectrum-AssetList-item.spectrum-AssetList-item:focus {
+  background-color: var(--spectrum-global-color-gray-75, #fafafa) !important;
+  box-shadow: inset 0 0 0 2px var(--spectrum-global-color-blue-400, #378ef0) !important;
+}
+
+/* ITEM SELECTOR (Checkbox) */
+.uxp-reset--complete.spectrum-AssetList .spectrum-AssetList-item .spectrum-AssetList-itemSelector,
+.uxp-reset--complete.spectrum-AssetList-item .spectrum-AssetList-itemSelector.spectrum-AssetList-itemSelector,
+li.uxp-reset--complete.spectrum-AssetList-item .spectrum-AssetList-itemSelector.spectrum-AssetList-itemSelector {
+  /* Override any UXP interference */
+  all: unset !important;
+  
+  /* Re-establish label foundation */
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin-right: var(--spectrum-global-dimension-size-150, 11px) !important;
+  cursor: pointer !important;
+}
+
+/* ITEM THUMBNAIL */
+.uxp-reset--complete.spectrum-AssetList .spectrum-AssetList-item .spectrum-AssetList-itemThumbnail,
+.uxp-reset--complete.spectrum-AssetList-item .spectrum-AssetList-itemThumbnail.spectrum-AssetList-itemThumbnail,
+li.uxp-reset--complete.spectrum-AssetList-item .spectrum-AssetList-itemThumbnail.spectrum-AssetList-itemThumbnail {
+  /* Override any UXP interference */
+  all: unset !important;
+  
+  /* Re-establish thumbnail foundation */
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin-right: var(--spectrum-global-dimension-size-150, 11px) !important;
+  flex-shrink: 0 !important;
+  
+  /* Thumbnail sizing */
+  width: 32px !important;
+  height: 32px !important;
+}
+
+/* Thumbnail images */
+.uxp-reset--complete.spectrum-AssetList .spectrum-AssetList-item .spectrum-AssetList-itemThumbnail img,
+.uxp-reset--complete.spectrum-AssetList-item .spectrum-AssetList-itemThumbnail img,
+li.uxp-reset--complete.spectrum-AssetList-item .spectrum-AssetList-itemThumbnail img {
+  /* Override any UXP interference */
+  all: unset !important;
+  
+  /* Re-establish image styling */
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  border-radius: var(--spectrum-border-radius-75, 3px) !important;
+}
+
+/* Thumbnail icons */
+.uxp-reset--complete.spectrum-AssetList .spectrum-AssetList-item .spectrum-AssetList-itemThumbnail .spectrum-Icon,
+.uxp-reset--complete.spectrum-AssetList-item .spectrum-AssetList-itemThumbnail .spectrum-Icon,
+li.uxp-reset--complete.spectrum-AssetList-item .spectrum-AssetList-itemThumbnail .spectrum-Icon {
+  /* Override any UXP interference */
+  all: unset !important;
+  
+  /* Re-establish icon styling */
+  display: block !important;
+  width: 32px !important;
+  height: 32px !important;
+  color: var(--spectrum-global-color-gray-600, #6b7280) !important;
+}
+
+/* ITEM LABEL */
+.uxp-reset--complete.spectrum-AssetList .spectrum-AssetList-item .spectrum-AssetList-itemLabel,
+.uxp-reset--complete.spectrum-AssetList-item .spectrum-AssetList-itemLabel.spectrum-AssetList-itemLabel,
+li.uxp-reset--complete.spectrum-AssetList-item .spectrum-AssetList-itemLabel.spectrum-AssetList-itemLabel {
+  /* Override any UXP interference */
+  all: unset !important;
+  
+  /* Re-establish label foundation */
+  display: block !important;
+  flex: 1 !important;
+  min-width: 0 !important; /* Allow text truncation */
+  
+  /* Typography */
+  font-family: var(--spectrum-global-font-family-base, 'Adobe Clean', 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif) !important;
+  font-size: var(--spectrum-global-dimension-font-size-100, 14px) !important;
+  font-weight: var(--spectrum-global-font-weight-regular, 400) !important;
+  line-height: var(--spectrum-global-font-line-height-medium, 1.5) !important;
+  color: var(--spectrum-global-color-gray-900, #1f2937) !important;
+  
+  /* Text overflow handling */
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+}
+
+/* ITEM CHILD INDICATOR (Chevron) */
+.uxp-reset--complete.spectrum-AssetList .spectrum-AssetList-item .spectrum-AssetList-itemChildIndicator,
+.uxp-reset--complete.spectrum-AssetList-item .spectrum-AssetList-itemChildIndicator.spectrum-AssetList-itemChildIndicator,
+li.uxp-reset--complete.spectrum-AssetList-item .spectrum-AssetList-itemChildIndicator.spectrum-AssetList-itemChildIndicator {
+  /* Override any UXP interference */
+  all: unset !important;
+  
+  /* Re-establish chevron foundation */
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin-left: var(--spectrum-global-dimension-size-100, 8px) !important;
+  flex-shrink: 0 !important;
+  
+  /* Chevron icon styling */
+  width: 16px !important;
+  height: 16px !important;
+  color: var(--spectrum-global-color-gray-500, #9ca3af) !important;
+  transition: transform 0.13s ease-in-out !important;
+}
+
+/* Chevron rotation for navigated branches */
+.uxp-reset--complete.spectrum-AssetList .spectrum-AssetList-item.is-navigated .spectrum-AssetList-itemChildIndicator,
+.uxp-reset--complete.spectrum-AssetList-item.is-navigated .spectrum-AssetList-itemChildIndicator,
+li.uxp-reset--complete.spectrum-AssetList-item.is-navigated .spectrum-AssetList-itemChildIndicator {
+  transform: rotate(90deg) !important;
+}
+
+/* DARK THEME SUPPORT */
+@media (prefers-color-scheme: dark) {
+  .uxp-reset--complete.spectrum-AssetList.spectrum-AssetList {
+    background-color: var(--spectrum-global-color-gray-100, #1f2937) !important;
+    border-color: var(--spectrum-global-color-gray-700, #374151) !important;
+  }
+  
+  .uxp-reset--complete.spectrum-AssetList .spectrum-AssetList-item,
+  .uxp-reset--complete.spectrum-AssetList-item.spectrum-AssetList-item {
+    border-bottom-color: var(--spectrum-global-color-gray-700, #374151) !important;
+  }
+  
+  .uxp-reset--complete.spectrum-AssetList .spectrum-AssetList-item:hover,
+  .uxp-reset--complete.spectrum-AssetList-item:hover {
+    background-color: var(--spectrum-global-color-gray-800, #111827) !important;
+  }
+  
+  .uxp-reset--complete.spectrum-AssetList .spectrum-AssetList-item:focus,
+  .uxp-reset--complete.spectrum-AssetList-item:focus {
+    background-color: var(--spectrum-global-color-gray-800, #111827) !important;
+  }
+  
+  .uxp-reset--complete.spectrum-AssetList .spectrum-AssetList-item.is-selected,
+  .uxp-reset--complete.spectrum-AssetList-item.is-selected {
+    background-color: var(--spectrum-global-color-blue-900, #1e3a8a) !important;
+  }
+  
+  .uxp-reset--complete.spectrum-AssetList .spectrum-AssetList-item.is-navigated,
+  .uxp-reset--complete.spectrum-AssetList-item.is-navigated {
+    background-color: var(--spectrum-global-color-gray-800, #111827) !important;
+  }
+  
+  .uxp-reset--complete.spectrum-AssetList .spectrum-AssetList-item .spectrum-AssetList-itemLabel,
+  .uxp-reset--complete.spectrum-AssetList-item .spectrum-AssetList-itemLabel {
+    color: var(--spectrum-global-color-gray-200, #e5e7eb) !important;
+  }
+  
+  .uxp-reset--complete.spectrum-AssetList .spectrum-AssetList-item .spectrum-AssetList-itemThumbnail .spectrum-Icon,
+  .uxp-reset--complete.spectrum-AssetList-item .spectrum-AssetList-itemThumbnail .spectrum-Icon {
+    color: var(--spectrum-global-color-gray-400, #9ca3af) !important;
+  }
+  
+  .uxp-reset--complete.spectrum-AssetList .spectrum-AssetList-item .spectrum-AssetList-itemChildIndicator,
+  .uxp-reset--complete.spectrum-AssetList-item .spectrum-AssetList-itemChildIndicator {
+    color: var(--spectrum-global-color-gray-500, #6b7280) !important;
+  }
+}
+
+/* RESPONSIVE BEHAVIOR */
+@container (max-width: 300px) {
+  .uxp-reset--complete.spectrum-AssetList .spectrum-AssetList-item,
+  .uxp-reset--complete.spectrum-AssetList-item.spectrum-AssetList-item {
+    padding: var(--spectrum-global-dimension-size-100, 8px) var(--spectrum-global-dimension-size-150, 11px) !important;
+  }
+  
+  .uxp-reset--complete.spectrum-AssetList .spectrum-AssetList-item .spectrum-AssetList-itemThumbnail,
+  .uxp-reset--complete.spectrum-AssetList-item .spectrum-AssetList-itemThumbnail {
+    width: 24px !important;
+    height: 24px !important;
+    margin-right: var(--spectrum-global-dimension-size-100, 8px) !important;
+  }
+  
+  .uxp-reset--complete.spectrum-AssetList .spectrum-AssetList-item .spectrum-AssetList-itemThumbnail .spectrum-Icon,
+  .uxp-reset--complete.spectrum-AssetList-item .spectrum-AssetList-itemThumbnail .spectrum-Icon {
+    width: 24px !important;
+    height: 24px !important;
+  }
+  
+  .uxp-reset--complete.spectrum-AssetList .spectrum-AssetList-item .spectrum-AssetList-itemLabel,
+  .uxp-reset--complete.spectrum-AssetList-item .spectrum-AssetList-itemLabel {
+    font-size: var(--spectrum-global-dimension-font-size-75, 12px) !important;
+  }
+}

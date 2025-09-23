@@ -8,6 +8,8 @@
 
 /* ASSET CONTAINER */
 /* Ultra-high specificity selector for Asset wrapper */
+div[role="img"].uxp-reset--complete.spectrum-Asset.spectrum-Asset,
+div[role="button"].uxp-reset--complete.spectrum-Asset.spectrum-Asset,
 .uxp-reset--complete.spectrum-Asset.spectrum-Asset,
 div.uxp-reset--complete.spectrum-Asset.spectrum-Asset {
   /* Override any UXP interference */
@@ -38,6 +40,8 @@ div.uxp-reset--complete.spectrum-Asset.spectrum-Asset {
 /* SIZE VARIANTS */
 
 /* Extra Small Asset */
+div[role="img"].uxp-reset--complete.spectrum-Asset.spectrum-Asset--sizeXS,
+div[role="button"].uxp-reset--complete.spectrum-Asset.spectrum-Asset--sizeXS,
 .uxp-reset--complete.spectrum-Asset.spectrum-Asset--sizeXS,
 div.uxp-reset--complete.spectrum-Asset.spectrum-Asset--sizeXS {
   width: var(--spectrum-asset-thumbnail-size-xs, 60px) !important;
@@ -45,6 +49,8 @@ div.uxp-reset--complete.spectrum-Asset.spectrum-Asset--sizeXS {
 }
 
 /* Small Asset */
+div[role="img"].uxp-reset--complete.spectrum-Asset.spectrum-Asset--sizeS,
+div[role="button"].uxp-reset--complete.spectrum-Asset.spectrum-Asset--sizeS,
 .uxp-reset--complete.spectrum-Asset.spectrum-Asset--sizeS,
 div.uxp-reset--complete.spectrum-Asset.spectrum-Asset--sizeS {
   width: var(--spectrum-asset-thumbnail-size-s, 90px) !important;
@@ -52,6 +58,8 @@ div.uxp-reset--complete.spectrum-Asset.spectrum-Asset--sizeS {
 }
 
 /* Medium Asset (default) */
+div[role="img"].uxp-reset--complete.spectrum-Asset.spectrum-Asset--sizeM,
+div[role="button"].uxp-reset--complete.spectrum-Asset.spectrum-Asset--sizeM,
 .uxp-reset--complete.spectrum-Asset.spectrum-Asset--sizeM,
 div.uxp-reset--complete.spectrum-Asset.spectrum-Asset--sizeM {
   width: var(--spectrum-asset-thumbnail-size-m, 120px) !important;
@@ -59,6 +67,8 @@ div.uxp-reset--complete.spectrum-Asset.spectrum-Asset--sizeM {
 }
 
 /* Large Asset */
+div[role="img"].uxp-reset--complete.spectrum-Asset.spectrum-Asset--sizeL,
+div[role="button"].uxp-reset--complete.spectrum-Asset.spectrum-Asset--sizeL,
 .uxp-reset--complete.spectrum-Asset.spectrum-Asset--sizeL,
 div.uxp-reset--complete.spectrum-Asset.spectrum-Asset--sizeL {
   width: var(--spectrum-asset-thumbnail-size-l, 160px) !important;
@@ -66,6 +76,8 @@ div.uxp-reset--complete.spectrum-Asset.spectrum-Asset--sizeL {
 }
 
 /* Extra Large Asset */
+div[role="img"].uxp-reset--complete.spectrum-Asset.spectrum-Asset--sizeXL,
+div[role="button"].uxp-reset--complete.spectrum-Asset.spectrum-Asset--sizeXL,
 .uxp-reset--complete.spectrum-Asset.spectrum-Asset--sizeXL,
 div.uxp-reset--complete.spectrum-Asset.spectrum-Asset--sizeXL {
   width: var(--spectrum-asset-thumbnail-size-xl, 200px) !important;
@@ -117,6 +129,8 @@ div.uxp-reset--complete.spectrum-Asset.spectrum-Asset--sizeXL {
 }
 
 /* HOVER STATE */
+div[role="img"].uxp-reset--complete.spectrum-Asset:hover,
+div[role="button"].uxp-reset--complete.spectrum-Asset:hover,
 .uxp-reset--complete.spectrum-Asset:hover,
 div.uxp-reset--complete.spectrum-Asset:hover {
   border-color: var(--spectrum-global-color-blue-400, #378ef0) !important;
@@ -124,6 +138,8 @@ div.uxp-reset--complete.spectrum-Asset:hover {
 }
 
 /* SELECTED STATE */
+div[role="img"].uxp-reset--complete.spectrum-Asset.is-selected,
+div[role="button"].uxp-reset--complete.spectrum-Asset.is-selected,
 .uxp-reset--complete.spectrum-Asset.is-selected,
 div.uxp-reset--complete.spectrum-Asset.is-selected {
   border-color: var(--spectrum-global-color-blue-500, #2680eb) !important;
@@ -132,6 +148,8 @@ div.uxp-reset--complete.spectrum-Asset.is-selected {
 }
 
 /* FOCUS STATE */
+div[role="img"].uxp-reset--complete.spectrum-Asset:focus,
+div[role="button"].uxp-reset--complete.spectrum-Asset:focus,
 .uxp-reset--complete.spectrum-Asset:focus,
 div.uxp-reset--complete.spectrum-Asset:focus {
   outline: none !important;
@@ -140,6 +158,8 @@ div.uxp-reset--complete.spectrum-Asset:focus {
 }
 
 /* DROP TARGET STATE */
+div[role="img"].uxp-reset--complete.spectrum-Asset.is-drop-target,
+div[role="button"].uxp-reset--complete.spectrum-Asset.is-drop-target,
 .uxp-reset--complete.spectrum-Asset.is-drop-target,
 div.uxp-reset--complete.spectrum-Asset.is-drop-target {
   border-color: var(--spectrum-global-color-green-400, #33ab84) !important;
@@ -148,6 +168,8 @@ div.uxp-reset--complete.spectrum-Asset.is-drop-target {
 }
 
 /* VARIANT: OVERLAY */
+div[role="img"].uxp-reset--complete.spectrum-Asset--overlay,
+div[role="button"].uxp-reset--complete.spectrum-Asset--overlay,
 .uxp-reset--complete.spectrum-Asset--overlay,
 div.uxp-reset--complete.spectrum-Asset--overlay {
   border: none !important;
@@ -162,6 +184,8 @@ div.uxp-reset--complete.spectrum-Asset--overlay {
 }
 
 /* VARIANT: FILE */
+div[role="img"].uxp-reset--complete.spectrum-Asset--file,
+div[role="button"].uxp-reset--complete.spectrum-Asset--file,
 .uxp-reset--complete.spectrum-Asset--file,
 div.uxp-reset--complete.spectrum-Asset--file {
   background-color: var(--spectrum-global-color-gray-75, #fafafa) !important;
