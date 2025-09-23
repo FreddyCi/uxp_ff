@@ -26,7 +26,7 @@ div[role="textbox"].uxp-reset--complete.spectrum-Textfield.spectrum-Textfield {
   
   /* Background and border - EXACTLY like Button approach but with explicit colors */
   background-color: var(--spectrum-background-layer-1-color) !important;
-  border: var(--spectrum-border-width-200) solid var(--spectrum-border-color-default) !important;
+  border: var(--spectrum-border-width-200) solid var(--spectrum-border-color-default, #d1d5db) !important;
   
   /* Transitions */
   transition: 
@@ -45,10 +45,11 @@ div[role="textbox"].uxp-reset--complete.spectrum-Textfield.spectrum-Textfield in
   width: 100% !important;
   height: 100% !important;
   
-  /* Typography using official tokens */
+  /* Typography using official tokens with UXP-safe font properties */
   font-family: var(--spectrum-sans-font-family-stack) !important;
   font-size: var(--spectrum-font-size-100) !important;
-  font-weight: var(--spectrum-font-weight-regular) !important;
+  font-weight: 400 !important;
+  font-style: normal !important;
   line-height: var(--spectrum-line-height-100) !important;
   color: var(--spectrum-neutral-content-color-default) !important;
   
@@ -69,9 +70,9 @@ div[role="textbox"].uxp-reset--complete.spectrum-Textfield.spectrum-Textfield in
   opacity: 1 !important;
 }
 
-/* Hover state - EXACTLY like Button component */
+/* Hover state - EXACTLY like Button component with explicit color for UXP */
 div[role="textbox"].uxp-reset--complete.spectrum-Textfield.spectrum-Textfield:hover {
-  border-color: var(--spectrum-border-color-hover) !important;
+  border-color: var(--spectrum-gray-400, #9ca3af) !important;
 }
 
 /* Focus state - EXACTLY like Button component */
@@ -130,12 +131,12 @@ div[role="textbox"].uxp-reset--complete.spectrum-Textfield.spectrum-Textfield.sp
 div[role="textbox"].uxp-reset--complete.spectrum-Textfield.spectrum-Textfield.spectrum-Textfield--quiet {
   background-color: transparent !important;
   border: none !important;
-  border-bottom: var(--spectrum-border-width-200) solid var(--spectrum-border-color-default) !important;
+  border-bottom: var(--spectrum-border-width-200) solid var(--spectrum-border-color-default, #d1d5db) !important;
   border-radius: 0 !important;
 }
 
 div[role="textbox"].uxp-reset--complete.spectrum-Textfield.spectrum-Textfield.spectrum-Textfield--quiet:hover {
-  border-bottom-color: var(--spectrum-border-color-hover) !important;
+  border-bottom-color: var(--spectrum-gray-400, #9ca3af) !important;
 }
 
 div[role="textbox"].uxp-reset--complete.spectrum-Textfield.spectrum-Textfield.spectrum-Textfield--quiet:focus-within {
@@ -156,10 +157,11 @@ div[role="textbox"].uxp-reset--complete.spectrum-Textfield.spectrum-Textfield.sp
   box-sizing: border-box !important;
   display: block !important;
   
-  /* Official Spectrum typography */
+  /* Official Spectrum typography with UXP-safe font properties */
   font-family: var(--spectrum-sans-font-family-stack) !important;
   font-size: var(--spectrum-font-size-100) !important;
-  font-weight: var(--spectrum-font-weight-medium) !important;
+  font-weight: 500 !important;
+  font-style: normal !important;
   line-height: var(--spectrum-line-height-100) !important;
   
   /* Colors using official tokens */
