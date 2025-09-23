@@ -1,0 +1,104 @@
+/*!
+ * Hybrid Divider Component - Official Spectrum CSS + Nuclear Div Approach
+ * Combines official Adobe Spectrum tokens with UXP-compatible markup
+ */
+
+/* =============================================================================
+   NUCLEAR DIV + SPECTRUM CSS RESET OVERRIDE
+   ============================================================================= */
+
+/* Ultra-high specificity selector to override aggressive UXP inline styles */
+hr[role="separator"].uxp-reset--complete.spectrum-Divider.spectrum-Divider {
+  /* Override any UXP interference */
+  all: unset !important;
+  
+  /* Re-establish basic divider foundation */
+  box-sizing: border-box !important;
+  display: block !important;
+  
+  /* Official Spectrum divider foundation */
+  border: none !important;
+  border-top: var(--spectrum-divider-thickness-small) solid var(--spectrum-gray-300) !important;
+  margin: 0 !important;
+  width: 100% !important;
+  height: 0 !important;
+  
+  /* Default horizontal orientation */
+  align-self: stretch !important;
+}
+
+/* =============================================================================
+   SIZE VARIANTS
+   ============================================================================= */
+
+/* Small size */
+hr[role="separator"].uxp-reset--complete.spectrum-Divider.spectrum-Divider--sizeS {
+  border-top-width: var(--spectrum-divider-thickness-small) !important;
+}
+
+/* Medium size */
+hr[role="separator"].uxp-reset--complete.spectrum-Divider.spectrum-Divider--sizeM {
+  border-top-width: var(--spectrum-divider-thickness-medium) !important;
+}
+
+/* Large size */
+hr[role="separator"].uxp-reset--complete.spectrum-Divider.spectrum-Divider--sizeL {
+  border-top-width: var(--spectrum-divider-thickness-large) !important;
+}
+
+/* =============================================================================
+   VERTICAL ORIENTATION
+   ============================================================================= */
+
+/* Vertical divider */
+hr[role="separator"].uxp-reset--complete.spectrum-Divider.spectrum-Divider--vertical {
+  border-top: none !important;
+  border-left: var(--spectrum-divider-thickness-small) solid var(--spectrum-gray-300) !important;
+  width: 0 !important;
+  height: 100% !important;
+  display: inline-block !important;
+  vertical-align: top !important;
+}
+
+/* Vertical size variants */
+hr[role="separator"].uxp-reset--complete.spectrum-Divider.spectrum-Divider--vertical.spectrum-Divider--sizeS {
+  border-left-width: var(--spectrum-divider-thickness-small) !important;
+}
+
+hr[role="separator"].uxp-reset--complete.spectrum-Divider.spectrum-Divider--vertical.spectrum-Divider--sizeM {
+  border-left-width: var(--spectrum-divider-thickness-medium) !important;
+}
+
+hr[role="separator"].uxp-reset--complete.spectrum-Divider.spectrum-Divider--vertical.spectrum-Divider--sizeL {
+  border-left-width: var(--spectrum-divider-thickness-large) !important;
+}
+
+/* =============================================================================
+   FALLBACK TOKEN VALUES (in case Spectrum tokens aren't available)
+   ============================================================================= */
+
+/* If Spectrum tokens aren't loaded, provide fallback values */
+hr[role="separator"].uxp-reset--complete.spectrum-Divider.spectrum-Divider {
+  --spectrum-divider-thickness-small: 1px;
+  --spectrum-divider-thickness-medium: 2px;
+  --spectrum-divider-thickness-large: 4px;
+  --spectrum-gray-300: #d3d3d3;
+}
+
+/* =============================================================================
+   SPACING HELPERS
+   ============================================================================= */
+
+/* Add spacing around dividers when used in content */
+.spectrum-Divider + * {
+  margin-top: var(--spectrum-spacing-300, 12px) !important;
+}
+
+* + .spectrum-Divider {
+  margin-top: var(--spectrum-spacing-300, 12px) !important;
+}
+
+/* Reset margins when dividers are used as direct layout elements */
+.divider-container .spectrum-Divider {
+  margin: 0 !important;
+}

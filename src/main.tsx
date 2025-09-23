@@ -20,6 +20,7 @@ import { Card } from "./components/Card";
 import { Checkbox } from "./components/Checkbox";
 import { Typography, Heading, Body, Emphasized, Code, Detail, Strong } from "./components/Typography";
 import { Tabs, TabList, Tab, TabPanel } from "./components/Tabs";
+import { Divider } from "./components/Divider";
 import { usePluginStore } from "./store/usePluginStore";
 
 
@@ -556,6 +557,7 @@ const App: React.FC = () => {
                     <li>Card - Content containers</li>
                     <li>Tabs - Navigation interface</li>
                     <li>Typography - Text styling</li>
+                    <li>Divider - Visual separators</li>
                     <li>Content - Layout containers</li>
                   </ul>
                 </div>
@@ -742,6 +744,69 @@ const App: React.FC = () => {
                       Environment detection, API adapters
                     </div>
                   </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Divider Component Showcase */}
+            <div style={{ marginBottom: "32px" }}>
+              <h4 style={{ margin: "0 0 16px 0", color: "var(--text)" }}>🎯 Divider Component</h4>
+              <div style={{ 
+                padding: "16px", 
+                backgroundColor: "var(--spectrum-background-layer-2-color, #f9fafb)", 
+                borderRadius: "8px" 
+              }}>
+                <p style={{ margin: "0 0 16px 0", fontSize: "14px", color: "var(--text)" }}>
+                  Visual separators with size variants and orientation support based on Adobe Spectrum specifications.
+                </p>
+                
+                {/* Size Variants */}
+                <div style={{ marginBottom: "24px" }}>
+                  <h5 style={{ margin: "0 0 12px 0", color: "var(--text)", fontSize: "14px" }}>Size Variants</h5>
+                  <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+                    <div>
+                      <div style={{ fontSize: "12px", color: "var(--text-muted)", marginBottom: "8px" }}>Small</div>
+                      <Divider size="S" />
+                    </div>
+                    <div>
+                      <div style={{ fontSize: "12px", color: "var(--text-muted)", marginBottom: "8px" }}>Medium</div>
+                      <Divider size="M" />
+                    </div>
+                    <div>
+                      <div style={{ fontSize: "12px", color: "var(--text-muted)", marginBottom: "8px" }}>Large</div>
+                      <Divider size="L" />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Vertical Orientation */}
+                <div style={{ marginBottom: "16px" }}>
+                  <h5 style={{ margin: "0 0 12px 0", color: "var(--text)", fontSize: "14px" }}>Vertical Orientation</h5>
+                  <div style={{ display: "flex", alignItems: "center", gap: "16px", height: "80px" }}>
+                    <span style={{ fontSize: "12px", color: "var(--text-muted)" }}>Small</span>
+                    <Divider size="S" orientation="vertical" />
+                    <span style={{ fontSize: "12px", color: "var(--text-muted)" }}>Medium</span>
+                    <Divider size="M" orientation="vertical" />
+                    <span style={{ fontSize: "12px", color: "var(--text-muted)" }}>Large</span>
+                    <Divider size="L" orientation="vertical" />
+                  </div>
+                </div>
+
+                {/* Implementation Details */}
+                <div style={{ 
+                  padding: "12px", 
+                  backgroundColor: "var(--spectrum-background-layer-1-color, #fff)", 
+                  borderRadius: "4px",
+                  border: "1px solid var(--spectrum-border-color-default)"
+                }}>
+                  <h6 style={{ margin: "0 0 8px 0", fontSize: "12px", color: "var(--text)" }}>Implementation Features:</h6>
+                  <ul style={{ margin: "0", paddingLeft: "16px", fontSize: "11px", color: "var(--text-muted)" }}>
+                    <li>Semantic HR element with proper ARIA role</li>
+                    <li>Nuclear div CSS approach for UXP compatibility</li>
+                    <li>Automatic min-inline-size for horizontal dividers</li>
+                    <li>Automatic min-block-size for vertical dividers</li>
+                    <li>Official Spectrum design tokens for thickness</li>
+                  </ul>
                 </div>
               </div>
             </div>
