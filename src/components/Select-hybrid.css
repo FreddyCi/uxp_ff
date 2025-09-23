@@ -1,0 +1,305 @@
+/* Select Component - Hybrid Nuclear Div Approach for UXP + Spectrum CSS */
+/* Following official Spectrum CSS Combobox structure */
+
+/* COMBOBOX CONTAINER */
+.spectrum-Combobox.uxp-reset--complete {
+  display: flex !important;
+  flex-direction: column !important;
+  width: 100% !important;
+  position: relative !important;
+}
+
+/* NUCLEAR DIV RESET - Ultra-high specificity to win against UXP interference */
+div[role="combobox"].uxp-reset--complete.spectrum-PickerButton.spectrum-PickerButton {
+  /* Nuclear reset */
+  all: unset !important;
+  
+  /* Re-establish fundamentals */
+  box-sizing: border-box !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  cursor: pointer !important;
+  position: relative !important;
+  
+  /* Official Spectrum foundation */
+  font-family: var(--spectrum-sans-font-family-stack, "adobe-clean", "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif) !important;
+  font-weight: 400 !important;
+  font-style: normal !important;
+  line-height: var(--spectrum-line-height-100, 1.3) !important;
+  
+  /* UXP-safe Spectrum tokens with fallbacks */
+  background-color: var(--spectrum-textfield-background-color, #ffffff) !important;
+  border: var(--spectrum-border-width-200, 2px) solid var(--spectrum-textfield-border-color, #d1d5db) !important;
+  color: var(--spectrum-neutral-content-color-default, #1f2937) !important;
+  border-radius: var(--spectrum-border-radius-100, 4px) !important;
+  
+  /* Standard sizing - medium */
+  height: var(--spectrum-component-height-100, 40px) !important;
+  min-width: 240px !important;
+  padding: 0 var(--spectrum-component-pill-edge-to-text, 16px) !important;
+  font-size: var(--spectrum-font-size-100, 16px) !important;
+  
+  /* Smooth transitions */
+  transition: all var(--spectrum-animation-duration-100, 200ms) ease-out !important;
+}
+
+/* Hover state */
+div[role="combobox"].uxp-reset--complete.spectrum-PickerButton.spectrum-PickerButton:hover {
+  border-color: var(--spectrum-textfield-border-color-hover, #9ca3af) !important;
+}
+
+/* Focus state */
+div[role="combobox"].uxp-reset--complete.spectrum-PickerButton.spectrum-PickerButton:focus {
+  outline: var(--spectrum-focus-indicator-thickness, 2px) solid var(--spectrum-focus-indicator-color, #059669) !important;
+  outline-offset: var(--spectrum-focus-indicator-gap, 2px) !important;
+  border-color: var(--spectrum-accent-background-color-default, #2563eb) !important;
+}
+
+/* Expanded state (dropdown open) */
+div[role="combobox"].uxp-reset--complete.spectrum-PickerButton.spectrum-PickerButton[aria-expanded="true"] {
+  border-color: var(--spectrum-accent-background-color-default, #2563eb) !important;
+  outline: var(--spectrum-focus-indicator-thickness, 2px) solid var(--spectrum-focus-indicator-color, #059669) !important;
+  outline-offset: var(--spectrum-focus-indicator-gap, 2px) !important;
+}
+
+/* Disabled state */
+div[role="combobox"].uxp-reset--complete.spectrum-PickerButton.spectrum-PickerButton[aria-disabled="true"] {
+  background-color: var(--spectrum-disabled-background-color, #f3f4f6) !important;
+  border-color: var(--spectrum-disabled-border-color, #e5e7eb) !important;
+  color: var(--spectrum-disabled-content-color, #9ca3af) !important;
+  cursor: not-allowed !important;
+  pointer-events: none !important;
+}
+
+/* Invalid state */
+div[role="combobox"].uxp-reset--complete.spectrum-PickerButton.spectrum-PickerButton[aria-invalid="true"] {
+  border-color: var(--spectrum-negative-background-color-default, #dc2626) !important;
+}
+
+/* Size variants */
+div[role="combobox"].uxp-reset--complete.spectrum-PickerButton.spectrum-PickerButton.spectrum-PickerButton--sizeS {
+  height: 32px !important;
+  font-size: 14px !important;
+  padding: 0 12px !important;
+}
+
+div[role="combobox"].uxp-reset--complete.spectrum-PickerButton.spectrum-PickerButton.spectrum-PickerButton--sizeL {
+  height: 48px !important;
+  font-size: 18px !important;
+  padding: 0 20px !important;
+}
+
+/* Quiet variant */
+div[role="combobox"].uxp-reset--complete.spectrum-PickerButton.spectrum-PickerButton.spectrum-PickerButton--quiet {
+  background-color: transparent !important;
+  border: none !important;
+  border-bottom: var(--spectrum-border-width-200, 2px) solid var(--spectrum-textfield-border-color, #d1d5db) !important;
+  border-radius: 0 !important;
+}
+
+div[role="combobox"].uxp-reset--complete.spectrum-PickerButton.spectrum-PickerButton.spectrum-PickerButton--quiet:hover {
+  border-bottom-color: var(--spectrum-textfield-border-color-hover, #9ca3af) !important;
+}
+
+div[role="combobox"].uxp-reset--complete.spectrum-PickerButton.spectrum-PickerButton.spectrum-PickerButton--quiet:focus {
+  border-bottom-color: var(--spectrum-accent-background-color-default, #2563eb) !important;
+}
+
+/* Picker button label (text content) */
+.spectrum-PickerButton-label {
+  flex: 1 !important;
+  text-align: left !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  color: inherit !important;
+}
+
+/* Placeholder styling */
+div[role="combobox"].uxp-reset--complete.spectrum-PickerButton.spectrum-PickerButton .spectrum-PickerButton-label:empty::before {
+  content: attr(data-placeholder) !important;
+  color: var(--spectrum-neutral-subdued-content-color-default, #6b7280) !important;
+}
+
+/* Chevron icon */
+.spectrum-PickerButton-icon {
+  flex-shrink: 0 !important;
+  margin-left: 8px !important;
+  color: var(--spectrum-neutral-subdued-content-color-default, #6b7280) !important;
+  transition: transform var(--spectrum-animation-duration-100, 200ms) ease-out !important;
+}
+
+/* Rotate chevron when open */
+div[role="combobox"][aria-expanded="true"] .spectrum-PickerButton-icon {
+  transform: rotate(180deg) !important;
+}
+
+/* DROPDOWN MENU STYLING */
+
+/* Popover container */
+.spectrum-Combobox-popover {
+  background-color: var(--spectrum-popover-background-color, #ffffff) !important;
+  border: var(--spectrum-border-width-100, 1px) solid var(--spectrum-popover-border-color, #d1d5db) !important;
+  border-radius: var(--spectrum-border-radius-100, 4px) !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
+  max-height: 300px !important;
+  overflow-y: auto !important;
+  z-index: 1000 !important;
+}
+
+/* Menu container */
+.spectrum-Menu {
+  padding: 4px 0 !important;
+  margin: 0 !important;
+  list-style: none !important;
+}
+
+/* Menu items */
+.spectrum-Menu-item {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 8px 16px !important;
+  cursor: pointer !important;
+  color: var(--spectrum-neutral-content-color-default, #1f2937) !important;
+  font-size: var(--spectrum-font-size-100, 16px) !important;
+  line-height: var(--spectrum-line-height-100, 1.3) !important;
+  transition: background-color var(--spectrum-animation-duration-100, 200ms) ease-out !important;
+}
+
+/* Menu item hover */
+.spectrum-Menu-item:hover {
+  background-color: var(--spectrum-accent-background-color-default, #2563eb) !important;
+  color: var(--spectrum-accent-content-color-default, #ffffff) !important;
+}
+
+/* Selected menu item */
+.spectrum-Menu-item.is-selected {
+  background-color: var(--spectrum-accent-background-color-default, #2563eb) !important;
+  color: var(--spectrum-accent-content-color-default, #ffffff) !important;
+}
+
+/* Disabled menu item */
+.spectrum-Menu-item.is-disabled {
+  color: var(--spectrum-disabled-content-color, #9ca3af) !important;
+  cursor: not-allowed !important;
+  pointer-events: none !important;
+}
+
+/* Menu item label */
+.spectrum-Menu-itemLabel {
+  flex: 1 !important;
+  text-align: left !important;
+}
+
+/* Checkmark for selected item */
+.spectrum-Menu-checkmark {
+  flex-shrink: 0 !important;
+  margin-left: 8px !important;
+  color: currentColor !important;
+}
+
+/* FIELD LABEL STYLING - Ultra-high specificity for UXP */
+.spectrum-Combobox .spectrum-FieldLabel.spectrum-FieldLabel--sizeM.spectrum-FieldLabel--sizeM {
+  /* Nuclear reset for labels */
+  all: unset !important;
+  
+  /* Re-establish label fundamentals */
+  display: block !important;
+  box-sizing: border-box !important;
+  
+  /* Spectrum label styling */
+  font-family: var(--spectrum-sans-font-family-stack, "adobe-clean", "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif) !important;
+  font-weight: var(--spectrum-bold-font-weight, 600) !important;
+  font-style: normal !important;
+  font-size: var(--spectrum-font-size-100, 16px) !important;
+  line-height: var(--spectrum-line-height-100, 1.3) !important;
+  color: var(--spectrum-neutral-content-color-default, #1f2937) !important;
+  
+  /* Spacing */
+  margin-bottom: 8px !important;
+}
+
+/* Size variants for labels */
+.spectrum-Combobox .spectrum-FieldLabel.spectrum-FieldLabel--sizeS.spectrum-FieldLabel--sizeS {
+  font-size: 14px !important;
+  margin-bottom: 6px !important;
+}
+
+.spectrum-Combobox .spectrum-FieldLabel.spectrum-FieldLabel--sizeL.spectrum-FieldLabel--sizeL {
+  font-size: 18px !important;
+  margin-bottom: 10px !important;
+}
+
+/* Required indicator */
+.spectrum-FieldLabel-requiredIcon {
+  color: var(--spectrum-negative-background-color-default, #dc2626) !important;
+  font-weight: bold !important;
+}
+
+/* HELP TEXT STYLING - Ultra-high specificity for UXP */
+.spectrum-Combobox .spectrum-HelpText.spectrum-HelpText--sizeM.spectrum-HelpText--sizeM {
+  /* Nuclear reset */
+  all: unset !important;
+  
+  /* Re-establish fundamentals */
+  display: block !important;
+  box-sizing: border-box !important;
+  
+  /* Spectrum help text styling */
+  font-family: var(--spectrum-sans-font-family-stack, "adobe-clean", "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif) !important;
+  font-weight: 400 !important;
+  font-style: normal !important;
+  font-size: 14px !important;
+  line-height: var(--spectrum-line-height-100, 1.3) !important;
+  color: var(--spectrum-neutral-subdued-content-color-default, #6b7280) !important;
+  
+  /* Spacing */
+  margin-top: 6px !important;
+}
+
+/* Error message styling */
+.spectrum-Combobox .spectrum-HelpText.spectrum-HelpText--negative {
+  color: var(--spectrum-negative-background-color-default, #dc2626) !important;
+}
+
+/* Help text size variants */
+.spectrum-Combobox .spectrum-HelpText.spectrum-HelpText--sizeS.spectrum-HelpText--sizeS {
+  font-size: 12px !important;
+  margin-top: 4px !important;
+}
+
+.spectrum-Combobox .spectrum-HelpText.spectrum-HelpText--sizeL.spectrum-HelpText--sizeL {
+  font-size: 16px !important;
+  margin-top: 8px !important;
+}
+
+/* SELECT CONTAINER LAYOUT */
+.spectrum-Combobox + .spectrum-Combobox {
+  margin-top: 16px !important;
+}
+
+/* Dark theme support */
+[data-theme="dark"] div[role="combobox"].uxp-reset--complete.spectrum-PickerButton.spectrum-PickerButton {
+  background-color: var(--spectrum-textfield-background-color, #374151) !important;
+  border-color: var(--spectrum-textfield-border-color, #4b5563) !important;
+  color: var(--spectrum-neutral-content-color-default, #f9fafb) !important;
+}
+
+[data-theme="dark"] .spectrum-Combobox-popover {
+  background-color: var(--spectrum-popover-background-color, #374151) !important;
+  border-color: var(--spectrum-popover-border-color, #4b5563) !important;
+}
+
+[data-theme="dark"] .spectrum-Menu-item {
+  color: var(--spectrum-neutral-content-color-default, #f9fafb) !important;
+}
+
+[data-theme="dark"] .spectrum-Combobox .spectrum-FieldLabel.spectrum-FieldLabel--sizeM.spectrum-FieldLabel--sizeM {
+  color: var(--spectrum-neutral-content-color-default, #f9fafb) !important;
+}
+
+[data-theme="dark"] .spectrum-Combobox .spectrum-HelpText.spectrum-HelpText--sizeM.spectrum-HelpText--sizeM {
+  color: var(--spectrum-neutral-subdued-content-color-default, #9ca3af) !important;
+}

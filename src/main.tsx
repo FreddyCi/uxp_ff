@@ -10,6 +10,7 @@ import { UxpProvider, useUxp } from "./uxp/UxpProvider";
 import { Label, Input } from "react-aria-components";
 import { TextField } from "./components/TextField";
 import { TextArea } from "./components/TextArea";
+import { Select } from "./components/Select";
 import { Button } from "./components/Button";
 import { Tabs, TabList, Tab, TabPanel } from "./components/Tabs";
 import { usePluginStore } from "./store/usePluginStore";
@@ -304,6 +305,38 @@ const App: React.FC = () => {
                 placeholder="your.email@example.com"
                 name="email"
                 isRequired
+              />
+
+              <Select
+                label="Country"
+                placeholder="Select your country"
+                name="country"
+                options={[
+                  { value: "us", label: "United States" },
+                  { value: "ca", label: "Canada" },
+                  { value: "uk", label: "United Kingdom" },
+                  { value: "de", label: "Germany" },
+                  { value: "fr", label: "France" },
+                  { value: "jp", label: "Japan" },
+                  { value: "au", label: "Australia" }
+                ]}
+                description="Select your country of residence"
+              />
+
+              <Select
+                label="Size"
+                placeholder="Choose size"
+                name="size"
+                size="s"
+                options={[
+                  { value: "xs", label: "Extra Small" },
+                  { value: "s", label: "Small" },
+                  { value: "m", label: "Medium" },
+                  { value: "l", label: "Large" },
+                  { value: "xl", label: "Extra Large" },
+                  { value: "xxl", label: "XXL", isDisabled: true }
+                ]}
+                description="Small size variant of Select component"
               />
 
               <TextField

@@ -1,114 +1,232 @@
-'use client';
-import {
-  Button,
-  ListBox,
-  ListBoxItem,
-  Popover,
-  Select as AriaSelect,
-  SelectProps as AriaSelectProps,
-  SelectValue,
-  ValidationResult
-} from 'react-aria-components';
-import { Label, FieldError } from './Form';
+import React, { useState, useRef, useEffect } from "react";
+import { useSelect } from "react-aria";
+import "./Select-hybrid.css";
 
-export interface SelectProps<T extends object> extends Omit<AriaSelectProps<T>, 'children'> {
+interface SelectOption {
+  value: string;
+  label: string;
+  isDisabled?: boolean;
+}
+
+interface SelectProps {
   label?: string;
+  placeholder?: string;
+  options: SelectOption[];
+  value?: string;
+  defaultValue?: string;
+  onChange?: (value: string) => void;
+  onBlur?: () => void;
+  isRequired?: boolean;
+  isDisabled?: boolean;
+  isInvalid?: boolean;
+  size?: "s" | "m" | "l";
+  isQuiet?: boolean;
+  name?: string;
+  id?: string;
   description?: string;
-  errorMessage?: string | ((validation: ValidationResult) => string);
-  items?: Iterable<T>;
-  children?: React.ReactNode | ((item: T) => React.ReactNode);
+  errorMessage?: string;
+  validationState?: "valid" | "invalid";
+  className?: string;
+  style?: React.CSSProperties;
 }
 
-export function Select<T extends object>(
-  { label, description, errorMessage, children, items, ...props }: SelectProps<T>
-) {
+export const Select: React.FC<SelectProps> = ({
+  label,
+  placeholder = "Select an option...",
+  options = [],
+  value,
+  defaultValue,
+  onChange,
+  onBlur,
+  isRequired = false,
+  isDisabled = false,
+  isInvalid = false,
+  size = "m",
+  isQuiet = false,
+  name,
+  id,
+  description,
+  errorMessage,
+  validationState,
+  className = "",
+  style,
+  ...props
+}) => {
+  const triggerRef = useRef<HTMLDivElement>(null);
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedValue, setSelectedValue] = useState<string | undefined>(value || defaultValue);
+  
+  // Update selectedValue when controlled value changes
+  useEffect(() => {
+    if (value !== undefined) {
+      setSelectedValue(value);
+    }
+  }, [value]);
+
+  // Handle selection change
+  const handleSelectionChange = (newValue: string) => {
+    if (!isDisabled) {
+      setSelectedValue(newValue);
+      setIsOpen(false);
+      if (onChange) {
+        onChange(newValue);
+      }
+    }
+  };
+
+  // Get selected option for display
+  const selectedOption = options.find(opt => opt.value === selectedValue);
+
+  // Build CSS classes using proper Spectrum Combobox structure from docs
+  const sizeClass = size !== "m" ? `spectrum-Combobox--size${size.toUpperCase()}` : "";
+  const quietClass = isQuiet ? "spectrum-Combobox--quiet" : "";
+  
+  const comboboxClasses = [
+    "uxp-reset--complete",
+    "spectrum-Combobox",
+    sizeClass,
+    quietClass,
+    isDisabled ? "is-disabled" : "",
+    isInvalid || validationState === "invalid" ? "is-invalid" : "",
+    isOpen ? "is-focused" : "",
+    className
+  ].filter(Boolean).join(" ");
+
+  const pickerButtonClasses = [
+    "uxp-reset--complete", 
+    "spectrum-PickerButton",
+    "spectrum-PickerButton", // Double class for ultra-high specificity
+    size !== "m" ? `spectrum-PickerButton--size${size.toUpperCase()}` : "",
+    quietClass ? "spectrum-PickerButton--quiet" : ""
+  ].filter(Boolean).join(" ");
+
+  const labelClasses = [
+    "spectrum-FieldLabel",
+    `spectrum-FieldLabel--size${size.toUpperCase()}`,
+    `spectrum-FieldLabel--size${size.toUpperCase()}` // Double for specificity
+  ].filter(Boolean).join(" ");
+
+  const helpTextClasses = [
+    "spectrum-HelpText",
+    `spectrum-HelpText--size${size.toUpperCase()}`,
+    `spectrum-HelpText--size${size.toUpperCase()}`, // Double for specificity
+    isInvalid || validationState === "invalid" ? "spectrum-HelpText--negative" : ""
+  ].filter(Boolean).join(" ");
+
+  // Handle click outside to close dropdown
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (triggerRef.current && !triggerRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+      return () => document.removeEventListener('mousedown', handleClickOutside);
+    }
+  }, [isOpen]);
+
   return (
-    <AriaSelect 
-      {...props}
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        width: 'fit-content',
-        color: '#e5e7eb',
-        ...props.style
-      }}
-    >
-      {label && <Label>{label}</Label>}
-      <Button
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          padding: '8px 12px',
-          border: '1px solid #6b7280',
-          borderRadius: '6px',
-          backgroundColor: '#374151',
-          fontSize: '14px',
-          color: '#e5e7eb',
-          cursor: 'pointer',
-          outline: 'none',
-          minWidth: '150px'
-        }}
-      >
-        <SelectValue />
-        <span style={{ marginLeft: '8px' }}>▼</span>
-      </Button>
-      {description && (
-        <div style={{ fontSize: '12px', color: '#9ca3af', marginTop: '4px' }}>
-          {description}
-        </div>
+    <div className={comboboxClasses} style={style}>
+      {label && (
+        <label htmlFor={id} className={labelClasses}>
+          {label}
+          {isRequired && <span className="spectrum-FieldLabel-requiredIcon"> *</span>}
+        </label>
       )}
-      <FieldError>{errorMessage}</FieldError>
-      <Popover
-        style={{
-          backgroundColor: '#374151',
-          border: '1px solid #6b7280',
-          borderRadius: '6px',
-          boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
-          marginTop: '4px',
-          maxHeight: '200px',
-          overflow: 'auto'
+      
+      {/* NUCLEAR DIV APPROACH - Using proper Spectrum Combobox structure */}
+      <div
+        ref={triggerRef}
+        role="combobox"
+        className={pickerButtonClasses}
+        aria-disabled={isDisabled}
+        aria-invalid={isInvalid || validationState === "invalid"}
+        aria-expanded={isOpen}
+        aria-haspopup="listbox"
+        tabIndex={isDisabled ? -1 : 0}
+        onClick={() => !isDisabled && setIsOpen(!isOpen)}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            setIsOpen(!isOpen);
+          } else if (e.key === 'Escape') {
+            setIsOpen(false);
+          }
+        }}
+        onBlur={(e) => {
+          // Close dropdown if focus moves outside the component
+          setTimeout(() => {
+            if (!triggerRef.current?.contains(document.activeElement)) {
+              setIsOpen(false);
+              if (onBlur) onBlur();
+            }
+          }, 0);
         }}
       >
-        <ListBox
-          items={items}
-          style={{
-            outline: 'none',
-            padding: '4px'
-          }}
-        >
-          {children}
-        </ListBox>
-      </Popover>
-    </AriaSelect>
-  );
-}
+        <span className="spectrum-PickerButton-label">
+          {selectedOption ? selectedOption.label : placeholder}
+        </span>
+        <span className="spectrum-Icon spectrum-UIIcon-ChevronDown100 spectrum-PickerButton-icon">
+          <svg viewBox="0 0 8 8" style={{ width: '8px', height: '8px' }}>
+            <path d="M0 2L4 6L8 2" fill="currentColor" />
+          </svg>
+        </span>
+      </div>
 
-export function SelectItem({ children, ...props }: any) {
-  return (
-    <ListBoxItem
-      {...props}
-      style={{
-        padding: '8px 12px',
-        fontSize: '14px',
-        color: '#e5e7eb',
-        cursor: 'pointer',
-        borderRadius: '4px',
-        outline: 'none',
-        ...props.style
-      }}
-    >
-      {({ isSelected, isFocused }) => (
+      {/* Dropdown Menu */}
+      {isOpen && (
         <div
+          role="listbox"
+          className="spectrum-Popover spectrum-Popover--bottom spectrum-Combobox-popover"
           style={{
-            backgroundColor: isFocused ? '#4b5563' : isSelected ? '#3b82f6' : 'transparent',
-            padding: '4px',
-            borderRadius: '4px'
+            position: 'absolute',
+            top: '100%',
+            left: 0,
+            right: 0,
+            zIndex: 1000,
+            marginTop: '2px'
           }}
         >
-          {children}
+          <div className="spectrum-Menu" role="none">
+            {options.map((option) => (
+              <div
+                key={option.value}
+                role="option"
+                className={`spectrum-Menu-item ${
+                  selectedValue === option.value ? 'is-selected' : ''
+                } ${option.isDisabled ? 'is-disabled' : ''}`}
+                aria-selected={selectedValue === option.value}
+                aria-disabled={option.isDisabled}
+                onClick={() => {
+                  if (!option.isDisabled) {
+                    handleSelectionChange(option.value);
+                  }
+                }}
+              >
+                <span className="spectrum-Menu-itemLabel">{option.label}</span>
+                {selectedValue === option.value && (
+                  <span className="spectrum-Icon spectrum-UIIcon-Checkmark100 spectrum-Menu-checkmark">
+                    <svg viewBox="0 0 8 8" style={{ width: '8px', height: '8px' }}>
+                      <path d="M0 4L3 7L8 2" fill="currentColor" stroke="currentColor" strokeWidth="1" />
+                    </svg>
+                  </span>
+                )}
+              </div>
+            ))}
+          </div>
         </div>
       )}
-    </ListBoxItem>
+
+      {/* Help text or error message */}
+      {(description || errorMessage) && (
+        <div
+          className={helpTextClasses}
+        >
+          {isInvalid || validationState === "invalid" ? errorMessage : description}
+        </div>
+      )}
+    </div>
   );
-}
+};
