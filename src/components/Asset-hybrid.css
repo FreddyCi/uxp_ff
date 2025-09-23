@@ -1,0 +1,194 @@
+/* =============================================================================
+   SPECTRUM ASSET COMPONENT - HYBRID CSS
+   Nuclear Div Approach for UXP Compatibility
+   
+   Based on Adobe Spectrum Asset component
+   Ultra-high specificity selectors to override UXP interference
+   ============================================================================= */
+
+/* ASSET CONTAINER */
+/* Ultra-high specificity selector for Asset wrapper */
+.uxp-reset--complete.spectrum-Asset.spectrum-Asset,
+div.uxp-reset--complete.spectrum-Asset.spectrum-Asset {
+  /* Override any UXP interference */
+  all: unset !important;
+  
+  /* Re-establish basic asset foundation */
+  box-sizing: border-box !important;
+  display: inline-block !important;
+  position: relative !important;
+  overflow: hidden !important;
+  
+  /* Spectrum Asset base styling */
+  border-radius: var(--spectrum-asset-border-radius, 4px) !important;
+  border: var(--spectrum-asset-border-width, 1px) solid var(--spectrum-global-color-gray-300, #e1e1e1) !important;
+  background-color: var(--spectrum-global-color-gray-50, #f5f5f5) !important;
+  
+  /* Default size - Medium */
+  width: var(--spectrum-asset-thumbnail-size-m, 120px) !important;
+  height: var(--spectrum-asset-thumbnail-size-m, 120px) !important;
+  
+  /* Interactive cursor */
+  cursor: pointer !important;
+  
+  /* Transition for interactions */
+  transition: all 0.13s ease-in-out !important;
+}
+
+/* SIZE VARIANTS */
+
+/* Extra Small Asset */
+.uxp-reset--complete.spectrum-Asset.spectrum-Asset--sizeXS,
+div.uxp-reset--complete.spectrum-Asset.spectrum-Asset--sizeXS {
+  width: var(--spectrum-asset-thumbnail-size-xs, 60px) !important;
+  height: var(--spectrum-asset-thumbnail-size-xs, 60px) !important;
+}
+
+/* Small Asset */
+.uxp-reset--complete.spectrum-Asset.spectrum-Asset--sizeS,
+div.uxp-reset--complete.spectrum-Asset.spectrum-Asset--sizeS {
+  width: var(--spectrum-asset-thumbnail-size-s, 90px) !important;
+  height: var(--spectrum-asset-thumbnail-size-s, 90px) !important;
+}
+
+/* Medium Asset (default) */
+.uxp-reset--complete.spectrum-Asset.spectrum-Asset--sizeM,
+div.uxp-reset--complete.spectrum-Asset.spectrum-Asset--sizeM {
+  width: var(--spectrum-asset-thumbnail-size-m, 120px) !important;
+  height: var(--spectrum-asset-thumbnail-size-m, 120px) !important;
+}
+
+/* Large Asset */
+.uxp-reset--complete.spectrum-Asset.spectrum-Asset--sizeL,
+div.uxp-reset--complete.spectrum-Asset.spectrum-Asset--sizeL {
+  width: var(--spectrum-asset-thumbnail-size-l, 160px) !important;
+  height: var(--spectrum-asset-thumbnail-size-l, 160px) !important;
+}
+
+/* Extra Large Asset */
+.uxp-reset--complete.spectrum-Asset.spectrum-Asset--sizeXL,
+div.uxp-reset--complete.spectrum-Asset.spectrum-Asset--sizeXL {
+  width: var(--spectrum-asset-thumbnail-size-xl, 200px) !important;
+  height: var(--spectrum-asset-thumbnail-size-xl, 200px) !important;
+}
+
+/* ASSET IMAGE */
+.uxp-reset--complete.spectrum-Asset .spectrum-Asset-image {
+  /* Override any UXP interference */
+  all: unset !important;
+  
+  /* Re-establish image styling */
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  
+  /* Default max sizes from Spectrum */
+  max-inline-size: 75% !important;
+  max-block-size: 75% !important;
+  
+  /* Center the image */
+  margin: auto !important;
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  
+  /* Image specific properties */
+  border-radius: inherit !important;
+}
+
+/* ASSET CONTENT */
+.uxp-reset--complete.spectrum-Asset .spectrum-Asset-content {
+  /* Override any UXP interference */
+  all: unset !important;
+  
+  /* Re-establish content styling */
+  position: absolute !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  padding: var(--spectrum-global-dimension-size-100, 8px) !important;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.7)) !important;
+  color: var(--spectrum-global-color-static-white, #ffffff) !important;
+  font-size: var(--spectrum-global-dimension-font-size-75, 12px) !important;
+  line-height: var(--spectrum-global-font-line-height-small, 1.3) !important;
+}
+
+/* HOVER STATE */
+.uxp-reset--complete.spectrum-Asset:hover,
+div.uxp-reset--complete.spectrum-Asset:hover {
+  border-color: var(--spectrum-global-color-blue-400, #378ef0) !important;
+  box-shadow: 0 0 0 1px var(--spectrum-global-color-blue-400, #378ef0) !important;
+}
+
+/* SELECTED STATE */
+.uxp-reset--complete.spectrum-Asset.is-selected,
+div.uxp-reset--complete.spectrum-Asset.is-selected {
+  border-color: var(--spectrum-global-color-blue-500, #2680eb) !important;
+  box-shadow: 0 0 0 2px var(--spectrum-global-color-blue-500, #2680eb) !important;
+  background-color: var(--spectrum-global-color-blue-100, #e6f4ff) !important;
+}
+
+/* FOCUS STATE */
+.uxp-reset--complete.spectrum-Asset:focus,
+div.uxp-reset--complete.spectrum-Asset:focus {
+  outline: none !important;
+  border-color: var(--spectrum-global-color-blue-400, #378ef0) !important;
+  box-shadow: 0 0 0 1px var(--spectrum-global-color-blue-400, #378ef0) !important;
+}
+
+/* DROP TARGET STATE */
+.uxp-reset--complete.spectrum-Asset.is-drop-target,
+div.uxp-reset--complete.spectrum-Asset.is-drop-target {
+  border-color: var(--spectrum-global-color-green-400, #33ab84) !important;
+  box-shadow: 0 0 0 2px var(--spectrum-global-color-green-400, #33ab84) !important;
+  background-color: var(--spectrum-global-color-green-100, #e8f5e8) !important;
+}
+
+/* VARIANT: OVERLAY */
+.uxp-reset--complete.spectrum-Asset--overlay,
+div.uxp-reset--complete.spectrum-Asset--overlay {
+  border: none !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+}
+
+.uxp-reset--complete.spectrum-Asset--overlay .spectrum-Asset-image {
+  max-inline-size: 100% !important;
+  max-block-size: 100% !important;
+  border-radius: var(--spectrum-asset-border-radius, 4px) !important;
+}
+
+/* VARIANT: FILE */
+.uxp-reset--complete.spectrum-Asset--file,
+div.uxp-reset--complete.spectrum-Asset--file {
+  background-color: var(--spectrum-global-color-gray-75, #fafafa) !important;
+  border-color: var(--spectrum-global-color-gray-400, #cacaca) !important;
+}
+
+.uxp-reset--complete.spectrum-Asset--file .spectrum-Asset-image {
+  max-inline-size: 60% !important;
+  max-block-size: 60% !important;
+}
+
+/* RESPONSIVE BEHAVIOR */
+@container (max-width: 150px) {
+  .uxp-reset--complete.spectrum-Asset {
+    width: 80px !important;
+    height: 80px !important;
+  }
+}
+
+@container (max-width: 100px) {
+  .uxp-reset--complete.spectrum-Asset {
+    width: 60px !important;
+    height: 60px !important;
+  }
+  
+  .uxp-reset--complete.spectrum-Asset .spectrum-Asset-content {
+    font-size: 10px !important;
+    padding: 4px !important;
+  }
+}

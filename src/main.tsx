@@ -22,6 +22,7 @@ import { Typography, Heading, Body, Emphasized, Code, Detail, Strong } from "./c
 import { Tabs, TabList, Tab, TabPanel } from "./components/Tabs";
 import { Divider } from "./components/Divider";
 import { Radio, RadioGroup } from "./components/Radio";
+import { Asset } from "./components/Asset";
 import { usePluginStore } from "./store/usePluginStore";
 
 
@@ -933,6 +934,166 @@ const App: React.FC = () => {
                     <li>Size variants (S, M, L, XL) with proportional scaling</li>
                     <li>Horizontal and vertical orientation support</li>
                     <li>Focus ring and hover states for accessibility</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            {/* Asset Component Showcase */}
+            <div style={{ marginBottom: "32px" }}>
+              <h4 style={{ margin: "0 0 16px 0", color: "var(--text)" }}>🖼️ Asset Component</h4>
+              <div style={{ 
+                padding: "16px", 
+                backgroundColor: "var(--spectrum-background-layer-2-color, #f9fafb)", 
+                borderRadius: "8px" 
+              }}>
+                <p style={{ margin: "0 0 16px 0", fontSize: "14px", color: "var(--text)" }}>
+                  Thumbnail components for displaying images, files, and media assets based on Adobe Spectrum specifications.
+                </p>
+                
+                {/* Size Variants */}
+                <div style={{ marginBottom: "24px" }}>
+                  <h5 style={{ margin: "0 0 12px 0", color: "var(--text)", fontSize: "14px" }}>Size Variants</h5>
+                  <div style={{ display: "flex", alignItems: "center", gap: "16px", flexWrap: "wrap" }}>
+                    <div style={{ textAlign: "center" }}>
+                      <div style={{ fontSize: "12px", color: "var(--text-muted)", marginBottom: "8px" }}>XS (60px)</div>
+                      <Asset 
+                        size="xs" 
+                        src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjYwIiBmaWxsPSIjRjVGNUY1Ii8+CjxjaXJjbGUgY3g9IjMwIiBjeT0iMzAiIHI9IjE1IiBmaWxsPSIjMjU2M0VCIi8+Cjwvc3ZnPg=="
+                        alt="Extra small asset"
+                      />
+                    </div>
+                    <div style={{ textAlign: "center" }}>
+                      <div style={{ fontSize: "12px", color: "var(--text-muted)", marginBottom: "8px" }}>S (90px)</div>
+                      <Asset 
+                        size="s" 
+                        src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIHZpZXdCb3g9IjAgMCA5MCA5MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjkwIiBoZWlnaHQ9IjkwIiBmaWxsPSIjRjVGNUY1Ii8+CjxjaXJjbGUgY3g9IjQ1IiBjeT0iNDUiIHI9IjIyIiBmaWxsPSIjMjU2M0VCIi8+Cjwvc3ZnPg=="
+                        alt="Small asset"
+                      />
+                    </div>
+                    <div style={{ textAlign: "center" }}>
+                      <div style={{ fontSize: "12px", color: "var(--text-muted)", marginBottom: "8px" }}>M (120px)</div>
+                      <Asset 
+                        size="m" 
+                        src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCIgdmlld0JveD0iMCAwIDEyMCAxMjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMjAiIGhlaWdodD0iMTIwIiBmaWxsPSIjRjVGNUY1Ii8+CjxjaXJjbGUgY3g9IjYwIiBjeT0iNjAiIHI9IjMwIiBmaWxsPSIjMjU2M0VCIi8+Cjwvc3ZnPg=="
+                        alt="Medium asset"
+                      />
+                    </div>
+                    <div style={{ textAlign: "center" }}>
+                      <div style={{ fontSize: "12px", color: "var(--text-muted)", marginBottom: "8px" }}>L (160px)</div>
+                      <Asset 
+                        size="l" 
+                        src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYwIiBoZWlnaHQ9IjE2MCIgdmlld0JveD0iMCAwIDE2MCAxNjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxNjAiIGhlaWdodD0iMTYwIiBmaWxsPSIjRjVGNUY1Ii8+CjxjaXJjbGUgY3g9IjgwIiBjeT0iODAiIHI9IjQwIiBmaWxsPSIjMjU2M0VCIi8+Cjwvc3ZnPg=="
+                        alt="Large asset"
+                      />
+                    </div>
+                    <div style={{ textAlign: "center" }}>
+                      <div style={{ fontSize: "12px", color: "var(--text-muted)", marginBottom: "8px" }}>XL (200px)</div>
+                      <Asset 
+                        size="xl" 
+                        src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDIAwIDIwMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjIwMCIgaGVpZ2h0PSIyMDAiIGZpbGw9IiNGNUY1RjUiLz4KPGNpcmNsZSBjeD0iMTAwIiBjeT0iMTAwIiBy0i1NTAiIGZpbGw9IiMyNTYzRUIiLz4KPC9zdmc+"
+                        alt="Extra large asset"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                {/* State Variants */}
+                <div style={{ marginBottom: "24px" }}>
+                  <h5 style={{ margin: "0 0 12px 0", color: "var(--text)", fontSize: "14px" }}>State Variants</h5>
+                  <div style={{ display: "flex", alignItems: "center", gap: "16px", flexWrap: "wrap" }}>
+                    <div style={{ textAlign: "center" }}>
+                      <div style={{ fontSize: "12px", color: "var(--text-muted)", marginBottom: "8px" }}>Default</div>
+                      <Asset 
+                        src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCIgdmlld0JveD0iMCAwIDEyMCAxMjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMjAiIGhlaWdodD0iMTIwIiBmaWxsPSIjRjVGNUY1Ii8+CjxjaXJjbGUgY3g9IjYwIiBjeT0iNjAiIHI9IjMwIiBmaWxsPSIjMjU2M0VCIi8+Cjwvc3ZnPg=="
+                        alt="Default asset"
+                      />
+                    </div>
+                    <div style={{ textAlign: "center" }}>
+                      <div style={{ fontSize: "12px", color: "var(--text-muted)", marginBottom: "8px" }}>Selected</div>
+                      <Asset 
+                        isSelected={true}
+                        src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCIgdmlld0JveD0iMCAwIDEyMCAxMjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMjAiIGhlaWdodD0iMTIwIiBmaWxsPSIjRjVGNUY1Ii8+CjxjaXJjbGUgY3g9IjYwIiBjeT0iNjAiIHI9IjMwIiBmaWxsPSIjMjU2M0VCIi8+Cjwvc3ZnPg=="
+                        alt="Selected asset"
+                      />
+                    </div>
+                    <div style={{ textAlign: "center" }}>
+                      <div style={{ fontSize: "12px", color: "var(--text-muted)", marginBottom: "8px" }}>Drop Target</div>
+                      <Asset 
+                        isDropTarget={true}
+                        src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCIgdmlld0JveD0iMCAwIDEyMCAxMjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMjAiIGhlaWdodD0iMTIwIiBmaWxsPSIjRjVGNUY1Ii8+CjxjaXJjbGUgY3g9IjYwIiBjeT0iNjAiIHI9IjMwIiBmaWxsPSIjMjU2M0VCIi8+Cjwvc3ZnPg=="
+                        alt="Drop target asset"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Variant Types */}
+                <div style={{ marginBottom: "24px" }}>
+                  <h5 style={{ margin: "0 0 12px 0", color: "var(--text)", fontSize: "14px" }}>Variant Types</h5>
+                  <div style={{ display: "flex", alignItems: "center", gap: "16px", flexWrap: "wrap" }}>
+                    <div style={{ textAlign: "center" }}>
+                      <div style={{ fontSize: "12px", color: "var(--text-muted)", marginBottom: "8px" }}>Default</div>
+                      <Asset 
+                        src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCIgdmlld0JveD0iMCAwIDEyMCAxMjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMjAiIGhlaWdodD0iMTIwIiBmaWxsPSIjRjVGNUY1Ii8+CjxjaXJjbGUgY3g9IjYwIiBjeT0iNjAiIHI9IjMwIiBmaWxsPSIjMjU2M0VCIi8+Cjwvc3ZnPg=="
+                        alt="Default variant"
+                      />
+                    </div>
+                    <div style={{ textAlign: "center" }}>
+                      <div style={{ fontSize: "12px", color: "var(--text-muted)", marginBottom: "8px" }}>Overlay</div>
+                      <Asset 
+                        variant="overlay"
+                        src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCIgdmlld0JveD0iMCAwIDEyMCAxMjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMjAiIGhlaWdodD0iMTIwIiBmaWxsPSIjRjVGNUY1Ii8+CjxjaXJjbGUgY3g9IjYwIiBjeT0iNjAiIHI9IjMwIiBmaWxsPSIjMjU2M0VCIi8+Cjwvc3ZnPg=="
+                        alt="Overlay variant"
+                      />
+                    </div>
+                    <div style={{ textAlign: "center" }}>
+                      <div style={{ fontSize: "12px", color: "var(--text-muted)", marginBottom: "8px" }}>File</div>
+                      <Asset 
+                        variant="file"
+                        src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCIgdmlld0JveD0iMCAwIDEyMCAxMjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMjAiIGhlaWdodD0iMTIwIiBmaWxsPSIjRjVGNUY1Ii8+CjxjaXJjbGUgY3g9IjYwIiBjeT0iNjAiIHI9IjMwIiBmaWxsPSIjMjU2M0VCIi8+Cjwvc3ZnPg=="
+                        alt="File variant"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Asset with Content */}
+                <div style={{ marginBottom: "16px" }}>
+                  <h5 style={{ margin: "0 0 12px 0", color: "var(--text)", fontSize: "14px" }}>Asset with Content Overlay</h5>
+                  <div style={{ display: "flex", alignItems: "center", gap: "16px", flexWrap: "wrap" }}>
+                    <Asset 
+                      src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCIgdmlld0JveD0iMCAwIDEyMCAxMjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMjAiIGhlaWdodD0iMTIwIiBmaWxsPSIjRjVGNUY1Ii8+CjxjaXJjbGUgY3g9IjYwIiBjeT0iNjAiIHI9IjMwIiBmaWxsPSIjMjU2M0VCIi8+Cjwvc3ZnPg=="
+                      alt="Asset with content"
+                    >
+                      <div style={{ fontSize: "10px", fontWeight: "600", color: "white" }}>JPG</div>
+                    </Asset>
+                    <Asset 
+                      src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCIgdmlld0JveD0iMCAwIDEyMCAxMjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMjAiIGhlaWdodD0iMTIwIiBmaWxsPSIjRjVGNUY1Ii8+CjxjaXJjbGUgY3g9IjYwIiBjeT0iNjAiIHI9IjMwIiBmaWxsPSIjMjU2M0VCIi8+Cjwvc3ZnPg=="
+                      alt="Asset with longer content"
+                    >
+                      <div style={{ fontSize: "9px", fontWeight: "600", color: "white" }}>PHOTOSHOP</div>
+                    </Asset>
+                  </div>
+                </div>
+
+                {/* Implementation Details */}
+                <div style={{ 
+                  padding: "12px", 
+                  backgroundColor: "var(--spectrum-background-layer-1-color, #fff)", 
+                  borderRadius: "4px",
+                  border: "1px solid var(--spectrum-border-color-default)"
+                }}>
+                  <h6 style={{ margin: "0 0 8px 0", fontSize: "12px", color: "var(--text)" }}>Implementation Features:</h6>
+                  <ul style={{ margin: "0", paddingLeft: "16px", fontSize: "11px", color: "var(--text-muted)" }}>
+                    <li>Nuclear div CSS approach for UXP compatibility with ultra-high specificity</li>
+                    <li>Size variants (xs, s, m, l, xl) with proportional scaling</li>
+                    <li>State management for selected, drop target, and hover states</li>
+                    <li>Variant types: default, overlay, and file styles</li>
+                    <li>Content overlay support for file type indicators</li>
+                    <li>Proper semantic HTML with img elements and alt text</li>
+                    <li>Focus ring and keyboard navigation support</li>
+                    <li>Container queries for responsive behavior</li>
                   </ul>
                 </div>
               </div>
