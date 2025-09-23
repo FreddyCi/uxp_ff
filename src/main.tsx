@@ -115,12 +115,12 @@ const App: React.FC = () => {
   if (panelId === 'gallery-panel') return <Gallery />;
 
   return (
-    <div style={{ 
+    <div className="uxp-full-height" style={{ 
       padding: "12px", 
-      display: "block",
+      display: "flex",
+      flexDirection: "column",
       background: "var(--bg)", 
       color: "var(--text)", 
-      minHeight: "200px",
       fontFamily: "system-ui, sans-serif",
       width: "100%",
       boxSizing: "border-box"
@@ -129,7 +129,8 @@ const App: React.FC = () => {
         opacity: 0.8, 
         fontSize: "14px", 
         marginBottom: "12px",
-        color: "var(--text-muted)"
+        color: "var(--text-muted)",
+        flexShrink: 0
       }}>
         Host: {host.name} {host.version}
         <br />
@@ -140,9 +141,9 @@ const App: React.FC = () => {
         UXP Object: {typeof (globalThis as any).uxp}
       </div>
       
-
-
-      <Tabs defaultSelectedKey="tab1" style={{ marginBottom: "12px" }} size="m" emphasized>
+      {/* Main content area - scrollable and fills remaining height */}
+      <div className="uxp-scrollable">
+        <Tabs defaultSelectedKey="tab1" style={{ marginBottom: "12px" }} size="m" emphasized>
         <TabList>
           <Tab id="tab1">Settings</Tab>
           <Tab id="tab2">Files</Tab>
@@ -491,6 +492,7 @@ const App: React.FC = () => {
           <Gallery />
         </TabPanel>
       </Tabs>
+      </div>
     </div>
   );
 };

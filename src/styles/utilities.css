@@ -11,6 +11,38 @@
   font: 13px/1.4 system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
   color: var(--text);
   background: var(--bg);
+  /* UXP full-height container */
+  height: 100vh;
+  min-height: 100vh;
+  overflow: auto;
+}
+
+/* =============================================================================
+   UXP FULL-HEIGHT UTILITIES
+   ============================================================================= */
+
+/* Full-height container for UXP panels */
+.uxp-full-height {
+  height: 100vh !important;
+  min-height: 100vh !important;
+  max-height: 100vh !important;
+  overflow: auto !important;
+}
+
+/* Scrollable content area within UXP */
+.uxp-scrollable {
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  height: 100% !important;
+  flex: 1 !important;
+}
+
+/* Full-height flex container */
+.uxp-flex-column {
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100vh !important;
+  min-height: 100vh !important;
 }
 
 /* =============================================================================
