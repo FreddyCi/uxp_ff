@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button } from '../components/Button';
 import { Image } from '../components/Image';
+import { Table } from '../components/Table';
 import { GridIcon } from 'hugeicons-react';
 
 export const Gallery: React.FC = () => {
@@ -36,6 +37,30 @@ export const Gallery: React.FC = () => {
     { id: 5, name: 'Desert Dunes', description: 'Golden sand patterns', src: createPlaceholderImage('#9333ea', 'white', 5) },
     { id: 6, name: 'Arctic Aurora', description: 'Northern lights display', src: createPlaceholderImage('#0891b2', 'white', 6) },
   ];
+
+  // Table data for demonstration
+  const tableColumns = [
+    { key: 'name', title: 'Asset Name', sortable: true, hasMenu: true },
+    { key: 'type', title: 'Type', sortable: true },
+    { key: 'size', title: 'File Size', sortable: true },
+    { key: 'modified', title: 'Last Modified', sortable: true }
+  ];
+
+  const tableRows = [
+    { id: '1', name: 'Mountain Landscape.jpg', type: 'JPEG Image', size: '2.4 MB', modified: '2024-01-15' },
+    { id: '2', name: 'Ocean Sunset.png', type: 'PNG Image', size: '1.8 MB', modified: '2024-01-14' },
+    { id: '3', name: 'Forest Path.jpg', type: 'JPEG Image', size: '3.1 MB', modified: '2024-01-13' },
+    { id: '4', name: 'City Skyline.jpg', type: 'JPEG Image', size: '2.7 MB', modified: '2024-01-12' },
+    { id: '5', name: 'Desert Dunes.png', type: 'PNG Image', size: '2.2 MB', modified: '2024-01-11' }
+  ];
+
+  const handleSort = (columnKey: string, direction: 'ascending' | 'descending' | 'none') => {
+    console.log('Table sort:', { columnKey, direction });
+  };
+
+  const handleRowClick = (row: any) => {
+    console.log('Table row clicked:', row);
+  };
 
   console.log('Gallery items:', items.length);
 
@@ -75,6 +100,32 @@ export const Gallery: React.FC = () => {
         }}>
           {items.length} items
         </div>
+      </div>
+      
+      {/* Table View Section */}
+      <div style={{ 
+        marginBottom: '24px',
+        padding: '16px',
+        backgroundColor: '#2d2d2d',
+        borderRadius: '8px',
+        border: '1px solid #444'
+      }}>
+        <h3 style={{ 
+          margin: '0 0 16px 0', 
+          color: '#ffffff',
+          fontSize: '14px',
+          fontWeight: '600'
+        }}>
+          Asset Table View
+        </h3>
+        <Table
+          columns={tableColumns}
+          rows={tableRows}
+          size="medium"
+          emphasized={true}
+          onSort={handleSort}
+          onRowClick={handleRowClick}
+        />
       </div>
       
       {/* Gallery grid - UXP compatible flexbox instead of CSS Grid */}

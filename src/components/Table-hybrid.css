@@ -1,0 +1,305 @@
+/*!
+ * Copyright 2024 Adobe. All rights reserved.
+ * This file is licensed to you under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License. You may obtain a copy
+ * of the License at http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under
+ * the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR REPRESENTATIONS
+ * OF ANY KIND, either express or implied. See the License for the specific language
+ * governing permissions and limitations under the License.
+ */
+
+/*
+ * HYBRID CSS APPROACH FOR UXP
+ * 
+ * This file uses div[role] attribute selectors to achieve ultra-high specificity (41+ points)
+ * for maximum compatibility with UXP's aggressive inline styling.
+ * 
+ * Pattern: div[role="table"].uxp-reset--complete.spectrum-Table.spectrum-Table--sizeM
+ * Specificity: [0,4,1] = 41 points
+ */
+
+/* === TABLE CONTAINER === */
+div[role="table"].uxp-reset--complete.spectrum-Table {
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+  width: 100% !important;
+  font-family: adobe-clean, "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+  color: var(--spectrum-neutral-content-color-default) !important;
+  background-color: var(--spectrum-gray-50) !important;
+  border: 1px solid var(--spectrum-gray-300) !important;
+  border-radius: var(--spectrum-corner-radius-100) !important;
+  overflow: hidden !important;
+}
+
+/* Size variants */
+div[role="table"].uxp-reset--complete.spectrum-Table.spectrum-Table--sizeS {
+  font-size: var(--spectrum-font-size-75) !important;
+}
+
+div[role="table"].uxp-reset--complete.spectrum-Table.spectrum-Table--sizeM {
+  font-size: var(--spectrum-font-size-100) !important;
+}
+
+div[role="table"].uxp-reset--complete.spectrum-Table.spectrum-Table--sizeL {
+  font-size: var(--spectrum-font-size-200) !important;
+}
+
+/* Emphasized variant */
+div[role="table"].uxp-reset--complete.spectrum-Table.spectrum-Table--emphasized {
+  border-width: 2px !important;
+  border-color: var(--spectrum-accent-color-900) !important;
+}
+
+/* === TABLE HEAD === */
+div[role="table"].uxp-reset--complete.spectrum-Table div[role="rowgroup"].spectrum-Table-head {
+  background-color: var(--spectrum-gray-75) !important;
+  border-bottom: 1px solid var(--spectrum-gray-300) !important;
+}
+
+div[role="table"].uxp-reset--complete.spectrum-Table div[role="rowgroup"].spectrum-Table-head div[role="row"] {
+  display: flex !important;
+  width: 100% !important;
+}
+
+/* === TABLE HEAD CELLS === */
+div[role="table"].uxp-reset--complete.spectrum-Table div[role="columnheader"].spectrum-Table-headCell {
+  flex: 1 !important;
+  padding: var(--spectrum-spacing-150) var(--spectrum-spacing-200) !important;
+  font-weight: var(--spectrum-font-weight-bold) !important;
+  text-align: left !important;
+  vertical-align: middle !important;
+  background-color: transparent !important;
+  border: none !important;
+  border-right: 1px solid var(--spectrum-gray-300) !important;
+  color: var(--spectrum-neutral-content-color-default) !important;
+  display: flex !important;
+  align-items: center !important;
+  position: relative !important;
+  user-select: none !important;
+}
+
+div[role="table"].uxp-reset--complete.spectrum-Table div[role="columnheader"].spectrum-Table-headCell:last-child {
+  border-right: none !important;
+}
+
+/* Sortable head cells */
+div[role="table"].uxp-reset--complete.spectrum-Table div[role="columnheader"].spectrum-Table-headCell.is-sortable {
+  cursor: pointer !important;
+  transition: background-color 0.13s ease-in-out !important;
+}
+
+div[role="table"].uxp-reset--complete.spectrum-Table div[role="columnheader"].spectrum-Table-headCell.is-sortable:hover {
+  background-color: var(--spectrum-gray-100) !important;
+}
+
+div[role="table"].uxp-reset--complete.spectrum-Table div[role="columnheader"].spectrum-Table-headCell.is-sortable:focus {
+  background-color: var(--spectrum-gray-100) !important;
+  outline: 2px solid var(--spectrum-focus-indicator-color) !important;
+  outline-offset: -2px !important;
+}
+
+/* Sorted states */
+div[role="table"].uxp-reset--complete.spectrum-Table div[role="columnheader"].spectrum-Table-headCell.is-sorted-asc,
+div[role="table"].uxp-reset--complete.spectrum-Table div[role="columnheader"].spectrum-Table-headCell.is-sorted-desc {
+  background-color: var(--spectrum-accent-background-color-default) !important;
+  color: var(--spectrum-accent-content-color-default) !important;
+}
+
+/* === TABLE HEAD CELL CONTENT === */
+div[role="table"].uxp-reset--complete.spectrum-Table .spectrum-Table-columnTitle {
+  flex: 1 !important;
+  font-size: inherit !important;
+  font-weight: inherit !important;
+  color: inherit !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Sort icons */
+div[role="table"].uxp-reset--complete.spectrum-Table .spectrum-Table-sortedIcon {
+  width: var(--spectrum-icon-size-100) !important;
+  height: var(--spectrum-icon-size-100) !important;
+  margin-right: var(--spectrum-spacing-75) !important;
+  color: inherit !important;
+  opacity: 1 !important;
+  flex-shrink: 0 !important;
+}
+
+div[role="table"].uxp-reset--complete.spectrum-Table .spectrum-Table-menuIcon {
+  width: var(--spectrum-icon-size-100) !important;
+  height: var(--spectrum-icon-size-100) !important;
+  margin-left: var(--spectrum-spacing-75) !important;
+  color: inherit !important;
+  opacity: 0.8 !important;
+  flex-shrink: 0 !important;
+}
+
+/* === TABLE BODY === */
+div[role="table"].uxp-reset--complete.spectrum-Table div[role="rowgroup"].spectrum-Table-body {
+  background-color: var(--spectrum-gray-25) !important;
+}
+
+div[role="table"].uxp-reset--complete.spectrum-Table div[role="rowgroup"].spectrum-Table-body div[role="row"] {
+  display: flex !important;
+  width: 100% !important;
+  border-bottom: 1px solid var(--spectrum-gray-200) !important;
+  transition: background-color 0.13s ease-in-out !important;
+}
+
+div[role="table"].uxp-reset--complete.spectrum-Table div[role="rowgroup"].spectrum-Table-body div[role="row"]:last-child {
+  border-bottom: none !important;
+}
+
+div[role="table"].uxp-reset--complete.spectrum-Table div[role="rowgroup"].spectrum-Table-body div[role="row"]:hover {
+  background-color: var(--spectrum-gray-75) !important;
+}
+
+/* === TABLE BODY CELLS === */
+div[role="table"].uxp-reset--complete.spectrum-Table div[role="cell"].spectrum-Table-cell {
+  flex: 1 !important;
+  padding: var(--spectrum-spacing-150) var(--spectrum-spacing-200) !important;
+  text-align: left !important;
+  vertical-align: middle !important;
+  background-color: transparent !important;
+  border: none !important;
+  border-right: 1px solid var(--spectrum-gray-200) !important;
+  color: var(--spectrum-neutral-content-color-default) !important;
+  display: flex !important;
+  align-items: center !important;
+  line-height: var(--spectrum-line-height-100) !important;
+}
+
+div[role="table"].uxp-reset--complete.spectrum-Table div[role="cell"].spectrum-Table-cell:last-child {
+  border-right: none !important;
+}
+
+/* === DARK THEME SUPPORT === */
+@media (prefers-color-scheme: dark) {
+  div[role="table"].uxp-reset--complete.spectrum-Table {
+    background-color: var(--spectrum-gray-100) !important;
+    border-color: var(--spectrum-gray-400) !important;
+    color: var(--spectrum-neutral-content-color-default) !important;
+  }
+
+  div[role="table"].uxp-reset--complete.spectrum-Table div[role="rowgroup"].spectrum-Table-head {
+    background-color: var(--spectrum-gray-200) !important;
+    border-bottom-color: var(--spectrum-gray-400) !important;
+  }
+
+  div[role="table"].uxp-reset--complete.spectrum-Table div[role="columnheader"].spectrum-Table-headCell {
+    border-right-color: var(--spectrum-gray-400) !important;
+    color: var(--spectrum-neutral-content-color-default) !important;
+  }
+
+  div[role="table"].uxp-reset--complete.spectrum-Table div[role="columnheader"].spectrum-Table-headCell.is-sortable:hover {
+    background-color: var(--spectrum-gray-300) !important;
+  }
+
+  div[role="table"].uxp-reset--complete.spectrum-Table div[role="columnheader"].spectrum-Table-headCell.is-sortable:focus {
+    background-color: var(--spectrum-gray-300) !important;
+  }
+
+  div[role="table"].uxp-reset--complete.spectrum-Table div[role="rowgroup"].spectrum-Table-body {
+    background-color: var(--spectrum-gray-75) !important;
+  }
+
+  div[role="table"].uxp-reset--complete.spectrum-Table div[role="rowgroup"].spectrum-Table-body div[role="row"] {
+    border-bottom-color: var(--spectrum-gray-300) !important;
+  }
+
+  div[role="table"].uxp-reset--complete.spectrum-Table div[role="rowgroup"].spectrum-Table-body div[role="row"]:hover {
+    background-color: var(--spectrum-gray-200) !important;
+  }
+
+  div[role="table"].uxp-reset--complete.spectrum-Table div[role="cell"].spectrum-Table-cell {
+    border-right-color: var(--spectrum-gray-300) !important;
+    color: var(--spectrum-neutral-content-color-default) !important;
+  }
+}
+
+/* Class-based theme support */
+.spectrum--dark div[role="table"].uxp-reset--complete.spectrum-Table,
+.spectrum--darkest div[role="table"].uxp-reset--complete.spectrum-Table,
+[data-color-scheme="dark"] div[role="table"].uxp-reset--complete.spectrum-Table {
+  background-color: var(--spectrum-gray-100) !important;
+  border-color: var(--spectrum-gray-400) !important;
+  color: var(--spectrum-neutral-content-color-default) !important;
+}
+
+.spectrum--dark div[role="table"].uxp-reset--complete.spectrum-Table div[role="rowgroup"].spectrum-Table-head,
+.spectrum--darkest div[role="table"].uxp-reset--complete.spectrum-Table div[role="rowgroup"].spectrum-Table-head,
+[data-color-scheme="dark"] div[role="table"].uxp-reset--complete.spectrum-Table div[role="rowgroup"].spectrum-Table-head {
+  background-color: var(--spectrum-gray-200) !important;
+  border-bottom-color: var(--spectrum-gray-400) !important;
+}
+
+.spectrum--dark div[role="table"].uxp-reset--complete.spectrum-Table div[role="columnheader"].spectrum-Table-headCell,
+.spectrum--darkest div[role="table"].uxp-reset--complete.spectrum-Table div[role="columnheader"].spectrum-Table-headCell,
+[data-color-scheme="dark"] div[role="table"].uxp-reset--complete.spectrum-Table div[role="columnheader"].spectrum-Table-headCell {
+  border-right-color: var(--spectrum-gray-400) !important;
+  color: var(--spectrum-neutral-content-color-default) !important;
+}
+
+.spectrum--dark div[role="table"].uxp-reset--complete.spectrum-Table div[role="columnheader"].spectrum-Table-headCell.is-sortable:hover,
+.spectrum--darkest div[role="table"].uxp-reset--complete.spectrum-Table div[role="columnheader"].spectrum-Table-headCell.is-sortable:hover,
+[data-color-scheme="dark"] div[role="table"].uxp-reset--complete.spectrum-Table div[role="columnheader"].spectrum-Table-headCell.is-sortable:hover {
+  background-color: var(--spectrum-gray-300) !important;
+}
+
+.spectrum--dark div[role="table"].uxp-reset--complete.spectrum-Table div[role="columnheader"].spectrum-Table-headCell.is-sortable:focus,
+.spectrum--darkest div[role="table"].uxp-reset--complete.spectrum-Table div[role="columnheader"].spectrum-Table-headCell.is-sortable:focus,
+[data-color-scheme="dark"] div[role="table"].uxp-reset--complete.spectrum-Table div[role="columnheader"].spectrum-Table-headCell.is-sortable:focus {
+  background-color: var(--spectrum-gray-300) !important;
+}
+
+.spectrum--dark div[role="table"].uxp-reset--complete.spectrum-Table div[role="rowgroup"].spectrum-Table-body,
+.spectrum--darkest div[role="table"].uxp-reset--complete.spectrum-Table div[role="rowgroup"].spectrum-Table-body,
+[data-color-scheme="dark"] div[role="table"].uxp-reset--complete.spectrum-Table div[role="rowgroup"].spectrum-Table-body {
+  background-color: var(--spectrum-gray-75) !important;
+}
+
+.spectrum--dark div[role="table"].uxp-reset--complete.spectrum-Table div[role="rowgroup"].spectrum-Table-body div[role="row"],
+.spectrum--darkest div[role="table"].uxp-reset--complete.spectrum-Table div[role="rowgroup"].spectrum-Table-body div[role="row"],
+[data-color-scheme="dark"] div[role="table"].uxp-reset--complete.spectrum-Table div[role="rowgroup"].spectrum-Table-body div[role="row"] {
+  border-bottom-color: var(--spectrum-gray-300) !important;
+}
+
+.spectrum--dark div[role="table"].uxp-reset--complete.spectrum-Table div[role="rowgroup"].spectrum-Table-body div[role="row"]:hover,
+.spectrum--darkest div[role="table"].uxp-reset--complete.spectrum-Table div[role="rowgroup"].spectrum-Table-body div[role="row"]:hover,
+[data-color-scheme="dark"] div[role="table"].uxp-reset--complete.spectrum-Table div[role="rowgroup"].spectrum-Table-body div[role="row"]:hover {
+  background-color: var(--spectrum-gray-200) !important;
+}
+
+.spectrum--dark div[role="table"].uxp-reset--complete.spectrum-Table div[role="cell"].spectrum-Table-cell,
+.spectrum--darkest div[role="table"].uxp-reset--complete.spectrum-Table div[role="cell"].spectrum-Table-cell,
+[data-color-scheme="dark"] div[role="table"].uxp-reset--complete.spectrum-Table div[role="cell"].spectrum-Table-cell {
+  border-right-color: var(--spectrum-gray-300) !important;
+  color: var(--spectrum-neutral-content-color-default) !important;
+}
+
+/* === RESPONSIVE DESIGN === */
+@media (max-width: 768px) {
+  div[role="table"].uxp-reset--complete.spectrum-Table div[role="columnheader"].spectrum-Table-headCell,
+  div[role="table"].uxp-reset--complete.spectrum-Table div[role="cell"].spectrum-Table-cell {
+    padding: var(--spectrum-spacing-100) var(--spectrum-spacing-150) !important;
+    font-size: var(--spectrum-font-size-75) !important;
+  }
+}
+
+/* === SELECTION STATES === */
+div[role="table"].uxp-reset--complete.spectrum-Table div[role="rowgroup"].spectrum-Table-body div[role="row"].is-selected {
+  background-color: var(--spectrum-accent-background-color-default) !important;
+  color: var(--spectrum-accent-content-color-default) !important;
+}
+
+div[role="table"].uxp-reset--complete.spectrum-Table div[role="rowgroup"].spectrum-Table-body div[role="row"].is-selected div[role="cell"].spectrum-Table-cell {
+  color: inherit !important;
+}
+
+/* === FOCUS STATES === */
+div[role="table"].uxp-reset--complete.spectrum-Table div[role="rowgroup"].spectrum-Table-body div[role="row"]:focus {
+  outline: 2px solid var(--spectrum-focus-indicator-color) !important;
+  outline-offset: -2px !important;
+}
