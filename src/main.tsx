@@ -9,6 +9,7 @@ import "./styles/utilities.css";
 import { UxpProvider, useUxp } from "./uxp/UxpProvider";
 import { Label, Input } from "react-aria-components";
 import { TextField } from "./components/TextField";
+import { TextArea } from "./components/TextArea";
 import { Button } from "./components/Button";
 import { Tabs, TabList, Tab, TabPanel } from "./components/Tabs";
 import { usePluginStore } from "./store/usePluginStore";
@@ -312,34 +313,13 @@ const App: React.FC = () => {
                 // Note: For multiline, we'd need a TextArea component
               />
 
-              <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
-                <label style={{ 
-                  fontSize: "14px", 
-                  color: "var(--text)",
-                  fontWeight: "500"
-                }}>
-                  Message (Textarea)
-                </label>
-                <textarea 
-                  placeholder="Enter your message here..."
-                  rows={4}
-                  name="message-textarea"
-                  style={{
-                    width: "100%",
-                    padding: "8px 12px",
-                    backgroundColor: "var(--bg-3)",
-                    border: "1px solid var(--border)",
-                    borderRadius: "6px",
-                    color: "var(--text)",
-                    fontSize: "14px",
-                    fontFamily: "inherit",
-                    resize: "vertical",
-                    minHeight: "80px",
-                    boxSizing: "border-box",
-                    WebkitAppearance: "none"
-                  }}
-                />
-              </div>
+              <TextArea
+                label="Message (TextArea)"
+                placeholder="Enter your message here..."
+                rows={4}
+                name="message-textarea"
+                description="This is our new hybrid TextArea component"
+              />
 
               <div style={{ display: "flex", gap: "8px", justifyContent: "flex-end" }}>
                 <Button 
