@@ -665,6 +665,42 @@ div[role="textbox"].uxp-reset--complete.spectrum-Textfield.spectrum-Textfield te
 }
 ```
 
+### Breakthrough: Spectrum Grid Layout
+
+**Before (Failed approaches):**
+- ❌ CSS Grid relied on `grid-template-columns`/`grid-row` which UXP flagged as invalid values
+- ❌ Tiles collapsed together because UXP ignored `gap` inside the grid context
+- ❌ Layout disappeared entirely in UXP builds even though it worked in the web preview
+
+**After (Hybrid approach):**
+- ✅ Flex-only grid: `div[role="grid"]` now uses `display: flex` + `flex-wrap` for universal support
+- ✅ Column spans translated to flex basis percentages via CSS custom properties (`--columns`)
+- ✅ Fluid layouts use `min(var(--spectrum-grid-fluid-min, 240px), 100%)` to mimic `auto-fit/minmax`
+- ✅ Row spans map to minimum heights so tall content still renders predictably
+- ✅ Cards dropped into the showcase grid render identically on web and inside the UXP panel
+
+**Flex-first grid snippet:**
+```css
+div[role="grid"].uxp-reset--complete.spectrum-grid.spectrum-grid {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: var(--spectrum-grid-gap, 24px) !important;
+}
+
+div[role="gridcell"].uxp-reset--complete.spectrum-grid-item.spectrum-grid-item {
+  flex-grow: var(--spectrum-grid-item-flex-grow, 1) !important;
+  flex-basis: var(--spectrum-grid-item-flex-basis, calc(100% / var(--columns, 12))) !important;
+  max-width: var(--spectrum-grid-item-flex-basis, calc(100% / var(--columns, 12))) !important;
+}
+```
+
+**UXP-friendly layout tips learned:**
+- Column offsets can be emulated with classic flex tricks (`margin-left: auto` on trailing items)
+- Keep spans numeric in React props so the flex math can compute percentages reliably
+- Use CSS variables for all width math—makes nested grids inherit parent configuration cleanly
+- Preserve the Spectrum variants (`--frame`, `--compact`, `--fluid`) by translating them into flex-specific tokens
+- Validate both `pnpm run build` *and* `pnpm run build:uxp` after layout changes to guarantee host parity
+
 ### Breakthrough: Complete Actions Ecosystem
 
 **Final Achievement: 5-Component Actions System**
