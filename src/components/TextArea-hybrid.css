@@ -47,12 +47,12 @@ div[role="textbox"].uxp-reset--complete.spectrum-Textfield.spectrum-Textfield te
   min-height: inherit !important;
   
   /* Typography using official tokens with UXP-safe font properties */
-  font-family: var(--spectrum-sans-font-family-stack) !important;
-  font-size: var(--spectrum-font-size-100) !important;
+  font-family: var(--spectrum-sans-font-family-stack, "adobe-clean", "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif) !important;
+  font-size: var(--spectrum-font-size-100, 16px) !important;
   font-weight: 400 !important;
   font-style: normal !important;
-  line-height: var(--spectrum-line-height-100) !important;
-  color: var(--spectrum-neutral-content-color-default) !important;
+  line-height: var(--spectrum-line-height-100, 1.3) !important;
+  color: var(--spectrum-neutral-content-color-default, #1f2937) !important;
   
   /* Padding inside the bordered container */
   padding: var(--spectrum-spacing-200) var(--spectrum-spacing-300) !important;

@@ -20,13 +20,17 @@ div[role="textbox"].uxp-reset--complete.spectrum-Textfield.spectrum-Textfield {
   width: 100% !important;
   
   /* Official Spectrum foundation */
-  font-family: var(--spectrum-sans-font-family-stack) !important;
-  min-height: var(--spectrum-component-height-200) !important;
-  border-radius: var(--spectrum-corner-radius-100) !important;
+  font-family: var(--spectrum-sans-font-family-stack, "adobe-clean", "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif) !important;
+  font-weight: 400 !important;
+  font-style: normal !important;
+  line-height: var(--spectrum-line-height-100, 1.3) !important;
+  min-height: var(--spectrum-component-height-100, 40px) !important;
+  height: var(--spectrum-component-height-100, 40px) !important;
+  border-radius: var(--spectrum-border-radius-100, 4px) !important;
   
-  /* Background and border - EXACTLY like Button approach but with explicit colors */
-  background-color: var(--spectrum-background-layer-1-color) !important;
-  border: var(--spectrum-border-width-200) solid var(--spectrum-border-color-default, #d1d5db) !important;
+  /* Background and border - EXACTLY like Select component */
+  background-color: var(--spectrum-textfield-background-color, #ffffff) !important;
+  border: var(--spectrum-border-width-200, 2px) solid var(--spectrum-textfield-border-color, #d1d5db) !important;
   
   /* Transitions */
   transition: 
@@ -46,15 +50,15 @@ div[role="textbox"].uxp-reset--complete.spectrum-Textfield.spectrum-Textfield in
   height: 100% !important;
   
   /* Typography using official tokens with UXP-safe font properties */
-  font-family: var(--spectrum-sans-font-family-stack) !important;
-  font-size: var(--spectrum-font-size-100) !important;
+  font-family: var(--spectrum-sans-font-family-stack, "adobe-clean", "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif) !important;
+  font-size: var(--spectrum-font-size-100, 16px) !important;
   font-weight: 400 !important;
   font-style: normal !important;
-  line-height: var(--spectrum-line-height-100) !important;
-  color: var(--spectrum-neutral-content-color-default) !important;
+  line-height: var(--spectrum-line-height-100, 1.3) !important;
+  color: var(--spectrum-neutral-content-color-default, #1f2937) !important;
   
-  /* Padding inside the bordered container */
-  padding: 0 var(--spectrum-spacing-300) !important;
+  /* Padding inside the bordered container - match Select component */
+  padding: 0 var(--spectrum-component-pill-edge-to-text, 16px) !important;
   
   /* Reset all UXP styling */
   background: transparent !important;
@@ -66,19 +70,22 @@ div[role="textbox"].uxp-reset--complete.spectrum-Textfield.spectrum-Textfield in
 
 /* Placeholder styling */
 div[role="textbox"].uxp-reset--complete.spectrum-Textfield.spectrum-Textfield input::placeholder {
-  color: var(--spectrum-neutral-subdued-content-color-default) !important;
+  color: var(--spectrum-neutral-subdued-content-color-default, #6b7280) !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
   opacity: 1 !important;
 }
 
-/* Hover state - EXACTLY like Button component with explicit color for UXP */
+/* Hover state - EXACTLY like Select component */
 div[role="textbox"].uxp-reset--complete.spectrum-Textfield.spectrum-Textfield:hover {
-  border-color: var(--spectrum-gray-400, #9ca3af) !important;
+  border-color: var(--spectrum-textfield-border-color-hover, #9ca3af) !important;
 }
 
-/* Focus state - EXACTLY like Button component */
+/* Focus state - EXACTLY like Select component */
 div[role="textbox"].uxp-reset--complete.spectrum-Textfield.spectrum-Textfield:focus-within {
-  border-color: var(--spectrum-accent-background-color-default) !important;
-  box-shadow: 0 0 0 1px var(--spectrum-accent-background-color-default) !important;
+  outline: var(--spectrum-focus-indicator-thickness, 2px) solid var(--spectrum-focus-indicator-color, #059669) !important;
+  outline-offset: var(--spectrum-focus-indicator-gap, 2px) !important;
+  border-color: var(--spectrum-accent-background-color-default, #2563eb) !important;
 }
 
 /* Invalid state */
