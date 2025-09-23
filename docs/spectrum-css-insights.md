@@ -388,7 +388,114 @@ useEffect(() => {
 }, [theme]);
 ```
 
-## 📱 Advanced: Responsive Layout Strategy
+### "TextField borders are black/invisible"
+
+**Cause**: UXP doesn't resolve certain Spectrum color tokens properly
+**Solution**:
+```css
+/* Use explicit fallback colors for UXP */
+border: var(--spectrum-border-width-200) solid var(--spectrum-border-color-default, #d1d5db) !important;
+```
+
+### "Fonts appear italic in UXP but not web"
+
+**Cause**: UXP misinterprets Spectrum font-weight tokens as italic variants
+**Solution**:
+```css
+/* Use explicit numeric values instead of tokens */
+font-weight: 400 !important;
+font-style: normal !important;
+```
+
+### "utilities.css is interfering with components"
+
+**Cause**: Low-specificity utility styles conflict with component styling
+**Solution**:
+```css
+/* Remove or comment out conflicting utilities like .spectrum-FieldLabel */
+/* Use ultra-high specificity in component CSS to override */
+.component-container .spectrum-FieldLabel.spectrum-FieldLabel--sizeM.spectrum-FieldLabel--sizeM {
+  /* Component-specific styling with nuclear reset */
+  all: unset !important;
+}
+```
+
+### "CSS corruption during file creation"
+
+**Cause**: VSCode tools can corrupt CSS files with duplicated content
+**Solution**:
+```bash
+# Use shell heredoc to create clean CSS files
+cat > component.css << 'EOF'
+/* Clean CSS content here */
+EOF
+```
+
+## 🎯 Component Evolution Pattern
+
+### The Hybrid Component Development Lifecycle
+
+We've discovered a repeatable pattern for successfully implementing Spectrum components in UXP:
+
+#### Phase 1: Foundation Setup
+1. **React Aria Integration**: Start with appropriate React Aria hook (`useButton`, `useTextField`, `useTabs`)
+2. **Nuclear Div Structure**: Use semantic `div[role="..."]` instead of native HTML elements
+3. **Class System Design**: Build Spectrum CSS class combinations with ultra-high specificity
+
+#### Phase 2: CSS Architecture  
+1. **File Creation**: Use shell heredoc to avoid file corruption: `cat > Component-hybrid.css << 'EOF'`
+2. **Reset Pattern**: Start with `all: unset !important` nuclear reset
+3. **Specificity Strategy**: `div[role="..."].uxp-reset--complete.spectrum-Component.spectrum-Component`
+4. **Token Integration**: Use official Spectrum tokens with UXP-safe fallbacks
+
+#### Phase 3: UXP Compatibility Testing
+1. **Color Validation**: Ensure tokens resolve to expected colors (not black/transparent)
+2. **Font Testing**: Verify no italic fonts appear (use explicit `font-style: normal`)
+3. **Hover Behavior**: Test interactive states work in UXP environment
+4. **Spacing Verification**: Confirm margin-based spacing creates visible gaps
+
+#### Phase 4: Cross-Environment Validation
+1. **Web Browser Test**: Verify component appears identical to web version
+2. **UXP Environment Test**: Confirm no native element interference
+3. **Theme Switching**: Test light/dark mode compatibility
+4. **Responsive Behavior**: Validate component adapts to panel sizing
+
+### Component Complexity Assessment
+
+| Element Type | UXP Interference Level | Solution Complexity | Success Pattern |
+|--------------|------------------------|---------------------|-----------------|
+| **Buttons** | 🔴 Extreme | High | Nuclear div + ultra-high specificity ✅ |
+| **Form Inputs** | 🔴 Extreme | High | Nuclear div wrapper + hidden input ✅ |
+| **Layout Components** | 🟡 Medium | Medium | Div-based with margin spacing ✅ |
+| **Text Elements** | 🟢 Low | Low | Direct implementation with token fallbacks ✅ |
+| **Custom Components** | 🟢 Low | Low | Pure div-based implementation ✅ |
+
+### Success Indicators Checklist
+
+For each component, validate these success criteria:
+
+**Visual Fidelity:**
+- [ ] Colors match official Spectrum (blue accent is #2563eb, not cyan)
+- [ ] Typography is clean (no unexpected italic fonts)
+- [ ] Spacing is consistent (visible gaps between elements)
+- [ ] Borders are visible (not black or transparent)
+
+**Interactive Behavior:**
+- [ ] Hover states trigger correctly
+- [ ] Focus indicators appear on keyboard navigation
+- [ ] Disabled states are visually distinct
+- [ ] Active/selected states display properly
+
+**UXP Compatibility:**
+- [ ] No native element styling interference
+- [ ] CSS builds without warnings or errors
+- [ ] Component works in both light and dark themes
+- [ ] Performance is acceptable (no layout thrashing)
+
+**Cross-Environment Consistency:**
+- [ ] Identical appearance in web browser and UXP
+- [ ] Responsive behavior works in different panel sizes
+- [ ] Component integrates cleanly with existing design system
 
 ### UXP Panel Considerations
 
@@ -477,7 +584,44 @@ function usePanelDensity() {
 - ✅ Margin spacing: Reliable 8px gaps between buttons
 - ✅ All variants working: Accent, Primary, Secondary, Negative
 
-### Breakthrough: Tabs Component
+### Breakthrough: TextField Component
+
+**Before (Failed approaches):**
+- ❌ Black/invisible borders: UXP color token resolution issues
+- ❌ Italic fonts: UXP misinterpreting font-weight tokens
+- ❌ utilities.css interference: Conflicting .spectrum-FieldLabel styles
+
+**After (Hybrid approach):**
+- ✅ Nuclear div: `div[role="textbox"]` with `<input>` inside
+- ✅ Explicit color fallbacks: `var(--spectrum-border-color-default, #d1d5db)`
+- ✅ UXP-safe fonts: `font-weight: 400` and `font-style: normal` instead of tokens
+- ✅ Ultra-high specificity: `.textfield-container .spectrum-FieldLabel.spectrum-FieldLabel--sizeM.spectrum-FieldLabel--sizeM`
+- ✅ Perfect hover effects: Working border color changes in both UXP and web
+
+### Breakthrough: TextArea Component  
+
+**Key Innovation: Multi-line Nuclear Div Pattern**
+- ✅ Nuclear div: `div[role="textbox"]` with `<textarea>` inside
+- ✅ Layout adaptation: `align-items: flex-start` instead of center for proper textarea alignment
+- ✅ Resize support: Proper `resize: vertical` behavior with UXP compatibility
+- ✅ Typography consistency: Same font fixes as TextField (no italic issues)
+- ✅ React Aria integration: `useTextField` hook with `inputElementType: "textarea"`
+
+**TextArea-specific CSS adaptations:**
+```css
+/* Textarea alignment - different from single-line inputs */
+div[role="textbox"].uxp-reset--complete.spectrum-Textfield.spectrum-Textfield {
+  align-items: flex-start !important; /* Not center */
+}
+
+/* Textarea-specific properties */
+div[role="textbox"].uxp-reset--complete.spectrum-Textfield.spectrum-Textfield textarea {
+  resize: vertical !important;
+  overflow: auto !important;
+  white-space: pre-wrap !important;
+  word-wrap: break-word !important;
+}
+```
 
 **Before (Failed approaches):**
 - ❌ React Stately complexity: "cannot be rendered outside a collection" errors
@@ -518,8 +662,11 @@ function usePanelDensity() {
 |-----------|----------------|----------------|----------|---------|
 | **Buttons** | High (native button styling) | High | 🔥 Immediate | ✅ Complete |
 | **Tabs** | Medium (collection patterns) | High | ⚡ Next | ✅ Complete |
-| **TextField** | High (native input styling) | High | 🔥 Immediate | 📋 Next |
-| **Select** | High (native select styling) | High | 🔥 Immediate | 📋 Next |
+| **TextField** | High (native input styling) | High | 🔥 Immediate | ✅ Complete |
+| **TextArea** | High (multiline input styling) | High | 🔥 Immediate | ✅ Complete |
+| **Select** | High (native select styling) | High | 🔥 Next | 🟡 In Progress |
+| **Checkbox** | High (native checkbox styling) | Medium | 📋 Later | ⭕ Planned |
+| **Radio** | High (native radio styling) | Medium | 📋 Later | ⭕ Planned |
 | **Modal** | Low (div-based) | Medium | 📋 Later | ⭕ Planned |
 | **Table** | Medium (layout challenges) | High | 📋 Later | ⭕ Planned |
 
@@ -583,4 +730,6 @@ This approach proves that you can achieve pixel-perfect Adobe Spectrum design sy
 
 **Proven Success Components:**
 - ✅ **Buttons**: All variants (Accent, Primary, Secondary, Negative) with authentic styling
-- ✅ **Tabs**: All variants (Emphasized, Quiet, Small/Medium/Large) with perfect tab switching
+- ✅ **Tabs**: All variants (Emphasized, Quiet, Small/Medium/Large) with perfect tab switching  
+- ✅ **TextField**: Visible borders, hover effects, no italic fonts, UXP-compatible
+- ✅ **TextArea**: Multiline input with resize controls, consistent with TextField pattern
