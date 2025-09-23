@@ -41,7 +41,7 @@ export const ActionButton: React.FC<ActionButtonProps> = ({
   const ref = useRef<HTMLDivElement>(null);
 
   // Build CSS classes using our proven ultra-high specificity pattern
-  const sizeClass = size !== "m" ? `spectrum-ActionButton--size${size.toUpperCase()}` : "";
+  const sizeClass = `spectrum-ActionButton--size${size.toUpperCase()}`;
   const emphasizedClass = isEmphasized ? "spectrum-ActionButton--emphasized" : "";
   const quietClass = isQuiet ? "spectrum-ActionButton--quiet" : "";
   const selectedClass = isSelected ? "is-selected" : "";
@@ -69,9 +69,10 @@ export const ActionButton: React.FC<ActionButtonProps> = ({
   };
 
   // Determine what content to show
-  const showIcon = iconName || children;
-  const showLabel = label && !hideLabel;
-  const isIconOnly = showIcon && !showLabel;
+  const showIcon = iconName;
+  const showLabel = children || label;
+  const actualLabel = hideLabel ? "" : (children || label);
+  const isIconOnly = showIcon && !actualLabel;
 
   return (
     <div
@@ -104,24 +105,17 @@ export const ActionButton: React.FC<ActionButtonProps> = ({
       {/* Icon */}
       {showIcon && (
         <div className="spectrum-ActionButton-icon">
-          {typeof children === "string" ? (
-            // Simple text icon fallback
-            <span>{children}</span>
-          ) : children ? (
-            children
-          ) : iconName ? (
+          {iconName ? (
             // SVG icon placeholder - in real app would use icon system
-            <svg className="spectrum-Icon" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-              <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
-            </svg>
+            <span>{iconName}</span>
           ) : null}
         </div>
       )}
       
       {/* Label */}
-      {showLabel && (
+      {actualLabel && (
         <span className="spectrum-ActionButton-label">
-          {label}
+          {actualLabel}
         </span>
       )}
     </div>
