@@ -15,6 +15,7 @@ import { Button } from "./components/Button";
 import { ActionBar } from "./components/ActionBar";
 import { ActionButton } from "./components/ActionButton";
 import { ActionGroup } from "./components/ActionGroup";
+import { ActionMenu } from "./components/ActionMenu";
 import { Tabs, TabList, Tab, TabPanel } from "./components/Tabs";
 import { usePluginStore } from "./store/usePluginStore";
 
@@ -731,6 +732,106 @@ const App: React.FC = () => {
                 </ActionGroup>
               </div>
             </div>
+            
+            {/* ActionMenu Showcase */}
+            <div style={{ marginBottom: "32px" }}>
+              <h4 style={{ margin: "0 0 12px 0", color: "var(--text)", fontSize: "16px" }}>ActionMenu Component</h4>
+              <p style={{ margin: "0 0 16px 0", fontSize: "14px", color: "var(--text-muted)" }}>
+                ActionMenus provide dropdown menus using ActionButton components as menu items.
+              </p>
+              
+              {/* Basic ActionMenu */}
+              <div style={{ marginBottom: "24px" }}>
+                <h5 style={{ margin: "0 0 8px 0", color: "var(--text)", fontSize: "14px" }}>Basic ActionMenu</h5>
+                <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
+                  <ActionMenu triggerLabel="File Actions" iconName="📁">
+                    <ActionButton iconName="📄" onPress={() => console.log('New document')}>New Document</ActionButton>
+                    <ActionButton iconName="📂" onPress={() => console.log('Open folder')}>Open Folder</ActionButton>
+                    <ActionButton iconName="💾" onPress={() => console.log('Save as')}>Save As...</ActionButton>
+                    <ActionButton iconName="📤" onPress={() => console.log('Export')}>Export</ActionButton>
+                  </ActionMenu>
+                  
+                  <ActionMenu triggerLabel="Edit" iconName="✏️">
+                    <ActionButton iconName="📋" onPress={() => console.log('Copy')}>Copy</ActionButton>
+                    <ActionButton iconName="✂️" onPress={() => console.log('Cut')}>Cut</ActionButton>
+                    <ActionButton iconName="📄" onPress={() => console.log('Paste')}>Paste</ActionButton>
+                    <ActionButton iconName="🔄" onPress={() => console.log('Undo')}>Undo</ActionButton>
+                  </ActionMenu>
+                </div>
+              </div>
+              
+              {/* Size Variants */}
+              <div style={{ marginBottom: "24px" }}>
+                <h5 style={{ margin: "0 0 8px 0", color: "var(--text)", fontSize: "14px" }}>Size Variants</h5>
+                <div style={{ display: "flex", gap: "12px", flexWrap: "wrap", alignItems: "flex-start" }}>
+                  <ActionMenu triggerLabel="XS Menu" size="xs">
+                    <ActionButton onPress={() => console.log('XS Action 1')}>Action 1</ActionButton>
+                    <ActionButton onPress={() => console.log('XS Action 2')}>Action 2</ActionButton>
+                  </ActionMenu>
+                  
+                  <ActionMenu triggerLabel="Small Menu" size="s" iconName="⚙️">
+                    <ActionButton iconName="👁️" onPress={() => console.log('View')}>View</ActionButton>
+                    <ActionButton iconName="✏️" onPress={() => console.log('Edit')}>Edit</ActionButton>
+                    <ActionButton iconName="🗑️" onPress={() => console.log('Delete')}>Delete</ActionButton>
+                  </ActionMenu>
+                  
+                  <ActionMenu triggerLabel="Medium Menu" size="m" iconName="🎯">
+                    <ActionButton iconName="📊" onPress={() => console.log('Analytics')}>Analytics</ActionButton>
+                    <ActionButton iconName="📈" onPress={() => console.log('Reports')}>Reports</ActionButton>
+                    <ActionButton iconName="🔗" onPress={() => console.log('Share')}>Share</ActionButton>
+                  </ActionMenu>
+                  
+                  <ActionMenu triggerLabel="Large Menu" size="l" iconName="🚀">
+                    <ActionButton iconName="🎨" onPress={() => console.log('Customize')}>Customize</ActionButton>
+                    <ActionButton iconName="⚙️" onPress={() => console.log('Settings')}>Settings</ActionButton>
+                    <ActionButton iconName="📧" onPress={() => console.log('Contact')}>Contact</ActionButton>
+                  </ActionMenu>
+                </div>
+              </div>
+              
+              {/* Direction Variants */}
+              <div style={{ marginBottom: "24px" }}>
+                <h5 style={{ margin: "0 0 8px 0", color: "var(--text)", fontSize: "14px" }}>Direction Variants</h5>
+                <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
+                  <ActionMenu triggerLabel="Down" iconName="⬇️" direction="bottom">
+                    <ActionButton onPress={() => console.log('Option 1')}>Option 1</ActionButton>
+                    <ActionButton onPress={() => console.log('Option 2')}>Option 2</ActionButton>
+                    <ActionButton onPress={() => console.log('Option 3')}>Option 3</ActionButton>
+                  </ActionMenu>
+                  
+                  <ActionMenu triggerLabel="Up" iconName="⬆️" direction="top">
+                    <ActionButton onPress={() => console.log('Up 1')}>Up 1</ActionButton>
+                    <ActionButton onPress={() => console.log('Up 2')}>Up 2</ActionButton>
+                  </ActionMenu>
+                  
+                  <ActionMenu triggerLabel="Right" iconName="➡️" direction="right">
+                    <ActionButton onPress={() => console.log('Right 1')}>Right 1</ActionButton>
+                    <ActionButton onPress={() => console.log('Right 2')}>Right 2</ActionButton>
+                  </ActionMenu>
+                </div>
+              </div>
+              
+              {/* Icon-Only ActionMenu */}
+              <div style={{ marginBottom: "24px" }}>
+                <h5 style={{ margin: "0 0 8px 0", color: "var(--text)", fontSize: "14px" }}>Icon-Only ActionMenu</h5>
+                <ActionMenu iconName="⋯" hideLabel aria-label="More options">
+                  <ActionButton iconName="📋" onPress={() => console.log('Copy item')}>Copy</ActionButton>
+                  <ActionButton iconName="🔗" onPress={() => console.log('Share item')}>Share</ActionButton>
+                  <ActionButton iconName="✏️" onPress={() => console.log('Edit item')}>Edit</ActionButton>
+                  <ActionButton iconName="🗑️" onPress={() => console.log('Delete item')}>Delete</ActionButton>
+                </ActionMenu>
+              </div>
+              
+              {/* Quiet ActionMenu */}
+              <div style={{ marginBottom: "24px" }}>
+                <h5 style={{ margin: "0 0 8px 0", color: "var(--text)", fontSize: "14px" }}>Quiet ActionMenu</h5>
+                <ActionMenu triggerLabel="Quiet Menu" iconName="🔧" isQuiet>
+                  <ActionButton iconName="🔧" onPress={() => console.log('Tool 1')}>Tool 1</ActionButton>
+                  <ActionButton iconName="⚙️" onPress={() => console.log('Tool 2')}>Tool 2</ActionButton>
+                  <ActionButton iconName="🎯" onPress={() => console.log('Tool 3')}>Tool 3</ActionButton>
+                </ActionMenu>
+              </div>
+            </div>
 
             {/* Interactive Demo */}
             <div style={{ marginBottom: "32px" }}>
@@ -799,6 +900,7 @@ const App: React.FC = () => {
               <ul style={{ margin: "8px 0", paddingLeft: "20px" }}>
                 <li><strong>ActionButton:</strong> Official Spectrum implementation with all size variants (xs, s, m, l, xl)</li>
                 <li><strong>ActionGroup:</strong> Cohesive grouping of ActionButtons with shared borders and size inheritance</li>
+                <li><strong>ActionMenu:</strong> Dropdown menus using ActionButton components for perfect ecosystem integration</li>
                 <li><strong>State Management:</strong> Default, selected, emphasized, quiet, and disabled states</li>
                 <li><strong>Icon Support:</strong> Full workflow icon integration with optional hold indicators</li>
                 <li><strong>Static Colors:</strong> White and black variants for colored backgrounds</li>

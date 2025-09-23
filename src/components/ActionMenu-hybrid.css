@@ -1,0 +1,152 @@
+/* ActionMenu - Hybrid Nuclear Div CSS */
+/* Nuclear div approach for ultra-high specificity in UXP environments */
+/* This ActionMenu uses ActionButton components for menu items */
+
+/* Base ActionMenu container */
+.uxp-reset--complete.spectrum-ActionMenu {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ActionButton trigger container */
+.uxp-reset--complete.spectrum-ActionMenu > div:first-child {
+  position: relative;
+}
+
+/* Popover container */
+.uxp-reset--complete.spectrum-Popover.spectrum-ActionMenu-popover {
+  position: absolute;
+  z-index: 1000;
+  box-sizing: border-box;
+  min-width: var(--spectrum-popover-min-width, 160px);
+  background-color: var(--spectrum-popover-background-color, white);
+  border: var(--spectrum-popover-border-width, 1px) solid var(--spectrum-popover-border-color, #ccc);
+  border-radius: var(--spectrum-popover-corner-radius, 4px);
+  box-shadow: var(--spectrum-popover-drop-shadow, 0 4px 8px rgba(0, 0, 0, 0.1));
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.13s ease-in-out, visibility 0.13s ease-in-out;
+}
+
+/* Popover open state */
+.uxp-reset--complete.spectrum-Popover.spectrum-ActionMenu-popover.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Popover size variants */
+.uxp-reset--complete.spectrum-Popover.spectrum-ActionMenu-popover.spectrum-Popover--sizeXS {
+  min-width: var(--spectrum-popover-min-width-xs, 120px);
+}
+
+.uxp-reset--complete.spectrum-Popover.spectrum-ActionMenu-popover.spectrum-Popover--sizeS {
+  min-width: var(--spectrum-popover-min-width-s, 140px);
+}
+
+.uxp-reset--complete.spectrum-Popover.spectrum-ActionMenu-popover.spectrum-Popover--sizeM {
+  min-width: var(--spectrum-popover-min-width-m, 160px);
+}
+
+.uxp-reset--complete.spectrum-Popover.spectrum-ActionMenu-popover.spectrum-Popover--sizeL {
+  min-width: var(--spectrum-popover-min-width-l, 180px);
+}
+
+.uxp-reset--complete.spectrum-Popover.spectrum-ActionMenu-popover.spectrum-Popover--sizeXL {
+  min-width: var(--spectrum-popover-min-width-xl, 200px);
+}
+
+/* Popover direction positioning */
+.uxp-reset--complete.spectrum-Popover.spectrum-ActionMenu-popover.spectrum-Popover--bottom {
+  top: 100%;
+  margin-top: var(--spectrum-popover-offset, 4px);
+}
+
+.uxp-reset--complete.spectrum-Popover.spectrum-ActionMenu-popover.spectrum-Popover--top {
+  bottom: 100%;
+  margin-bottom: var(--spectrum-popover-offset, 4px);
+}
+
+.uxp-reset--complete.spectrum-Popover.spectrum-ActionMenu-popover.spectrum-Popover--left {
+  right: 100%;
+  margin-right: var(--spectrum-popover-offset, 4px);
+}
+
+.uxp-reset--complete.spectrum-Popover.spectrum-ActionMenu-popover.spectrum-Popover--right {
+  left: 100%;
+  margin-left: var(--spectrum-popover-offset, 4px);
+}
+
+/* Menu container */
+.uxp-reset--complete.spectrum-ActionMenu-menu {
+  display: flex;
+  flex-direction: column;
+  padding: var(--spectrum-menu-padding, 4px);
+  min-width: 100%;
+  box-sizing: border-box;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.13s ease-in-out, visibility 0.13s ease-in-out;
+  gap: var(--spectrum-menu-item-gap, 2px);
+}
+
+/* Menu open state */
+.uxp-reset--complete.spectrum-ActionMenu-menu.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ActionButton menu items */
+.uxp-reset--complete.spectrum-ActionMenu-menu .spectrum-ActionMenu-item {
+  width: 100%;
+  justify-content: flex-start;
+  margin: 0;
+}
+
+/* Ensure ActionButtons in menu fill width and align left */
+.uxp-reset--complete.spectrum-ActionMenu-menu .spectrum-ActionMenu-item .spectrum-ActionButton {
+  width: 100%;
+  justify-content: flex-start;
+  text-align: left;
+  border-radius: var(--spectrum-menu-item-border-radius, 2px);
+}
+
+/* Menu size variants - adjust item sizing */
+.uxp-reset--complete.spectrum-ActionMenu-menu.spectrum-ActionMenu--sizeXS {
+  padding: var(--spectrum-menu-padding-xs, 2px);
+  gap: var(--spectrum-menu-item-gap-xs, 1px);
+}
+
+.uxp-reset--complete.spectrum-ActionMenu-menu.spectrum-ActionMenu--sizeS {
+  padding: var(--spectrum-menu-padding-s, 3px);
+  gap: var(--spectrum-menu-item-gap-s, 1px);
+}
+
+.uxp-reset--complete.spectrum-ActionMenu-menu.spectrum-ActionMenu--sizeM {
+  padding: var(--spectrum-menu-padding-m, 4px);
+  gap: var(--spectrum-menu-item-gap-m, 2px);
+}
+
+.uxp-reset--complete.spectrum-ActionMenu-menu.spectrum-ActionMenu--sizeL {
+  padding: var(--spectrum-menu-padding-l, 5px);
+  gap: var(--spectrum-menu-item-gap-l, 2px);
+}
+
+.uxp-reset--complete.spectrum-ActionMenu-menu.spectrum-ActionMenu--sizeXL {
+  padding: var(--spectrum-menu-padding-xl, 6px);
+  gap: var(--spectrum-menu-item-gap-xl, 3px);
+}
+
+/* Ensure proper layering when ActionMenu is used with other components */
+.uxp-reset--complete.spectrum-ActionMenu .spectrum-ActionMenu-popover {
+  z-index: 1001;
+}
+
+/* Dark theme support */
+@media (prefers-color-scheme: dark) {
+  .uxp-reset--complete.spectrum-Popover.spectrum-ActionMenu-popover {
+    background-color: var(--spectrum-popover-background-color-dark, #2d2d30);
+    border-color: var(--spectrum-popover-border-color-dark, #464647);
+  }
+}
