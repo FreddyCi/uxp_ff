@@ -25,15 +25,7 @@ interface PluginState {
   
   // Stepper component state (for Features tab demos)
   stepperPreferences: {
-    basicStepper: number;
-    sizeStepper: number;
-    sizeSmall: number;
-    sizeMedium: number;
-    sizeLarge: number;
     sizeXL: number;
-    rangedStepper: number;
-    disabledExample: number;
-    readOnlyExample: number;
   };
   
   // Actions
@@ -75,15 +67,7 @@ export const usePluginStore = create<PluginState>((set, get) => ({
   
   // Stepper preferences initial state
   stepperPreferences: {
-    basicStepper: 0,
-    sizeStepper: 5,
-    sizeSmall: 1,
-    sizeMedium: 10,
-    sizeLarge: 100,
     sizeXL: 1000,
-    rangedStepper: 50,
-    disabledExample: 25,
-    readOnlyExample: 75,
   },
   
   // Actions
