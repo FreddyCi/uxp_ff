@@ -92,7 +92,7 @@ div[role="switch"].uxp-reset--complete.spectrum-Switch.spectrum-Switch .spectrum
   width: 26px !important;
   height: 14px !important;
   border: 1px solid #6b7280 !important;
-  border-radius: 14px !important;
+  border-radius: 7px !important;
   background-color: #6b7280 !important;
   transition: all 200ms ease-out !important;
 }
@@ -103,9 +103,10 @@ div[role="switch"].uxp-reset--complete.spectrum-Switch.spectrum-Switch .spectrum
   position: absolute !important;
   top: 1px !important;
   left: 1px !important;
-  width: 12px !important;
-  height: 12px !important;
+  width: 14px !important;
+  height: 14px !important;
   background-color: #ffffff !important;
+  border-radius: 50% !important;
   border-radius: 50% !important;
   transition: all 200ms ease-out !important;
   transform: translateX(0) !important;
@@ -222,13 +223,15 @@ div[role="switch"].uxp-reset--complete.spectrum-Switch.spectrum-Switch.spectrum-
 }
 
 div[role="switch"].uxp-reset--complete.spectrum-Switch.spectrum-Switch.spectrum-Switch--sizeS .spectrum-Switch-switch {
-  width: var(--spectrum-switch-track-width-small, 22px) !important;
-  height: var(--spectrum-switch-track-height-small, 12px) !important;
+  width: 22px !important;
+  height: 12px !important;
+  border-radius: 6px !important;
 }
 
 div[role="switch"].uxp-reset--complete.spectrum-Switch.spectrum-Switch.spectrum-Switch--sizeS .spectrum-Switch-switch::before {
-  width: var(--spectrum-switch-handle-size-small, 10px) !important;
-  height: var(--spectrum-switch-handle-size-small, 10px) !important;
+  width: 12px !important;
+  height: 12px !important;
+  border-radius: 50% !important;
 }
 
 div[role="switch"].uxp-reset--complete.spectrum-Switch.spectrum-Switch.spectrum-Switch--sizeS .spectrum-Switch-input:checked + .spectrum-Switch-switch::before {
@@ -242,13 +245,15 @@ div[role="switch"].uxp-reset--complete.spectrum-Switch.spectrum-Switch.spectrum-
 }
 
 div[role="switch"].uxp-reset--complete.spectrum-Switch.spectrum-Switch.spectrum-Switch--sizeM .spectrum-Switch-switch {
-  width: var(--spectrum-switch-track-width-medium, 26px) !important;
-  height: var(--spectrum-switch-track-height-medium, 14px) !important;
+  width: 26px !important;
+  height: 14px !important;
+  border-radius: 7px !important;
 }
 
 div[role="switch"].uxp-reset--complete.spectrum-Switch.spectrum-Switch.spectrum-Switch--sizeM .spectrum-Switch-switch::before {
-  width: var(--spectrum-switch-handle-size-medium, 12px) !important;
-  height: var(--spectrum-switch-handle-size-medium, 12px) !important;
+  width: 14px !important;
+  height: 14px !important;
+  border-radius: 50% !important;
 }
 
 div[role="switch"].uxp-reset--complete.spectrum-Switch.spectrum-Switch.spectrum-Switch--sizeM .spectrum-Switch-input:checked + .spectrum-Switch-switch::before {
@@ -262,17 +267,19 @@ div[role="switch"].uxp-reset--complete.spectrum-Switch.spectrum-Switch.spectrum-
 }
 
 div[role="switch"].uxp-reset--complete.spectrum-Switch.spectrum-Switch.spectrum-Switch--sizeL .spectrum-Switch-switch {
-  width: var(--spectrum-switch-track-width-large, 32px) !important;
-  height: var(--spectrum-switch-track-height-large, 18px) !important;
+  width: 29px !important;
+  height: 16px !important;
+  border-radius: 8px !important;
 }
 
 div[role="switch"].uxp-reset--complete.spectrum-Switch.spectrum-Switch.spectrum-Switch--sizeL .spectrum-Switch-switch::before {
-  width: var(--spectrum-switch-handle-size-large, 16px) !important;
-  height: var(--spectrum-switch-handle-size-large, 16px) !important;
+  width: 16px !important;
+  height: 16px !important;
+  border-radius: 50% !important;
 }
 
 div[role="switch"].uxp-reset--complete.spectrum-Switch.spectrum-Switch.spectrum-Switch--sizeL .spectrum-Switch-input:checked + .spectrum-Switch-switch::before {
-  transform: translateX(14px) !important;
+  transform: translateX(13px) !important;
 }
 
 /* Extra Large (XL) */
@@ -282,17 +289,19 @@ div[role="switch"].uxp-reset--complete.spectrum-Switch.spectrum-Switch.spectrum-
 }
 
 div[role="switch"].uxp-reset--complete.spectrum-Switch.spectrum-Switch.spectrum-Switch--sizeXL .spectrum-Switch-switch {
-  width: var(--spectrum-switch-track-width-extra-large, 38px) !important;
-  height: var(--spectrum-switch-track-height-extra-large, 22px) !important;
+  width: 33px !important;
+  height: 18px !important;
+  border-radius: 9px !important;
 }
 
 div[role="switch"].uxp-reset--complete.spectrum-Switch.spectrum-Switch.spectrum-Switch--sizeXL .spectrum-Switch-switch::before {
-  width: var(--spectrum-switch-handle-size-extra-large, 20px) !important;
-  height: var(--spectrum-switch-handle-size-extra-large, 20px) !important;
+  width: 18px !important;
+  height: 18px !important;
+  border-radius: 50% !important;
 }
 
 div[role="switch"].uxp-reset--complete.spectrum-Switch.spectrum-Switch.spectrum-Switch--sizeXL .spectrum-Switch-input:checked + .spectrum-Switch-switch::before {
-  transform: translateX(16px) !important;
+  transform: translateX(15px) !important;
 }
 
 /* =============================================================================
