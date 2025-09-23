@@ -21,6 +21,7 @@ import { Checkbox } from "./components/Checkbox";
 import { Typography, Heading, Body, Emphasized, Code, Detail, Strong } from "./components/Typography";
 import { Tabs, TabList, Tab, TabPanel } from "./components/Tabs";
 import { Divider } from "./components/Divider";
+import { Radio, RadioGroup } from "./components/Radio";
 import { usePluginStore } from "./store/usePluginStore";
 
 
@@ -524,6 +525,7 @@ const App: React.FC = () => {
                     <li>TextArea - Multi-line text input</li>
                     <li>Select - Dropdown selection</li>
                     <li>Checkbox - Boolean selection</li>
+                    <li>Radio - Single choice selection</li>
                     <li>Button - Action triggers</li>
                   </ul>
                 </div>
@@ -806,6 +808,111 @@ const App: React.FC = () => {
                     <li>Automatic min-inline-size for horizontal dividers</li>
                     <li>Automatic min-block-size for vertical dividers</li>
                     <li>Official Spectrum design tokens for thickness</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            {/* Radio Component Showcase */}
+            <div style={{ marginBottom: "32px" }}>
+              <h4 style={{ margin: "0 0 16px 0", color: "var(--text)" }}>🔘 Radio Component</h4>
+              <div style={{ 
+                padding: "16px", 
+                backgroundColor: "var(--spectrum-background-layer-2-color, #f9fafb)", 
+                borderRadius: "8px" 
+              }}>
+                <p style={{ margin: "0 0 16px 0", fontSize: "14px", color: "var(--text)" }}>
+                  Single choice selection components with size variants and group management based on Adobe Spectrum specifications.
+                </p>
+                
+                {/* Basic Radio Group */}
+                <div style={{ marginBottom: "24px" }}>
+                  <h5 style={{ margin: "0 0 12px 0", color: "var(--text)", fontSize: "14px" }}>Basic Radio Group</h5>
+                  <RadioGroup 
+                    name="example-basic" 
+                    label="Choose your preferred option:"
+                    defaultValue="option2"
+                  >
+                    <Radio value="option1">First option</Radio>
+                    <Radio value="option2">Second option (selected)</Radio>
+                    <Radio value="option3">Third option</Radio>
+                  </RadioGroup>
+                </div>
+
+                {/* Size Variants */}
+                <div style={{ marginBottom: "24px" }}>
+                  <h5 style={{ margin: "0 0 12px 0", color: "var(--text)", fontSize: "14px" }}>Size Variants</h5>
+                  <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+                    <div>
+                      <div style={{ fontSize: "12px", color: "var(--text-muted)", marginBottom: "8px" }}>Small</div>
+                      <RadioGroup name="size-small" size="s">
+                        <Radio value="small1">Small radio option</Radio>
+                        <Radio value="small2">Another small option</Radio>
+                      </RadioGroup>
+                    </div>
+                    <div>
+                      <div style={{ fontSize: "12px", color: "var(--text-muted)", marginBottom: "8px" }}>Medium</div>
+                      <RadioGroup name="size-medium" size="m">
+                        <Radio value="medium1">Medium radio option</Radio>
+                        <Radio value="medium2">Another medium option</Radio>
+                      </RadioGroup>
+                    </div>
+                    <div>
+                      <div style={{ fontSize: "12px", color: "var(--text-muted)", marginBottom: "8px" }}>Large</div>
+                      <RadioGroup name="size-large" size="l">
+                        <Radio value="large1">Large radio option</Radio>
+                        <Radio value="large2">Another large option</Radio>
+                      </RadioGroup>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Horizontal Orientation */}
+                <div style={{ marginBottom: "24px" }}>
+                  <h5 style={{ margin: "0 0 12px 0", color: "var(--text)", fontSize: "14px" }}>Horizontal Layout</h5>
+                  <RadioGroup 
+                    name="horizontal-example" 
+                    orientation="horizontal"
+                    label="Select alignment:"
+                    defaultValue="center"
+                  >
+                    <Radio value="left">Left</Radio>
+                    <Radio value="center">Center</Radio>
+                    <Radio value="right">Right</Radio>
+                  </RadioGroup>
+                </div>
+
+                {/* Disabled State */}
+                <div style={{ marginBottom: "16px" }}>
+                  <h5 style={{ margin: "0 0 12px 0", color: "var(--text)", fontSize: "14px" }}>Disabled State</h5>
+                  <RadioGroup 
+                    name="disabled-example" 
+                    label="Disabled radio group:"
+                    isDisabled={true}
+                    defaultValue="disabled2"
+                  >
+                    <Radio value="disabled1">Disabled option</Radio>
+                    <Radio value="disabled2">Disabled selected option</Radio>
+                    <Radio value="disabled3">Another disabled option</Radio>
+                  </RadioGroup>
+                </div>
+
+                {/* Implementation Details */}
+                <div style={{ 
+                  padding: "12px", 
+                  backgroundColor: "var(--spectrum-background-layer-1-color, #fff)", 
+                  borderRadius: "4px",
+                  border: "1px solid var(--spectrum-border-color-default)"
+                }}>
+                  <h6 style={{ margin: "0 0 8px 0", fontSize: "12px", color: "var(--text)" }}>Implementation Features:</h6>
+                  <ul style={{ margin: "0", paddingLeft: "16px", fontSize: "11px", color: "var(--text-muted)" }}>
+                    <li>Context-based state management with RadioGroup</li>
+                    <li>Nuclear div CSS approach for UXP compatibility</li>
+                    <li>Proper semantic HTML with input[type="radio"]</li>
+                    <li>Circular button with inner dot for checked state</li>
+                    <li>Size variants (S, M, L, XL) with proportional scaling</li>
+                    <li>Horizontal and vertical orientation support</li>
+                    <li>Focus ring and hover states for accessibility</li>
                   </ul>
                 </div>
               </div>
