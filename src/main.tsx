@@ -18,6 +18,7 @@ import { ActionGroup } from "./components/ActionGroup";
 import { ActionMenu } from "./components/ActionMenu";
 import { MenuItem } from "./components/MenuItem";
 import { Card } from "./components/Card";
+import { Checkbox } from "./components/Checkbox";
 import { Tabs, TabList, Tab, TabPanel } from "./components/Tabs";
 import { usePluginStore } from "./store/usePluginStore";
 
@@ -159,6 +160,7 @@ const App: React.FC = () => {
           <Tab id="tab6">Gallery</Tab>
           <Tab id="tab7">Actions</Tab>
           <Tab id="tab8">Cards</Tab>
+          <Tab id="tab9">Checkboxes</Tab>
         </TabList>
         
         <TabPanel id="tab1">
@@ -1139,6 +1141,152 @@ const App: React.FC = () => {
                   <li><strong>UXP Optimized:</strong> Nuclear div approach with ultra-high specificity CSS</li>
                 </ul>
               </div>
+            </div>
+          </div>
+        </TabPanel>
+
+        <TabPanel id="tab9">
+          <div style={{ padding: "12px" }}>
+            <h3 style={{ margin: "0 0 16px 0", color: "var(--text)" }}>Checkboxes</h3>
+            <p style={{ marginBottom: "24px", color: "var(--text)" }}>
+              Hybrid checkbox components following official Spectrum patterns with enhanced UXP compatibility.
+            </p>
+
+            {/* Basic Checkboxes */}
+            <div style={{ marginBottom: "32px" }}>
+              <h4 style={{ margin: "0 0 16px 0", color: "var(--text)" }}>Basic Checkboxes</h4>
+              <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+                <Checkbox>Basic checkbox</Checkbox>
+                <Checkbox isSelected>Pre-checked checkbox</Checkbox>
+                <Checkbox isIndeterminate>Indeterminate checkbox</Checkbox>
+                <Checkbox isDisabled>Disabled checkbox</Checkbox>
+                <Checkbox isDisabled isSelected>Disabled checked</Checkbox>
+              </div>
+            </div>
+
+            {/* Size Variants */}
+            <div style={{ marginBottom: "32px" }}>
+              <h4 style={{ margin: "0 0 16px 0", color: "var(--text)" }}>Size Variants</h4>
+              <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+                <Checkbox size="s">Small checkbox</Checkbox>
+                <Checkbox size="m">Medium checkbox (default)</Checkbox>
+                <Checkbox size="l">Large checkbox</Checkbox>
+                <Checkbox size="xl">Extra large checkbox</Checkbox>
+              </div>
+            </div>
+
+            {/* States Demo */}
+            <div style={{ marginBottom: "32px" }}>
+              <h4 style={{ margin: "0 0 16px 0", color: "var(--text)" }}>Interactive States</h4>
+              <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+                <Checkbox>Hover over me</Checkbox>
+                <Checkbox>Focus me with Tab</Checkbox>
+                <Checkbox isSelected>Check/uncheck me</Checkbox>
+                <Checkbox isIndeterminate>Click to clear indeterminate</Checkbox>
+              </div>
+            </div>
+
+            {/* Validation States */}
+            <div style={{ marginBottom: "32px" }}>
+              <h4 style={{ margin: "0 0 16px 0", color: "var(--text)" }}>Validation States</h4>
+              <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+                <Checkbox isInvalid>Invalid checkbox</Checkbox>
+                <Checkbox isInvalid isSelected>Invalid checked</Checkbox>
+                <Checkbox isInvalid isIndeterminate>Invalid indeterminate</Checkbox>
+              </div>
+            </div>
+
+            {/* Emphasized Variant */}
+            <div style={{ marginBottom: "32px" }}>
+              <h4 style={{ margin: "0 0 16px 0", color: "var(--text)" }}>Emphasized Variant</h4>
+              <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+                <Checkbox isEmphasized>Emphasized checkbox</Checkbox>
+                <Checkbox isEmphasized isSelected>Emphasized checked</Checkbox>
+                <Checkbox isEmphasized isIndeterminate>Emphasized indeterminate</Checkbox>
+              </div>
+            </div>
+
+            {/* Read-only State */}
+            <div style={{ marginBottom: "32px" }}>
+              <h4 style={{ margin: "0 0 16px 0", color: "var(--text)" }}>Read-only</h4>
+              <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+                <Checkbox isReadOnly>Read-only unchecked</Checkbox>
+                <Checkbox isReadOnly isSelected>Read-only checked</Checkbox>
+                <Checkbox isReadOnly isIndeterminate>Read-only indeterminate</Checkbox>
+              </div>
+            </div>
+
+            {/* All Size + State Combinations */}
+            <div style={{ marginBottom: "32px" }}>
+              <h4 style={{ margin: "0 0 16px 0", color: "var(--text)" }}>Size + State Matrix</h4>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "16px" }}>
+                <div>
+                  <h5 style={{ margin: "0 0 8px 0", color: "var(--text)", fontSize: "12px" }}>Small</h5>
+                  <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+                    <Checkbox size="s">Unchecked</Checkbox>
+                    <Checkbox size="s" isSelected>Checked</Checkbox>
+                    <Checkbox size="s" isIndeterminate>Indeterminate</Checkbox>
+                  </div>
+                </div>
+                <div>
+                  <h5 style={{ margin: "0 0 8px 0", color: "var(--text)", fontSize: "12px" }}>Medium</h5>
+                  <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+                    <Checkbox size="m">Unchecked</Checkbox>
+                    <Checkbox size="m" isSelected>Checked</Checkbox>
+                    <Checkbox size="m" isIndeterminate>Indeterminate</Checkbox>
+                  </div>
+                </div>
+                <div>
+                  <h5 style={{ margin: "0 0 8px 0", color: "var(--text)", fontSize: "12px" }}>Large</h5>
+                  <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+                    <Checkbox size="l">Unchecked</Checkbox>
+                    <Checkbox size="l" isSelected>Checked</Checkbox>
+                    <Checkbox size="l" isIndeterminate>Indeterminate</Checkbox>
+                  </div>
+                </div>
+                <div>
+                  <h5 style={{ margin: "0 0 8px 0", color: "var(--text)", fontSize: "12px" }}>Extra Large</h5>
+                  <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+                    <Checkbox size="xl">Unchecked</Checkbox>
+                    <Checkbox size="xl" isSelected>Checked</Checkbox>
+                    <Checkbox size="xl" isIndeterminate>Indeterminate</Checkbox>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Long Text */}
+            <div style={{ marginBottom: "32px" }}>
+              <h4 style={{ margin: "0 0 16px 0", color: "var(--text)" }}>Long Text Handling</h4>
+              <div style={{ display: "flex", flexDirection: "column", gap: "12px", maxWidth: "400px" }}>
+                <Checkbox>
+                  This is a very long checkbox label that should wrap nicely and demonstrate how the 
+                  checkbox component handles multi-line text content while maintaining proper alignment 
+                  and spacing.
+                </Checkbox>
+                <Checkbox isSelected>
+                  Another long label that shows the checked state with extensive text that wraps to 
+                  multiple lines and tests the layout stability of the checkbox component.
+                </Checkbox>
+              </div>
+            </div>
+
+            {/* Implementation Notes */}
+            <div style={{ 
+              padding: "16px", 
+              backgroundColor: "var(--spectrum-global-color-gray-100)", 
+              borderRadius: "4px",
+              marginTop: "24px"
+            }}>
+              <h4 style={{ margin: "0 0 12px 0", color: "var(--text)" }}>Implementation Notes</h4>
+              <ul style={{ margin: "0", paddingLeft: "20px", color: "var(--text)", fontSize: "14px" }}>
+                <li><strong>Nuclear Div Approach:</strong> Ultra-high specificity CSS overrides UXP resets</li>
+                <li><strong>Accessibility:</strong> Full keyboard navigation and screen reader support</li>
+                <li><strong>States:</strong> Supports checked, unchecked, indeterminate, disabled, invalid</li>
+                <li><strong>Sizes:</strong> S (12px), M (16px), L (20px), XL (24px) control sizes</li>
+                <li><strong>Icons:</strong> SVG icons with CSS fallbacks for maximum compatibility</li>
+                <li><strong>Focus Management:</strong> React Aria focus handling without state dependencies</li>
+              </ul>
             </div>
           </div>
         </TabPanel>
