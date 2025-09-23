@@ -1,0 +1,129 @@
+/* Spectrum Grid - Hybrid Nuclear Div CSS */
+/* High-specificity selectors ensure UXP compatibility by resetting native styles */
+
+div[role="grid"].uxp-reset--complete.spectrum-grid.spectrum-grid {
+  all: unset !important;
+  display: grid !important;
+  box-sizing: border-box !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  gap: var(--spectrum-grid-gap, 24px) !important;
+  row-gap: var(--spectrum-grid-row-gap, var(--spectrum-grid-gap, 24px)) !important;
+  column-gap: var(--spectrum-grid-column-gap, var(--spectrum-grid-gap, 24px)) !important;
+  grid-template-columns: var(--spectrum-grid-template-columns, repeat(var(--columns, 12), minmax(0, 1fr))) !important;
+  grid-auto-rows: var(--spectrum-grid-auto-rows, auto) !important;
+  padding: var(--spectrum-grid-padding, 0) !important;
+  margin: 0 !important;
+  background-color: var(--spectrum-grid-background, transparent) !important;
+  border-radius: var(--spectrum-grid-radius, 0) !important;
+  border: var(--spectrum-grid-border-width, 0) solid var(--spectrum-grid-border-color, transparent) !important;
+  transition: border-color 160ms ease, background-color 160ms ease !important;
+}
+
+div[role="grid"].uxp-reset--complete.spectrum-grid.spectrum-grid:focus-visible {
+  outline: 2px solid var(--spectrum-grid-focus-ring, rgba(59, 130, 246, 0.8));
+  outline-offset: 2px;
+}
+
+/* Frame variant mirrors Spectrum demo container */
+div[role="grid"].uxp-reset--complete.spectrum-grid.spectrum-grid.spectrum-grid--frame {
+  --spectrum-grid-padding: var(--spectrum-grid-frame-padding, 24px);
+  --spectrum-grid-background: var(--spectrum-grid-frame-background, rgba(255, 255, 255, 0.04));
+  --spectrum-grid-border-width: 1px;
+  --spectrum-grid-border-color: rgba(255, 255, 255, 0.1);
+  --spectrum-grid-radius: var(--spectrum-corner-radius-100, 8px);
+}
+
+/* Compact variant reduces spacing for dense layouts */
+div[role="grid"].uxp-reset--complete.spectrum-grid.spectrum-grid.spectrum-grid--compact {
+  --spectrum-grid-gap: 12px;
+  --spectrum-grid-row-gap: 12px;
+  --spectrum-grid-column-gap: 12px;
+}
+
+/* Fixed variant locks to 12 columns with standard Spectrum gutter */
+div[role="grid"].uxp-reset--complete.spectrum-grid.spectrum-grid.spectrum-grid--fixed {
+  --columns: 12;
+  --spectrum-grid-gap: 24px;
+  --spectrum-grid-row-gap: 24px;
+}
+
+/* Fluid variant uses responsive min/max columns */
+div[role="grid"].uxp-reset--complete.spectrum-grid.spectrum-grid.spectrum-grid--fluid {
+  --spectrum-grid-template-columns: repeat(auto-fit, minmax(var(--spectrum-grid-fluid-min, 240px), 1fr));
+}
+
+/* Nested variant inherits parent column structure but tightens spacing */
+div[role="grid"].uxp-reset--complete.spectrum-grid.spectrum-grid.spectrum-grid--nested {
+  --spectrum-grid-gap: 16px;
+  --spectrum-grid-row-gap: 16px;
+}
+
+/* Debug helper adds a subtle checker background for visual QA */
+div[role="grid"].uxp-reset--complete.spectrum-grid.spectrum-grid.spectrum-grid--debug .spectrum-grid-item {
+  background-image: repeating-linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.06),
+    rgba(255, 255, 255, 0.06) 12px,
+    transparent 12px,
+    transparent 24px
+  );
+}
+
+div[role="gridcell"].uxp-reset--complete.spectrum-grid-item.spectrum-grid-item {
+  all: unset !important;
+  display: block !important;
+  box-sizing: border-box !important;
+  min-height: var(--spectrum-grid-item-min-height, 48px) !important;
+  padding: var(--spectrum-grid-item-padding, 16px) !important;
+  background-color: var(--spectrum-grid-item-background, rgba(255, 255, 255, 0.04)) !important;
+  border-radius: var(--spectrum-grid-item-radius, var(--spectrum-corner-radius-100, 8px)) !important;
+  border: 1px solid var(--spectrum-grid-item-border, rgba(255, 255, 255, 0.08)) !important;
+  grid-column: var(--spectrum-grid-item-column, auto) !important;
+  grid-row: var(--spectrum-grid-item-row, auto) !important;
+  align-self: var(--spectrum-grid-item-align, stretch) !important;
+  justify-self: var(--spectrum-grid-item-justify, stretch) !important;
+  color: inherit !important;
+  position: relative !important;
+  transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease !important;
+}
+
+div[role="gridcell"].uxp-reset--complete.spectrum-grid-item.spectrum-grid-item:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  border-color: rgba(255, 255, 255, 0.16);
+}
+
+div[role="gridcell"].uxp-reset--complete.spectrum-grid-item.spectrum-grid-item[data-emphasis="strong"] {
+  --spectrum-grid-item-background: rgba(37, 99, 235, 0.18);
+  --spectrum-grid-item-border: rgba(37, 99, 235, 0.42);
+}
+
+div[role="gridcell"].uxp-reset--complete.spectrum-grid-item.spectrum-grid-item[data-emphasis="accent"] {
+  --spectrum-grid-item-background: rgba(16, 185, 129, 0.18);
+  --spectrum-grid-item-border: rgba(16, 185, 129, 0.42);
+}
+
+div[role="grid"].uxp-reset--complete.spectrum-grid.spectrum-grid .spectrum-grid-item[data-outline="dashed"] {
+  border-style: dashed;
+}
+
+div[role="grid"].uxp-reset--complete.spectrum-grid.spectrum-grid .spectrum-grid-item[data-align="center"] {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+div[role="grid"].uxp-reset--complete.spectrum-grid.spectrum-grid .spectrum-grid-item[data-align="end"] {
+  display: flex !important;
+  align-items: flex-end;
+  justify-content: flex-end;
+  text-align: right;
+}
+
+/* Utility when using outlines for offsets/alignment demos */
+div[role="grid"].uxp-reset--complete.spectrum-grid.spectrum-grid .spectrum-grid-item[data-outline="muted"] {
+  border-color: rgba(148, 163, 184, 0.4);
+  color: rgba(226, 232, 240, 0.85);
+}

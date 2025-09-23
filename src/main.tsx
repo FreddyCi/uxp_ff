@@ -25,6 +25,7 @@ import { Radio, RadioGroup } from "./components/Radio";
 import { Asset } from "./components/Asset";
 import { AssetCard } from "./components/AssetCard";
 import { AssetList } from "./components/AssetList";
+import { Grid, GridItem } from "./components/Grid";
 import { usePluginStore } from "./store/usePluginStore";
 
 
@@ -1704,7 +1705,96 @@ const App: React.FC = () => {
         </TabPanel>
 
         <TabPanel id="tab8">
-          <div style={{ padding: "12px" }} />
+          <div style={{ padding: "12px" }}>
+            <h3 style={{ margin: "0 0 16px 0", color: "var(--text)" }}>Spectrum Grid Showcase</h3>
+            <p style={{ marginBottom: "24px", color: "var(--text-muted)", fontSize: "14px" }}>
+              Testing the hybrid Spectrum grid implementation inspired by Spectrum CSS Grid.
+              Explore fixed, fluid, and nested layouts while verifying our hybrid CSS approach.
+            </p>
+
+            <div style={{ marginBottom: "32px" }}>
+              <h4 style={{ margin: "0 0 12px 0", color: "var(--text)", fontSize: "16px" }}>Fixed Grid (12 columns)</h4>
+              <Grid columns={12} variant={["frame", "fixed"]} gap="16px" style={{ marginBottom: "8px" }}>
+                <GridItem columnSpan={3} outline="muted">
+                  <strong style={{ display: "block", marginBottom: "4px" }}>Sidebar</strong>
+                  <span style={{ color: "var(--text-muted)", fontSize: "12px" }}>Span 3 columns</span>
+                </GridItem>
+                <GridItem columnSpan={6} emphasis="accent">
+                  <strong style={{ display: "block", marginBottom: "4px" }}>Main Content</strong>
+                  <span style={{ color: "var(--text-muted)", fontSize: "12px" }}>Span 6 columns</span>
+                </GridItem>
+                <GridItem columnSpan={3} outline="muted">
+                  <strong style={{ display: "block", marginBottom: "4px" }}>Inspector</strong>
+                  <span style={{ color: "var(--text-muted)", fontSize: "12px" }}>Span 3 columns</span>
+                </GridItem>
+                <GridItem columnSpan={12} outline="muted">
+                  <strong style={{ display: "block", marginBottom: "4px" }}>Footer</strong>
+                  <span style={{ color: "var(--text-muted)", fontSize: "12px" }}>Span full width</span>
+                </GridItem>
+              </Grid>
+              <p style={{ margin: 0, color: "var(--text-muted)", fontSize: "12px" }}>
+                Uses <code>columns=12</code> and explicit spans to emulate the standard Spectrum fixed grid.
+              </p>
+            </div>
+
+            <div style={{ marginBottom: "32px" }}>
+              <h4 style={{ margin: "0 0 12px 0", color: "var(--text)", fontSize: "16px" }}>Fluid Grid (auto-fit)</h4>
+              <Grid
+                variant={["frame", "fluid"]}
+                minColumnWidth="220px"
+                gap="18px"
+                columnGap="18px"
+              >
+                {["Alpha", "Bravo", "Charlie", "Delta", "Echo", "Foxtrot"].map((label, index) => (
+                  <GridItem key={label} emphasis={index % 2 === 0 ? "accent" : undefined}>
+                    <strong style={{ display: "block", marginBottom: "6px" }}>{label}</strong>
+                    <span style={{ color: "var(--text-muted)", fontSize: "12px" }}>
+                      Fluid tile adjusts with min width 220px.
+                    </span>
+                  </GridItem>
+                ))}
+              </Grid>
+              <p style={{ margin: "12px 0 0 0", color: "var(--text-muted)", fontSize: "12px" }}>
+                Demonstrates <code>repeat(auto-fit, minmax(220px, 1fr))</code> behavior inside the hybrid grid.
+              </p>
+            </div>
+
+            <div style={{ marginBottom: "32px" }}>
+              <h4 style={{ margin: "0 0 12px 0", color: "var(--text)", fontSize: "16px" }}>Nested Grid with Alignment</h4>
+              <Grid columns={12} variant={["frame"]} gap="16px">
+                <GridItem columnSpan="1 / span 12" outline="muted" align="center">
+                  <strong style={{ display: "block", marginBottom: "4px" }}>Hero Banner</strong>
+                  <span style={{ color: "var(--text-muted)", fontSize: "12px" }}>Occupies columns 1 – 12</span>
+                </GridItem>
+                <GridItem columnSpan="span 8">
+                  <Grid columns={8} variant={["nested", "compact"]} gap="12px">
+                    <GridItem columnSpan={4} outline="muted">
+                      <strong style={{ display: "block", marginBottom: "4px" }}>Article</strong>
+                      <span style={{ color: "var(--text-muted)", fontSize: "12px" }}>Nested span 4</span>
+                    </GridItem>
+                    <GridItem columnSpan={4} outline="muted">
+                      <strong style={{ display: "block", marginBottom: "4px" }}>Tutorial</strong>
+                      <span style={{ color: "var(--text-muted)", fontSize: "12px" }}>Nested span 4</span>
+                    </GridItem>
+                    <GridItem columnSpan={8} outline="muted">
+                      <strong style={{ display: "block", marginBottom: "4px" }}>Nested Footer</strong>
+                      <span style={{ color: "var(--text-muted)", fontSize: "12px" }}>Span 8 (full nested width)</span>
+                    </GridItem>
+                  </Grid>
+                </GridItem>
+                <GridItem columnSpan="9 / span 3" align="end" outline="muted">
+                  <strong style={{ display: "block", marginBottom: "4px" }}>Offset CTA</strong>
+                  <span style={{ color: "var(--text-muted)", fontSize: "12px" }}>Starts on column 9</span>
+                </GridItem>
+                <GridItem columnSpan={3} emphasis="strong" align="center" justify="center">
+                  <span style={{ fontWeight: 600 }}>Align Center</span>
+                </GridItem>
+              </Grid>
+              <p style={{ margin: "12px 0 0 0", color: "var(--text-muted)", fontSize: "12px" }}>
+                Combines offsets, nested grids, and alignment helpers using Spectrum-inspired APIs.
+              </p>
+            </div>
+          </div>
         </TabPanel>
 
         <TabPanel id="tab9">
