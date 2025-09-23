@@ -31,26 +31,12 @@ export const Login: React.FC = () => {
         <UserIcon size={24} color="#e5e7eb" style={{ marginRight: '12px' }} />
         <h2 style={{ margin: '0', color: '#e5e7eb' }}>Login</h2>
       </div>
-      <Form onSubmit={handleSubmit}>
-        <TextField
-          name="username"
-          label="Username"
-          placeholder="Enter your username"
-          isRequired
-          errorMessage="Username is required"
-        />
-        <TextField
-          name="password"
-          label="Password"
-          type="password"
-          placeholder="Enter your password"
-          isRequired
-          errorMessage="Password is required"
-        />
+
+
         <Button type="submit" variant="primary" isDisabled={isSubmitting}>
           {isSubmitting ? 'Logging in...' : 'Login'}
         </Button>
-      </Form>
+
     </div>
   );
 };

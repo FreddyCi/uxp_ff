@@ -67,7 +67,8 @@
 }
 */
 
-/* Spectrum FieldLabel */
+/* Spectrum FieldLabel - REMOVED: Conflicts with hybrid TextField approach
+   TextField-hybrid.css handles all field label styling with ultra-high specificity
 .spectrum-FieldLabel {
   display: block;
   margin-bottom: 4px;
@@ -75,6 +76,7 @@
   font-weight: 500;
   color: var(--spectrum-neutral-content-color-default);
 }
+*/
 
 /* =============================================================================
    SPECTRUM REACT ARIA COMPONENT OVERRIDES

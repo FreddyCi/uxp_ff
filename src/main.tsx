@@ -7,7 +7,8 @@ import "./styles/uxp-reset.css";
 import "./styles/tokens.css";
 import "./styles/utilities.css";
 import { UxpProvider, useUxp } from "./uxp/UxpProvider";
-import { TextField, Label, Input } from "react-aria-components";
+import { Label, Input } from "react-aria-components";
+import { TextField } from "./components/TextField";
 import { Button } from "./components/Button";
 import { Tabs, TabList, Tab, TabPanel } from "./components/Tabs";
 import { usePluginStore } from "./store/usePluginStore";
@@ -137,39 +138,7 @@ const App: React.FC = () => {
         UXP Object: {typeof (globalThis as any).uxp}
       </div>
       
-      <div style={{ marginBottom: "24px" }}>
-        <h2 style={{ fontSize: "18px", marginBottom: "12px", color: "var(--text)" }}>
-          🧪 Hybrid Button Test - Nuclear Div + Official Spectrum CSS
-        </h2>
-        <p style={{ fontSize: "14px", marginBottom: "16px", color: "var(--text-muted)" }}>
-          Testing: div[role="button"] + .spectrum-Button classes + official --spectrum-accent-* tokens
-        </p>
-        
-        <div style={{ marginBottom: "16px" }}>
-          <Button variant="accent" treatment="fill">
-            Hybrid Accent Button
-          </Button>
-          <Button variant="accent" treatment="fill" isDisabled={true}>
-            Disabled
-          </Button>
-        </div>
-        
-        <div style={{ 
-          padding: "12px", 
-          background: "var(--bg-surface)", 
-          borderRadius: "6px",
-          fontSize: "13px"
-        }}>
-          <strong>Expected Result:</strong>
-          <ul style={{ margin: "8px 0", paddingLeft: "20px" }}>
-            <li>✅ Accent button should be blue (#2563eb)</li>
-            <li>✅ Should have white text</li>
-            <li>✅ Should show hover effects (darker blue)</li>
-            <li>✅ Disabled button should be gray</li>
-            <li>✅ No UXP interference (using div[role="button"])</li>
-          </ul>
-        </div>
-      </div>
+
 
       <Tabs defaultSelectedKey="tab1" style={{ marginBottom: "12px" }} size="m" emphasized>
         <TabList>
@@ -321,76 +290,40 @@ const App: React.FC = () => {
             <h3 style={{ margin: "0 0 16px 0", color: "var(--text)" }}>Contact Form</h3>
             
             <form style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
-              <TextField>
-                <Label style={{ 
-                  display: "block", 
-                  marginBottom: "4px", 
-                  fontSize: "14px", 
-                  color: "var(--text)",
-                  fontWeight: "500"
-                }}>
-                  Name
-                </Label>
-                <Input 
-                  placeholder="Enter your full name"
-                  style={{
-                    width: "100%",
-                    padding: "8px 12px",
-                    backgroundColor: "var(--bg-3)",
-                    border: "1px solid var(--border)",
-                    borderRadius: "6px",
-                    color: "var(--text)",
-                    fontSize: "14px",
-                    height: "32px",
-                    minHeight: "32px",
-                    boxSizing: "border-box",
-                    WebkitAppearance: "none"
-                  }}
-                />
-              </TextField>
+              <TextField
+                label="Name"
+                placeholder="Enter your full name"
+                name="name"
+                isRequired
+              />
 
-              <TextField>
-                <Label style={{ 
-                  display: "block", 
-                  marginBottom: "4px", 
-                  fontSize: "14px", 
-                  color: "var(--text)",
-                  fontWeight: "500"
-                }}>
-                  Email
-                </Label>
-                <Input 
-                  type="email"
-                  placeholder="your.email@example.com"
-                  style={{
-                    width: "100%",
-                    padding: "8px 12px",
-                    backgroundColor: "var(--bg-3)",
-                    border: "1px solid var(--border)",
-                    borderRadius: "6px",
-                    color: "var(--text)",
-                    fontSize: "14px",
-                    height: "32px",
-                    minHeight: "32px",
-                    boxSizing: "border-box",
-                    WebkitAppearance: "none"
-                  }}
-                />
-              </TextField>
+              <TextField
+                label="Email"
+                type="email"
+                placeholder="your.email@example.com"
+                name="email"
+                isRequired
+              />
 
-              <TextField>
-                <Label style={{ 
-                  display: "block", 
-                  marginBottom: "4px", 
+              <TextField
+                label="Message"
+                placeholder="Enter your message here..."
+                name="message"
+                // Note: For multiline, we'd need a TextArea component
+              />
+
+              <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
+                <label style={{ 
                   fontSize: "14px", 
                   color: "var(--text)",
                   fontWeight: "500"
                 }}>
-                  Message
-                </Label>
+                  Message (Textarea)
+                </label>
                 <textarea 
                   placeholder="Enter your message here..."
                   rows={4}
+                  name="message-textarea"
                   style={{
                     width: "100%",
                     padding: "8px 12px",
@@ -406,7 +339,7 @@ const App: React.FC = () => {
                     WebkitAppearance: "none"
                   }}
                 />
-              </TextField>
+              </div>
 
               <div style={{ display: "flex", gap: "8px", justifyContent: "flex-end" }}>
                 <Button 
