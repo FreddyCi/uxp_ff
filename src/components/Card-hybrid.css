@@ -1,0 +1,349 @@
+/*!
+ * Hybrid Card Component - Official Spectrum CSS + Nuclear Div Approach
+ * Combines official Adobe Spectrum tokens with UXP-compatible markup
+ */
+
+/* =============================================================================
+   NUCLEAR DIV + SPECTRUM CSS RESET OVERRIDE
+   ============================================================================= */
+
+/* Ultra-high specificity selector for main card container */
+div[role="figure"].uxp-reset--complete.spectrum-Card.spectrum-Card {
+  /* Nuclear reset */
+  all: unset !important;
+  
+  /* Re-establish card foundation */
+  box-sizing: border-box !important;
+  display: flex !important;
+  flex-direction: column !important;
+  position: relative !important;
+  cursor: pointer !important;
+  
+  /* Official Spectrum Card foundation */
+  background-color: var(--spectrum-card-background-color, var(--spectrum-background-layer-2-color, #ffffff)) !important;
+  border: var(--spectrum-card-border-width, var(--spectrum-border-width-100, 1px)) solid var(--spectrum-card-border-color, var(--spectrum-gray-200, #e1e1e1)) !important;
+  border-radius: var(--spectrum-card-corner-radius, var(--spectrum-corner-radius-100, 8px)) !important;
+  min-width: var(--spectrum-card-minimum-width, 280px) !important;
+  overflow: hidden !important;
+  transition: all var(--spectrum-animation-duration-100, 200ms) ease-out !important;
+}
+
+/* Card hover state */
+div[role="figure"].uxp-reset--complete.spectrum-Card.spectrum-Card:hover {
+  background-color: var(--spectrum-card-background-color-hover, var(--spectrum-background-layer-2-color, #f8f8f8)) !important;
+  border-color: var(--spectrum-card-border-color-hover, var(--spectrum-gray-200, #d1d1d1)) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Card selected state */
+div[role="figure"].uxp-reset--complete.spectrum-Card.spectrum-Card.is-selected {
+  border-color: var(--spectrum-card-border-color-selected, var(--spectrum-blue-700, #2563eb)) !important;
+  background-color: rgba(var(--spectrum-card-selected-background-color-rgb, 37, 99, 235), var(--spectrum-card-selected-background-opacity, 0.1)) !important;
+}
+
+/* Card focused state */
+div[role="figure"].uxp-reset--complete.spectrum-Card.spectrum-Card.is-focused,
+div[role="figure"].uxp-reset--complete.spectrum-Card.spectrum-Card:focus-visible {
+  outline: var(--spectrum-card-focus-indicator-width, var(--spectrum-focus-indicator-thickness, 2px)) solid var(--spectrum-card-focus-indicator-color, var(--spectrum-focus-indicator-color, #2563eb)) !important;
+  outline-offset: 2px !important;
+}
+
+/* Card drop target state */
+div[role="figure"].uxp-reset--complete.spectrum-Card.spectrum-Card.is-drop-target {
+  border-color: var(--spectrum-blue-700, #2563eb) !important;
+  border-style: dashed !important;
+  background-color: rgba(37, 99, 235, 0.05) !important;
+}
+
+/* =============================================================================
+   CARD VARIANTS
+   ============================================================================= */
+
+/* Gallery variant */
+div[role="figure"].uxp-reset--complete.spectrum-Card.spectrum-Card.spectrum-Card--gallery {
+  /* Standard gallery card - inherits all default styles */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Quiet variant */
+div[role="figure"].uxp-reset--complete.spectrum-Card.spectrum-Card.spectrum-Card--quiet {
+  border: none !important;
+  background: transparent !important;
+  min-width: var(--spectrum-card-minimum-width-quiet, 200px) !important;
+}
+
+div[role="figure"].uxp-reset--complete.spectrum-Card.spectrum-Card.spectrum-Card--quiet:hover {
+  background-color: var(--spectrum-background-layer-2-color, rgba(0, 0, 0, 0.04)) !important;
+}
+
+/* Horizontal variant */
+div[role="figure"].uxp-reset--complete.spectrum-Card.spectrum-Card.spectrum-Card--horizontal {
+  flex-direction: row !important;
+  min-height: 120px !important;
+}
+
+/* =============================================================================
+   SUB-COMPONENTS
+   ============================================================================= */
+
+/* Cover Photo */
+div[role="figure"].uxp-reset--complete.spectrum-Card.spectrum-Card .spectrum-Card-coverPhoto {
+  width: 100% !important;
+  height: var(--spectrum-card-preview-minimum-height, 160px) !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-color: var(--spectrum-card-preview-background-color, var(--spectrum-gray-100, #f5f5f5)) !important;
+  flex-shrink: 0 !important;
+}
+
+div[role="figure"].uxp-reset--complete.spectrum-Card.spectrum-Card:hover .spectrum-Card-coverPhoto {
+  background-color: var(--spectrum-card-preview-background-color-hover, var(--spectrum-gray-100, #f0f0f0)) !important;
+}
+
+/* Preview area (alternative to coverPhoto) */
+div[role="figure"].uxp-reset--complete.spectrum-Card.spectrum-Card .spectrum-Card-preview {
+  width: 100% !important;
+  min-height: var(--spectrum-card-preview-minimum-height, 160px) !important;
+  background-color: var(--spectrum-card-preview-background-color, var(--spectrum-gray-100, #f5f5f5)) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+/* Preview selected state */
+div[role="figure"].uxp-reset--complete.spectrum-Card.spectrum-Card.is-selected .spectrum-Card-preview::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  border: var(--spectrum-card-preview-border-width-selected, 3px) solid var(--spectrum-blue-700, #2563eb) !important;
+  border-radius: inherit !important;
+  pointer-events: none !important;
+}
+
+/* Divider */
+div[role="figure"].uxp-reset--complete.spectrum-Card.spectrum-Card .spectrum-Divider {
+  margin: 0 !important;
+  border: none !important;
+  height: 1px !important;
+  background-color: var(--spectrum-card-divider-color, var(--spectrum-gray-200, #e1e1e1)) !important;
+  flex-shrink: 0 !important;
+}
+
+/* Card Body */
+div[role="figure"].uxp-reset--complete.spectrum-Card.spectrum-Card .spectrum-Card-body {
+  display: flex !important;
+  flex-direction: column !important;
+  flex: 1 !important;
+  padding: var(--spectrum-card-body-padding-block-start, var(--spectrum-spacing-200, 16px)) !important;
+  gap: var(--spectrum-card-body-spacing, var(--spectrum-spacing-100, 8px)) !important;
+}
+
+/* Card Header */
+div[role="figure"].uxp-reset--complete.spectrum-Card.spectrum-Card .spectrum-Card-header {
+  display: flex !important;
+  align-items: flex-start !important;
+  justify-content: space-between !important;
+  gap: var(--spectrum-spacing-100, 8px) !important;
+}
+
+/* Card Title */
+div[role="figure"].uxp-reset--complete.spectrum-Card.spectrum-Card .spectrum-Card-title {
+  font-family: var(--spectrum-card-title-font-family, var(--spectrum-sans-font-family-stack, 'Adobe Clean', 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif)) !important;
+  font-size: var(--spectrum-card-title-font-size, var(--spectrum-heading-size-xxs, 16px)) !important;
+  font-weight: var(--spectrum-card-title-font-weight, var(--spectrum-heading-sans-serif-font-weight, 700)) !important;
+  line-height: var(--spectrum-card-title-line-height, var(--spectrum-heading-line-height, 1.3)) !important;
+  color: var(--spectrum-card-title-font-color, var(--spectrum-heading-color, #1a1a1a)) !important;
+  margin: 0 !important;
+  padding-right: var(--spectrum-card-title-padding-right, 0) !important;
+  flex: 1 !important;
+}
+
+/* Card Subtitle */
+div[role="figure"].uxp-reset--complete.spectrum-Card.spectrum-Card .spectrum-Card-subtitle {
+  font-family: var(--spectrum-sans-font-family-stack, 'Adobe Clean', 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif) !important;
+  font-size: var(--spectrum-body-size-s, 14px) !important;
+  font-weight: var(--spectrum-body-sans-serif-font-weight, 400) !important;
+  line-height: var(--spectrum-body-line-height, 1.5) !important;
+  color: var(--spectrum-body-color, #6b7280) !important;
+  margin: 0 !important;
+  padding-right: var(--spectrum-card-subtitle-padding-right, 0) !important;
+}
+
+/* Card Description */
+div[role="figure"].uxp-reset--complete.spectrum-Card.spectrum-Card .spectrum-Card-description {
+  font-family: var(--spectrum-card-body-font-family, var(--spectrum-sans-font-family-stack, 'Adobe Clean', 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif)) !important;
+  font-size: var(--spectrum-card-body-font-size, var(--spectrum-body-size-s, 14px)) !important;
+  font-weight: var(--spectrum-card-body-font-weight, var(--spectrum-body-sans-serif-font-weight, 400)) !important;
+  line-height: var(--spectrum-card-body-line-height, var(--spectrum-body-line-height, 1.5)) !important;
+  color: var(--spectrum-card-body-font-color, var(--spectrum-body-color, #6b7280)) !important;
+  margin: 0 !important;
+}
+
+/* Card Content wrapper */
+div[role="figure"].uxp-reset--complete.spectrum-Card.spectrum-Card .spectrum-Card-content {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: var(--spectrum-spacing-75, 6px) !important;
+  margin-top: var(--spectrum-card-content-margin-top, var(--spectrum-spacing-100, 8px)) !important;
+  margin-bottom: var(--spectrum-card-content-margin-bottom, 0) !important;
+}
+
+/* Card Footer */
+div[role="figure"].uxp-reset--complete.spectrum-Card.spectrum-Card .spectrum-Card-footer {
+  padding: var(--spectrum-card-footer-padding-block-start, var(--spectrum-spacing-200, 16px)) var(--spectrum-spacing-200, 16px) var(--spectrum-card-footer-padding-block-end, var(--spectrum-spacing-200, 16px)) !important;
+  margin-top: auto !important;
+  border-top: 1px solid var(--spectrum-card-divider-color, var(--spectrum-gray-200, #e1e1e1)) !important;
+  background-color: var(--spectrum-background-layer-2-color, #f8f8f8) !important;
+  font-family: var(--spectrum-sans-font-family-stack, 'Adobe Clean', 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif) !important;
+  font-size: var(--spectrum-body-size-s, 14px) !important;
+  color: var(--spectrum-body-color, #6b7280) !important;
+}
+
+/* Card Actions */
+div[role="figure"].uxp-reset--complete.spectrum-Card.spectrum-Card .spectrum-Card-actions {
+  display: flex !important;
+  align-items: center !important;
+  gap: var(--spectrum-card-actions-spacing, var(--spectrum-spacing-100, 8px)) !important;
+  opacity: 0 !important;
+  transition: opacity var(--spectrum-animation-duration-100, 200ms) ease-out !important;
+}
+
+/* Show actions on hover or focus */
+div[role="figure"].uxp-reset--complete.spectrum-Card.spectrum-Card:hover .spectrum-Card-actions,
+div[role="figure"].uxp-reset--complete.spectrum-Card.spectrum-Card:focus .spectrum-Card-actions,
+div[role="figure"].uxp-reset--complete.spectrum-Card.spectrum-Card.is-focused .spectrum-Card-actions,
+div[role="figure"].uxp-reset--complete.spectrum-Card.spectrum-Card.is-selected .spectrum-Card-actions {
+  opacity: 1 !important;
+}
+
+/* Card Quick Actions (checkbox, etc.) */
+div[role="figure"].uxp-reset--complete.spectrum-Card.spectrum-Card .spectrum-Card-quickActions {
+  position: absolute !important;
+  top: var(--spectrum-spacing-100, 8px) !important;
+  left: var(--spectrum-spacing-100, 8px) !important;
+  opacity: 0 !important;
+  transition: opacity var(--spectrum-animation-duration-100, 200ms) ease-out !important;
+  z-index: 1 !important;
+}
+
+/* Show quick actions on hover or when selected */
+div[role="figure"].uxp-reset--complete.spectrum-Card.spectrum-Card:hover .spectrum-Card-quickActions,
+div[role="figure"].uxp-reset--complete.spectrum-Card.spectrum-Card:focus .spectrum-Card-quickActions,
+div[role="figure"].uxp-reset--complete.spectrum-Card.spectrum-Card.is-focused .spectrum-Card-quickActions,
+div[role="figure"].uxp-reset--complete.spectrum-Card.spectrum-Card.is-selected .spectrum-Card-quickActions {
+  opacity: 1 !important;
+}
+
+/* =============================================================================
+   HORIZONTAL VARIANT SPECIFICS
+   ============================================================================= */
+
+/* Horizontal layout adjustments */
+div[role="figure"].uxp-reset--complete.spectrum-Card.spectrum-Card.spectrum-Card--horizontal .spectrum-Card-coverPhoto,
+div[role="figure"].uxp-reset--complete.spectrum-Card.spectrum-Card.spectrum-Card--horizontal .spectrum-Card-preview {
+  width: 120px !important;
+  height: 100% !important;
+  min-height: auto !important;
+  flex-shrink: 0 !important;
+}
+
+div[role="figure"].uxp-reset--complete.spectrum-Card.spectrum-Card.spectrum-Card--horizontal .spectrum-Card-body {
+  padding: var(--spectrum-card-horizontal-body-padding, var(--spectrum-spacing-200, 16px)) !important;
+  flex: 1 !important;
+}
+
+/* =============================================================================
+   QUIET VARIANT SPECIFICS
+   ============================================================================= */
+
+/* Quiet variant content margin adjustments */
+div[role="figure"].uxp-reset--complete.spectrum-Card.spectrum-Card.spectrum-Card--quiet .spectrum-Card-content {
+  margin-top: var(--spectrum-card-content-margin-top-quiet, var(--spectrum-spacing-75, 6px)) !important;
+}
+
+/* Quiet focused state */
+div[role="figure"].uxp-reset--complete.spectrum-Card.spectrum-Card.spectrum-Card--quiet.is-focused::after,
+div[role="figure"].uxp-reset--complete.spectrum-Card.spectrum-Card.spectrum-Card--quiet:focus::after {
+  content: '' !important;
+  position: absolute !important;
+  top: -2px !important;
+  left: -2px !important;
+  right: -2px !important;
+  bottom: -2px !important;
+  border: var(--spectrum-card-focus-indicator-width, var(--spectrum-focus-indicator-thickness, 2px)) solid var(--spectrum-card-focus-indicator-color, var(--spectrum-focus-indicator-color, #2563eb)) !important;
+  border-radius: var(--spectrum-corner-radius-100, 8px) !important;
+  pointer-events: none !important;
+}
+
+/* =============================================================================
+   DARK THEME
+   ============================================================================= */
+
+/* Dark theme styles */
+.spectrum--darkest div[role="figure"].uxp-reset--complete.spectrum-Card.spectrum-Card,
+.spectrum--dark div[role="figure"].uxp-reset--complete.spectrum-Card.spectrum-Card,
+[data-color-scheme="dark"] div[role="figure"].uxp-reset--complete.spectrum-Card.spectrum-Card {
+  background-color: var(--spectrum-card-background-color, #2a2a2a) !important;
+  border-color: var(--spectrum-card-border-color, #4a4a4a) !important;
+  color: var(--spectrum-neutral-content-color-default, #ffffff) !important;
+}
+
+.spectrum--darkest div[role="figure"].uxp-reset--complete.spectrum-Card.spectrum-Card:hover,
+.spectrum--dark div[role="figure"].uxp-reset--complete.spectrum-Card.spectrum-Card:hover,
+[data-color-scheme="dark"] div[role="figure"].uxp-reset--complete.spectrum-Card.spectrum-Card:hover {
+  background-color: var(--spectrum-card-background-color-hover, #353535) !important;
+  border-color: var(--spectrum-card-border-color-hover, #555555) !important;
+}
+
+.spectrum--darkest div[role="figure"].uxp-reset--complete.spectrum-Card.spectrum-Card .spectrum-Card-title,
+.spectrum--dark div[role="figure"].uxp-reset--complete.spectrum-Card.spectrum-Card .spectrum-Card-title,
+[data-color-scheme="dark"] div[role="figure"].uxp-reset--complete.spectrum-Card.spectrum-Card .spectrum-Card-title {
+  color: var(--spectrum-card-title-font-color, var(--spectrum-heading-color, #ffffff)) !important;
+}
+
+.spectrum--darkest div[role="figure"].uxp-reset--complete.spectrum-Card.spectrum-Card .spectrum-Card-description,
+.spectrum--dark div[role="figure"].uxp-reset--complete.spectrum-Card.spectrum-Card .spectrum-Card-description,
+[data-color-scheme="dark"] div[role="figure"].uxp-reset--complete.spectrum-Card.spectrum-Card .spectrum-Card-description {
+  color: var(--spectrum-card-body-font-color, var(--spectrum-body-color, #e0e0e0)) !important;
+}
+
+.spectrum--darkest div[role="figure"].uxp-reset--complete.spectrum-Card.spectrum-Card .spectrum-Card-footer,
+.spectrum--dark div[role="figure"].uxp-reset--complete.spectrum-Card.spectrum-Card .spectrum-Card-footer,
+[data-color-scheme="dark"] div[role="figure"].uxp-reset--complete.spectrum-Card.spectrum-Card .spectrum-Card-footer {
+  background-color: var(--spectrum-background-layer-2-color, #1a1a1a) !important;
+  border-color: var(--spectrum-card-divider-color, #4a4a4a) !important;
+  color: var(--spectrum-body-color, #e0e0e0) !important;
+}
+
+/* =============================================================================
+   RESPONSIVE DESIGN
+   ============================================================================= */
+
+/* Container queries for responsive behavior */
+@container (max-width: 300px) {
+  div[role="figure"].uxp-reset--complete.spectrum-Card.spectrum-Card {
+    min-width: auto !important;
+  }
+  
+  div[role="figure"].uxp-reset--complete.spectrum-Card.spectrum-Card .spectrum-Card-title {
+    font-size: var(--spectrum-body-size-s, 14px) !important;
+  }
+  
+  div[role="figure"].uxp-reset--complete.spectrum-Card.spectrum-Card .spectrum-Card-body {
+    padding: var(--spectrum-spacing-100, 8px) !important;
+  }
+}
+
+@container (min-width: 400px) {
+  div[role="figure"].uxp-reset--complete.spectrum-Card.spectrum-Card .spectrum-Card-preview,
+  div[role="figure"].uxp-reset--complete.spectrum-Card.spectrum-Card .spectrum-Card-coverPhoto {
+    min-height: 200px !important;
+  }
+}

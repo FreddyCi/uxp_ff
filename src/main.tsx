@@ -17,6 +17,7 @@ import { ActionButton } from "./components/ActionButton";
 import { ActionGroup } from "./components/ActionGroup";
 import { ActionMenu } from "./components/ActionMenu";
 import { MenuItem } from "./components/MenuItem";
+import { Card } from "./components/Card";
 import { Tabs, TabList, Tab, TabPanel } from "./components/Tabs";
 import { usePluginStore } from "./store/usePluginStore";
 
@@ -157,6 +158,7 @@ const App: React.FC = () => {
           <Tab id="tab5">Login</Tab>
           <Tab id="tab6">Gallery</Tab>
           <Tab id="tab7">Actions</Tab>
+          <Tab id="tab8">Cards</Tab>
         </TabList>
         
         <TabPanel id="tab1">
@@ -932,6 +934,211 @@ const App: React.FC = () => {
                 <li><strong>UXP Optimized:</strong> Nuclear div approach with ultra-high specificity</li>
                 <li><strong>Performance:</strong> Lightweight implementation based on official Spectrum metadata</li>
               </ul>
+            </div>
+          </div>
+        </TabPanel>
+
+        <TabPanel id="tab8">
+          <div style={{ padding: "12px" }}>
+            <h3 style={{ margin: "0 0 16px 0", color: "var(--text)" }}>Card Component Showcase</h3>
+            
+            {/* Card Component Introduction */}
+            <div style={{ marginBottom: "32px" }}>
+              <p style={{ margin: "0 0 16px 0", fontSize: "14px", color: "var(--text-muted)" }}>
+                Official Spectrum Card component with all variants, states, and sub-elements based on Adobe Spectrum metadata.
+              </p>
+              
+              {/* Standard Card Examples */}
+              <div style={{ marginBottom: "32px" }}>
+                <h4 style={{ margin: "0 0 16px 0", color: "var(--text)", fontSize: "16px" }}>Standard Card Variants</h4>
+                
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "16px", marginBottom: "24px" }}>
+                  {/* Standard Card with Cover Photo */}
+                  <Card
+                    title="Sample Design File"
+                    subtitle="Adobe Photoshop"
+                    description="A beautiful design showcasing modern UI patterns and color schemes."
+                    footer="Last modified: 2 hours ago"
+                    hasActions={true}
+                    hasQuickActions={true}
+                    coverPhoto="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjgwIiBoZWlnaHQ9IjE2MCIgdmlld0JveD0iMCAwIDI4MCAxNjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIyODAiIGhlaWdodD0iMTYwIiBmaWxsPSIjRjVGNUY1Ii8+CjxyZWN0IHg9IjgwIiB5PSI0MCIgd2lkdGg9IjEyMCIgaGVpZ2h0PSI4MCIgcng9IjgiIGZpbGw9IiMyNTYzRUIiLz4KPHN2ZyB4PSI5MCIgeT0iNTAiIHdpZHRoPSIxMDAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCAxMDAgNjAiIGZpbGw9Im5vbmUiPgo8cGF0aCBkPSJNMjAgMzBIMzBWNDBIMjBWMzBaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNNDAgMjBINTBWNDBINDBWMjBaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNNjAgMjVINzBWNDBINjBWMjVaIiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4KPC9zdmc+"
+                    actions={
+                      <ActionButton size="m" isQuiet>
+                        <svg width="18" height="18" viewBox="0 0 18 18">
+                          <circle cx="3" cy="9" r="1.5" fill="currentColor"/>
+                          <circle cx="9" cy="9" r="1.5" fill="currentColor"/>
+                          <circle cx="15" cy="9" r="1.5" fill="currentColor"/>
+                        </svg>
+                      </ActionButton>
+                    }
+                    quickActions={
+                      <div style={{ 
+                        width: "20px", 
+                        height: "20px", 
+                        border: "2px solid white", 
+                        borderRadius: "4px", 
+                        backgroundColor: "rgba(255, 255, 255, 0.9)",
+                        cursor: "pointer"
+                      }} />
+                    }
+                    onPress={() => console.log('Card pressed!')}
+                  />
+
+                  {/* Gallery Card */}
+                  <Card
+                    variant="gallery"
+                    title="Product Photography"
+                    description="High-resolution product images for e-commerce."
+                    isSelected={true}
+                    hasActions={true}
+                    coverPhoto="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjgwIiBoZWlnaHQ9IjE2MCIgdmlld0JveD0iMCAwIDI4MCAxNjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIyODAiIGhlaWdodD0iMTYwIiBmaWxsPSIjRkY2QjZCIi8+CjxjaXJjbGUgY3g9IjE0MCIgY3k9IjgwIiByPSI0MCIgZmlsbD0iI0ZGRkZGRiIgZmlsbC1vcGFjaXR5PSIwLjgiLz4KPHN2ZyB4PSIxMjAiIHk9IjYwIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSI+CjxwYXRoIGQ9Ik0yMCAxMEM3IDEwIDcgMzAgMjAgMzBTMzMgMjcgMzMgMjBTMjcgMTAgMjAgMTBaIiBmaWxsPSIjRkY2QjZCIi8+Cjwvdmc+Cjwvc3ZnPg=="
+                    actions={
+                      <ActionButton size="m" isQuiet>
+                        <svg width="18" height="18" viewBox="0 0 18 18">
+                          <circle cx="3" cy="9" r="1.5" fill="currentColor"/>
+                          <circle cx="9" cy="9" r="1.5" fill="currentColor"/>
+                          <circle cx="15" cy="9" r="1.5" fill="currentColor"/>
+                        </svg>
+                      </ActionButton>
+                    }
+                    footer="Gallery • 24 items"
+                  />
+
+                  {/* Quiet Card */}
+                  <Card
+                    variant="quiet"
+                    title="Sketch File"
+                    subtitle="Design System"
+                    description="Component library and design tokens."
+                    hasQuickActions={true}
+                    quickActions={
+                      <div style={{ 
+                        width: "20px", 
+                        height: "20px", 
+                        border: "2px solid #2563eb", 
+                        borderRadius: "4px", 
+                        backgroundColor: "#2563eb",
+                        cursor: "pointer"
+                      }} />
+                    }
+                  />
+                </div>
+              </div>
+
+              {/* Horizontal Card Layout */}
+              <div style={{ marginBottom: "32px" }}>
+                <h4 style={{ margin: "0 0 16px 0", color: "var(--text)", fontSize: "16px" }}>Horizontal Layout Cards</h4>
+                
+                <div style={{ display: "flex", flexDirection: "column", gap: "16px", marginBottom: "24px" }}>
+                  <Card
+                    variant="horizontal"
+                    title="Video Project"
+                    subtitle="Adobe Premiere Pro"
+                    description="Documentary footage with color grading and effects."
+                    footer="Duration: 2:45:30"
+                    hasActions={true}
+                    coverPhoto="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEyMCAxMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMjAiIGhlaWdodD0iMTAwIiBmaWxsPSIjNjM2NkYxIi8+Cjxwb2x5Z29uIHBvaW50cz0iNDUsNDAgNzUsNTUgNDUsNzAiIGZpbGw9IndoaXRlIi8+Cjwvc3ZnPg=="
+                    actions={
+                      <ActionGroup>
+                        <ActionButton size="m" isQuiet>
+                          <svg width="18" height="18" viewBox="0 0 18 18">
+                            <path d="M5 6L11 9L5 12V6Z" fill="currentColor"/>
+                          </svg>
+                        </ActionButton>
+                        <ActionButton size="m" isQuiet>
+                          <svg width="18" height="18" viewBox="0 0 18 18">
+                            <circle cx="3" cy="9" r="1.5" fill="currentColor"/>
+                            <circle cx="9" cy="9" r="1.5" fill="currentColor"/>
+                            <circle cx="15" cy="9" r="1.5" fill="currentColor"/>
+                          </svg>
+                        </ActionButton>
+                      </ActionGroup>
+                    }
+                  />
+
+                  <Card
+                    variant="horizontal"
+                    title="Audio Recording"
+                    subtitle="Adobe Audition"
+                    description="Podcast episode with noise reduction and mastering."
+                    isDropTarget={true}
+                    coverPhoto="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEyMCAxMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMjAiIGhlaWdodD0iMTAwIiBmaWxsPSIjMTBCOTgxIi8+CjxyZWN0IHg9IjQwIiB5PSI2MCIgd2lkdGg9IjQiIGhlaWdodD0iMjAiIGZpbGw9IndoaXRlIi8+CjxyZWN0IHg9IjUwIiB5PSI0MCIgd2lkdGg9IjQiIGhlaWdodD0iNDAiIGZpbGw9IndoaXRlIi8+CjxyZWN0IHg9IjYwIiB5PSIzMCIgd2lkdGg9IjQiIGhlaWdodD0iNjAiIGZpbGw9IndoaXRlIi8+CjxyZWN0IHg9IjcwIiB5PSI1MCIgd2lkdGg9IjQiIGhlaWdodD0iMzAiIGZpbGw9IndoaXRlIi8+Cjwvc3ZnPg=="
+                  />
+                </div>
+              </div>
+
+              {/* Card States Showcase */}
+              <div style={{ marginBottom: "32px" }}>
+                <h4 style={{ margin: "0 0 16px 0", color: "var(--text)", fontSize: "16px" }}>Card States & Interactions</h4>
+                
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))", gap: "16px", marginBottom: "24px" }}>
+                  <Card
+                    title="Default State"
+                    description="Hover to see actions appear"
+                    hasActions={true}
+                    actions={
+                      <ActionButton size="m" isQuiet>Edit</ActionButton>
+                    }
+                  />
+
+                  <Card
+                    title="Selected State"
+                    description="This card is currently selected"
+                    isSelected={true}
+                    hasActions={true}
+                    actions={
+                      <ActionButton size="m" isQuiet>Selected</ActionButton>
+                    }
+                  />
+
+                  <Card
+                    title="Focused State"
+                    description="Focus ring visible around card"
+                    isFocused={true}
+                    hasActions={true}
+                    actions={
+                      <ActionButton size="m" isQuiet>Focused</ActionButton>
+                    }
+                  />
+
+                  <Card
+                    title="Drop Target"
+                    description="Drag files here to upload"
+                    isDropTarget={true}
+                    hasQuickActions={true}
+                    quickActions={
+                      <div style={{ 
+                        width: "24px", 
+                        height: "24px", 
+                        border: "2px dashed #2563eb", 
+                        borderRadius: "6px", 
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        color: "#2563eb",
+                        fontSize: "12px"
+                      }}>
+                        +
+                      </div>
+                    }
+                  />
+                </div>
+              </div>
+
+              {/* Feature Summary */}
+              <div style={{ marginTop: "32px", padding: "16px", backgroundColor: "var(--background-alt)", borderRadius: "8px" }}>
+                <p><strong>Card Component Features:</strong></p>
+                <ul style={{ margin: "8px 0", paddingLeft: "20px" }}>
+                  <li><strong>Variants:</strong> Gallery, Quiet, and Horizontal layout options</li>
+                  <li><strong>Sub-elements:</strong> Cover photo, title, subtitle, description, footer, actions, quick actions</li>
+                  <li><strong>States:</strong> Default, selected, focused, drop target, and hover states</li>
+                  <li><strong>Interactive:</strong> Click handlers, action buttons, selection controls</li>
+                  <li><strong>Responsive:</strong> Container queries and flexible grid layouts</li>
+                  <li><strong>Accessibility:</strong> Proper ARIA roles, focus management, and semantic structure</li>
+                  <li><strong>Dark Theme:</strong> Full dark mode support with automatic detection</li>
+                  <li><strong>UXP Optimized:</strong> Nuclear div approach with ultra-high specificity CSS</li>
+                </ul>
+              </div>
             </div>
           </div>
         </TabPanel>
