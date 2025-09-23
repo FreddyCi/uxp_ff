@@ -19,6 +19,7 @@ import { ActionMenu } from "./components/ActionMenu";
 import { MenuItem } from "./components/MenuItem";
 import { Card } from "./components/Card";
 import { Checkbox } from "./components/Checkbox";
+import { Typography, Heading, Body, Emphasized, Code, Detail, Strong } from "./components/Typography";
 import { Tabs, TabList, Tab, TabPanel } from "./components/Tabs";
 import { usePluginStore } from "./store/usePluginStore";
 
@@ -161,6 +162,7 @@ const App: React.FC = () => {
           <Tab id="tab7">Actions</Tab>
           <Tab id="tab8">Cards</Tab>
           <Tab id="tab9">Checkboxes</Tab>
+          <Tab id="tab10">Typography</Tab>
         </TabList>
         
         <TabPanel id="tab1">
@@ -1286,6 +1288,235 @@ const App: React.FC = () => {
                 <li><strong>Sizes:</strong> S (12px), M (16px), L (20px), XL (24px) control sizes</li>
                 <li><strong>Icons:</strong> SVG icons with CSS fallbacks for maximum compatibility</li>
                 <li><strong>Focus Management:</strong> React Aria focus handling without state dependencies</li>
+              </ul>
+            </div>
+          </div>
+        </TabPanel>
+
+        <TabPanel id="tab10">
+          <div style={{ padding: "12px" }}>
+            <h3 style={{ margin: "0 0 16px 0", color: "var(--text)" }}>Typography</h3>
+            <p style={{ marginBottom: "24px", color: "var(--text)" }}>
+              Complete Spectrum Typography system with all text styles, sizes, and semantic elements.
+            </p>
+
+            {/* Typography Container Demo */}
+            <div style={{ marginBottom: "32px" }}>
+              <h4 style={{ margin: "0 0 16px 0", color: "var(--text)" }}>Typography Container</h4>
+              <div style={{ border: "1px solid var(--spectrum-border-color-default)", borderRadius: "4px", padding: "16px" }}>
+                <Typography>
+                  <Heading size="m" level={2}>Aliquet mauris eu</Heading>
+                  
+                  <Body size="m">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eleifend est mollis ligula lobortis, 
+                    tempus ultricies sapien lacinia. Nulla ut turpis velit. Sed finibus dapibus diam et sollicitudin. 
+                    Phasellus in ipsum nec ante elementum congue eget in leo. Morbi eleifend justo non rutrum venenatis. 
+                    Fusce cursus et lectus eu facilisis. Ut laoreet felis in magna dignissim feugiat.
+                  </Body>
+                  
+                  <Body size="m">
+                    <Emphasized>
+                      Ut et lectus finibus, aliquet mauris eu, tincidunt mi. Donec scelerisque orci sit amet venenatis luctus. 
+                      Morbi eget lacus est. Duis iaculis magna quis aliquam lacinia. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    </Emphasized>
+                  </Body>
+                  
+                  <Code size="m">console.log('Hello World!');</Code>
+                  
+                  <Detail size="m">Aliquet mauris eu</Detail>
+                  
+                  <Body size="m">
+                    Ut et lectus finibus, aliquet mauris eu, tincidunt mi. Donec scelerisque orci sit amet venenatis luctus. 
+                    Morbi eget lacus est. Duis iaculis magna quis aliquam lacinia. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  </Body>
+                </Typography>
+              </div>
+            </div>
+
+            {/* Heading Variants */}
+            <div style={{ marginBottom: "32px" }}>
+              <h4 style={{ margin: "0 0 16px 0", color: "var(--text)" }}>Heading Sizes</h4>
+              <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+                <Heading size="xs" level={6}>Extra Small Heading (xs)</Heading>
+                <Heading size="s" level={5}>Small Heading (s)</Heading>
+                <Heading size="m" level={4}>Medium Heading (m)</Heading>
+                <Heading size="l" level={3}>Large Heading (l)</Heading>
+                <Heading size="xl" level={2}>Extra Large Heading (xl)</Heading>
+                <Heading size="xxl" level={1}>Extra Extra Large Heading (xxl)</Heading>
+              </div>
+            </div>
+
+            {/* Body Text Variants */}
+            <div style={{ marginBottom: "32px" }}>
+              <h4 style={{ margin: "0 0 16px 0", color: "var(--text)" }}>Body Text Sizes</h4>
+              <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+                <Body size="xs">Extra Small body text - Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Body>
+                <Body size="s">Small body text - Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Body>
+                <Body size="m">Medium body text - Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Body>
+                <Body size="l">Large body text - Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Body>
+                <Body size="xl">Extra Large body text - Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Body>
+              </div>
+            </div>
+
+            {/* Text Styling Variants */}
+            <div style={{ marginBottom: "32px" }}>
+              <h4 style={{ margin: "0 0 16px 0", color: "var(--text)" }}>Text Styling</h4>
+              <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+                <Body size="m">Regular text with <Strong>strong text</Strong> and <Emphasized>emphasized text</Emphasized>.</Body>
+                <Body size="m">Combined <Strong emphasized>strong emphasized text</Strong> in body content.</Body>
+                <Body size="m" emphasized>Entirely emphasized paragraph text.</Body>
+                <Body size="m" strong>Entirely strong paragraph text.</Body>
+                <Body size="m" serif>Serif body text for better readability in longer content.</Body>
+                <Body size="m" as="div">Body text as div element instead of paragraph.</Body>
+              </div>
+            </div>
+
+            {/* Code Examples */}
+            <div style={{ marginBottom: "32px" }}>
+              <h4 style={{ margin: "0 0 16px 0", color: "var(--text)" }}>Code Blocks</h4>
+              <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+                <div>
+                  <p style={{ margin: "0 0 8px 0", fontSize: "14px", color: "var(--text)" }}>Inline code:</p>
+                  <Body size="m">Use the <Code size="s">useState</Code> hook for state management.</Body>
+                </div>
+                
+                <div>
+                  <p style={{ margin: "0 0 8px 0", fontSize: "14px", color: "var(--text)" }}>Code block:</p>
+                  <Code size="m" inline={false}>
+{`function greet(name) {
+  return \`Hello, \${name}!\`;
+}
+
+console.log(greet('World'));`}
+                  </Code>
+                </div>
+                
+                <div>
+                  <p style={{ margin: "0 0 8px 0", fontSize: "14px", color: "var(--text)" }}>Code sizes:</p>
+                  <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+                    <Code size="xs">Extra small code</Code>
+                    <Code size="s">Small code</Code>
+                    <Code size="m">Medium code</Code>
+                    <Code size="l">Large code</Code>
+                    <Code size="xl">Extra large code</Code>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Detail Text Examples */}
+            <div style={{ marginBottom: "32px" }}>
+              <h4 style={{ margin: "0 0 16px 0", color: "var(--text)" }}>Detail Text</h4>
+              <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+                <Detail size="xs">EXTRA SMALL DETAIL</Detail>
+                <Detail size="s">SMALL DETAIL</Detail>
+                <Detail size="m">MEDIUM DETAIL</Detail>
+                <Detail size="l">LARGE DETAIL</Detail>
+                <Detail size="xl">EXTRA LARGE DETAIL</Detail>
+                <div>
+                  <Detail size="s">CATEGORY LABEL</Detail>
+                  <Body size="m">Associated content with the detail label above.</Body>
+                </div>
+              </div>
+            </div>
+
+            {/* Real-world Examples */}
+            <div style={{ marginBottom: "32px" }}>
+              <h4 style={{ margin: "0 0 16px 0", color: "var(--text)" }}>Real-world Content</h4>
+              
+              <Typography>
+                <Detail size="s">BLOG POST</Detail>
+                <Heading size="l" level={1}>The Future of Design Systems</Heading>
+                <Detail size="s">MARCH 15, 2024 • 5 MIN READ</Detail>
+                
+                <Body size="m">
+                  Design systems have evolved significantly over the past decade. What started as simple style guides 
+                  have transformed into comprehensive ecosystems that enable <Strong>consistent, scalable design</Strong> 
+                  across organizations.
+                </Body>
+                
+                <Heading size="m" level={2}>Key Components</Heading>
+                
+                <Body size="m">
+                  Modern design systems typically include:
+                </Body>
+                
+                <Body size="s" as="ul" style={{ paddingLeft: "20px", listStyle: "disc" }}>
+                  <li>Design tokens for consistent styling</li>
+                  <li>Component libraries with documentation</li>
+                  <li>Guidelines for accessibility and usage</li>
+                  <li>Tools for design and development workflows</li>
+                </Body>
+                
+                <Body size="m">
+                  <Emphasized>
+                    The most successful design systems are those that balance flexibility with consistency, 
+                    allowing teams to move quickly while maintaining quality standards.
+                  </Emphasized>
+                </Body>
+                
+                <Body size="m">
+                  Implementation often involves tools like <Code>React</Code>, <Code>Vue</Code>, or <Code>Angular</Code> 
+                  for component development, paired with design tools like <Code>Figma</Code> or <Code>Sketch</Code>.
+                </Body>
+              </Typography>
+            </div>
+
+            {/* Mixed Content Example */}
+            <div style={{ marginBottom: "32px" }}>
+              <h4 style={{ margin: "0 0 16px 0", color: "var(--text)" }}>Technical Documentation</h4>
+              
+              <Typography>
+                <Heading size="m" level={2}>API Reference</Heading>
+                
+                <Body size="m">
+                  The <Code>Typography</Code> component accepts the following props:
+                </Body>
+                
+                <Code size="s" inline={false}>
+{`interface TypographyProps {
+  children?: ReactNode;
+  className?: string;
+  lang?: string;
+}`}
+                </Code>
+                
+                <Detail size="s">PARAMETERS</Detail>
+                
+                <Body size="s">
+                  <Strong>children</Strong> - The content to render within the typography container<br/>
+                  <Strong>className</Strong> - Additional CSS classes to apply<br/>
+                  <Strong>lang</Strong> - Language attribute for accessibility and styling
+                </Body>
+                
+                <Detail size="s">EXAMPLE USAGE</Detail>
+                
+                <Code size="s" inline={false}>
+{`<Typography lang="en-US">
+  <Heading size="l">Page Title</Heading>
+  <Body size="m">Content goes here...</Body>
+</Typography>`}
+                </Code>
+              </Typography>
+            </div>
+
+            {/* Implementation Notes */}
+            <div style={{ 
+              padding: "16px", 
+              backgroundColor: "var(--spectrum-global-color-gray-100)", 
+              borderRadius: "4px",
+              marginTop: "24px"
+            }}>
+              <h4 style={{ margin: "0 0 12px 0", color: "var(--text)" }}>Implementation Notes</h4>
+              <ul style={{ margin: "0", paddingLeft: "20px", color: "var(--text)", fontSize: "14px" }}>
+                <li><strong>Semantic HTML:</strong> Uses proper heading levels (h1-h6) and semantic elements</li>
+                <li><strong>Nuclear CSS:</strong> Ultra-high specificity overrides for UXP compatibility</li>
+                <li><strong>Size System:</strong> xs, s, m, l, xl, xxl sizes matching Spectrum specifications</li>
+                <li><strong>Text Styles:</strong> Emphasized (italic), Strong (bold), and combinations</li>
+                <li><strong>Typography Container:</strong> Provides consistent spacing and language context</li>
+                <li><strong>Accessibility:</strong> Proper semantic structure and ARIA support</li>
+                <li><strong>Font Families:</strong> Sans-serif default, serif variant, monospace for code</li>
+                <li><strong>Responsive:</strong> Container queries for mobile-friendly scaling</li>
               </ul>
             </div>
           </div>
