@@ -23,17 +23,17 @@ interface PluginState {
     disabledExample: string;
   };
   
-  // Switch component state (for Features tab demos)
-  switchPreferences: {
-    basicSwitch: boolean;
-    autoSave: boolean;
-    notifications: boolean;
-    sizeSmall: boolean;
-    sizeMedium: boolean;
-    sizeLarge: boolean;
-    sizeXL: boolean;
-    darkMode: boolean;
-    accessibility: boolean;
+  // Stepper component state (for Features tab demos)
+  stepperPreferences: {
+    basicStepper: number;
+    sizeStepper: number;
+    sizeSmall: number;
+    sizeMedium: number;
+    sizeLarge: number;
+    sizeXL: number;
+    rangedStepper: number;
+    disabledExample: number;
+    readOnlyExample: number;
   };
   
   // Actions
@@ -48,9 +48,10 @@ interface PluginState {
   // Radio actions
   setRadioPreference: (key: keyof PluginState['radioPreferences'], value: string) => void;
   
-  // Switch actions
-  setSwitchPreference: (key: keyof PluginState['switchPreferences'], value: boolean) => void;
-  toggleSwitch: (key: keyof PluginState['switchPreferences']) => void;
+  // Stepper actions
+  setStepperPreference: (key: keyof PluginState['stepperPreferences'], value: number) => void;
+  incrementStepper: (key: keyof PluginState['stepperPreferences'], step?: number) => void;
+  decrementStepper: (key: keyof PluginState['stepperPreferences'], step?: number) => void;
 }
 
 export const usePluginStore = create<PluginState>((set, get) => ({
@@ -72,17 +73,17 @@ export const usePluginStore = create<PluginState>((set, get) => ({
     disabledExample: 'disabled2',
   },
   
-  // Switch preferences initial state
-  switchPreferences: {
-    basicSwitch: false,
-    autoSave: false,
-    notifications: true,
-    sizeSmall: false,
-    sizeMedium: true,
-    sizeLarge: false,
-    sizeXL: false,
-    darkMode: true,
-    accessibility: true,
+  // Stepper preferences initial state
+  stepperPreferences: {
+    basicStepper: 0,
+    sizeStepper: 5,
+    sizeSmall: 1,
+    sizeMedium: 10,
+    sizeLarge: 100,
+    sizeXL: 1000,
+    rangedStepper: 50,
+    disabledExample: 25,
+    readOnlyExample: 75,
   },
   
   // Actions
@@ -119,21 +120,30 @@ export const usePluginStore = create<PluginState>((set, get) => ({
     }));
   },
   
-  // Switch actions
-  setSwitchPreference: (key: keyof PluginState['switchPreferences'], value: boolean) => {
+  // Stepper actions
+  setStepperPreference: (key: keyof PluginState['stepperPreferences'], value: number) => {
     set((state) => ({
-      switchPreferences: {
-        ...state.switchPreferences,
+      stepperPreferences: {
+        ...state.stepperPreferences,
         [key]: value
       }
     }));
   },
   
-  toggleSwitch: (key: keyof PluginState['switchPreferences']) => {
+  incrementStepper: (key: keyof PluginState['stepperPreferences'], step: number = 1) => {
     set((state) => ({
-      switchPreferences: {
-        ...state.switchPreferences,
-        [key]: !state.switchPreferences[key]
+      stepperPreferences: {
+        ...state.stepperPreferences,
+        [key]: state.stepperPreferences[key] + step
+      }
+    }));
+  },
+  
+  decrementStepper: (key: keyof PluginState['stepperPreferences'], step: number = 1) => {
+    set((state) => ({
+      stepperPreferences: {
+        ...state.stepperPreferences,
+        [key]: state.stepperPreferences[key] - step
       }
     }));
   }

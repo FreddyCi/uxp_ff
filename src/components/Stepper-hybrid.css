@@ -1,0 +1,418 @@
+/*!
+ * Hybrid Stepper Component - Official Spectrum CSS + Nuclear Div Approach
+ * Combines official Adobe Spectrum tokens with UXP-compatible markup
+ */
+
+/* =============================================================================
+   NUCLEAR DIV + SPECTRUM CSS RESET OVERRIDE
+   ============================================================================= */
+
+/* Ultra-high specificity selector for main stepper */
+div.uxp-reset--complete.spectrum-Stepper.spectrum-Stepper {
+  /* Nuclear reset */
+  all: unset !important;
+  
+  /* Re-establish stepper foundation */
+  box-sizing: border-box !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  position: relative !important;
+  
+  /* Official Spectrum Stepper foundation */
+  font-family: var(--spectrum-sans-font-family-stack, 'Adobe Clean', 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif) !important;
+  font-size: var(--spectrum-stepper-font-size, var(--spectrum-font-size-100, 14px)) !important;
+  line-height: var(--spectrum-stepper-line-height, var(--spectrum-line-height-100, 1.3)) !important;
+  
+  /* Standard sizing */
+  min-height: var(--spectrum-stepper-height, var(--spectrum-component-height-100, 32px)) !important;
+}
+
+/* Disabled state */
+div.uxp-reset--complete.spectrum-Stepper.spectrum-Stepper.is-disabled {
+  cursor: not-allowed !important;
+  opacity: 0.5 !important;
+}
+
+/* Read-only state */
+div.uxp-reset--complete.spectrum-Stepper.spectrum-Stepper.is-readOnly {
+  cursor: default !important;
+}
+
+/* Invalid state handled by textfield and button elements */
+
+/* =============================================================================
+   TEXTFIELD CONTAINER
+   ============================================================================= */
+
+/* Stepper textfield container */
+div.uxp-reset--complete.spectrum-Stepper.spectrum-Stepper .spectrum-Stepper-textfield {
+  /* Nuclear reset */
+  all: unset !important;
+  
+  /* Re-establish textfield fundamentals */
+  box-sizing: border-box !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  position: relative !important;
+  flex: 1 1 auto !important;
+  
+  /* Textfield styling */
+  min-inline-size: var(--spectrum-textfield-minimum-width-multiplier, 0) !important;
+  inline-size: var(--spectrum-textfield-width, 240px) !important;
+  min-block-size: var(--spectrum-component-height-100, 32px) !important;
+  border-radius: var(--spectrum-corner-radius-100, 4px) !important;
+  border: var(--spectrum-border-width-200, 2px) solid var(--spectrum-textfield-border-color, var(--spectrum-gray-400, #9ca3af)) !important;
+  background-color: var(--spectrum-textfield-background-color, var(--spectrum-gray-50, #f9fafb)) !important;
+  transition: all 200ms ease-out !important;
+}
+
+/* Textfield hover state */
+div.uxp-reset--complete.spectrum-Stepper.spectrum-Stepper:hover .spectrum-Stepper-textfield {
+  border-color: var(--spectrum-textfield-border-color-hover, var(--spectrum-gray-500, #6b7280)) !important;
+}
+
+/* Textfield focus-within state */
+div.uxp-reset--complete.spectrum-Stepper.spectrum-Stepper .spectrum-Stepper-textfield:focus-within {
+  border-color: var(--spectrum-textfield-border-color-key-focus, var(--spectrum-blue-800, #1e40af)) !important;
+  box-shadow: 0 0 0 1px var(--spectrum-textfield-border-color-key-focus, var(--spectrum-blue-800, #1e40af)) !important;
+}
+
+/* Textfield disabled state */
+div.uxp-reset--complete.spectrum-Stepper.spectrum-Stepper.is-disabled .spectrum-Stepper-textfield {
+  border-color: var(--spectrum-textfield-border-color-disabled, var(--spectrum-gray-200, #e5e7eb)) !important;
+  background-color: var(--spectrum-textfield-background-color-disabled, var(--spectrum-gray-100, #f3f4f6)) !important;
+}
+
+/* Textfield invalid state */
+div.uxp-reset--complete.spectrum-Stepper.spectrum-Stepper.is-invalid .spectrum-Stepper-textfield {
+  border-color: var(--spectrum-textfield-border-color-invalid, var(--spectrum-red-500, #ef4444)) !important;
+}
+
+div.uxp-reset--complete.spectrum-Stepper.spectrum-Stepper.is-invalid .spectrum-Stepper-textfield:focus-within {
+  border-color: var(--spectrum-textfield-border-color-invalid, var(--spectrum-red-500, #ef4444)) !important;
+  box-shadow: 0 0 0 1px var(--spectrum-textfield-border-color-invalid, var(--spectrum-red-500, #ef4444)) !important;
+}
+
+/* =============================================================================
+   INPUT ELEMENT
+   ============================================================================= */
+
+/* Stepper input */
+div.uxp-reset--complete.spectrum-Stepper.spectrum-Stepper .spectrum-Stepper-input {
+  /* Nuclear reset */
+  all: unset !important;
+  
+  /* Re-establish input fundamentals */
+  box-sizing: border-box !important;
+  display: block !important;
+  width: 100% !important;
+  
+  /* Input styling */
+  padding-inline: var(--spectrum-textfield-padding-x, 12px) !important;
+  padding-block: var(--spectrum-textfield-padding-y, 6px) !important;
+  font-family: inherit !important;
+  font-size: inherit !important;
+  line-height: inherit !important;
+  color: var(--spectrum-textfield-text-color, var(--spectrum-gray-900, #111827)) !important;
+  background: transparent !important;
+  border: none !important;
+  outline: none !important;
+  
+  /* Remove browser number input arrows */
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  -moz-appearance: textfield !important;
+}
+
+/* Hide browser number input spinners */
+div.uxp-reset--complete.spectrum-Stepper.spectrum-Stepper .spectrum-Stepper-input::-webkit-outer-spin-button,
+div.uxp-reset--complete.spectrum-Stepper.spectrum-Stepper .spectrum-Stepper-input::-webkit-inner-spin-button {
+  -webkit-appearance: none !important;
+  margin: 0 !important;
+}
+
+/* Input placeholder styling */
+div.uxp-reset--complete.spectrum-Stepper.spectrum-Stepper .spectrum-Stepper-input::placeholder {
+  color: var(--spectrum-textfield-placeholder-color, var(--spectrum-gray-500, #6b7280)) !important;
+  opacity: 1 !important;
+}
+
+/* Input disabled styling */
+div.uxp-reset--complete.spectrum-Stepper.spectrum-Stepper.is-disabled .spectrum-Stepper-input {
+  color: var(--spectrum-textfield-text-color-disabled, var(--spectrum-gray-400, #9ca3af)) !important;
+  cursor: not-allowed !important;
+}
+
+/* Input read-only styling */
+div.uxp-reset--complete.spectrum-Stepper.spectrum-Stepper.is-readOnly .spectrum-Stepper-input {
+  cursor: default !important;
+}
+
+/* =============================================================================
+   STEPPER BUTTONS CONTAINER
+   ============================================================================= */
+
+/* Stepper buttons container */
+div.uxp-reset--complete.spectrum-Stepper.spectrum-Stepper .spectrum-Stepper-buttons {
+  /* Nuclear reset */
+  all: unset !important;
+  
+  /* Re-establish buttons container fundamentals */
+  box-sizing: border-box !important;
+  display: inline-flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+  position: relative !important;
+  margin-inline-start: var(--spectrum-stepper-button-spacing, 8px) !important;
+}
+
+/* =============================================================================
+   STEPPER BUTTONS
+   ============================================================================= */
+
+/* Stepper button base */
+div.uxp-reset--complete.spectrum-Stepper.spectrum-Stepper .spectrum-Stepper-button {
+  /* Nuclear reset */
+  all: unset !important;
+  
+  /* Re-establish button fundamentals */
+  box-sizing: border-box !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  position: relative !important;
+  cursor: pointer !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  
+  /* Button sizing */
+  min-width: 24px !important;
+  min-height: 16px !important;
+  border: 1px solid var(--spectrum-button-border-color, var(--spectrum-gray-400, #9ca3af)) !important;
+  background-color: var(--spectrum-button-background-color, var(--spectrum-gray-75, #fafafa)) !important;
+  color: var(--spectrum-button-content-color, var(--spectrum-gray-700, #374151)) !important;
+  transition: all 200ms ease-out !important;
+}
+
+/* Top button styling */
+div.uxp-reset--complete.spectrum-Stepper.spectrum-Stepper .spectrum-InfieldButton--top {
+  border-top-left-radius: var(--spectrum-corner-radius-100, 4px) !important;
+  border-top-right-radius: var(--spectrum-corner-radius-100, 4px) !important;
+  border-bottom: none !important;
+}
+
+/* Bottom button styling */
+div.uxp-reset--complete.spectrum-Stepper.spectrum-Stepper .spectrum-InfieldButton--bottom {
+  border-bottom-left-radius: var(--spectrum-corner-radius-100, 4px) !important;
+  border-bottom-right-radius: var(--spectrum-corner-radius-100, 4px) !important;
+  border-top: none !important;
+}
+
+/* Button fill container */
+div.uxp-reset--complete.spectrum-Stepper.spectrum-Stepper .spectrum-InfieldButton-fill {
+  /* Nuclear reset */
+  all: unset !important;
+  
+  /* Re-establish fill fundamentals */
+  box-sizing: border-box !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* Button icons */
+div.uxp-reset--complete.spectrum-Stepper.spectrum-Stepper .spectrum-InfieldButton-icon {
+  /* Nuclear reset */
+  all: unset !important;
+  
+  /* Re-establish icon fundamentals */
+  box-sizing: border-box !important;
+  display: inline-block !important;
+  width: 10px !important;
+  height: 10px !important;
+  color: inherit !important;
+  fill: currentColor !important;
+  pointer-events: none !important;
+}
+
+/* Button hover states */
+div.uxp-reset--complete.spectrum-Stepper.spectrum-Stepper .spectrum-Stepper-button:hover:not(:disabled) {
+  background-color: var(--spectrum-button-background-color-hover, var(--spectrum-gray-200, #e5e7eb)) !important;
+  border-color: var(--spectrum-button-border-color-hover, var(--spectrum-gray-500, #6b7280)) !important;
+}
+
+/* Button active states */
+div.uxp-reset--complete.spectrum-Stepper.spectrum-Stepper .spectrum-Stepper-button:active:not(:disabled) {
+  background-color: var(--spectrum-button-background-color-down, var(--spectrum-gray-300, #d1d5db)) !important;
+  border-color: var(--spectrum-button-border-color-down, var(--spectrum-gray-600, #4b5563)) !important;
+}
+
+/* Button focus states */
+div.uxp-reset--complete.spectrum-Stepper.spectrum-Stepper .spectrum-Stepper-button:focus-visible {
+  outline: 2px solid var(--spectrum-focus-indicator-color, #2563eb) !important;
+  outline-offset: 2px !important;
+}
+
+/* Button disabled states */
+div.uxp-reset--complete.spectrum-Stepper.spectrum-Stepper .spectrum-Stepper-button:disabled {
+  cursor: not-allowed !important;
+  opacity: 0.5 !important;
+  background-color: var(--spectrum-button-background-color-disabled, var(--spectrum-gray-100, #f3f4f6)) !important;
+  border-color: var(--spectrum-button-border-color-disabled, var(--spectrum-gray-200, #e5e7eb)) !important;
+  color: var(--spectrum-button-content-color-disabled, var(--spectrum-gray-400, #9ca3af)) !important;
+}
+
+/* =============================================================================
+   SIZE VARIANTS
+   ============================================================================= */
+
+/* Small (S) */
+div.uxp-reset--complete.spectrum-Stepper.spectrum-Stepper.spectrum-Stepper--sizeS {
+  font-size: var(--spectrum-font-size-75, 12px) !important;
+  min-height: var(--spectrum-component-height-75, 24px) !important;
+}
+
+div.uxp-reset--complete.spectrum-Stepper.spectrum-Stepper.spectrum-Stepper--sizeS .spectrum-Stepper-textfield {
+  min-block-size: var(--spectrum-component-height-75, 24px) !important;
+}
+
+div.uxp-reset--complete.spectrum-Stepper.spectrum-Stepper.spectrum-Stepper--sizeS .spectrum-Stepper-input {
+  padding-inline: 8px !important;
+  padding-block: 4px !important;
+}
+
+div.uxp-reset--complete.spectrum-Stepper.spectrum-Stepper.spectrum-Stepper--sizeS .spectrum-Stepper-button {
+  min-width: 20px !important;
+  min-height: 12px !important;
+}
+
+div.uxp-reset--complete.spectrum-Stepper.spectrum-Stepper.spectrum-Stepper--sizeS .spectrum-InfieldButton-icon {
+  width: 8px !important;
+  height: 8px !important;
+}
+
+/* Medium (M) - Default */
+div.uxp-reset--complete.spectrum-Stepper.spectrum-Stepper.spectrum-Stepper--sizeM {
+  font-size: var(--spectrum-font-size-100, 14px) !important;
+  min-height: var(--spectrum-component-height-100, 32px) !important;
+}
+
+div.uxp-reset--complete.spectrum-Stepper.spectrum-Stepper.spectrum-Stepper--sizeM .spectrum-Stepper-textfield {
+  min-block-size: var(--spectrum-component-height-100, 32px) !important;
+}
+
+div.uxp-reset--complete.spectrum-Stepper.spectrum-Stepper.spectrum-Stepper--sizeM .spectrum-Stepper-input {
+  padding-inline: 12px !important;
+  padding-block: 6px !important;
+}
+
+div.uxp-reset--complete.spectrum-Stepper.spectrum-Stepper.spectrum-Stepper--sizeM .spectrum-Stepper-button {
+  min-width: 24px !important;
+  min-height: 16px !important;
+}
+
+div.uxp-reset--complete.spectrum-Stepper.spectrum-Stepper.spectrum-Stepper--sizeM .spectrum-InfieldButton-icon {
+  width: 10px !important;
+  height: 10px !important;
+}
+
+/* Large (L) */
+div.uxp-reset--complete.spectrum-Stepper.spectrum-Stepper.spectrum-Stepper--sizeL {
+  font-size: var(--spectrum-font-size-200, 16px) !important;
+  min-height: var(--spectrum-component-height-200, 40px) !important;
+}
+
+div.uxp-reset--complete.spectrum-Stepper.spectrum-Stepper.spectrum-Stepper--sizeL .spectrum-Stepper-textfield {
+  min-block-size: var(--spectrum-component-height-200, 40px) !important;
+}
+
+div.uxp-reset--complete.spectrum-Stepper.spectrum-Stepper.spectrum-Stepper--sizeL .spectrum-Stepper-input {
+  padding-inline: 16px !important;
+  padding-block: 8px !important;
+}
+
+div.uxp-reset--complete.spectrum-Stepper.spectrum-Stepper.spectrum-Stepper--sizeL .spectrum-Stepper-button {
+  min-width: 28px !important;
+  min-height: 20px !important;
+}
+
+div.uxp-reset--complete.spectrum-Stepper.spectrum-Stepper.spectrum-Stepper--sizeL .spectrum-InfieldButton-icon {
+  width: 12px !important;
+  height: 12px !important;
+}
+
+/* Extra Large (XL) */
+div.uxp-reset--complete.spectrum-Stepper.spectrum-Stepper.spectrum-Stepper--sizeXL {
+  font-size: var(--spectrum-font-size-300, 18px) !important;
+  min-height: var(--spectrum-component-height-300, 48px) !important;
+}
+
+div.uxp-reset--complete.spectrum-Stepper.spectrum-Stepper.spectrum-Stepper--sizeXL .spectrum-Stepper-textfield {
+  min-block-size: var(--spectrum-component-height-300, 48px) !important;
+}
+
+div.uxp-reset--complete.spectrum-Stepper.spectrum-Stepper.spectrum-Stepper--sizeXL .spectrum-Stepper-input {
+  padding-inline: 20px !important;
+  padding-block: 12px !important;
+}
+
+div.uxp-reset--complete.spectrum-Stepper.spectrum-Stepper.spectrum-Stepper--sizeXL .spectrum-Stepper-button {
+  min-width: 32px !important;
+  min-height: 24px !important;
+}
+
+div.uxp-reset--complete.spectrum-Stepper.spectrum-Stepper.spectrum-Stepper--sizeXL .spectrum-InfieldButton-icon {
+  width: 14px !important;
+  height: 14px !important;
+}
+
+/* =============================================================================
+   DARK THEME
+   ============================================================================= */
+
+/* Dark theme styles are handled by CSS custom properties in individual elements below */
+
+.spectrum--darkest div.uxp-reset--complete.spectrum-Stepper.spectrum-Stepper .spectrum-Stepper-textfield,
+.spectrum--dark div.uxp-reset--complete.spectrum-Stepper.spectrum-Stepper .spectrum-Stepper-textfield,
+[data-color-scheme="dark"] div.uxp-reset--complete.spectrum-Stepper.spectrum-Stepper .spectrum-Stepper-textfield {
+  border-color: var(--spectrum-gray-600, #4b5563) !important;
+  background-color: var(--spectrum-gray-800, #1f2937) !important;
+}
+
+.spectrum--darkest div.uxp-reset--complete.spectrum-Stepper.spectrum-Stepper .spectrum-Stepper-input,
+.spectrum--dark div.uxp-reset--complete.spectrum-Stepper.spectrum-Stepper .spectrum-Stepper-input,
+[data-color-scheme="dark"] div.uxp-reset--complete.spectrum-Stepper.spectrum-Stepper .spectrum-Stepper-input {
+  color: var(--spectrum-gray-50, #f9fafb) !important;
+}
+
+.spectrum--darkest div.uxp-reset--complete.spectrum-Stepper.spectrum-Stepper .spectrum-Stepper-button,
+.spectrum--dark div.uxp-reset--complete.spectrum-Stepper.spectrum-Stepper .spectrum-Stepper-button,
+[data-color-scheme="dark"] div.uxp-reset--complete.spectrum-Stepper.spectrum-Stepper .spectrum-Stepper-button {
+  border-color: var(--spectrum-gray-600, #4b5563) !important;
+  background-color: var(--spectrum-gray-700, #374151) !important;
+  color: var(--spectrum-gray-50, #f9fafb) !important;
+}
+
+/* =============================================================================
+   RESPONSIVE DESIGN
+   ============================================================================= */
+
+/* Container queries for responsive behavior */
+@container (max-width: 300px) {
+  div.uxp-reset--complete.spectrum-Stepper.spectrum-Stepper {
+    font-size: var(--spectrum-font-size-75, 12px) !important;
+  }
+  
+  div.uxp-reset--complete.spectrum-Stepper.spectrum-Stepper .spectrum-Stepper-textfield {
+    inline-size: 160px !important;
+  }
+}
+
+/* CJK language support */
+div.uxp-reset--complete.spectrum-Stepper.spectrum-Stepper:lang(ja),
+div.uxp-reset--complete.spectrum-Stepper.spectrum-Stepper:lang(ko),
+div.uxp-reset--complete.spectrum-Stepper.spectrum-Stepper:lang(zh) {
+  line-height: var(--spectrum-stepper-line-height-cjk, var(--spectrum-cjk-line-height-100, 1.5)) !important;
+}

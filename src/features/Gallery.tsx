@@ -2,15 +2,18 @@ import React from 'react';
 import { Button } from '../components/Button';
 import { Image } from '../components/Image';
 import { Table } from '../components/Table';
-import { Switch } from '../components/Switch';
+import { Stepper } from '../components/Stepper';
 import { usePluginStore } from '../store/usePluginStore';
 import { GridIcon } from 'hugeicons-react';
 
 export const Gallery: React.FC = () => {
   console.log('Gallery component rendering...');
 
-  // Zustand state management for switches
-  const { switchPreferences, setSwitchPreference, toggleSwitch } = usePluginStore();
+  // Zustand state management for steppers
+  const { 
+    stepperPreferences,
+    setStepperPreference
+  } = usePluginStore();
 
   // UXP Detection and debugging
   const isInUxp = typeof (globalThis as any).uxp !== 'undefined';
@@ -107,7 +110,7 @@ export const Gallery: React.FC = () => {
         </div>
       </div>
       
-      {/* Switch Controls Section */}
+      {/* Stepper Controls Section */}
       <div style={{ 
         marginBottom: '24px',
         padding: '16px',
@@ -121,7 +124,7 @@ export const Gallery: React.FC = () => {
           fontSize: '14px',
           fontWeight: '600'
         }}>
-          Switch Controls
+          Stepper Controls
         </h3>
         
         <div style={{
@@ -129,7 +132,7 @@ export const Gallery: React.FC = () => {
           flexDirection: 'column',
           gap: '12px'
         }}>
-          {/* Basic switches row */}
+          {/* Basic steppers row */}
           <div style={{
             display: 'flex',
             flexWrap: 'wrap',
@@ -138,37 +141,39 @@ export const Gallery: React.FC = () => {
             backgroundColor: '#383838',
             borderRadius: '6px'
           }}>
-            <Switch
-              size="m"
-              isSelected={switchPreferences.basicSwitch}
-              onChange={(checked) => setSwitchPreference('basicSwitch', checked)}
-            >
-              Basic Switch
-            </Switch>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+              <span style={{ fontSize: '11px', color: '#999', fontWeight: '600' }}>Basic Stepper</span>
+              <Stepper
+                size="m"
+                value={stepperPreferences.basicStepper}
+                onChange={(value) => setStepperPreference('basicStepper', value)}
+                placeholder="Enter number"
+              />
+            </div>
             
-            <Switch
-              size="m"
-              isSelected={switchPreferences.autoSave}
-              onChange={(checked) => setSwitchPreference('autoSave', checked)}
-            >
-              Auto Save
-            </Switch>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+              <span style={{ fontSize: '11px', color: '#999', fontWeight: '600' }}>Size Demo</span>
+              <Stepper
+                size="m"
+                value={stepperPreferences.sizeStepper}
+                onChange={(value) => setStepperPreference('sizeStepper', value)}
+                step={5}
+                placeholder="Step by 5"
+              />
+            </div>
             
-            <Switch
-              size="m"
-              isSelected={switchPreferences.notifications}
-              onChange={(checked) => setSwitchPreference('notifications', checked)}
-            >
-              Notifications
-            </Switch>
-            
-            <Switch
-              size="m"
-              isSelected={switchPreferences.darkMode}
-              onChange={(checked) => setSwitchPreference('darkMode', checked)}
-            >
-              Dark Mode
-            </Switch>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+              <span style={{ fontSize: '11px', color: '#999', fontWeight: '600' }}>Ranged Stepper</span>
+              <Stepper
+                size="m"
+                value={stepperPreferences.rangedStepper}
+                onChange={(value) => setStepperPreference('rangedStepper', value)}
+                min={0}
+                max={100}
+                step={10}
+                placeholder="0-100"
+              />
+            </div>
           </div>
           
           {/* Size variants row */}
@@ -182,38 +187,48 @@ export const Gallery: React.FC = () => {
           }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
               <span style={{ fontSize: '12px', color: '#999', fontWeight: '600' }}>SIZE VARIANTS</span>
-              <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
-                <Switch
-                  size="s"
-                  isSelected={switchPreferences.sizeSmall}
-                  onChange={(checked) => setSwitchPreference('sizeSmall', checked)}
-                >
-                  Small
-                </Switch>
+              <div style={{ display: 'flex', gap: '12px', alignItems: 'flex-end', flexWrap: 'wrap' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                  <span style={{ fontSize: '10px', color: '#999' }}>Small</span>
+                  <Stepper
+                    size="s"
+                    value={stepperPreferences.sizeSmall}
+                    onChange={(value) => setStepperPreference('sizeSmall', value)}
+                    placeholder="S"
+                  />
+                </div>
                 
-                <Switch
-                  size="m"
-                  isSelected={switchPreferences.sizeMedium}
-                  onChange={(checked) => setSwitchPreference('sizeMedium', checked)}
-                >
-                  Medium
-                </Switch>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                  <span style={{ fontSize: '10px', color: '#999' }}>Medium</span>
+                  <Stepper
+                    size="m"
+                    value={stepperPreferences.sizeMedium}
+                    onChange={(value) => setStepperPreference('sizeMedium', value)}
+                    placeholder="M"
+                  />
+                </div>
                 
-                <Switch
-                  size="l"
-                  isSelected={switchPreferences.sizeLarge}
-                  onChange={(checked) => setSwitchPreference('sizeLarge', checked)}
-                >
-                  Large
-                </Switch>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                  <span style={{ fontSize: '10px', color: '#999' }}>Large</span>
+                  <Stepper
+                    size="l"
+                    value={stepperPreferences.sizeLarge}
+                    onChange={(value) => setStepperPreference('sizeLarge', value)}
+                    step={10}
+                    placeholder="L"
+                  />
+                </div>
                 
-                <Switch
-                  size="xl"
-                  isSelected={switchPreferences.sizeXL}
-                  onChange={(checked) => setSwitchPreference('sizeXL', checked)}
-                >
-                  Extra Large
-                </Switch>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                  <span style={{ fontSize: '10px', color: '#999' }}>Extra Large</span>
+                  <Stepper
+                    size="xl"
+                    value={stepperPreferences.sizeXL}
+                    onChange={(value) => setStepperPreference('sizeXL', value)}
+                    step={100}
+                    placeholder="XL"
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -229,38 +244,40 @@ export const Gallery: React.FC = () => {
           }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
               <span style={{ fontSize: '12px', color: '#999', fontWeight: '600' }}>STATES</span>
-              <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
-                <Switch
-                  size="m"
-                  isSelected={switchPreferences.accessibility}
-                  onChange={(checked) => setSwitchPreference('accessibility', checked)}
-                >
-                  Accessibility
-                </Switch>
+              <div style={{ display: 'flex', gap: '12px', alignItems: 'center', flexWrap: 'wrap' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                  <span style={{ fontSize: '10px', color: '#999' }}>Disabled</span>
+                  <Stepper
+                    size="m"
+                    value={stepperPreferences.disabledExample}
+                    onChange={(value) => setStepperPreference('disabledExample', value)}
+                    isDisabled={true}
+                    placeholder="Disabled"
+                  />
+                </div>
                 
-                <Switch
-                  size="m"
-                  isSelected={false}
-                  isDisabled={true}
-                >
-                  Disabled Switch
-                </Switch>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                  <span style={{ fontSize: '10px', color: '#999' }}>Read Only</span>
+                  <Stepper
+                    size="m"
+                    value={stepperPreferences.readOnlyExample}
+                    onChange={(value) => setStepperPreference('readOnlyExample', value)}
+                    isReadOnly={true}
+                    placeholder="Read Only"
+                  />
+                </div>
                 
-                <Switch
-                  size="m"
-                  isSelected={true}
-                  isDisabled={true}
-                >
-                  Disabled Selected
-                </Switch>
-                
-                <Switch
-                  size="m"
-                  isSelected={true}
-                  isReadOnly={true}
-                >
-                  Read Only
-                </Switch>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                  <span style={{ fontSize: '10px', color: '#999' }}>Invalid</span>
+                  <Stepper
+                    size="m"
+                    value={-5}
+                    min={0}
+                    max={100}
+                    placeholder="Invalid"
+                    isInvalid={true}
+                  />
+                </div>
               </div>
             </div>
           </div>

@@ -16,6 +16,7 @@ export interface CheckboxProps {
   onChange?: (isSelected: boolean) => void;
   className?: string;
   id?: string;
+  slot?: string;
   'aria-label'?: string;
   'aria-labelledby'?: string;
   'aria-describedby'?: string;
@@ -34,6 +35,7 @@ export function Checkbox({
   onChange,
   className = '',
   id,
+  slot,
   ...ariaProps
 }: CheckboxProps) {
   const ref = useRef<HTMLInputElement>(null);
@@ -86,7 +88,7 @@ export function Checkbox({
   const iconSize = getIconSize();
 
   return (
-    <label className={checkboxClasses} htmlFor={id}>
+    <label className={checkboxClasses} htmlFor={id} slot={slot}>
       <input
         {...focusProps}
         ref={ref}
