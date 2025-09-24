@@ -2,8 +2,6 @@ import { ReactNode, useEffect, useId, HTMLAttributes, useMemo } from 'react';
 import { Button } from './Button';
 import './Modal-hybrid.css';
 
-export type ModalVariant = 'responsive' | 'fullscreen' | 'fullscreenTakeover';
-
 type ModalActionVariant = 'accent' | 'primary' | 'secondary' | 'negative';
 type ModalActionTreatment = 'fill' | 'outline';
 
@@ -18,7 +16,6 @@ export interface ModalAction {
 export interface ModalProps {
   id?: string;
   isOpen: boolean;
-  variant?: ModalVariant;
   title?: string;
   description?: string;
   children?: ReactNode;
@@ -37,7 +34,6 @@ export interface ModalProps {
 export function Modal({
   id,
   isOpen,
-  variant = 'responsive',
   title,
   description,
   children,
@@ -97,7 +93,7 @@ export function Modal({
   const modalClasses = [
     'uxp-reset--complete',
     'spectrum-Modal',
-    variant ? `spectrum-Modal--${variant}` : '',
+    'spectrum-Modal--responsive',
     isOpen ? 'is-open' : '',
     className,
   ]

@@ -41,7 +41,6 @@ const App: React.FC = () => {
     fileFormat,
     radioPreferences,
     isModalOpen,
-    modalVariant,
     modalTitle,
     modalBody,
     showModalUnderlay,
@@ -150,7 +149,6 @@ const App: React.FC = () => {
     }}>
       <Modal
         isOpen={isModalOpen}
-        variant={modalVariant}
         title={modalTitle}
         description={modalBody}
         showUnderlay={showModalUnderlay}
@@ -478,47 +476,22 @@ const App: React.FC = () => {
             <div style={{ marginBottom: "24px" }}>
               <h4 style={{ margin: "0 0 12px 0", color: "var(--text)", fontSize: "14px" }}>Hybrid Modal Demo</h4>
               <p style={{ marginBottom: "12px", color: "var(--text-muted)", fontSize: "12px", lineHeight: 1.5 }}>
-                Launch the Spectrum modal powered by our hybrid selectors and Zustand store. Each button opens the modal in a different layout variant, reusing the official content snippet you provided.
+                Launch the Spectrum modal powered by our hybrid selectors and Zustand store. We now focus on the responsive layout, keeping the experience consistent in UXP and web previews.
               </p>
               <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
                 <Button
                   variant="accent"
                   onPress={() => openModal({
-                    modalVariant: 'responsive',
-                    modalTitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+                    modalTitle: 'Responsive modal experience',
                     modalBody: modalContent,
                     showModalUnderlay: true,
                   })}
                 >
                   Launch Responsive Modal
                 </Button>
-                <Button
-                  variant="secondary"
-                  treatment="outline"
-                  onPress={() => openModal({
-                    modalVariant: 'fullscreen',
-                    modalTitle: 'Fullscreen modal experience',
-                    modalBody: modalContent,
-                    showModalUnderlay: true,
-                  })}
-                >
-                  Launch Fullscreen Modal
-                </Button>
-                <Button
-                  variant="secondary"
-                  treatment="outline"
-                  onPress={() => openModal({
-                    modalVariant: 'fullscreenTakeover',
-                    modalTitle: 'Fullscreen takeover modal',
-                    modalBody: modalContent,
-                    showModalUnderlay: true,
-                  })}
-                >
-                  Launch Takeover Modal
-                </Button>
               </div>
               <p style={{ marginTop: "12px", color: "var(--text-muted)", fontSize: "12px" }}>
-                Modal visibility, copy, and layout live in `usePluginStore`, so the UI stays declarative whether we run in UXP or the web preview.
+                Modal visibility, copy, and presentation live in `usePluginStore`, so the UI stays declarative whether we run in UXP or the web preview.
               </p>
             </div>
 
