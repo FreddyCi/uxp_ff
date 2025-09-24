@@ -14,12 +14,14 @@ div[role="list"].uxp-reset--complete.spectrum-Steplist.spectrum-Steplist {
   all: unset !important;
   display: flex !important;
   align-items: flex-start !important;
-  gap: var(--spectrum-steplist-step-width, 40px) !important;
+  justify-content: space-between !important;
+  gap: 0 !important;
   width: 100% !important;
   padding-block: var(--spectrum-steplist-topPadding, 16px) !important;
   padding-inline: var(--spectrum-steplist-sidePadding, 0) !important;
   box-sizing: border-box !important;
   list-style: none !important;
+  color: var(--text, var(--spectrum-neutral-content-color-default, rgba(15, 23, 42, 0.85))) !important;
 }
 
 div[role="list"].uxp-reset--complete.spectrum-Steplist.spectrum-Steplist.spectrum-Steplist--small {
@@ -34,7 +36,7 @@ div[role="list"].uxp-reset--complete.spectrum-Steplist.spectrum-Steplist .spectr
   min-width: 0 !important;
   flex: 1 1 0 !important;
   column-gap: 0 !important;
-  color: var(--spectrum-steplist-incomplete-label-color, rgba(15, 23, 42, 0.65)) !important;
+  color: inherit !important;
 }
 
 div[role="list"].uxp-reset--complete.spectrum-Steplist.spectrum-Steplist .spectrum-Steplist-content {
@@ -42,6 +44,7 @@ div[role="list"].uxp-reset--complete.spectrum-Steplist.spectrum-Steplist .spectr
   flex-direction: column !important;
   align-items: center !important;
   row-gap: calc(var(--uxp-steplist-label-offset) * 0.5) !important;
+  width: 100% !important;
 }
 
 div[role="list"].uxp-reset--complete.spectrum-Steplist.spectrum-Steplist .spectrum-Steplist-label {
@@ -50,7 +53,8 @@ div[role="list"].uxp-reset--complete.spectrum-Steplist.spectrum-Steplist .spectr
   font-weight: var(--spectrum-regular-font-weight, 400) !important;
   color: inherit !important;
   letter-spacing: 0 !important;
-  white-space: nowrap !important;
+  white-space: normal !important;
+  text-align: center !important;
 }
 
 div[role="list"].uxp-reset--complete.spectrum-Steplist.spectrum-Steplist .spectrum-Steplist-markerContainer {
@@ -90,10 +94,6 @@ div[role="list"].uxp-reset--complete.spectrum-Steplist.spectrum-Steplist .spectr
 }
 
 /* Complete state */
-div[role="list"].uxp-reset--complete.spectrum-Steplist.spectrum-Steplist .spectrum-Steplist-item.is-complete {
-  color: var(--spectrum-steplist-complete-label-text-color, rgba(15, 23, 42, 0.95)) !important;
-}
-
 div[role="list"].uxp-reset--complete.spectrum-Steplist.spectrum-Steplist .spectrum-Steplist-item.is-complete .spectrum-Steplist-marker {
   border-color: var(--spectrum-steplist-complete-marker-background-color, rgb(59, 130, 246)) !important;
   background-color: var(--spectrum-steplist-complete-marker-background-color, rgb(59, 130, 246)) !important;
@@ -104,10 +104,6 @@ div[role="list"].uxp-reset--complete.spectrum-Steplist.spectrum-Steplist .spectr
 }
 
 /* Current/selected state */
-div[role="list"].uxp-reset--complete.spectrum-Steplist.spectrum-Steplist .spectrum-Steplist-item.is-selected {
-  color: var(--spectrum-steplist-current-label-text-color, rgb(15, 23, 42)) !important;
-}
-
 div[role="list"].uxp-reset--complete.spectrum-Steplist.spectrum-Steplist .spectrum-Steplist-item.is-selected .spectrum-Steplist-marker {
   border-color: var(--spectrum-steplist-current-marker-color, rgb(59, 130, 246)) !important;
   background-color: var(--spectrum-component-background-color-default, rgb(255, 255, 255)) !important;
@@ -123,6 +119,7 @@ div[role="list"].uxp-reset--complete.spectrum-Steplist.spectrum-Steplist.spectru
   cursor: pointer !important;
   border-radius: var(--uxp-steplist-marker-hit-area) !important;
   padding-inline: calc(var(--uxp-steplist-label-offset) * 0.5) !important;
+  width: 100% !important;
 }
 
 div[role="list"].uxp-reset--complete.spectrum-Steplist.spectrum-Steplist.spectrum-Steplist--interactive .spectrum-Steplist-link:focus-visible {
@@ -140,7 +137,7 @@ div[role="list"].uxp-reset--complete.spectrum-Steplist.spectrum-Steplist.spectru
 
 /* Dark theme overrides */
 [data-theme="dark"] div[role="list"].uxp-reset--complete.spectrum-Steplist.spectrum-Steplist {
-  color: var(--spectrum-neutral-content-color-default, rgba(226, 232, 240, 0.75)) !important;
+  color: var(--text, var(--spectrum-neutral-content-color-default, rgba(226, 232, 240, 0.85))) !important;
 }
 
 [data-theme="dark"] div[role="list"].uxp-reset--complete.spectrum-Steplist.spectrum-Steplist .spectrum-Steplist-marker {
@@ -151,17 +148,9 @@ div[role="list"].uxp-reset--complete.spectrum-Steplist.spectrum-Steplist.spectru
   background-color: var(--spectrum-steplist-incomplete-segment-border-block-end-color, rgba(226, 232, 240, 0.25)) !important;
 }
 
-[data-theme="dark"] div[role="list"].uxp-reset--complete.spectrum-Steplist.spectrum-Steplist .spectrum-Steplist-item.is-complete {
-  color: var(--spectrum-steplist-complete-label-text-color, rgba(248, 250, 252, 0.95)) !important;
-}
-
 [data-theme="dark"] div[role="list"].uxp-reset--complete.spectrum-Steplist.spectrum-Steplist .spectrum-Steplist-item.is-complete .spectrum-Steplist-marker {
   background-color: var(--spectrum-steplist-complete-marker-background-color, rgb(96, 165, 250)) !important;
   border-color: var(--spectrum-steplist-complete-marker-background-color, rgb(96, 165, 250)) !important;
-}
-
-[data-theme="dark"] div[role="list"].uxp-reset--complete.spectrum-Steplist.spectrum-Steplist .spectrum-Steplist-item.is-selected {
-  color: var(--spectrum-steplist-current-label-text-color, rgb(248, 250, 252)) !important;
 }
 
 [data-theme="dark"] div[role="list"].uxp-reset--complete.spectrum-Steplist.spectrum-Steplist .spectrum-Steplist-item.is-selected .spectrum-Steplist-marker {
