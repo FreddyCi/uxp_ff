@@ -701,6 +701,44 @@ div[role="gridcell"].uxp-reset--complete.spectrum-grid-item.spectrum-grid-item {
 - Preserve the Spectrum variants (`--frame`, `--compact`, `--fluid`) by translating them into flex-specific tokens
 - Validate both `pnpm run build` *and* `pnpm run build:uxp` after layout changes to guarantee host parity
 
+### Breakthrough: StepList Progress Component
+
+**Before (Failed approaches):**
+- ❌ Horizontal label layout caused uneven spacing once we shrank the card footprint
+- ❌ Theme-neutral text color fell back to gray, making the active step unreadable on dark backgrounds
+- ❌ Experimenting with CSS Grid collapsed the list entirely inside the UXP bundle
+
+**After (Hybrid approach):**
+- ✅ Vertical stacking with a dedicated `.spectrum-Steplist-content` wrapper keeps the label above each marker while preserving Spectrum semantics
+- ✅ Labels now inherit the global `--text` token (with dark-theme fallback), so copy always picks the correct light/dark primary color
+- ✅ Retained flexbox (`justify-content: space-between`) for reliable 1/N distribution after grid auto-columns failed inside UXP
+- ✅ Interactive variant keeps the full `StepList` width clickable thanks to `width: 100%` on `.spectrum-Steplist-link`
+- ✅ Zustand-backed `currentStep` state syncs the card summary and the broader About tab demos
+
+**Key snippet:**
+```tsx
+<StepList
+  steps={steplist.steps}
+  currentStep={steplist.currentStep}
+  interactive
+  onStepChange={setSteplistCurrentStep}
+/>
+```
+
+**Theme-aware typography fix:**
+```css
+div[role="list"].uxp-reset--complete.spectrum-Steplist.spectrum-Steplist {
+  color: var(--text, var(--spectrum-neutral-content-color-default, rgba(15, 23, 42, 0.85))) !important;
+}
+
+div[role="list"].uxp-reset--complete.spectrum-Steplist.spectrum-Steplist .spectrum-Steplist-label {
+  font-size: var(--spectrum-heading-xs-text-size, 12px) !important;
+  text-align: center !important;
+}
+```
+
+**Spacing takeaway:** Keep flex in charge of step distribution—UXP flex gap limitations mean our markers stay even only when we combine `flex: 1 1 0` with `justify-content: space-between` and let the marker container handle micro-alignment.
+
 ### Breakthrough: Complete Actions Ecosystem
 
 **Final Achievement: 5-Component Actions System**
