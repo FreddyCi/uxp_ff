@@ -1,5 +1,6 @@
 import { ReactNode, useEffect, useId, HTMLAttributes, useMemo } from 'react';
 import { Button } from './Button';
+import { CloseButton } from './CloseButton';
 import './Modal-hybrid.css';
 
 type ModalActionVariant = 'accent' | 'primary' | 'secondary' | 'negative';
@@ -145,16 +146,12 @@ export function Modal({
               )}
 
               {isDismissable && (
-                <Button
-                  variant="secondary"
-                  treatment="outline"
-                  size="small"
-                  className="spectrum-Modal-closeButton"
-                  onPress={() => onClose?.()}
+                <CloseButton
                   aria-label="Close modal"
-                >
-                  Close
-                </Button>
+                  className="spectrum-Modal-closeButton"
+                  size="small"
+                  onPress={() => onClose?.()}
+                />
               )}
             </div>
           )}

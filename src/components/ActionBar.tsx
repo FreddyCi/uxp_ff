@@ -1,5 +1,6 @@
 import React from "react";
 import { useRef } from "react";
+import { CloseButton } from "./CloseButton";
 import "./ActionBar-hybrid.css";
 
 interface ActionBarProps {
@@ -74,15 +75,12 @@ export const ActionBar: React.FC<ActionBarProps> = ({
         
         {/* Close button */}
         {onClearSelection && (
-          <button
-            className="spectrum-CloseButton"
-            onClick={onClearSelection}
+          <CloseButton
             aria-label="Clear selection"
-          >
-            <svg className="spectrum-Icon spectrum-CloseButton-icon" width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-              <path d="M12.207 10.793a1 1 0 0 1 0 1.414l-.5.5a1 1 0 0 1-1.414 0L8 10.414l-2.293 2.293a1 1 0 0 1-1.414 0l-.5-.5a1 1 0 0 1 0-1.414L6.086 8 3.793 5.707a1 1 0 0 1 0-1.414l.5-.5a1 1 0 0 1 1.414 0L8 6.086l2.293-2.293a1 1 0 0 1 1.414 0l.5.5a1 1 0 0 1 0 1.414L9.914 8l2.293 2.293z"/>
-            </svg>
-          </button>
+            className="spectrum-ActionBar-closeButton"
+            onPress={onClearSelection}
+            size="small"
+          />
         )}
       </div>
     </div>

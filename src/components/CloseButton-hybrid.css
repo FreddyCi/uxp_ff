@@ -1,0 +1,94 @@
+/*
+ * Hybrid Close Button Component - Spectrum CSS alignment with UXP-safe markup
+ */
+
+div[role="button"].uxp-reset--complete.spectrum-CloseButton {
+  all: unset !important;
+  box-sizing: border-box !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  inline-size: var(--spectrum-component-height-100, 32px) !important;
+  block-size: var(--spectrum-component-height-100, 32px) !important;
+  border-radius: var(--spectrum-component-height-100, 32px) !important;
+  background-color: var(--spectrum-closebutton-background-color-default, transparent) !important;
+  color: var(--spectrum-closebutton-icon-color-default, var(--spectrum-neutral-content-color-default, #1f2937)) !important;
+  transition: background-color var(--spectrum-animation-duration-100, 0.16s) ease-out,
+    color var(--spectrum-animation-duration-100, 0.16s) ease-out,
+    box-shadow var(--spectrum-animation-duration-100, 0.16s) ease-out;
+}
+
+div[role="button"].uxp-reset--complete.spectrum-CloseButton:hover:not([aria-disabled="true"]) {
+  background-color: var(--spectrum-closebutton-background-color-hover, var(--spectrum-background-layer-2-color, rgba(15, 23, 42, 0.06))) !important;
+  color: var(--spectrum-closebutton-icon-color-hover, var(--spectrum-neutral-content-color-hover, #111827)) !important;
+}
+
+div[role="button"].uxp-reset--complete.spectrum-CloseButton:active:not([aria-disabled="true"]) {
+  background-color: var(--spectrum-closebutton-background-color-down, var(--spectrum-background-layer-3-color, rgba(15, 23, 42, 0.1))) !important;
+  color: var(--spectrum-closebutton-icon-color-down, var(--spectrum-neutral-content-color-down, #0f172a)) !important;
+}
+
+div[role="button"].uxp-reset--complete.spectrum-CloseButton:focus-visible {
+  outline: none !important;
+  box-shadow: 0 0 0 var(--spectrum-focus-indicator-thickness, 2px) var(--spectrum-focus-indicator-color, #2563eb) !important;
+  background-color: var(--spectrum-closebutton-background-color-focus, var(--spectrum-background-layer-2-color, rgba(15, 23, 42, 0.06))) !important;
+  color: var(--spectrum-closebutton-icon-color-focus, var(--spectrum-neutral-content-color-key-focus, #1d4ed8)) !important;
+}
+
+div[role="button"].uxp-reset--complete.spectrum-CloseButton[aria-disabled="true"] {
+  background-color: var(--spectrum-closebutton-background-color-disabled, transparent) !important;
+  color: var(--spectrum-closebutton-icon-color-disabled, var(--spectrum-disabled-content-color, rgba(148, 163, 184, 0.9))) !important;
+  cursor: not-allowed !important;
+  pointer-events: none !important;
+  opacity: 0.6 !important;
+}
+
+div[role="button"].uxp-reset--complete.spectrum-CloseButton .spectrum-CloseButton-UIIcon {
+  display: block !important;
+  inline-size: 100% !important;
+  block-size: 100% !important;
+  fill: currentColor !important;
+  pointer-events: none !important;
+}
+
+/* Size variants */
+div[role="button"].uxp-reset--complete.spectrum-CloseButton.spectrum-CloseButton--sizeS {
+  inline-size: var(--spectrum-component-height-75, 24px) !important;
+  block-size: var(--spectrum-component-height-75, 24px) !important;
+  border-radius: var(--spectrum-component-height-75, 24px) !important;
+}
+
+div[role="button"].uxp-reset--complete.spectrum-CloseButton.spectrum-CloseButton--sizeL {
+  inline-size: var(--spectrum-component-height-200, 40px) !important;
+  block-size: var(--spectrum-component-height-200, 40px) !important;
+  border-radius: var(--spectrum-component-height-200, 40px) !important;
+}
+
+div[role="button"].uxp-reset--complete.spectrum-CloseButton.spectrum-CloseButton--sizeXL {
+  inline-size: var(--spectrum-component-height-300, 48px) !important;
+  block-size: var(--spectrum-component-height-300, 48px) !important;
+  border-radius: var(--spectrum-component-height-300, 48px) !important;
+}
+
+/* Dark theme adjustments */
+[data-theme="dark"] div[role="button"].uxp-reset--complete.spectrum-CloseButton {
+  background-color: var(--spectrum-closebutton-background-color-default, transparent) !important;
+  color: var(--spectrum-closebutton-icon-color-default, var(--spectrum-neutral-content-color-default, #e5e7eb)) !important;
+}
+
+[data-theme="dark"] div[role="button"].uxp-reset--complete.spectrum-CloseButton:hover:not([aria-disabled="true"]) {
+  background-color: var(--spectrum-closebutton-background-color-hover, rgba(255, 255, 255, 0.08)) !important;
+  color: var(--spectrum-closebutton-icon-color-hover, #ffffff) !important;
+}
+
+[data-theme="dark"] div[role="button"].uxp-reset--complete.spectrum-CloseButton:active:not([aria-disabled="true"]) {
+  background-color: var(--spectrum-closebutton-background-color-down, rgba(255, 255, 255, 0.12)) !important;
+  color: var(--spectrum-closebutton-icon-color-down, #f8fafc) !important;
+}
+
+div[role="button"].uxp-reset--complete.spectrum-CloseButton + div[role="button"].uxp-reset--complete.spectrum-CloseButton {
+  margin-inline-start: var(--spectrum-spacing-100, 8px) !important;
+}
