@@ -27,6 +27,7 @@ import { AssetCard } from "./components/AssetCard";
 import { AssetList } from "./components/AssetList";
 import { Grid, GridItem } from "./components/Grid";
 import { Modal } from "./components/Modal";
+import { StepList } from "./components/StepList";
 import { usePluginStore } from "./store/usePluginStore";
 
 
@@ -40,6 +41,7 @@ const App: React.FC = () => {
     isDarkMode, 
     fileFormat,
     radioPreferences,
+    steplist,
     isModalOpen,
     modalTitle,
     modalBody,
@@ -49,6 +51,9 @@ const App: React.FC = () => {
     setFileFormat,
     clearRecentFiles,
     setRadioPreference,
+    setSteplistCurrentStep,
+    goToNextSteplistStep,
+    goToPreviousSteplistStep,
     openModal,
     closeModal
   } = usePluginStore();
@@ -493,6 +498,51 @@ const App: React.FC = () => {
               <p style={{ marginTop: "12px", color: "var(--text-muted)", fontSize: "12px" }}>
                 Modal visibility, copy, and presentation live in `usePluginStore`, so the UI stays declarative whether we run in UXP or the web preview.
               </p>
+            </div>
+
+            <div style={{ marginBottom: "24px" }}>
+              <h4 style={{ margin: "0 0 12px 0", color: "var(--text)", fontSize: "14px" }}>Steplist (static)</h4>
+              <p style={{ marginBottom: "12px", color: "var(--text-muted)", fontSize: "12px", lineHeight: 1.5 }}>
+                A static steplist communicates progress through a workflow. Status styles are determined purely by the current step, so previous stages render as complete while the upcoming ones remain inactive.
+              </p>
+              <StepList
+                steps={steplist.steps}
+                currentStep={steplist.currentStep}
+              />
+            </div>
+
+            <div style={{ marginBottom: "24px" }}>
+              <h4 style={{ margin: "0 0 12px 0", color: "var(--text)", fontSize: "14px" }}>Steplist (interactive)</h4>
+              <p style={{ marginBottom: "12px", color: "var(--text-muted)", fontSize: "12px", lineHeight: 1.5 }}>
+                Interactive steplists wrap each marker with a focusable target. Click or use the keyboard to jump to any stepthe Zustand store updates so other UI can react in sync.
+              </p>
+              <StepList
+                steps={steplist.steps}
+                currentStep={steplist.currentStep}
+                interactive
+                onStepChange={setSteplistCurrentStep}
+              />
+              <div style={{ display: "flex", gap: "8px", marginTop: "12px" }}>
+                <Button
+                  variant="secondary"
+                  size="small"
+                  onPress={goToPreviousSteplistStep}
+                  isDisabled={steplist.currentStep === 0}
+                >
+                  Previous
+                </Button>
+                <Button
+                  variant="accent"
+                  size="small"
+                  onPress={goToNextSteplistStep}
+                  isDisabled={steplist.currentStep === steplist.steps.length - 1}
+                >
+                  Next
+                </Button>
+                <Detail size="s" style={{ alignSelf: "center", color: "var(--text-muted)" }}>
+                  Step {steplist.currentStep + 1} of {steplist.steps.length}
+                </Detail>
+              </div>
             </div>
 
             <div style={{ fontSize: "12px", color: "var(--text-disabled)" }}>

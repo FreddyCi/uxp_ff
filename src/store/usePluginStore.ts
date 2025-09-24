@@ -31,6 +31,16 @@ interface PluginState {
   stepperPreferences: {
     sizeXL: number;
   };
+
+  // Steplist component state (for About tab demo)
+  steplist: {
+    steps: {
+      id: string;
+      label: string;
+      description?: string;
+    }[];
+    currentStep: number;
+  };
   
   // Actions
   setLastSavedFile: (path: string) => void;
@@ -50,6 +60,11 @@ interface PluginState {
   setStepperPreference: (key: keyof PluginState['stepperPreferences'], value: number) => void;
   incrementStepper: (key: keyof PluginState['stepperPreferences'], step?: number) => void;
   decrementStepper: (key: keyof PluginState['stepperPreferences'], step?: number) => void;
+
+  // Steplist actions
+  setSteplistCurrentStep: (index: number) => void;
+  goToNextSteplistStep: () => void;
+  goToPreviousSteplistStep: () => void;
 }
 
 export const usePluginStore = create<PluginState>((set, get) => ({
@@ -78,6 +93,17 @@ export const usePluginStore = create<PluginState>((set, get) => ({
   // Stepper preferences initial state
   stepperPreferences: {
     sizeXL: 1000,
+  },
+
+  // Steplist initial state
+  steplist: {
+    steps: [
+      { id: 'discover', label: 'Discovery' },
+      { id: 'design', label: 'Design' },
+      { id: 'develop', label: 'Development' },
+      { id: 'deliver', label: 'Delivery' },
+    ],
+    currentStep: 2,
   },
   
   // Actions
@@ -149,5 +175,41 @@ export const usePluginStore = create<PluginState>((set, get) => ({
         [key]: state.stepperPreferences[key] - step
       }
     }));
-  }
+  },
+
+  // Steplist actions
+  setSteplistCurrentStep: (index: number) => {
+    set((state) => {
+      const maxIndex = state.steplist.steps.length - 1;
+      const clampedIndex = Math.max(0, Math.min(index, maxIndex));
+      return {
+        steplist: {
+          ...state.steplist,
+          currentStep: clampedIndex,
+        },
+      };
+    });
+  },
+
+  goToNextSteplistStep: () => {
+    set((state) => {
+      const maxIndex = state.steplist.steps.length - 1;
+      const nextIndex = Math.min(state.steplist.currentStep + 1, maxIndex);
+      return {
+        steplist: {
+          ...state.steplist,
+          currentStep: nextIndex,
+        },
+      };
+    });
+  },
+
+  goToPreviousSteplistStep: () => {
+    set((state) => ({
+      steplist: {
+        ...state.steplist,
+        currentStep: Math.max(state.steplist.currentStep - 1, 0),
+      },
+    }));
+  },
 }));
