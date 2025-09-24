@@ -431,6 +431,24 @@ cat > component.css << 'EOF'
 EOF
 ```
 
+### "My StepList disappeared after a layout tweak"
+
+**Cause**: Swapping the root container to CSS Grid made UXP ignore `grid-auto-columns`, collapsing every list item to zero width.
+**Solution**:
+```css
+/* Keep flexbox in charge of distribution */
+div[role="list"].uxp-reset--complete.spectrum-Steplist.spectrum-Steplist {
+  display: flex !important;
+  justify-content: space-between !important;
+}
+
+/* Preserve full-width interactive hit area */
+.spectrum-Steplist-link {
+  width: 100% !important;
+}
+```
+Pair this with `flex: 1 1 0` on the items so each step takes an equal share of the row inside narrow cards.
+
 ## 🎯 Component Evolution Pattern
 
 ### The Hybrid Component Development Lifecycle
@@ -738,6 +756,38 @@ div[role="list"].uxp-reset--complete.spectrum-Steplist.spectrum-Steplist .spectr
 ```
 
 **Spacing takeaway:** Keep flex in charge of step distribution—UXP flex gap limitations mean our markers stay even only when we combine `flex: 1 1 0` with `justify-content: space-between` and let the marker container handle micro-alignment.
+
+### Breakthrough: Toast notifications
+
+**What changed:** We introduced a Spectrum-aligned toast that rides on top of the UI, powered by the global Zustand store.
+
+- ✅ **Global delivery**: Toast state lives in `usePluginStore`, so any feature can dispatch a message with `showToast({ title, variant, actionLabel })` and the overlay renders instantly.
+- ✅ **Hybrid markup**: `div[role="status"].uxp-reset--complete.spectrum-Toast.spectrum-Toast` keeps the nuclear reset strategy intact while matching Spectrum’s class contract (double class for specificity, `data-variant` attribute for theming hooks).
+- ✅ **Static white controls**: The inline action button and dismiss affordance reuse the nuclear pattern with toast-specific high-specificity rules so text/icons stay legible on dark translucent backgrounds.
+- ✅ **Variant theming**: Neutral, positive, negative, info, and warning states map to custom properties (`--spectrum-toast-background-color-*`), letting the same component read as calming, celebratory, or urgent without extra markup.
+- ✅ **UXP-safe overlay**: The toast wrapper uses fixed positioning instead of the unreliable CSS Grid/GAP combos that previously broke inside host panels.
+
+**Key snippet:**
+```tsx
+showToast({
+  title: "File has been archived",
+  description: "Undo from the archive within the next 30 days.",
+  actionLabel: "Undo",
+  onAction: () => console.log("Undo archive from toast"),
+});
+```
+
+**High-specificity action styling:**
+```css
+div[role="button"].uxp-reset--complete.spectrum-Toast-action.spectrum-Toast-action {
+  all: unset !important;
+  border: 1px solid rgba(255, 255, 255, 0.7) !important;
+  background: transparent !important;
+  color: #ffffff !important;
+}
+```
+
+**Implementation insight:** Nest the overlay inside a `pointer-events: none` wrapper so the toast floats above the app without blocking layout, then re-enable `pointer-events: auto` on the toast itself. This keeps interactions snappy while preserving Spectrum’s floating notification feel.
 
 ### Breakthrough: Complete Actions Ecosystem
 

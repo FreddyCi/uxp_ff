@@ -1,0 +1,208 @@
+/*!
+ * Hybrid Toast Component - Spectrum CSS aligned markup with UXP-safe overrides
+ */
+
+/* =============================================================================
+   TOAST CONTAINER
+   ============================================================================= */
+div[role="status"].uxp-reset--complete.spectrum-Toast.spectrum-Toast,
+div[role="alert"].uxp-reset--complete.spectrum-Toast.spectrum-Toast {
+  all: unset !important;
+  box-sizing: border-box !important;
+  display: flex !important;
+  align-items: stretch !important;
+  min-inline-size: 280px !important;
+  max-inline-size: min(480px, 90vw) !important;
+  background-color: var(--spectrum-toast-background-color-neutral, rgba(15, 23, 42, 0.92)) !important;
+  color: var(--spectrum-toast-content-color, #ffffff) !important;
+  border-radius: var(--spectrum-corner-radius-200, 12px) !important;
+  border-inline-start: 4px solid var(--spectrum-toast-border-color-neutral, #94a3b8) !important;
+  padding: var(--spectrum-spacing-200, 12px) var(--spectrum-spacing-300, 16px) !important;
+  gap: var(--spectrum-spacing-200, 12px) !important;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35) !important;
+  backdrop-filter: blur(14px) !important;
+  isolation: isolate !important;
+}
+
+/* Variant theming */
+div[role="status"].uxp-reset--complete.spectrum-Toast.spectrum-Toast[data-variant="neutral"],
+div[role="alert"].uxp-reset--complete.spectrum-Toast.spectrum-Toast[data-variant="neutral"] {
+  background-color: var(--spectrum-toast-background-color-neutral, rgba(15, 23, 42, 0.92)) !important;
+  border-inline-start-color: var(--spectrum-toast-border-color-neutral, #94a3b8) !important;
+}
+
+div[role="status"].uxp-reset--complete.spectrum-Toast.spectrum-Toast[data-variant="positive"],
+div[role="alert"].uxp-reset--complete.spectrum-Toast.spectrum-Toast[data-variant="positive"] {
+  background-color: var(--spectrum-toast-background-color-positive, rgba(22, 101, 52, 0.92)) !important;
+  border-inline-start-color: var(--spectrum-toast-border-color-positive, #4ade80) !important;
+}
+
+div[role="status"].uxp-reset--complete.spectrum-Toast.spectrum-Toast[data-variant="negative"],
+div[role="alert"].uxp-reset--complete.spectrum-Toast.spectrum-Toast[data-variant="negative"] {
+  background-color: var(--spectrum-toast-background-color-negative, rgba(153, 27, 27, 0.92)) !important;
+  border-inline-start-color: var(--spectrum-toast-border-color-negative, #fca5a5) !important;
+}
+
+div[role="status"].uxp-reset--complete.spectrum-Toast.spectrum-Toast[data-variant="info"],
+div[role="alert"].uxp-reset--complete.spectrum-Toast.spectrum-Toast[data-variant="info"] {
+  background-color: var(--spectrum-toast-background-color-info, rgba(30, 64, 175, 0.92)) !important;
+  border-inline-start-color: var(--spectrum-toast-border-color-info, #93c5fd) !important;
+}
+
+div[role="status"].uxp-reset--complete.spectrum-Toast.spectrum-Toast[data-variant="warning"],
+div[role="alert"].uxp-reset--complete.spectrum-Toast.spectrum-Toast[data-variant="warning"] {
+  background-color: var(--spectrum-toast-background-color-warning, rgba(180, 83, 9, 0.92)) !important;
+  border-inline-start-color: var(--spectrum-toast-border-color-warning, #fdba74) !important;
+}
+
+/* =============================================================================
+   BODY LAYOUT
+   ============================================================================= */
+.spectrum-Toast-body {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: var(--spectrum-spacing-200, 12px) !important;
+  flex: 1 1 auto !important;
+}
+
+.spectrum-Toast-content {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 4px !important;
+  color: inherit !important;
+  max-inline-size: 100% !important;
+}
+
+.spectrum-Toast-title {
+  font-size: var(--spectrum-font-size-200, 16px) !important;
+  font-weight: var(--spectrum-font-weight-medium, 500) !important;
+  line-height: var(--spectrum-line-height-100, 1.3) !important;
+  color: inherit !important;
+}
+
+.spectrum-Toast-description {
+  font-size: var(--spectrum-font-size-100, 14px) !important;
+  line-height: 1.5 !important;
+  color: rgba(255, 255, 255, 0.78) !important;
+}
+
+/* =============================================================================
+   ACTION BUTTON
+   ============================================================================= */
+div[role="button"].uxp-reset--complete.spectrum-Toast-action.spectrum-Toast-action {
+  all: unset !important;
+  box-sizing: border-box !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  border-radius: var(--spectrum-component-height-100, 32px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.7) !important;
+  padding-inline: var(--spectrum-component-pill-edge-to-text-100, 16px) !important;
+  min-inline-size: 80px !important;
+  min-block-size: var(--spectrum-component-height-100, 32px) !important;
+  color: #ffffff !important;
+  background-color: transparent !important;
+  transition: background-color var(--spectrum-animation-duration-100, 0.2s) ease-out,
+    border-color var(--spectrum-animation-duration-100, 0.2s) ease-out,
+    color var(--spectrum-animation-duration-100, 0.2s) ease-out !important;
+  text-decoration: none !important;
+}
+
+div[role="button"].uxp-reset--complete.spectrum-Toast-action.spectrum-Toast-action:hover:not([aria-disabled="true"]) {
+  background-color: rgba(255, 255, 255, 0.12) !important;
+  border-color: rgba(255, 255, 255, 0.85) !important;
+}
+
+div[role="button"].uxp-reset--complete.spectrum-Toast-action.spectrum-Toast-action:active:not([aria-disabled="true"]) {
+  background-color: rgba(255, 255, 255, 0.2) !important;
+  border-color: rgba(255, 255, 255, 1) !important;
+}
+
+div[role="button"].uxp-reset--complete.spectrum-Toast-action.spectrum-Toast-action:focus-visible {
+  outline: var(--spectrum-focus-indicator-thickness, 2px) solid var(--spectrum-focus-indicator-color, #2563eb) !important;
+  outline-offset: var(--spectrum-focus-indicator-gap, 2px) !important;
+}
+
+div[role="button"].uxp-reset--complete.spectrum-Toast-action.spectrum-Toast-action[aria-disabled="true"] {
+  opacity: 0.55 !important;
+  cursor: not-allowed !important;
+  pointer-events: none !important;
+}
+
+.spectrum-Toast-actionLabel {
+  font-size: var(--spectrum-font-size-100, 14px) !important;
+  font-weight: var(--spectrum-font-weight-medium, 500) !important;
+  color: inherit !important;
+  text-transform: none !important;
+}
+
+/* =============================================================================
+   CLOSE BUTTON AREA
+   ============================================================================= */
+.spectrum-Toast-buttons {
+  display: flex !important;
+  align-items: center !important;
+  margin-inline-start: var(--spectrum-spacing-100, 8px) !important;
+}
+
+.spectrum-Toast-closeButton {
+  color: #ffffff !important;
+}
+
+.spectrum-Toast-closeButton .spectrum-CloseButton-UIIcon {
+  color: currentColor !important;
+  fill: currentColor !important;
+}
+
+/* Static white variant helper */
+.spectrum-CloseButton--staticWhite {
+  color: #ffffff !important;
+}
+
+/* =============================================================================
+   RESPONSIVE + THEME ADJUSTMENTS
+   ============================================================================= */
+@media (max-width: 420px) {
+  div[role="status"].uxp-reset--complete.spectrum-Toast.spectrum-Toast,
+  div[role="alert"].uxp-reset--complete.spectrum-Toast.spectrum-Toast {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: var(--spectrum-spacing-200, 12px) !important;
+  }
+
+  .spectrum-Toast-body {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+
+  .spectrum-Toast-buttons {
+    justify-content: flex-end !important;
+  }
+}
+
+[data-theme="light"] div[role="status"].uxp-reset--complete.spectrum-Toast.spectrum-Toast,
+[data-theme="light"] div[role="alert"].uxp-reset--complete.spectrum-Toast.spectrum-Toast {
+  color: #0f172a !important;
+  background-color: var(--spectrum-toast-light-background, rgba(248, 250, 252, 0.96)) !important;
+}
+
+[data-theme="light"] .spectrum-Toast-description {
+  color: rgba(15, 23, 42, 0.72) !important;
+}
+
+[data-theme="light"] div[role="button"].uxp-reset--complete.spectrum-Toast-action.spectrum-Toast-action {
+  color: var(--spectrum-neutral-content-color-default, #111827) !important;
+  border-color: rgba(15, 23, 42, 0.26) !important;
+}
+
+[data-theme="light"] div[role="button"].uxp-reset--complete.spectrum-Toast-action.spectrum-Toast-action:hover:not([aria-disabled="true"]) {
+  background-color: rgba(15, 23, 42, 0.08) !important;
+  border-color: rgba(15, 23, 42, 0.35) !important;
+}
+
+[data-theme="light"] .spectrum-Toast-closeButton,
+[data-theme="light"] .spectrum-CloseButton--staticWhite {
+  color: var(--spectrum-neutral-content-color-default, #111827) !important;
+}

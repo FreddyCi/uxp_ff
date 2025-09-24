@@ -28,6 +28,7 @@ import { AssetList } from "./components/AssetList";
 import { Grid, GridItem } from "./components/Grid";
 import { Modal } from "./components/Modal";
 import { StepList } from "./components/StepList";
+import { Toast } from "./components/Toast";
 import { usePluginStore } from "./store/usePluginStore";
 
 
@@ -55,7 +56,12 @@ const App: React.FC = () => {
     goToNextSteplistStep,
     goToPreviousSteplistStep,
     openModal,
-    closeModal
+    closeModal,
+    toast,
+    isToastOpen,
+    showToast,
+    hideToast,
+    triggerToastAction,
   } = usePluginStore();
   
   console.log("App is rendering! Host:", host.name, host.version);
@@ -185,6 +191,30 @@ const App: React.FC = () => {
           <Detail size="s">Responsive variant shown by default.</Detail>
         </Typography>
       </Modal>
+
+      {toast && (
+        <div
+          style={{
+            position: "fixed",
+            top: "24px",
+            right: "24px",
+            zIndex: 2000,
+            pointerEvents: "none",
+          }}
+        >
+          <div style={{ pointerEvents: "auto" }}>
+            <Toast
+              isOpen={isToastOpen}
+              variant={toast.variant}
+              title={toast.title}
+              description={toast.description}
+              actionLabel={toast.actionLabel}
+              onAction={toast.actionLabel && toast.onAction ? triggerToastAction : undefined}
+              onClose={hideToast}
+            />
+          </div>
+        </div>
+      )}
 
       <div style={{ 
         opacity: 0.8, 
@@ -567,6 +597,74 @@ const App: React.FC = () => {
             <p style={{ marginBottom: "24px", color: "var(--text)" }}>
               Overview of the hybrid component ecosystem and UXP compatibility features.
             </p>
+
+            <div style={{ marginBottom: "32px" }}>
+              <h4 style={{ margin: "0 0 12px 0", color: "var(--text)" }}>Toast notifications</h4>
+              <p style={{ margin: "0 0 12px 0", color: "var(--text-muted)", fontSize: "13px", lineHeight: 1.5 }}>
+                Trigger Spectrum-styled toasts using the global store. Each example below calls <code>showToast</code> with different variants so you can validate the hybrid styling, optional action button, and dismiss behavior across UXP and web.
+              </p>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: "12px" }}>
+                <Button
+                  variant="accent"
+                  onPress={() =>
+                    showToast({
+                      title: "File has been archived",
+                      description: "Undo from the archive within the next 30 days.",
+                      actionLabel: "Undo",
+                      onAction: () => {
+                        console.log("Undo archive from toast");
+                      },
+                    })
+                  }
+                >
+                  Neutral toast
+                </Button>
+                <Button
+                  variant="primary"
+                  treatment="outline"
+                  onPress={() =>
+                    showToast({
+                      variant: 'positive',
+                      title: "Upload complete",
+                      description: "All 12 assets synced to Creative Cloud.",
+                    })
+                  }
+                >
+                  Positive toast
+                </Button>
+                <Button
+                  variant="negative"
+                  onPress={() =>
+                    showToast({
+                      variant: 'negative',
+                      title: "Sync failed",
+                      description: "We hit a network error. Retry the action?",
+                      actionLabel: "Retry",
+                      onAction: () => {
+                        console.log("Retry sync from toast");
+                      },
+                    })
+                  }
+                >
+                  Negative toast
+                </Button>
+                <Button
+                  variant="secondary"
+                  onPress={() =>
+                    showToast({
+                      variant: 'warning',
+                      title: "Storage almost full",
+                      description: "Upgrade your plan to add more assets.",
+                    })
+                  }
+                >
+                  Warning toast
+                </Button>
+              </div>
+              <p style={{ marginTop: "12px", color: "var(--text-muted)", fontSize: "12px" }}>
+                Toasts render in a fixed overlay near the top-right corner of the panel. Close them or trigger the action to dismiss.
+              </p>
+            </div>
 
             {/* Component Ecosystem Overview */}
             <div style={{ marginBottom: "32px" }}>

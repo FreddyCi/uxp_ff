@@ -41,6 +41,17 @@ interface PluginState {
     }[];
     currentStep: number;
   };
+
+  // Toast component state (global notifications)
+  toast: {
+    id: string;
+    variant: 'neutral' | 'positive' | 'negative' | 'info' | 'warning';
+    title: string;
+    description?: string;
+    actionLabel?: string;
+    onAction?: () => void;
+  } | null;
+  isToastOpen: boolean;
   
   // Actions
   setLastSavedFile: (path: string) => void;
@@ -65,6 +76,18 @@ interface PluginState {
   setSteplistCurrentStep: (index: number) => void;
   goToNextSteplistStep: () => void;
   goToPreviousSteplistStep: () => void;
+
+  // Toast actions
+  showToast: (toast: {
+    id?: string;
+    variant?: 'neutral' | 'positive' | 'negative' | 'info' | 'warning';
+    title: string;
+    description?: string;
+    actionLabel?: string;
+    onAction?: () => void;
+  }) => void;
+  hideToast: () => void;
+  triggerToastAction: () => void;
 }
 
 export const usePluginStore = create<PluginState>((set, get) => ({
@@ -105,6 +128,10 @@ export const usePluginStore = create<PluginState>((set, get) => ({
     ],
     currentStep: 2,
   },
+  
+  // Toast initial state
+  toast: null,
+  isToastOpen: false,
   
   // Actions
   setLastSavedFile: (path: string) => {
@@ -211,5 +238,39 @@ export const usePluginStore = create<PluginState>((set, get) => ({
         currentStep: Math.max(state.steplist.currentStep - 1, 0),
       },
     }));
+  },
+
+  // Toast actions
+  showToast: ({ id, variant = 'neutral', title, description, actionLabel, onAction }) => {
+    const generatedId = id ?? `toast-${Date.now()}`;
+    set({
+      toast: {
+        id: generatedId,
+        variant,
+        title,
+        description,
+        actionLabel,
+        onAction,
+      },
+      isToastOpen: true,
+    });
+  },
+
+  hideToast: () => {
+    set({
+      isToastOpen: false,
+      toast: null,
+    });
+  },
+
+  triggerToastAction: () => {
+    const currentToast = get().toast;
+    if (currentToast?.onAction) {
+      currentToast.onAction();
+    }
+    set({
+      isToastOpen: false,
+      toast: null,
+    });
   },
 }));
