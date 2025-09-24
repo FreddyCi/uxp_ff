@@ -109,12 +109,12 @@ export const StepList: React.FC<StepListProps> = ({
         };
 
         const content = (
-          <>
+          <span className="spectrum-Steplist-content">
             <span className="spectrum-Steplist-label">{step.label}</span>
             <span className="spectrum-Steplist-markerContainer">
               <span className={markerClasses} aria-hidden="true" />
             </span>
-          </>
+          </span>
         );
 
         return (

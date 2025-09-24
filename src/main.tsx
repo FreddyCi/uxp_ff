@@ -1788,6 +1788,37 @@ const App: React.FC = () => {
               Explore fixed, fluid, and nested layouts while verifying our hybrid CSS approach.
             </p>
 
+            <div style={{ display: "flex", flexWrap: "wrap", gap: "16px", marginBottom: "32px" }}>
+              <div
+                style={{
+                  flex: "1 1 33%",
+                  maxWidth: "360px",
+                  background: "var(--bg-2)",
+                  border: "1px solid var(--border)",
+                  borderRadius: "8px",
+                  padding: "16px",
+                  color: "var(--text)",
+                  boxShadow: "0 1px 4px rgba(15, 23, 42, 0.08)",
+                }}
+              >
+                <strong style={{ display: "block", marginBottom: "8px", fontSize: "14px" }}>
+                  Workflow Stepper
+                </strong>
+                <span style={{ display: "block", marginBottom: "16px", fontSize: "12px", color: "var(--text-muted)", lineHeight: 1.4 }}>
+                  Compact steplist embedded inside a hybrid card. Click any step to jump or use keyboard navigation.
+                </span>
+                <StepList
+                  steps={steplist.steps}
+                  currentStep={steplist.currentStep}
+                  interactive
+                  onStepChange={setSteplistCurrentStep}
+                />
+                <div style={{ marginTop: "16px", fontSize: "11px", color: "var(--text-muted)" }}>
+                  <span style={{ fontWeight: 600 }}>Current step:</span> {steplist.steps[steplist.currentStep]?.label ?? "N/A"}
+                </div>
+              </div>
+            </div>
+
             <div style={{ marginBottom: "32px" }}>
               <h4 style={{ margin: "0 0 12px 0", color: "var(--text)", fontSize: "16px" }}>Fixed Grid (12 columns)</h4>
               <Grid columns={12} variant={["frame", "fixed"]} gap="16px" style={{ marginBottom: "8px" }}>
