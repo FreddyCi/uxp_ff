@@ -8,6 +8,11 @@ interface PluginState {
   // UI state
   activeTab: string;
   isDarkMode: boolean;
+  isModalOpen: boolean;
+  modalVariant: 'responsive' | 'fullscreen' | 'fullscreenTakeover';
+  modalTitle: string;
+  modalBody: string;
+  showModalUnderlay: boolean;
   
   // User preferences
   autoSave: boolean;
@@ -33,6 +38,8 @@ interface PluginState {
   addRecentFile: (path: string) => void;
   setActiveTab: (tab: string) => void;
   toggleDarkMode: () => void;
+  openModal: (options?: Partial<Pick<PluginState, 'modalVariant' | 'modalTitle' | 'modalBody' | 'showModalUnderlay'>>) => void;
+  closeModal: () => void;
   toggleAutoSave: () => void;
   setFileFormat: (format: 'txt' | 'json' | 'md') => void;
   clearRecentFiles: () => void;
@@ -52,6 +59,11 @@ export const usePluginStore = create<PluginState>((set, get) => ({
   recentFiles: [],
   activeTab: 'files',
   isDarkMode: true,
+  isModalOpen: false,
+  modalVariant: 'responsive',
+  modalTitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+  modalBody: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Auctor augue mauris augue neque gravida. Libero volutpat sed ornare arcu. Quisque egestas diam in arcu cursus euismod quis viverra. Posuere ac ut consequat semper viverra nam libero justo laoreet. Enim ut tellus elementum sagittis vitae et leo duis ut. Neque laoreet suspendisse interdum consectetur libero id faucibus nisl. Diam volutpat commodo sed egestas egestas. Dolor magna eget est lorem ipsum dolor. Vitae suscipit tellus mauris a diam maecenas sed. Turpis in eu mi bibendum neque egestas congue. Rhoncus est pellentesque elit ullamcorper dignissim cras lobortis.',
+  showModalUnderlay: true,
   autoSave: false,
   fileFormat: 'txt',
   
@@ -87,6 +99,16 @@ export const usePluginStore = create<PluginState>((set, get) => ({
   setActiveTab: (tab: string) => set({ activeTab: tab }),
   
   toggleDarkMode: () => set((state) => ({ isDarkMode: !state.isDarkMode })),
+
+  openModal: (options) => set((state) => ({
+    isModalOpen: true,
+    modalVariant: options?.modalVariant ?? state.modalVariant,
+    modalTitle: options?.modalTitle ?? state.modalTitle,
+    modalBody: options?.modalBody ?? state.modalBody,
+    showModalUnderlay: options?.showModalUnderlay ?? state.showModalUnderlay,
+  })),
+
+  closeModal: () => set({ isModalOpen: false }),
   
   toggleAutoSave: () => set((state) => ({ autoSave: !state.autoSave })),
   

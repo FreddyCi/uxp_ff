@@ -26,6 +26,7 @@ import { Asset } from "./components/Asset";
 import { AssetCard } from "./components/AssetCard";
 import { AssetList } from "./components/AssetList";
 import { Grid, GridItem } from "./components/Grid";
+import { Modal } from "./components/Modal";
 import { usePluginStore } from "./store/usePluginStore";
 
 
@@ -39,12 +40,18 @@ const App: React.FC = () => {
     isDarkMode, 
     fileFormat,
     radioPreferences,
+    isModalOpen,
+    modalVariant,
+    modalTitle,
+    modalBody,
+    showModalUnderlay,
     setLastSavedFile,
-    addRecentFile,
     toggleDarkMode,
     setFileFormat,
     clearRecentFiles,
-    setRadioPreference
+    setRadioPreference,
+    openModal,
+    closeModal
   } = usePluginStore();
   
   console.log("App is rendering! Host:", host.name, host.version);
@@ -125,6 +132,8 @@ const App: React.FC = () => {
   const isInUxp = typeof (globalThis as any).uxp !== 'undefined';
   console.log("Running in UXP environment:", isInUxp);
 
+  const modalContent = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Auctor augue mauris augue neque gravida. Libero volutpat sed ornare arcu. Quisque egestas diam in arcu cursus euismod quis viverra. Posuere ac ut consequat semper viverra nam libero justo laoreet. Enim ut tellus elementum sagittis vitae et leo duis ut. Neque laoreet suspendisse interdum consectetur libero id faucibus nisl. Diam volutpat commodo sed egestas egestas. Dolor magna eget est lorem ipsum dolor. Vitae suscipit tellus mauris a diam maecenas sed. Turpis in eu mi bibendum neque egestas congue. Rhoncus est pellentesque elit ullamcorper dignissim cras lobortis.";
+
   // Panel routing
   if (panelId === 'gallery-panel') return <Gallery />;
 
@@ -139,6 +148,41 @@ const App: React.FC = () => {
       width: "100%",
       boxSizing: "border-box"
     }}>
+      <Modal
+        isOpen={isModalOpen}
+        variant={modalVariant}
+        title={modalTitle}
+        description={modalBody}
+        showUnderlay={showModalUnderlay}
+        onClose={closeModal}
+        primaryAction={{
+          label: "Confirm",
+          variant: "accent",
+          onPress: () => {
+            console.log("Modal confirmed");
+            closeModal();
+          }
+        }}
+        secondaryAction={{
+          label: "Cancel",
+          variant: "secondary",
+          treatment: "outline",
+          onPress: closeModal
+        }}
+        footerContent={(
+          <span style={{ fontSize: "12px", color: "rgba(15, 23, 42, 0.6)" }}>
+            Press Escape or use the actions to dismiss this modal.
+          </span>
+        )}
+      >
+        <Typography>
+          <Body size="m">
+            This modal is managed by Zustand and styled with the hybrid Spectrum selectors we adapted for UXP.
+          </Body>
+          <Detail size="s">Responsive variant shown by default.</Detail>
+        </Typography>
+      </Modal>
+
       <div style={{ 
         opacity: 0.8, 
         fontSize: "14px", 
@@ -414,9 +458,9 @@ const App: React.FC = () => {
             <h3 style={{ margin: "0 0 16px 0", color: "var(--text)" }}>Spectrum CSS Tabs Demo</h3>
             
             <div style={{ marginBottom: "24px" }}>
-              <h4 style={{ margin: "0 0 12px 0", color: "var(--text)", fontSize: "14px" }}>Different Sizes</h4>
-              
-              <div style={{ marginBottom: "16px" }}>
+              <h4 style={{ margin: "0 0 12px 0", color: "var(--text)", fontSize: "14px" }}>Small Tabs Demo</h4>
+
+              <div>
                 <p style={{ margin: "0 0 8px 0", fontSize: "12px", color: "var(--text-muted)" }}>Small (s):</p>
                 <Tabs defaultSelectedKey="small1" size="s">
                   <TabList>
@@ -429,64 +473,55 @@ const App: React.FC = () => {
                   <TabPanel id="small3">Small tab 3 content</TabPanel>
                 </Tabs>
               </div>
-              
-              <div style={{ marginBottom: "16px" }}>
-                <p style={{ margin: "0 0 8px 0", fontSize: "12px", color: "var(--text-muted)" }}>Medium (m) - Default:</p>
-                <Tabs defaultSelectedKey="med1" size="m">
-                  <TabList>
-                    <Tab id="med1">Tab 1</Tab>
-                    <Tab id="med2">Tab 2</Tab>
-                    <Tab id="med3">Tab 3</Tab>
-                  </TabList>
-                  <TabPanel id="med1">Medium tab content</TabPanel>
-                  <TabPanel id="med2">Medium tab 2 content</TabPanel>
-                  <TabPanel id="med3">Medium tab 3 content</TabPanel>
-                </Tabs>
-              </div>
-              
-              <div style={{ marginBottom: "16px" }}>
-                <p style={{ margin: "0 0 8px 0", fontSize: "12px", color: "var(--text-muted)" }}>Large (l):</p>
-                <Tabs defaultSelectedKey="large1" size="l">
-                  <TabList>
-                    <Tab id="large1">Tab 1</Tab>
-                    <Tab id="large2">Tab 2</Tab>
-                    <Tab id="large3">Tab 3</Tab>
-                  </TabList>
-                  <TabPanel id="large1">Large tab content</TabPanel>
-                  <TabPanel id="large2">Large tab 2 content</TabPanel>
-                  <TabPanel id="large3">Large tab 3 content</TabPanel>
-                </Tabs>
-              </div>
-              
-              <div style={{ marginBottom: "16px" }}>
-                <p style={{ margin: "0 0 8px 0", fontSize: "12px", color: "var(--text-muted)" }}>Emphasized:</p>
-                <Tabs defaultSelectedKey="emp1" size="m" emphasized>
-                  <TabList>
-                    <Tab id="emp1">Emphasized</Tab>
-                    <Tab id="emp2">Tabs</Tab>
-                    <Tab id="emp3">Demo</Tab>
-                  </TabList>
-                  <TabPanel id="emp1">Emphasized styling with blue accent</TabPanel>
-                  <TabPanel id="emp2">Emphasized tab 2 content</TabPanel>
-                  <TabPanel id="emp3">Emphasized tab 3 content</TabPanel>
-                </Tabs>
-              </div>
-              
-              <div style={{ marginBottom: "16px" }}>
-                <p style={{ margin: "0 0 8px 0", fontSize: "12px", color: "var(--text-muted)" }}>Quiet variant:</p>
-                <Tabs defaultSelectedKey="quiet1" size="m" quiet>
-                  <TabList>
-                    <Tab id="quiet1">Quiet</Tab>
-                    <Tab id="quiet2">Tabs</Tab>
-                    <Tab id="quiet3">Style</Tab>
-                  </TabList>
-                  <TabPanel id="quiet1">Quiet tabs have no background divider</TabPanel>
-                  <TabPanel id="quiet2">Quiet tab 2 content</TabPanel>
-                  <TabPanel id="quiet3">Quiet tab 3 content</TabPanel>
-                </Tabs>
-              </div>
             </div>
             
+            <div style={{ marginBottom: "24px" }}>
+              <h4 style={{ margin: "0 0 12px 0", color: "var(--text)", fontSize: "14px" }}>Hybrid Modal Demo</h4>
+              <p style={{ marginBottom: "12px", color: "var(--text-muted)", fontSize: "12px", lineHeight: 1.5 }}>
+                Launch the Spectrum modal powered by our hybrid selectors and Zustand store. Each button opens the modal in a different layout variant, reusing the official content snippet you provided.
+              </p>
+              <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
+                <Button
+                  variant="accent"
+                  onPress={() => openModal({
+                    modalVariant: 'responsive',
+                    modalTitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+                    modalBody: modalContent,
+                    showModalUnderlay: true,
+                  })}
+                >
+                  Launch Responsive Modal
+                </Button>
+                <Button
+                  variant="secondary"
+                  treatment="outline"
+                  onPress={() => openModal({
+                    modalVariant: 'fullscreen',
+                    modalTitle: 'Fullscreen modal experience',
+                    modalBody: modalContent,
+                    showModalUnderlay: true,
+                  })}
+                >
+                  Launch Fullscreen Modal
+                </Button>
+                <Button
+                  variant="secondary"
+                  treatment="outline"
+                  onPress={() => openModal({
+                    modalVariant: 'fullscreenTakeover',
+                    modalTitle: 'Fullscreen takeover modal',
+                    modalBody: modalContent,
+                    showModalUnderlay: true,
+                  })}
+                >
+                  Launch Takeover Modal
+                </Button>
+              </div>
+              <p style={{ marginTop: "12px", color: "var(--text-muted)", fontSize: "12px" }}>
+                Modal visibility, copy, and layout live in `usePluginStore`, so the UI stays declarative whether we run in UXP or the web preview.
+              </p>
+            </div>
+
             <div style={{ fontSize: "12px", color: "var(--text-disabled)" }}>
               <p><strong>Our Custom Spectrum CSS Features:</strong></p>
               <ul style={{ margin: "8px 0", paddingLeft: "20px" }}>
